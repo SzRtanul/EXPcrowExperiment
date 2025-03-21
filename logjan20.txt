@@ -1,0 +1,103 @@
+jan 19 04:52:45 ketamin systemd-resolved[868]: Clock change detected. Flushing caches.
+jan 19 04:52:45 ketamin systemd-networkd[866]: ens33: Lost carrier
+jan 19 04:52:45 ketamin systemd-networkd[866]: ens33: DHCP lease lost
+jan 19 04:52:45 ketamin systemd-networkd[866]: ens33: DHCPv6 lease lost
+jan 19 04:52:45 ketamin systemd-timesyncd[764]: No network connectivity, watching for changes.
+jan 19 04:52:46 ketamin systemd[1]: Starting Daily dpkg database backup service...
+jan 19 04:52:46 ketamin systemd[1]: Starting Online ext4 Metadata Check for All Filesystems...
+jan 19 04:52:46 ketamin systemd[1]: Starting Message of the Day...
+jan 19 04:52:46 ketamin systemd[1]: Starting Clean php session files...
+jan 19 04:52:46 ketamin systemd[1]: Starting Rotate log files...
+jan 19 04:52:46 ketamin systemd[1]: Starting Daily man-db regeneration...
+jan 19 04:52:46 ketamin systemd[1]: e2scrub_all.service: Deactivated successfully.
+jan 19 04:52:46 ketamin systemd[1]: Finished Online ext4 Metadata Check for All Filesystems.
+jan 19 04:52:49 ketamin systemd[1]: phpsessionclean.service: Deactivated successfully.
+jan 19 04:52:49 ketamin systemd[1]: Finished Clean php session files.
+jan 19 04:52:49 ketamin systemd[1]: phpsessionclean.service: Consumed 2.679s CPU time.
+jan 19 04:52:49 ketamin systemd[1]: dpkg-db-backup.service: Deactivated successfully.
+jan 19 04:52:49 ketamin systemd[1]: Finished Daily dpkg database backup service.
+jan 19 04:52:50 ketamin kernel: e1000: ens33 NIC Link is Up 1000 Mbps Full Duplex, Flow Control: None
+jan 19 04:52:50 ketamin systemd-networkd[866]: ens33: Gained carrier
+jan 19 04:52:50 ketamin systemd-timesyncd[764]: Network configuration changed, trying to establish connection.
+jan 19 04:52:50 ketamin systemd-networkd[866]: ens33: DHCPv4 address 192.168.1.17/24 via 192.168.1.1
+jan 19 04:52:51 ketamin systemd-timesyncd[764]: Network configuration changed, trying to establish connection.
+jan 19 04:52:49 ketamin systemd-resolved[868]: Clock change detected. Flushing caches.
+jan 19 04:52:49 ketamin systemd-timesyncd[764]: Initial synchronization to time server 185.125.190.58:123 (ntp.ubuntu.com).
+jan 19 04:52:49 ketamin systemd[1]: Reloading The Apache HTTP Server...
+jan 19 04:52:49 ketamin systemd-networkd[866]: ens33: DHCPv6 address 2001:4c4c:1529:c600::1000/128 (valid for 2w, preferred for 2w)
+jan 19 04:52:50 ketamin systemd[1]: rsyslog.service: Sent signal SIGHUP to main process 904 (rsyslogd) on client request.
+jan 19 04:52:50 ketamin systemd[1]: logrotate.service: Deactivated successfully.
+jan 19 04:52:50 ketamin systemd[1]: Finished Rotate log files.
+jan 19 04:52:50 ketamin systemd[1]: logrotate.service: Consumed 2.754s CPU time.
+jan 19 04:52:50 ketamin apachectl[6439]: AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+jan 19 04:52:50 ketamin kernel: IPv6: ens33: IPv6 duplicate address 2001:4c4c:1529:c600::1000 used by fc:4d:d4:d7:a1:ec detected!
+jan 19 04:52:50 ketamin systemd[1]: Reloaded The Apache HTTP Server.
+jan 19 04:53:02 ketamin systemd[1]: man-db.service: Deactivated successfully.
+jan 19 04:53:02 ketamin systemd[1]: Finished Daily man-db regeneration.
+jan 19 04:53:02 ketamin systemd[1]: man-db.service: Consumed 8.047s CPU time.
+jan 19 04:53:07 ketamin systemd[1]: motd-news.service: Deactivated successfully.
+jan 19 04:53:07 ketamin systemd[1]: Finished Message of the Day.
+jan 19 04:53:07 ketamin systemd[1]: motd-news.service: Consumed 3.243s CPU time.
+jan 19 04:53:27 ketamin systemd-resolved[868]: Using degraded feature set UDP instead of UDP+EDNS0 for DNS server 2001:4c4c:1529:c600:5a90:43ff:fe5b:bc1c.
+jan 19 04:55:01 ketamin CRON[6468]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+jan 19 04:55:01 ketamin CRON[6469]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+jan 19 04:55:01 ketamin CRON[6468]: pam_unix(cron:session): session closed for user root
+jan 19 05:05:01 ketamin CRON[6507]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+jan 19 05:05:01 ketamin CRON[6508]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+jan 19 05:05:01 ketamin CRON[6507]: pam_unix(cron:session): session closed for user root
+jan 19 05:09:01 ketamin CRON[6525]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+jan 19 05:09:01 ketamin CRON[6526]: (root) CMD (  [ -x /usr/lib/php/sessionclean ] && if [ ! -d /run/systemd/system ]; then /usr/lib/php/sessionclean; fi)
+jan 19 05:09:01 ketamin CRON[6525]: pam_unix(cron:session): session closed for user root
+jan 19 05:09:21 ketamin systemd[1]: Starting Clean php session files...
+jan 19 05:09:21 ketamin systemd[1]: phpsessionclean.service: Deactivated successfully.
+jan 19 05:09:21 ketamin systemd[1]: Finished Clean php session files.
+jan 19 05:15:01 ketamin CRON[6598]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+jan 19 05:15:01 ketamin CRON[6599]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+jan 19 05:15:01 ketamin CRON[6598]: pam_unix(cron:session): session closed for user root
+jan 19 05:17:01 ketamin CRON[6607]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+jan 19 05:17:01 ketamin CRON[6608]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)
+jan 19 05:17:01 ketamin CRON[6607]: pam_unix(cron:session): session closed for user root
+jan 19 05:25:01 ketamin CRON[6640]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+jan 19 05:25:01 ketamin CRON[6641]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+jan 19 05:25:01 ketamin CRON[6640]: pam_unix(cron:session): session closed for user root
+jan 19 05:26:57 ketamin systemd-timesyncd[764]: Initial synchronization to time server [2620:2d:4000:1::3f]:123 (ntp.ubuntu.com).
+jan 19 05:29:22 ketamin snapd[1622]: storehelpers.go:954: cannot refresh: snap has no updates available: "core20", "lxd", "snapd"
+jan 19 05:35:01 ketamin CRON[6680]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+jan 19 05:35:01 ketamin CRON[6681]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+jan 19 05:35:01 ketamin CRON[6680]: pam_unix(cron:session): session closed for user root
+jan 19 05:39:01 ketamin systemd[1]: Starting Clean php session files...
+jan 19 05:39:01 ketamin CRON[6726]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+jan 19 05:39:01 ketamin CRON[6730]: (root) CMD (  [ -x /usr/lib/php/sessionclean ] && if [ ! -d /run/systemd/system ]; then /usr/lib/php/sessionclean; fi)
+jan 19 05:39:01 ketamin CRON[6726]: pam_unix(cron:session): session closed for user root
+jan 19 05:39:02 ketamin systemd[1]: phpsessionclean.service: Deactivated successfully.
+jan 19 05:39:02 ketamin systemd[1]: Finished Clean php session files.
+jan 19 05:45:01 ketamin CRON[6769]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+jan 19 05:45:01 ketamin CRON[6770]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+jan 19 05:45:01 ketamin CRON[6769]: pam_unix(cron:session): session closed for user root
+jan 19 05:55:01 ketamin CRON[6806]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+jan 19 05:55:01 ketamin CRON[6807]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+jan 19 05:55:02 ketamin CRON[6806]: pam_unix(cron:session): session closed for user root
+jan 19 06:05:01 ketamin CRON[6844]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+jan 19 06:05:01 ketamin CRON[6845]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+jan 19 06:05:01 ketamin CRON[6844]: pam_unix(cron:session): session closed for user root
+jan 19 06:09:01 ketamin CRON[6862]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+jan 19 06:09:01 ketamin CRON[6863]: (root) CMD (  [ -x /usr/lib/php/sessionclean ] && if [ ! -d /run/systemd/system ]; then /usr/lib/php/sessionclean; fi)
+jan 19 06:09:01 ketamin CRON[6862]: pam_unix(cron:session): session closed for user root
+jan 19 06:09:21 ketamin systemd[1]: Starting Clean php session files...
+jan 19 06:09:23 ketamin systemd[1]: phpsessionclean.service: Deactivated successfully.
+jan 19 06:09:23 ketamin systemd[1]: Finished Clean php session files.
+jan 19 06:09:23 ketamin systemd[1]: phpsessionclean.service: Consumed 1.695s CPU time.
+jan 19 06:15:01 ketamin CRON[6934]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+jan 19 06:15:01 ketamin CRON[6935]: (root) CMD (command -v debian-sa1 > /dev/null && debian-sa1 1 1)
+jan 19 06:15:01 ketamin CRON[6934]: pam_unix(cron:session): session closed for user root
+jan 19 06:17:03 ketamin CRON[6945]: pam_unix(cron:session): session opened for user root(uid=0) by (uid=0)
+jan 19 06:17:03 ketamin CRON[6946]: (root) CMD (   cd / && run-parts --report /etc/cron.hourly)
+jan 19 06:17:03 ketamin CRON[6945]: pam_unix(cron:session): session closed for user root
+jan 19 06:17:31 ketamin kernel: sched: RT throttling activated
+jan 19 06:23:08 ketamin kernel: watchdog: BUG: soft lockup - CPU#3 stuck for 21s! [in:imklog:942]
+jan 19 06:27:26 ketamin kernel: Modules linked in: tls vsock_loopback vmw_vsock_virtio_transport_common vmw_vsock_vmci_transport vsock binfmt_misc intel_rapl_msr vmw_balloon intel_rapl_common rapl joydev input_leds btusb btrtl snd_ens1371 btbcm serio_raw snd_ac97_codec btintel gameport snd_rawmidi bluetooth snd_seq_device ac97_bus ecdh_generic snd_pcm ecc snd_timer snd soundcore vmw_vmci mac_hid sch_fq_codel dm_multipath scsi_dh_rdac scsi_dh_emc scsi_dh_alua ipmi_devintf ipmi_msghandler msr ramoops reed_solomon pstore_blk pstore_zone efi_pstore ip_tables x_tables autofs4 btrfs blake2b_generic zstd_compress raid10 raid456 async_raid6_recov async_memcpy async_pq async_xor async_tx xor raid6_pq libcrc32c raid1 raid0 multipath linear hid_generic crct10dif_pclmul vmwgfx crc32_pclmul ghash_clmulni_intel sha256_ssse3 sha1_ssse3 ttm drm_kms_helper syscopyarea sysfillrect sysimgblt aesni_intel crypto_simd fb_sys_fops cryptd cec mptspi rc_core mptscsih usbhid psmouse hid ahci i2c_piix4 drm mptbase scsi_transport_spi
+jan 19 06:27:26 ketamin kernel:  e1000 libahci pata_acpi
+jan 19 06:27:26 ketamin kernel: CPU: 3 PID: 942 Comm: in:imklog Not tainted 5.15.0-119-generic #129-Ubuntu
+jan 19 06:27:26 ketamin kernel: Hardware name: VMware, Inc. VMware Virtual Platform/440BX Desktop Reference Platform, BIOS 6.00 11/12/2020
+jan 19 06:27:26 ketamin kernel: RIP: 0010:__check_heap_object+0x85/0x1b0
+jan 19 06:33:03 ketamin kernel: Code: 00 00 48 89 fb 84 c0 0f 85 99 00 00 00 48 89 f8 41 8b 4d 18 48 29 d0 48 99 48 f7 f9 89 d3 0f 1f 44 00 00 41 8b 85 d0 00 00 00 <39> d8 0f 86 8a 00 00 00 41 8b 45 08 f6 c4 0c 0f 85 a6 00 00 00 a9
