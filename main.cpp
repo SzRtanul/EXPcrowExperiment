@@ -1,63 +1,75 @@
 #include "crow.h"
 #include <iostream>
 #include <cstring>
-#include <mariadb/mysql.h>
 #include "crow/middlewares/cors.h"
+#include <csignal>
+#include <pqxx/pqxx>
+#include <string>
+#include <thread>
+#include <chrono>
 
-/*
-struct connection_details{
-    const char *server, *user, *password, *database;
-};struct
+using namespace std;
+using namespace pqxx;
 
-MYSQL* mysql_connection_setup(struct connection_details mysql_details){
-    MYSQL *connection = mysql_init(NULL);
-    if(!mysql_real_connection(connection, mysql_details.server, mysql_details.user, mysql_details.password, 
-			    mysql_details.database, 0, NULL, 0)){
-    	std::cout << "Connection Failed: " >> mysql_error(connection) << std::endl;
-        exit(1);	
+pqxx::connection C = pqxx::connection(R"(dbname = testdb user=postgres password=test123 hostaddr=127.0.0.1 port=5432)");
+int exat=0;
+
+void signal_handler(int signal) {
+    if (C.is_open()) {
+        std::cout << "Zárjuk az adatbázis kapcsolatot..." << std::endl;
+        C.disconnect();
     }
-    return connection;
+    std::cout << "A program leállt." << std::endl;
+    exit(0);  // Kilépés
 }
 
-MYSQL_RES mysql_execute_query(MYSQL *connection, const char *sql_query){
-   if(mysql_query(connection, sql_query)){
-       std::cout << "Mysql query error: " << mysql_error(*connection) << std::endl;
-   }
-   return mysql_use_result(*connection);
+inline std::string getWithoutSpace(string text){
+    int i = text.length() - 1;
+    for(;i>-1 && text[i] == ' '; i--){};
+    return text.erase(i+1);
 }
-*/
 
-int exa=0;
-int main(){
-		
-/*    MYSQL *con;
-    MYSQL_RES *res;
-    MYSQL_ROW row;
+inline std::string getSQLQuery(pqxx::work &W, std::string querytext){
+    std::string textout = "";
+    pqxx::result R = W.exec(querytext);
+    for (const auto &row : R) {
+        for(int i = 0; i < row.size(); i++){
+            textout += getWithoutSpace(row[i].as<std::string>()) + ":::";
+        }
+        textout = textout.length() > 0 ? textout + ";;;\n" : "";
+    }
+	return textout;
+}
 
-    struct connection_details mysqlD;
-    mysqlD.server="localhost";
-    mysqlD.user="admin";
-    mysqlD.password="Nincs1";
-    mysqlD.database="example";
-
-    con=mysql_connection_setup(mysqlD);
-    res= mysql_execute_query(con, "CREATE TABLE \"faszom\"");
-    std::cout << "elvileg sikerült" << std::endl;
-    mysql_free_result(res);
-    mysql_close(con);*/
-
+int main(){		
     crow::App<crow::CORSHandler> app;
 	auto& cors = app.get_middleware<crow::CORSHandler>();
-    //define your crow application			    
-    //define your endpoint at the root directory
+
+    if (C.is_open()) {
+        cout << "Opened database successfully: " << C.dbname() << endl;
+        pqxx::work W(C);
+        std::signal(SIGINT, signal_handler);
+        /*W.commit();*/
+  //      std::cout << getSQLQuery(W, "SELECT id, name FROM users");
+        std::cout << getSQLQuery(W, "create table if not exists users(id int, name char(30))");
+        C.disconnect();
+    } else {
+        cout << "Can't open database" << endl;
+        return 1;
+    }
 	
-    CROW_ROUTE(app, "/")([](){return "Hello world";});
-    CROW_ROUTE(app, "/exa")([](){return std::to_string(exa);});
-    CROW_ROUTE(app, "/exa/<int>").methods("POST"_method)([](int a){ 
-		exa=a; 
+	CROW_ROUTE(app, "/")([](){
+		return "Hello world";
+	});
+
+    CROW_ROUTE(app, "/exat")([](){
+		return std::to_string(exat);
+	});
+
+    CROW_ROUTE(app, "/exat/<int>").methods("POST"_method)([](int a){ 
+		exat=a; 
 		return std::to_string(0b0111101); 
 	});
-    //set the port, set the app to run on multiple threads, and run the app
     app.port(18080).multithreaded().run();
     return 0;
 }

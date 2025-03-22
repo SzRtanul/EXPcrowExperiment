@@ -22,27 +22,7 @@ ARCHITECTURE_ID	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  defi
 ARCHITECTURE_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#   define ARCHITECTURE_ID /;"	d	file:
 ARCHITECTURE_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define ARCHITECTURE_ID /;"	d	file:
 ARCHITECTURE_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define ARCHITECTURE_ID$/;"	d	file:
-ARRAY	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    ARRAY= 1,$/;"	e	enum:sql::Types
-Array	mariaDB_1.1.5/include/mariadb/conncpp/compat/Array.hpp	/^  Array() {}$/;"	f	class:sql::Array
-Array	mariaDB_1.1.5/include/mariadb/conncpp/compat/Array.hpp	/^class Array{$/;"	c	namespace:sql
-BIGINT	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    BIGINT,$/;"	e	enum:sql::Types
-BINARY	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    BINARY,$/;"	e	enum:sql::Types
-BIT	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    BIT,$/;"	e	enum:sql::Types
-BLOB	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    BLOB,$/;"	e	enum:sql::Types
-BOOLEAN	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    BOOLEAN,$/;"	e	enum:sql::Types
-BatchUpdateException	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^class BatchUpdateException : public SQLException$/;"	c	namespace:sql
-BigDecimal	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^  typedef SQLString BigDecimal;$/;"	t	namespace:sql	typeref:typename:SQLString
-Blob	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^  typedef std::istream Blob;$/;"	t	namespace:sql	typeref:typename:std::istream
-CArray	mariaDB_1.1.5/include/mariadb/conncpp/CArray.hpp	/^    CArray() : arr(nullptr), length(0)$/;"	f	struct:sql::CArray
-CArray	mariaDB_1.1.5/include/mariadb/conncpp/CArray.hpp	/^  MARIADB_EXTERN template struct MARIADB_EXPORTED CArray<char>;$/;"	v	namespace:sql	typeref:typename:MARIADB_EXTERN struct MARIADB_EXPORTED
-CArray	mariaDB_1.1.5/include/mariadb/conncpp/CArray.hpp	/^  MARIADB_EXTERN template struct MARIADB_EXPORTED CArray<int32_t>;$/;"	v	namespace:sql	typeref:typename:MARIADB_EXTERN struct MARIADB_EXPORTED
-CArray	mariaDB_1.1.5/include/mariadb/conncpp/CArray.hpp	/^  MARIADB_EXTERN template struct MARIADB_EXPORTED CArray<int64_t>;$/;"	v	namespace:sql	typeref:typename:MARIADB_EXTERN struct MARIADB_EXPORTED
-CArray	mariaDB_1.1.5/include/mariadb/conncpp/CArray.hpp	/^  template <class T> struct CArray$/;"	s	namespace:sql
-CHAR	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    CHAR,$/;"	e	enum:sql::Types
-CLOB	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    CLOB,$/;"	e	enum:sql::Types
-CLOSE_ALL_RESULTS	mariaDB_1.1.5/include/mariadb/conncpp/Statement.hpp	/^    CLOSE_ALL_RESULTS$/;"	e	enum:sql::Statement::__anonc9f920f30103
-CLOSE_CURRENT_RESULT	mariaDB_1.1.5/include/mariadb/conncpp/Statement.hpp	/^    CLOSE_CURRENT_RESULT= 1,$/;"	e	enum:sql::Statement::__anonc9f920f30103
-CLOSE_CURSORS_AT_COMMIT	mariaDB_1.1.5/include/mariadb/conncpp/ResultSet.hpp	/^    CLOSE_CURSORS_AT_COMMIT= 2$/;"	e	enum:sql::ResultSet::__anon278424690103
+C	main.cpp	/^pqxx::connection C = pqxx::connection(R"(dbname = testdb user=postgres password=test123 hostaddr/;"	v	typeref:typename:pqxx::connection
 CMAKE_AR	build/CMakeFiles/3.22.1/CMakeCCompiler.cmake	/^set(CMAKE_AR "\/usr\/bin\/ar")$/;"	v
 CMAKE_AR	build/CMakeFiles/3.22.1/CMakeCXXCompiler.cmake	/^set(CMAKE_AR "\/usr\/bin\/ar")$/;"	v
 CMAKE_BINARY_DIR	build/Makefile	/^CMAKE_BINARY_DIR = \/home\/test\/crowwebsite\/build$/;"	m
@@ -140,10 +120,10 @@ CMAKE_DEPENDS_LANGUAGES	build/CMakeFiles/CrowSample.dir/DependInfo.cmake	/^set(C
 CMAKE_DEPEND_INFO_FILES	build/CMakeFiles/Makefile.cmake	/^set(CMAKE_DEPEND_INFO_FILES$/;"	v
 CMAKE_FORCE_UNIX_PATHS	build/CMakeFiles/CMakeDirectoryInformation.cmake	/^set(CMAKE_FORCE_UNIX_PATHS 1)$/;"	v
 CMAKE_Fortran_TARGET_MODULE_DIR	build/CMakeFiles/CrowSample.dir/DependInfo.cmake	/^set(CMAKE_Fortran_TARGET_MODULE_DIR "")$/;"	v
-CMAKE_HOST_SYSTEM	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM "Linux-5.15.0-130-generic")$/;"	v
+CMAKE_HOST_SYSTEM	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM "Linux-5.15.0-134-generic")$/;"	v
 CMAKE_HOST_SYSTEM_NAME	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM_NAME "Linux")$/;"	v
 CMAKE_HOST_SYSTEM_PROCESSOR	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM_PROCESSOR "x86_64")$/;"	v
-CMAKE_HOST_SYSTEM_VERSION	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM_VERSION "5.15.0-130-generic")$/;"	v
+CMAKE_HOST_SYSTEM_VERSION	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM_VERSION "5.15.0-134-generic")$/;"	v
 CMAKE_INSTALL_COMPONENT	build/cmake_install.cmake	/^    set(CMAKE_INSTALL_COMPONENT "${COMPONENT}")$/;"	v
 CMAKE_INSTALL_COMPONENT	build/cmake_install.cmake	/^    set(CMAKE_INSTALL_COMPONENT)$/;"	v
 CMAKE_INSTALL_CONFIG_NAME	build/cmake_install.cmake	/^    set(CMAKE_INSTALL_CONFIG_NAME "")$/;"	v
@@ -170,11 +150,11 @@ CMAKE_RELATIVE_PATH_TOP_SOURCE	build/CMakeFiles/CMakeDirectoryInformation.cmake	
 CMAKE_SIZEOF_VOID_P	build/CMakeFiles/3.22.1/CMakeCCompiler.cmake	/^  set(CMAKE_SIZEOF_VOID_P "${CMAKE_C_SIZEOF_DATA_PTR}")$/;"	v
 CMAKE_SIZEOF_VOID_P	build/CMakeFiles/3.22.1/CMakeCXXCompiler.cmake	/^  set(CMAKE_SIZEOF_VOID_P "${CMAKE_CXX_SIZEOF_DATA_PTR}")$/;"	v
 CMAKE_SOURCE_DIR	build/Makefile	/^CMAKE_SOURCE_DIR = \/home\/test\/crowwebsite$/;"	m
-CMAKE_SYSTEM	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM "Linux-5.15.0-130-generic")$/;"	v
+CMAKE_SYSTEM	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM "Linux-5.15.0-134-generic")$/;"	v
 CMAKE_SYSTEM_LOADED	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_LOADED 1)$/;"	v
 CMAKE_SYSTEM_NAME	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_NAME "Linux")$/;"	v
 CMAKE_SYSTEM_PROCESSOR	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_PROCESSOR "x86_64")$/;"	v
-CMAKE_SYSTEM_VERSION	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_VERSION "5.15.0-130-generic")$/;"	v
+CMAKE_SYSTEM_VERSION	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_VERSION "5.15.0-134-generic")$/;"	v
 CMAKE_TARGET_LINKED_INFO_FILES	build/CMakeFiles/CrowSample.dir/DependInfo.cmake	/^set(CMAKE_TARGET_LINKED_INFO_FILES$/;"	v
 COMPILER_ID	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_ID /;"	d	file:
 COMPILER_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_ID /;"	d	file:
@@ -216,85 +196,23 @@ COMPILER_VERSION_TWEAK	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^
 COMPILER_VERSION_TWEAK	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_VERSION_TWEAK /;"	d	file:
 COMPILER_VERSION_TWEAK	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define COMPILER_VERSION_TWEAK /;"	d	file:
 COMPILER_VERSION_TWEAK	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_VERSION_TWEAK /;"	d	file:
-CONCUR_READ_ONLY	mariaDB_1.1.5/include/mariadb/conncpp/ResultSet.hpp	/^    CONCUR_READ_ONLY= 1007,$/;"	e	enum:sql::ResultSet::__anon278424690203
-CONCUR_UPDATABLE	mariaDB_1.1.5/include/mariadb/conncpp/ResultSet.hpp	/^    CONCUR_UPDATABLE= 1008$/;"	e	enum:sql::ResultSet::__anon278424690203
 CXX_STD	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#      define CXX_STD /;"	d	file:
 CXX_STD	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#    define CXX_STD /;"	d	file:
 CXX_STD	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define CXX_STD /;"	d	file:
 C_VERSION	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define C_VERSION /;"	d	file:
 C_VERSION	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define C_VERSION$/;"	d	file:
 C_VERSION	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define C_VERSION /;"	d	file:
-CallableStatement	mariaDB_1.1.5/include/mariadb/conncpp/CallableStatement.hpp	/^  CallableStatement() {}$/;"	f	class:sql::CallableStatement
-CallableStatement	mariaDB_1.1.5/include/mariadb/conncpp/CallableStatement.hpp	/^class CallableStatement : public PreparedStatement$/;"	c	namespace:sql
-Cause	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^  std::shared_ptr<std::exception> Cause;$/;"	m	class:sql::SQLException	typeref:typename:std::shared_ptr<std::exception>
-ClientInfoStatus	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^  enum ClientInfoStatus$/;"	g	namespace:sql
-Clob	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^  typedef SQLString Clob;$/;"	t	namespace:sql	typeref:typename:SQLString
-ConnectOptionsMap	mariaDB_1.1.5/include/mariadb/conncpp/Driver.hpp	/^typedef Properties ConnectOptionsMap;$/;"	t	namespace:sql	typeref:typename:Properties
-Connection	mariaDB_1.1.5/include/mariadb/conncpp/Connection.hpp	/^  Connection() {}$/;"	f	class:sql::Connection
-Connection	mariaDB_1.1.5/include/mariadb/conncpp/Connection.hpp	/^class MARIADB_EXPORTED Connection {$/;"	c	namespace:sql
 CrowSample	CMakeLists.txt	/^add_executable(CrowSample main.cpp)$/;"	t
 CrowSample	CMakeLists.txt	/^project(CrowSample)$/;"	p
 CrowSample	build/Makefile	/^CrowSample: cmake_check_build_system$/;"	t
 CrowSample/fast	build/Makefile	/^CrowSample\/fast:$/;"	t
-DATALINK	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    DATALINK,$/;"	e	enum:sql::Types
-DATE	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    DATE, \/\/10$/;"	e	enum:sql::Types
 DEC	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#define DEC(/;"	d	file:
 DEC	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define DEC(/;"	d	file:
-DECIMAL	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    DECIMAL,$/;"	e	enum:sql::Types
-DISTINCT	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    DISTINCT,$/;"	e	enum:sql::Types
-DOUBLE	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    DOUBLE,$/;"	e	enum:sql::Types
-DataType	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^  typedef enum Types DataType;$/;"	t	namespace:sql	typeref:enum:Types
-DatabaseMetaData	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^  DatabaseMetaData() {}$/;"	f	class:sql::DatabaseMetaData
-DatabaseMetaData	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^class MARIADB_EXPORTED DatabaseMetaData$/;"	c	namespace:sql
-Date	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^  typedef SQLString Date;$/;"	t	namespace:sql	typeref:typename:SQLString
-Driver	mariaDB_1.1.5/include/mariadb/conncpp/Driver.hpp	/^  Driver() {}$/;"	f	class:sql::Driver
-Driver	mariaDB_1.1.5/include/mariadb/conncpp/Driver.hpp	/^class MARIADB_EXPORTED Driver {$/;"	c	namespace:sql
-DriverManager	mariaDB_1.1.5/include/mariadb/conncpp/DriverManager.hpp	/^  DriverManager() {}$/;"	f	class:sql::DriverManager
-DriverManager	mariaDB_1.1.5/include/mariadb/conncpp/DriverManager.hpp	/^class MARIADB_EXPORTED DriverManager$/;"	c	namespace:sql
 EQUALS	build/Makefile	/^EQUALS = =$/;"	m
-EXECUTE_FAILED	mariaDB_1.1.5/include/mariadb/conncpp/Statement.hpp	/^    EXECUTE_FAILED= -3,$/;"	e	enum:sql::Statement::__anonc9f920f30203
-ErrorCode	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^  int32_t ErrorCode;$/;"	m	class:sql::SQLException	typeref:typename:int32_t
-Executor	mariaDB_1.1.5/include/mariadb/conncpp/compat/Executor.hpp	/^  Executor() {}$/;"	f	class:sql::Executor
-Executor	mariaDB_1.1.5/include/mariadb/conncpp/compat/Executor.hpp	/^class Executor{$/;"	c	namespace:sql
-FETCH_FORWARD	mariaDB_1.1.5/include/mariadb/conncpp/ResultSet.hpp	/^    FETCH_FORWARD= 1000,$/;"	e	enum:sql::ResultSet::__anon278424690303
-FETCH_REVERSE	mariaDB_1.1.5/include/mariadb/conncpp/ResultSet.hpp	/^    FETCH_REVERSE,$/;"	e	enum:sql::ResultSet::__anon278424690303
-FETCH_UNKNOWN	mariaDB_1.1.5/include/mariadb/conncpp/ResultSet.hpp	/^    FETCH_UNKNOWN$/;"	e	enum:sql::ResultSet::__anon278424690303
-FLOAT	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    FLOAT,$/;"	e	enum:sql::Types
 HEX	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#define HEX(/;"	d	file:
 HEX	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define HEX(/;"	d	file:
-HOLD_CURSORS_OVER_COMMIT	mariaDB_1.1.5/include/mariadb/conncpp/ResultSet.hpp	/^    HOLD_CURSORS_OVER_COMMIT= 1,$/;"	e	enum:sql::ResultSet::__anon278424690103
 ID_VOID_MAIN	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define ID_VOID_MAIN$/;"	d	file:
 INCLUDE_PATHS	CMakeLists.txt	/^set(INCLUDE_PATHS \/usr\/include)$/;"	v
-INTEGER	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    INTEGER,$/;"	e	enum:sql::Types
-IllegalArgumentException	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^class IllegalArgumentException : public SQLException$/;"	c	namespace:sql
-Ints	mariaDB_1.1.5/include/mariadb/conncpp/CArray.hpp	/^  typedef CArray<int32_t> Ints;$/;"	t	namespace:sql	typeref:typename:CArray<int32_t>
-InvalidArgumentException	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^typedef IllegalArgumentException InvalidArgumentException;$/;"	t	namespace:sql	typeref:typename:IllegalArgumentException
-JAVA_OBJECT	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    JAVA_OBJECT,$/;"	e	enum:sql::Types
-KEEP_CURRENT_RESULT	mariaDB_1.1.5/include/mariadb/conncpp/Statement.hpp	/^    KEEP_CURRENT_RESULT,$/;"	e	enum:sql::Statement::__anonc9f920f30103
-LONGNVARCHAR	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    LONGNVARCHAR,$/;"	e	enum:sql::Types
-LONGVARBINARY	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    LONGVARBINARY,$/;"	e	enum:sql::Types
-LONGVARCHAR	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    LONGVARCHAR,$/;"	e	enum:sql::Types
-List	mariaDB_1.1.5/include/mariadb/conncpp/List.hpp	/^  List(const std::list<SQLString> other) : List() {$/;"	f	class:sql::List
-List	mariaDB_1.1.5/include/mariadb/conncpp/List.hpp	/^class List final {$/;"	c	namespace:sql
-Longs	mariaDB_1.1.5/include/mariadb/conncpp/CArray.hpp	/^  typedef CArray<int64_t> Longs;$/;"	t	namespace:sql	typeref:typename:CArray<int64_t>
-MARIADB_EXPORTED	mariaDB_1.1.5/include/mariadb/conncpp/buildconf.hpp	/^#   define MARIADB_EXPORTED /;"	d
-MARIADB_EXPORTED	mariaDB_1.1.5/include/mariadb/conncpp/buildconf.hpp	/^#  define MARIADB_EXPORTED /;"	d
-MARIADB_EXTERN	mariaDB_1.1.5/include/mariadb/conncpp/buildconf.hpp	/^#     define MARIADB_EXTERN /;"	d
-MARIADB_EXTERN	mariaDB_1.1.5/include/mariadb/conncpp/buildconf.hpp	/^#   define MARIADB_EXTERN /;"	d
-MARIADB_EXTERN	mariaDB_1.1.5/include/mariadb/conncpp/buildconf.hpp	/^#  define MARIADB_EXTERN /;"	d
-MARIADB_EXTERN	mariaDB_1.1.5/include/mariadb/conncpp/buildconf.hpp	/^# define MARIADB_EXTERN /;"	d
-MariaDbDataSource	mariaDB_1.1.5/include/mariadb/MariaDbDataSource.hpp	/^class MARIADB_EXPORTED MariaDbDataSource {$/;"	c	namespace:sql::mariadb
-MaxAllowedPacketException	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^class MaxAllowedPacketException : public std::runtime_error {$/;"	c	namespace:sql
-MethodNotImplementedException	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^typedef SQLFeatureNotImplementedException MethodNotImplementedException;$/;"	t	namespace:sql	typeref:typename:SQLFeatureNotImplementedException
-NCHAR	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    NCHAR, \/\/20$/;"	e	enum:sql::Types
-NCLOB	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    NCLOB,$/;"	e	enum:sql::Types
-NClob	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^  typedef SQLString NClob;$/;"	t	namespace:sql	typeref:typename:SQLString
-NO_GENERATED_KEYS	mariaDB_1.1.5/include/mariadb/conncpp/Statement.hpp	/^    NO_GENERATED_KEYS$/;"	e	enum:sql::Statement::__anonc9f920f30303
-NUMERIC	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    NUMERIC,$/;"	e	enum:sql::Types
-NVARCHAR	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    NVARCHAR,$/;"	e	enum:sql::Types
-OTHER	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    OTHER,$/;"	e	enum:sql::Types
-Object	mariaDB_1.1.5/include/mariadb/conncpp/compat/Object.hpp	/^  Object() {}$/;"	f	class:sql::Object
-Object	mariaDB_1.1.5/include/mariadb/conncpp/compat/Object.hpp	/^class Object{$/;"	c	namespace:sql
 PLATFORM_ID	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define PLATFORM_ID /;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define PLATFORM_ID$/;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define PLATFORM_ID /;"	d	file:
@@ -303,41 +221,7 @@ PLATFORM_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  de
 PLATFORM_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define PLATFORM_ID$/;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID /;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID$/;"	d	file:
-ParameterMetaData	mariaDB_1.1.5/include/mariadb/conncpp/ParameterMetaData.hpp	/^  ParameterMetaData() {}$/;"	f	class:sql::ParameterMetaData
-ParameterMetaData	mariaDB_1.1.5/include/mariadb/conncpp/ParameterMetaData.hpp	/^  ParameterMetaData(const ParameterMetaData&) {}$/;"	f	class:sql::ParameterMetaData
-ParameterMetaData	mariaDB_1.1.5/include/mariadb/conncpp/ParameterMetaData.hpp	/^class ParameterMetaData$/;"	c	namespace:sql
-ParseException	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^  ParseException() : position(0) {}$/;"	f	class:sql::ParseException
-ParseException	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^class ParseException : public SQLException$/;"	c	namespace:sql
-PooledConnection	mariaDB_1.1.5/include/mariadb/conncpp/PooledConnection.hpp	/^  PooledConnection() {}$/;"	f	class:sql::PooledConnection
-PooledConnection	mariaDB_1.1.5/include/mariadb/conncpp/PooledConnection.hpp	/^class PooledConnection {$/;"	c	namespace:sql
-PreparedStatement	mariaDB_1.1.5/include/mariadb/conncpp/PreparedStatement.hpp	/^  PreparedStatement() {}$/;"	f	class:sql::PreparedStatement
-PreparedStatement	mariaDB_1.1.5/include/mariadb/conncpp/PreparedStatement.hpp	/^class MARIADB_EXPORTED PreparedStatement: virtual public Statement {$/;"	c	namespace:sql
-Properties	mariaDB_1.1.5/include/mariadb/conncpp/Properties.hpp	/^  Properties(std::map<SQLString, SQLString> other) : Properties() {$/;"	f	class:sql::Properties
-Properties	mariaDB_1.1.5/include/mariadb/conncpp/Properties.hpp	/^class Properties final {$/;"	c	namespace:sql
-REAL	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    REAL,$/;"	e	enum:sql::Types
-REASON_UNKNOWN_PROPERTY	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^    REASON_UNKNOWN_PROPERTY,$/;"	e	enum:sql::ClientInfoStatus
-REASON_VALUE_INVALID	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^    REASON_VALUE_INVALID,$/;"	e	enum:sql::ClientInfoStatus
-REASON_VALUE_TRUNCATED	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^    REASON_VALUE_TRUNCATED$/;"	e	enum:sql::ClientInfoStatus
-REF	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    REF,$/;"	e	enum:sql::Types
-REF_CURSOR	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    REF_CURSOR,$/;"	e	enum:sql::Types
-RETURN_GENERATED_KEYS	mariaDB_1.1.5/include/mariadb/conncpp/Statement.hpp	/^    RETURN_GENERATED_KEYS= 1,$/;"	e	enum:sql::Statement::__anonc9f920f30303
 RM	build/Makefile	/^RM = \/usr\/bin\/cmake -E rm -f$/;"	m
-ROWID	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    ROWID,$/;"	e	enum:sql::Types
-ROWID_UNSUPPORTED	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^    ROWID_UNSUPPORTED= 0,$/;"	e	enum:sql::enRowIdLifetime
-ROWID_VALID_FOREVER	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^    ROWID_VALID_FOREVER$/;"	e	enum:sql::enRowIdLifetime
-ROWID_VALID_OTHER	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^    ROWID_VALID_OTHER,$/;"	e	enum:sql::enRowIdLifetime
-ROWID_VALID_SESSION	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^    ROWID_VALID_SESSION,$/;"	e	enum:sql::enRowIdLifetime
-ROWID_VALID_TRANSACTION	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^    ROWID_VALID_TRANSACTION,$/;"	e	enum:sql::enRowIdLifetime
-Ref	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^    Ref() {}$/;"	f	class:sql::Ref
-Ref	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^  class Ref$/;"	c	namespace:sql
-ResultSet	mariaDB_1.1.5/include/mariadb/conncpp/ResultSet.hpp	/^  ResultSet() {}$/;"	f	class:sql::ResultSet
-ResultSet	mariaDB_1.1.5/include/mariadb/conncpp/ResultSet.hpp	/^class MARIADB_EXPORTED ResultSet {$/;"	c	namespace:sql
-ResultSetMetaData	mariaDB_1.1.5/include/mariadb/conncpp/ResultSetMetaData.hpp	/^  ResultSetMetaData() {}$/;"	f	class:sql::ResultSetMetaData
-ResultSetMetaData	mariaDB_1.1.5/include/mariadb/conncpp/ResultSetMetaData.hpp	/^  ResultSetMetaData(const ResultSetMetaData&) {}$/;"	f	class:sql::ResultSetMetaData
-ResultSetMetaData	mariaDB_1.1.5/include/mariadb/conncpp/ResultSetMetaData.hpp	/^class ResultSetMetaData$/;"	c	namespace:sql
-RowId	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^    RowId() {}$/;"	f	class:sql::RowId
-RowId	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^  class RowId$/;"	c	namespace:sql
-RowIdLifetime	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^  } RowIdLifetime;$/;"	t	namespace:sql	typeref:enum:sql::enRowIdLifetime
 SHELL	build/Makefile	/^SHELL = \/bin\/sh$/;"	m
 SIMULATE_ID	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define SIMULATE_ID /;"	d	file:
 SIMULATE_ID	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define SIMULATE_ID /;"	d	file:
@@ -355,187 +239,29 @@ SIMULATE_VERSION_PATCH	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^
 SIMULATE_VERSION_PATCH	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define SIMULATE_VERSION_PATCH /;"	d	file:
 SIMULATE_VERSION_PATCH	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define SIMULATE_VERSION_PATCH /;"	d	file:
 SIMULATE_VERSION_PATCH	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define SIMULATE_VERSION_PATCH /;"	d	file:
-SMALLINT	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    SMALLINT, \/\/30$/;"	e	enum:sql::Types
-SQLDataException	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^class SQLDataException : public SQLException$/;"	c	namespace:sql
-SQLException	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^class SQLException : public ::std::runtime_error$/;"	c	namespace:sql
-SQLFeatureNotImplementedException	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^class SQLFeatureNotImplementedException: public SQLException$/;"	c	namespace:sql
-SQLFeatureNotSupportedException	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^class SQLFeatureNotSupportedException : public SQLException$/;"	c	namespace:sql
-SQLIntegrityConstraintViolationException	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^class SQLIntegrityConstraintViolationException : public SQLException$/;"	c	namespace:sql
-SQLInvalidAuthorizationSpecException	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^class SQLInvalidAuthorizationSpecException : public SQLException$/;"	c	namespace:sql
-SQLNULL	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    SQLNULL= _NULL,$/;"	e	enum:sql::Types
-SQLNonTransientConnectionException	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^class SQLNonTransientConnectionException : public SQLException$/;"	c	namespace:sql
-SQLString	mariaDB_1.1.5/include/mariadb/conncpp/SQLString.hpp	/^  SQLString(const std::string& str) : SQLString(str.c_str(), str.length()) {}$/;"	f	class:sql::SQLString
-SQLString	mariaDB_1.1.5/include/mariadb/conncpp/SQLString.hpp	/^class SQLString final {$/;"	c	namespace:sql
-SQLSyntaxErrorException	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^class SQLSyntaxErrorException : public SQLException$/;"	c	namespace:sql
-SQLTimeoutException	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^class SQLTimeoutException : public SQLException$/;"	c	namespace:sql
-SQLTransactionRollbackException	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^class SQLTransactionRollbackException : public SQLException$/;"	c	namespace:sql
-SQLTransientConnectionException	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^class SQLTransientConnectionException : public SQLException$/;"	c	namespace:sql
-SQLTransientException	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^class SQLTransientException : public SQLException$/;"	c	namespace:sql
-SQLType	mariaDB_1.1.5/include/mariadb/conncpp/compat/SQLType.hpp	/^  SQLType() {}$/;"	f	class:sql::SQLType
-SQLType	mariaDB_1.1.5/include/mariadb/conncpp/compat/SQLType.hpp	/^class SQLType{$/;"	c	namespace:sql
-SQLWarning	mariaDB_1.1.5/include/mariadb/conncpp/Warning.hpp	/^  SQLWarning() {}$/;"	f	class:sql::SQLWarning
-SQLWarning	mariaDB_1.1.5/include/mariadb/conncpp/Warning.hpp	/^class SQLWarning$/;"	c	namespace:sql
-SQLXML	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^  typedef SQLString SQLXML;$/;"	t	namespace:sql	typeref:typename:SQLString
 STRINGIFY	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#define STRINGIFY(/;"	d	file:
 STRINGIFY	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define STRINGIFY(/;"	d	file:
 STRINGIFY_HELPER	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#define STRINGIFY_HELPER(/;"	d	file:
 STRINGIFY_HELPER	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define STRINGIFY_HELPER(/;"	d	file:
-STRUCT	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    STRUCT,$/;"	e	enum:sql::Types
-SUCCESS_NO_INFO	mariaDB_1.1.5/include/mariadb/conncpp/Statement.hpp	/^    SUCCESS_NO_INFO= -2$/;"	e	enum:sql::Statement::__anonc9f920f30203
-Savepoint	mariaDB_1.1.5/include/mariadb/conncpp/Savepoint.hpp	/^  Savepoint() {}$/;"	f	class:sql::Savepoint
-Savepoint	mariaDB_1.1.5/include/mariadb/conncpp/Savepoint.hpp	/^class Savepoint$/;"	c	namespace:sql
-SqlState	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^  SQLString SqlState;$/;"	m	class:sql::SQLException	typeref:typename:SQLString
-Statement	mariaDB_1.1.5/include/mariadb/conncpp/Statement.hpp	/^  Statement() {}$/;"	f	class:sql::Statement
-Statement	mariaDB_1.1.5/include/mariadb/conncpp/Statement.hpp	/^class MARIADB_EXPORTED Statement {$/;"	c	namespace:sql
-Struct	mariaDB_1.1.5/include/mariadb/conncpp/compat/Struct.hpp	/^  Struct() {}$/;"	f	class:sql::Struct
-Struct	mariaDB_1.1.5/include/mariadb/conncpp/compat/Struct.hpp	/^class Struct{$/;"	c	namespace:sql
-TIME	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    TIME,$/;"	e	enum:sql::Types
-TIMESTAMP	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    TIMESTAMP,$/;"	e	enum:sql::Types
-TIMESTAMP_WITH_TIMEZONE	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    TIMESTAMP_WITH_TIMEZONE,$/;"	e	enum:sql::Types
-TIME_WITH_TIMEZONE	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    TIME_WITH_TIMEZONE,$/;"	e	enum:sql::Types
-TINYINT	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    TINYINT,$/;"	e	enum:sql::Types
-TRANSACTION_NONE	mariaDB_1.1.5/include/mariadb/conncpp/Connection.hpp	/^    TRANSACTION_NONE= 0,$/;"	e	enum:sql::__anone746390e0103
-TRANSACTION_READ_COMMITTED	mariaDB_1.1.5/include/mariadb/conncpp/Connection.hpp	/^    TRANSACTION_READ_COMMITTED= 2,$/;"	e	enum:sql::__anone746390e0103
-TRANSACTION_READ_UNCOMMITTED	mariaDB_1.1.5/include/mariadb/conncpp/Connection.hpp	/^    TRANSACTION_READ_UNCOMMITTED= 1,$/;"	e	enum:sql::__anone746390e0103
-TRANSACTION_REPEATABLE_READ	mariaDB_1.1.5/include/mariadb/conncpp/Connection.hpp	/^    TRANSACTION_REPEATABLE_READ= 4,$/;"	e	enum:sql::__anone746390e0103
-TRANSACTION_SERIALIZABLE	mariaDB_1.1.5/include/mariadb/conncpp/Connection.hpp	/^    TRANSACTION_SERIALIZABLE =8$/;"	e	enum:sql::__anone746390e0103
-TYPE_FORWARD_ONLY	mariaDB_1.1.5/include/mariadb/conncpp/ResultSet.hpp	/^    TYPE_FORWARD_ONLY= 1003,$/;"	e	enum:sql::ResultSet::enum_type
-TYPE_SCROLL_INSENSITIVE	mariaDB_1.1.5/include/mariadb/conncpp/ResultSet.hpp	/^    TYPE_SCROLL_INSENSITIVE,$/;"	e	enum:sql::ResultSet::enum_type
-TYPE_SCROLL_SENSITIVE	mariaDB_1.1.5/include/mariadb/conncpp/ResultSet.hpp	/^    TYPE_SCROLL_SENSITIVE$/;"	e	enum:sql::ResultSet::enum_type
-Time	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^  typedef SQLString Time;$/;"	t	namespace:sql	typeref:typename:SQLString
-Timestamp	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^  typedef SQLString Timestamp;$/;"	t	namespace:sql	typeref:typename:SQLString
-Types	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^  enum Types {$/;"	g	namespace:sql
-URL	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^  typedef SQLString URL;$/;"	t	namespace:sql	typeref:typename:SQLString
-VARBINARY	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    VARBINARY,$/;"	e	enum:sql::Types
-VARCHAR	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    VARCHAR$/;"	e	enum:sql::Types
-XAConnection	mariaDB_1.1.5/include/mariadb/conncpp/XAConnection.hpp	/^  XAConnection() {}$/;"	f	class:sql::XAConnection
-XAConnection	mariaDB_1.1.5/include/mariadb/conncpp/XAConnection.hpp	/^class XAConnection : public PooledConnection {$/;"	c	namespace:sql
-XAResource	mariaDB_1.1.5/include/mariadb/conncpp/compat/XAResource.hpp	/^  XAResource() {}$/;"	f	class:sql::XAResource
-XAResource	mariaDB_1.1.5/include/mariadb/conncpp/compat/XAResource.hpp	/^class XAResource{$/;"	c	namespace:sql
-_ARRAY_H_	mariaDB_1.1.5/include/mariadb/conncpp/compat/Array.hpp	/^#define _ARRAY_H_$/;"	d
-_BUILDCONF_H_	mariaDB_1.1.5/include/mariadb/conncpp/buildconf.hpp	/^#define _BUILDCONF_H_$/;"	d
-_CALLABLESTATEMENT_H_	mariaDB_1.1.5/include/mariadb/conncpp/CallableStatement.hpp	/^#define _CALLABLESTATEMENT_H_$/;"	d
-_CARRAY_H_	mariaDB_1.1.5/include/mariadb/conncpp/CArray.hpp	/^#define _CARRAY_H_$/;"	d
-_CONNECTION_H_	mariaDB_1.1.5/include/mariadb/conncpp/Connection.hpp	/^#define _CONNECTION_H_$/;"	d
-_DRIVERMANAGER_H_	mariaDB_1.1.5/include/mariadb/conncpp/DriverManager.hpp	/^#define _DRIVERMANAGER_H_$/;"	d
-_DRIVER_H_	mariaDB_1.1.5/include/mariadb/conncpp/Driver.hpp	/^#define _DRIVER_H_$/;"	d
-_DatabaseMetaData_H_	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^#define _DatabaseMetaData_H_$/;"	d
-_EXCEPTION_H_	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^#define _EXCEPTION_H_$/;"	d
-_EXECUTOR_H_	mariaDB_1.1.5/include/mariadb/conncpp/compat/Executor.hpp	/^#define _EXECUTOR_H_$/;"	d
-_JDBCCOMPAT_H_	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^#define _JDBCCOMPAT_H_$/;"	d
-_MARIADBDATASOURCE_H_	mariaDB_1.1.5/include/mariadb/MariaDbDataSource.hpp	/^#define _MARIADBDATASOURCE_H_$/;"	d
-_MARIADB_TYPES_H_	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^#define _MARIADB_TYPES_H_$/;"	d
-_NULL	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    _NULL,$/;"	e	enum:sql::Types
-_OBJECT_H_	mariaDB_1.1.5/include/mariadb/conncpp/compat/Object.hpp	/^#define _OBJECT_H_$/;"	d
-_PARAMETERMETADATA_H_	mariaDB_1.1.5/include/mariadb/conncpp/ParameterMetaData.hpp	/^#define _PARAMETERMETADATA_H_$/;"	d
-_POOLEDCONNECTION_H_	mariaDB_1.1.5/include/mariadb/conncpp/PooledConnection.hpp	/^#define _POOLEDCONNECTION_H_$/;"	d
-_PREPARESTATEMENT_H_	mariaDB_1.1.5/include/mariadb/conncpp/PreparedStatement.hpp	/^#define _PREPARESTATEMENT_H_$/;"	d
-_REASON_UNKNOWN	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^    _REASON_UNKNOWN= 0, \/\/REASON_UNKNOWN clashes with winreg.h, whehere it is defined$/;"	e	enum:sql::ClientInfoStatus
-_RESULTSETMETADATA_H_	mariaDB_1.1.5/include/mariadb/conncpp/ResultSetMetaData.hpp	/^#define _RESULTSETMETADATA_H_$/;"	d
-_RESULTSET_H_	mariaDB_1.1.5/include/mariadb/conncpp/ResultSet.hpp	/^#define _RESULTSET_H_$/;"	d
-_SAVEPOINT_H_	mariaDB_1.1.5/include/mariadb/conncpp/Savepoint.hpp	/^#define _SAVEPOINT_H_$/;"	d
-_SQLLIST_H_	mariaDB_1.1.5/include/mariadb/conncpp/List.hpp	/^#define _SQLLIST_H_$/;"	d
-_SQLPROPERTIES_H_	mariaDB_1.1.5/include/mariadb/conncpp/Properties.hpp	/^#define _SQLPROPERTIES_H_$/;"	d
-_SQLSTRING_H_	mariaDB_1.1.5/include/mariadb/conncpp/SQLString.hpp	/^#define _SQLSTRING_H_$/;"	d
-_SQLTYPE_H_	mariaDB_1.1.5/include/mariadb/conncpp/compat/SQLType.hpp	/^#define _SQLTYPE_H_$/;"	d
-_SQLXML	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^    _SQLXML, \/\/ Clash with class name$/;"	e	enum:sql::Types
-_STATEMENT_H_	mariaDB_1.1.5/include/mariadb/conncpp/Statement.hpp	/^#define _STATEMENT_H_$/;"	d
-_STRUCT_H_	mariaDB_1.1.5/include/mariadb/conncpp/compat/Struct.hpp	/^#define _STRUCT_H_$/;"	d
-_WARNING_H_	mariaDB_1.1.5/include/mariadb/conncpp/Warning.hpp	/^#define _WARNING_H_$/;"	d
-_XACONNECTION_H_	mariaDB_1.1.5/include/mariadb/conncpp/XAConnection.hpp	/^#define _XACONNECTION_H_$/;"	d
-_XARESOURCE_H_	mariaDB_1.1.5/include/mariadb/conncpp/compat/XAResource.hpp	/^#define _XARESOURCE_H_$/;"	d
-__CONNCPP_H_	mariaDB_1.1.5/include/mariadb/conncpp.hpp	/^#define __CONNCPP_H_$/;"	d
-__anon278424690103	mariaDB_1.1.5/include/mariadb/conncpp/ResultSet.hpp	/^  enum {$/;"	g	class:sql::ResultSet
-__anon278424690203	mariaDB_1.1.5/include/mariadb/conncpp/ResultSet.hpp	/^  enum {$/;"	g	class:sql::ResultSet
-__anon278424690303	mariaDB_1.1.5/include/mariadb/conncpp/ResultSet.hpp	/^  enum {$/;"	g	class:sql::ResultSet
-__anon3b5b11db0102	main.cpp	/^    CROW_ROUTE(app, "\/")([](){return "Hello world";});$/;"	f	function:main	file:
-__anon3b5b11db0202	main.cpp	/^    CROW_ROUTE(app, "\/exa")([](){return std::to_string(exa);});$/;"	f	function:main	file:
-__anon3b5b11db0302	main.cpp	/^    CROW_ROUTE(app, "\/exa\/<int>").methods("POST"_method)([](int a){ $/;"	f	function:main	file:
-__anon4e8e974a0103	mariaDB_1.1.5/include/mariadb/conncpp/ResultSetMetaData.hpp	/^  enum {$/;"	g	class:sql::ResultSetMetaData
-__anon7a7694a00103	mariaDB_1.1.5/include/mariadb/conncpp/ParameterMetaData.hpp	/^  enum {$/;"	g	class:sql::ParameterMetaData
-__anon7a7694a00203	mariaDB_1.1.5/include/mariadb/conncpp/ParameterMetaData.hpp	/^  enum {$/;"	g	class:sql::ParameterMetaData
-__anonbf35e8b40103	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^  {$/;"	g	class:sql::DatabaseMetaData
-__anonbf35e8b40203	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^  {$/;"	g	class:sql::DatabaseMetaData
-__anonbf35e8b40303	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^  {$/;"	g	class:sql::DatabaseMetaData
-__anonbf35e8b40403	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^  {$/;"	g	class:sql::DatabaseMetaData
-__anonbf35e8b40503	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^  {$/;"	g	class:sql::DatabaseMetaData
-__anonbf35e8b40603	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^  {$/;"	g	class:sql::DatabaseMetaData
-__anonbf35e8b40703	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^  {$/;"	g	class:sql::DatabaseMetaData
-__anonbf35e8b40803	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^  {$/;"	g	class:sql::DatabaseMetaData
-__anonbf35e8b40903	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^  {$/;"	g	class:sql::DatabaseMetaData
-__anonbf35e8b40a03	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^  {$/;"	g	class:sql::DatabaseMetaData
-__anonbf35e8b40b03	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^  {$/;"	g	class:sql::DatabaseMetaData
-__anonbf35e8b40c03	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^  {$/;"	g	class:sql::DatabaseMetaData
-__anonbf35e8b40d03	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^  {$/;"	g	class:sql::DatabaseMetaData
-__anonbf35e8b40e03	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^  {$/;"	g	class:sql::DatabaseMetaData
-__anonbf35e8b40f03	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^  {$/;"	g	class:sql::DatabaseMetaData
-__anonbf35e8b41003	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^  {$/;"	g	class:sql::DatabaseMetaData
-__anonc9f920f30103	mariaDB_1.1.5/include/mariadb/conncpp/Statement.hpp	/^  enum {$/;"	g	class:sql::Statement
-__anonc9f920f30203	mariaDB_1.1.5/include/mariadb/conncpp/Statement.hpp	/^  enum {$/;"	g	class:sql::Statement
-__anonc9f920f30303	mariaDB_1.1.5/include/mariadb/conncpp/Statement.hpp	/^  enum {$/;"	g	class:sql::Statement
-__anone746390e0103	mariaDB_1.1.5/include/mariadb/conncpp/Connection.hpp	/^enum {$/;"	g	namespace:sql
+__anon3b5b11db0102	main.cpp	/^	CROW_ROUTE(app, "\/")([](){$/;"	f	function:main	file:
+__anon3b5b11db0202	main.cpp	/^    CROW_ROUTE(app, "\/exat")([](){$/;"	f	function:main	file:
+__anon3b5b11db0302	main.cpp	/^    CROW_ROUTE(app, "\/exat\/<int>").methods("POST"_method)([](int a){ $/;"	f	function:main	file:
 __has_include	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define __has_include(/;"	d	file:
 __has_include	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define __has_include(/;"	d	file:
 all	build/Makefile	/^all: cmake_check_build_system$/;"	t
-arr	mariaDB_1.1.5/include/mariadb/conncpp/CArray.hpp	/^    T* arr;$/;"	m	struct:sql::CArray	typeref:typename:T *
-attributeNoNulls	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    attributeNoNulls= 0,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40103
-attributeNullable	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    attributeNullable,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40103
-attributeNullableUnknown	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    attributeNullableUnknown$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40103
-begin	mariaDB_1.1.5/include/mariadb/conncpp/CArray.hpp	/^    T* begin() { return arr; }$/;"	f	struct:sql::CArray	typeref:typename:T *
-begin	mariaDB_1.1.5/include/mariadb/conncpp/CArray.hpp	/^    const T* begin() const { return arr; }$/;"	f	struct:sql::CArray	typeref:typename:const T *
-bestRowNotPseudo	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    bestRowNotPseudo,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40203
-bestRowPseudo	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    bestRowPseudo$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40203
-bestRowSession	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    bestRowSession$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40303
-bestRowTemporary	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    bestRowTemporary= 0,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40303
-bestRowTransaction	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    bestRowTransaction,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40303
-bestRowUnknown	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    bestRowUnknown= 0,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40203
-bytes	mariaDB_1.1.5/include/mariadb/conncpp/CArray.hpp	/^  typedef CArray<char> bytes;$/;"	t	namespace:sql	typeref:typename:CArray<char>
-cbegin	mariaDB_1.1.5/include/mariadb/conncpp/SQLString.hpp	/^  MARIADB_EXPORTED std::string::const_iterator cbegin() const { return begin(); }$/;"	f	class:sql::SQLString	typeref:typename:MARIADB_EXPORTED std::string::const_iterator
-cend	mariaDB_1.1.5/include/mariadb/conncpp/SQLString.hpp	/^  MARIADB_EXPORTED std::string::const_iterator cend() const { return end(); }$/;"	f	class:sql::SQLString	typeref:typename:MARIADB_EXPORTED std::string::const_iterator
-cit	mariaDB_1.1.5/include/mariadb/conncpp/Properties.hpp	/^    std::unique_ptr<const_iteratorImp> cit;$/;"	m	class:sql::Properties::const_iterator	typeref:typename:std::unique_ptr<const_iteratorImp>
 clean	build/Makefile	/^clean:$/;"	t
 clean/fast	build/Makefile	/^clean\/fast: clean$/;"	t
 cmake_check_build_system	build/Makefile	/^cmake_check_build_system:$/;"	t
 cmake_force	build/Makefile	/^cmake_force:$/;"	t
-columnNoNulls	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    columnNoNulls= 0,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40403
-columnNoNulls	mariaDB_1.1.5/include/mariadb/conncpp/ResultSetMetaData.hpp	/^    columnNoNulls= 0,$/;"	e	enum:sql::ResultSetMetaData::__anon4e8e974a0103
-columnNullable	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    columnNullable,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40403
-columnNullable	mariaDB_1.1.5/include/mariadb/conncpp/ResultSetMetaData.hpp	/^    columnNullable,$/;"	e	enum:sql::ResultSetMetaData::__anon4e8e974a0103
-columnNullableUnknown	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    columnNullableUnknown$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40403
-columnNullableUnknown	mariaDB_1.1.5/include/mariadb/conncpp/ResultSetMetaData.hpp	/^    columnNullableUnknown$/;"	e	enum:sql::ResultSetMetaData::__anon4e8e974a0103
 const	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define const$/;"	d	file:
-const_iterator	mariaDB_1.1.5/include/mariadb/conncpp/Properties.hpp	/^  class const_iterator final {$/;"	c	class:sql::Properties
 default_target	build/Makefile	/^default_target: all$/;"	t
 depend	build/Makefile	/^depend:$/;"	t
 edit_cache	build/Makefile	/^edit_cache:$/;"	t
 edit_cache/fast	build/Makefile	/^edit_cache\/fast: edit_cache$/;"	t
-enRowIdLifetime	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^  typedef enum enRowIdLifetime {$/;"	g	namespace:sql
-enum_type	mariaDB_1.1.5/include/mariadb/conncpp/ResultSet.hpp	/^  enum enum_type {$/;"	g	class:sql::ResultSet
-exa	main.cpp	/^int exa=0;$/;"	v	typeref:typename:int
-functionColumnIn	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    functionColumnIn,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40503
-functionColumnInOut	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    functionColumnInOut,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40503
-functionColumnOut	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    functionColumnOut,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40503
-functionColumnResult	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    functionColumnResult= 5$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40503
-functionColumnUnknown	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    functionColumnUnknown= 0,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40503
-functionNoNulls	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    functionNoNulls = 0,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40603
-functionNoTable	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    functionNoTable,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40703
-functionNullable	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    functionNullable,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40603
-functionNullableUnknown	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    functionNullableUnknown$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40603
-functionResultUnknown	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    functionResultUnknown= 0,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40703
-functionReturn	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    functionReturn= 4,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40503
-functionReturnsTable	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    functionReturnsTable,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40703
-getErrorCode	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^  int32_t getErrorCode() { return ErrorCode; }$/;"	f	class:sql::SQLException	typeref:typename:int32_t
-getSQLState	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^  SQLString getSQLState() { return SqlState.c_str(); }$/;"	f	class:sql::SQLException	typeref:typename:SQLString
-getSQLStateCStr	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^  const char* getSQLStateCStr() { return SqlState.c_str(); }$/;"	f	class:sql::SQLException	typeref:typename:const char *
+exat	main.cpp	/^int exat=0;$/;"	v	typeref:typename:int
+getSQLQuery	main.cpp	/^inline std::string getSQLQuery(pqxx::work &W, std::string querytext){$/;"	f	typeref:typename:std::string
+getWithoutSpace	main.cpp	/^inline std::string getWithoutSpace(string text){$/;"	f	typeref:typename:std::string
 help	build/Makefile	/^help:$/;"	t
-importedKeyCascade	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    importedKeyCascade= 0,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40803
-importedKeyInitiallyDeferred	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    importedKeyInitiallyDeferred= 5,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40803
-importedKeyInitiallyImmediate	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    importedKeyInitiallyImmediate,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40803
-importedKeyNoAction	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    importedKeyNoAction,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40803
-importedKeyNotDeferrable	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    importedKeyNotDeferrable$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40803
-importedKeyRestrict	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    importedKeyRestrict,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40803
-importedKeySetDefault	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    importedKeySetDefault,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40803
-importedKeySetNull	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    importedKeySetNull,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40803
 info_arch	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v	typeref:typename:char const *
 info_arch	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v	typeref:typename:char const *
 info_compiler	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v	typeref:typename:char const *
@@ -560,131 +286,21 @@ info_version_internal	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^c
 info_version_internal	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^char const* info_version_internal = "INFO" ":" "compiler_version_internal[" COMPILER_VERSION_INT/;"	v	typeref:typename:char const *
 info_version_internal	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version_internal[] = {$/;"	v	typeref:typename:char const[]
 info_version_internal	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_version_internal = "INFO" ":" "compiler_version_internal[" COMPILER_VERSION_INT/;"	v	typeref:typename:char const *
-internal	mariaDB_1.1.5/include/mariadb/MariaDbDataSource.hpp	/^  std::unique_ptr<MariaDbDataSourceInternal> internal;$/;"	m	class:sql::mariadb::MariaDbDataSource	typeref:typename:std::unique_ptr<MariaDbDataSourceInternal>
-isMustReconnect	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^  bool isMustReconnect() {$/;"	f	class:sql::MaxAllowedPacketException	typeref:typename:bool
-it	mariaDB_1.1.5/include/mariadb/conncpp/Properties.hpp	/^    std::unique_ptr<iteratorImp> it;$/;"	m	class:sql::Properties::iterator	typeref:typename:std::unique_ptr<iteratorImp>
-iterator	mariaDB_1.1.5/include/mariadb/conncpp/Properties.hpp	/^  class iterator final {$/;"	c	class:sql::Properties
-key_type	mariaDB_1.1.5/include/mariadb/conncpp/Properties.hpp	/^  using key_type= SQLString;$/;"	t	class:sql::Properties	typeref:typename:SQLString
-length	mariaDB_1.1.5/include/mariadb/conncpp/CArray.hpp	/^    int64_t length;$/;"	m	struct:sql::CArray	typeref:typename:int64_t
-list	mariaDB_1.1.5/include/mariadb/conncpp/List.hpp	/^  std::unique_ptr<ListImp> list;$/;"	m	class:sql::List	typeref:typename:std::unique_ptr<ListImp>
 main	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
 main	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f	typeref:typename:void
 main	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f	typeref:typename:int
-main	main.cpp	/^int main(){$/;"	f	typeref:typename:int
+main	main.cpp	/^int main(){		$/;"	f	typeref:typename:int
 main.cpp.i	build/Makefile	/^main.cpp.i:$/;"	t
 main.cpp.o	build/Makefile	/^main.cpp.o:$/;"	t
 main.cpp.s	build/Makefile	/^main.cpp.s:$/;"	t
 main.i	build/Makefile	/^main.i: main.cpp.i$/;"	t
 main.o	build/Makefile	/^main.o: main.cpp.o$/;"	t
 main.s	build/Makefile	/^main.s: main.cpp.s$/;"	t
-mapped_type	mariaDB_1.1.5/include/mariadb/conncpp/Properties.hpp	/^  using mapped_type= SQLString ;$/;"	t	class:sql::Properties	typeref:typename:SQLString
-mariadb	mariaDB_1.1.5/include/mariadb/MariaDbDataSource.hpp	/^namespace mariadb$/;"	n	namespace:sql
-mariadb	mariaDB_1.1.5/include/mariadb/conncpp/Driver.hpp	/^namespace mariadb$/;"	n	namespace:sql
-mustReconnect	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^  bool mustReconnect;$/;"	m	class:sql::MaxAllowedPacketException	typeref:typename:bool
-npos	mariaDB_1.1.5/include/mariadb/conncpp/SQLString.hpp	/^  static constexpr std::size_t npos{static_cast<std::size_t>(-1)};$/;"	m	class:sql::SQLString	typeref:typename:std::size_t
-operator !=	mariaDB_1.1.5/include/mariadb/conncpp/SQLString.hpp	/^inline bool operator!=(const SQLString& str1, const std::string& str2) { return !(str1 == str2);/;"	f	namespace:sql	typeref:typename:bool
-operator !=	mariaDB_1.1.5/include/mariadb/conncpp/SQLString.hpp	/^inline bool operator!=(const std::string& str1, const SQLString& str2) { return !(str1 == str2);/;"	f	namespace:sql	typeref:typename:bool
-operator ==	mariaDB_1.1.5/include/mariadb/conncpp/SQLString.hpp	/^inline bool operator==(const SQLString& str1, const std::string& str2) { return str1.compare(0, /;"	f	namespace:sql	typeref:typename:bool
-operator ==	mariaDB_1.1.5/include/mariadb/conncpp/SQLString.hpp	/^inline bool operator==(const std::string& str1, const SQLString& str2) { return str2.compare(0, /;"	f	namespace:sql	typeref:typename:bool
-operator T*	mariaDB_1.1.5/include/mariadb/conncpp/CArray.hpp	/^    operator T*()$/;"	f	struct:sql::CArray
-operator bool	mariaDB_1.1.5/include/mariadb/conncpp/CArray.hpp	/^    operator bool()$/;"	f	struct:sql::CArray
-operator const T*	mariaDB_1.1.5/include/mariadb/conncpp/CArray.hpp	/^    operator const T*() const$/;"	f	struct:sql::CArray
-parameterModeIn	mariaDB_1.1.5/include/mariadb/conncpp/ParameterMetaData.hpp	/^    parameterModeIn,$/;"	e	enum:sql::ParameterMetaData::__anon7a7694a00103
-parameterModeInOut	mariaDB_1.1.5/include/mariadb/conncpp/ParameterMetaData.hpp	/^    parameterModeInOut,$/;"	e	enum:sql::ParameterMetaData::__anon7a7694a00103
-parameterModeOut	mariaDB_1.1.5/include/mariadb/conncpp/ParameterMetaData.hpp	/^    parameterModeOut= 4$/;"	e	enum:sql::ParameterMetaData::__anon7a7694a00103
-parameterModeUnknown	mariaDB_1.1.5/include/mariadb/conncpp/ParameterMetaData.hpp	/^    parameterModeUnknown= 0,$/;"	e	enum:sql::ParameterMetaData::__anon7a7694a00103
-parameterNoNulls	mariaDB_1.1.5/include/mariadb/conncpp/ParameterMetaData.hpp	/^    parameterNoNulls= 0,$/;"	e	enum:sql::ParameterMetaData::__anon7a7694a00203
-parameterNullable	mariaDB_1.1.5/include/mariadb/conncpp/ParameterMetaData.hpp	/^    parameterNullable,$/;"	e	enum:sql::ParameterMetaData::__anon7a7694a00203
-parameterNullableUnknown	mariaDB_1.1.5/include/mariadb/conncpp/ParameterMetaData.hpp	/^    parameterNullableUnknown,$/;"	e	enum:sql::ParameterMetaData::__anon7a7694a00203
-position	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^  std::size_t position;$/;"	m	class:sql::ParseException	typeref:typename:std::size_t
 preinstall	build/Makefile	/^preinstall: all$/;"	t
 preinstall/fast	build/Makefile	/^preinstall\/fast:$/;"	t
-procedureColumnIn	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    procedureColumnIn,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40903
-procedureColumnInOut	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    procedureColumnInOut,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40903
-procedureColumnOut	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    procedureColumnOut,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40903
-procedureColumnResult	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    procedureColumnResult,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40903
-procedureColumnReturn	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    procedureColumnReturn$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40903
-procedureColumnUnknown	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    procedureColumnUnknown= 0,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40903
-procedureNoNulls	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    procedureNoNulls= 0,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40a03
-procedureNoResult	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    procedureNoResult,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40b03
-procedureNullable	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    procedureNullable,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40a03
-procedureNullableUnknown	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    procedureNullableUnknown$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40a03
-procedureResultUnknown	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    procedureResultUnknown= 0,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40b03
-procedureReturnsResult	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    procedureReturnsResult$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40b03
 qnxnto	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v	typeref:typename:char const *
 qnxnto	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v	typeref:typename:char const *
 rebuild_cache	build/Makefile	/^rebuild_cache:$/;"	t
 rebuild_cache/fast	build/Makefile	/^rebuild_cache\/fast: rebuild_cache$/;"	t
-size	mariaDB_1.1.5/include/mariadb/conncpp/CArray.hpp	/^    std::size_t size() const { return end() - begin(); }$/;"	f	struct:sql::CArray	typeref:typename:std::size_t
-sql	mariaDB_1.1.5/include/mariadb/MariaDbDataSource.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/CArray.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/CallableStatement.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/Connection.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/Driver.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/DriverManager.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/Exception.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/List.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/ParameterMetaData.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/PooledConnection.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/PreparedStatement.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/Properties.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/ResultSet.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/ResultSetMetaData.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/SQLString.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/Savepoint.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/Statement.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/Types.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/Warning.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/XAConnection.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/compat/Array.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/compat/Executor.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/compat/Object.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/compat/SQLType.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/compat/Struct.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/compat/XAResource.hpp	/^namespace sql$/;"	n
-sql	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^namespace sql$/;"	n
-sqlStateSQL	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    sqlStateSQL,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40c03
-sqlStateSQL99	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    sqlStateSQL99= 2$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40c03
-sqlStateXOpen	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    sqlStateXOpen= 1,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40c03
-tableIndexClustered	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    tableIndexClustered,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40d03
-tableIndexHashed	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    tableIndexHashed,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40d03
-tableIndexOther	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    tableIndexOther$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40d03
-tableIndexStatistic	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    tableIndexStatistic= 0,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40d03
-theMap	mariaDB_1.1.5/include/mariadb/conncpp/Properties.hpp	/^  std::unique_ptr<PropertiesImp> theMap;$/;"	m	class:sql::Properties	typeref:typename:std::unique_ptr<PropertiesImp>
-theString	mariaDB_1.1.5/include/mariadb/conncpp/SQLString.hpp	/^  StringImp* theString;$/;"	m	class:sql::SQLString	typeref:typename:StringImp *
-typeNoNulls	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    typeNoNulls= 0,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40e03
-typeNullable	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    typeNullable,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40e03
-typeNullableUnknown	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    typeNullableUnknown$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40e03
-typePredBasic	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    typePredBasic,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40f03
-typePredChar	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    typePredChar,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40f03
-typePredNone	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    typePredNone= 0,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40f03
-typeSearchable	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    typeSearchable$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b40f03
-value_type	mariaDB_1.1.5/include/mariadb/conncpp/Properties.hpp	/^  using value_type= std::pair<const SQLString, SQLString>;$/;"	t	class:sql::Properties	typeref:typename:std::pair<const SQLString,SQLString>
-versionColumnNotPseudo	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    versionColumnNotPseudo,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b41003
-versionColumnPseudo	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    versionColumnPseudo$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b41003
-versionColumnUnknown	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^    versionColumnUnknown= 0,$/;"	e	enum:sql::DatabaseMetaData::__anonbf35e8b41003
+signal_handler	main.cpp	/^void signal_handler(int signal) {$/;"	f	typeref:typename:void
 volatile	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define volatile$/;"	d	file:
-~Array	mariaDB_1.1.5/include/mariadb/conncpp/compat/Array.hpp	/^  virtual ~Array(){}$/;"	f	class:sql::Array
-~CallableStatement	mariaDB_1.1.5/include/mariadb/conncpp/CallableStatement.hpp	/^  virtual ~CallableStatement() {}$/;"	f	class:sql::CallableStatement
-~Connection	mariaDB_1.1.5/include/mariadb/conncpp/Connection.hpp	/^  virtual ~Connection(){}$/;"	f	class:sql::Connection
-~DatabaseMetaData	mariaDB_1.1.5/include/mariadb/conncpp/DatabaseMetaData.hpp	/^  virtual ~DatabaseMetaData(){}$/;"	f	class:sql::DatabaseMetaData
-~Driver	mariaDB_1.1.5/include/mariadb/conncpp/Driver.hpp	/^  virtual ~Driver(){}$/;"	f	class:sql::Driver
-~DriverManager	mariaDB_1.1.5/include/mariadb/conncpp/DriverManager.hpp	/^  virtual ~DriverManager(){}$/;"	f	class:sql::DriverManager
-~Executor	mariaDB_1.1.5/include/mariadb/conncpp/compat/Executor.hpp	/^  virtual ~Executor(){}$/;"	f	class:sql::Executor
-~Object	mariaDB_1.1.5/include/mariadb/conncpp/compat/Object.hpp	/^  virtual ~Object(){}$/;"	f	class:sql::Object
-~ParameterMetaData	mariaDB_1.1.5/include/mariadb/conncpp/ParameterMetaData.hpp	/^  virtual ~ParameterMetaData(){}$/;"	f	class:sql::ParameterMetaData
-~PooledConnection	mariaDB_1.1.5/include/mariadb/conncpp/PooledConnection.hpp	/^  virtual ~PooledConnection() {}$/;"	f	class:sql::PooledConnection
-~PreparedStatement	mariaDB_1.1.5/include/mariadb/conncpp/PreparedStatement.hpp	/^  virtual ~PreparedStatement(){}$/;"	f	class:sql::PreparedStatement
-~Ref	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^    virtual ~Ref() {}$/;"	f	class:sql::Ref
-~ResultSet	mariaDB_1.1.5/include/mariadb/conncpp/ResultSet.hpp	/^  virtual ~ResultSet(){}$/;"	f	class:sql::ResultSet
-~ResultSetMetaData	mariaDB_1.1.5/include/mariadb/conncpp/ResultSetMetaData.hpp	/^  virtual ~ResultSetMetaData(){}$/;"	f	class:sql::ResultSetMetaData
-~RowId	mariaDB_1.1.5/include/mariadb/conncpp/jdbccompat.hpp	/^    virtual ~RowId() {}$/;"	f	class:sql::RowId
-~SQLType	mariaDB_1.1.5/include/mariadb/conncpp/compat/SQLType.hpp	/^  virtual ~SQLType(){}$/;"	f	class:sql::SQLType
-~SQLWarning	mariaDB_1.1.5/include/mariadb/conncpp/Warning.hpp	/^  virtual ~SQLWarning(){}$/;"	f	class:sql::SQLWarning
-~Savepoint	mariaDB_1.1.5/include/mariadb/conncpp/Savepoint.hpp	/^  virtual ~Savepoint(){}$/;"	f	class:sql::Savepoint
-~Statement	mariaDB_1.1.5/include/mariadb/conncpp/Statement.hpp	/^  virtual ~Statement(){}$/;"	f	class:sql::Statement
-~Struct	mariaDB_1.1.5/include/mariadb/conncpp/compat/Struct.hpp	/^  virtual ~Struct(){}$/;"	f	class:sql::Struct
-~XAConnection	mariaDB_1.1.5/include/mariadb/conncpp/XAConnection.hpp	/^  virtual ~XAConnection() {}$/;"	f	class:sql::XAConnection
-~XAResource	mariaDB_1.1.5/include/mariadb/conncpp/compat/XAResource.hpp	/^  virtual ~XAResource(){}$/;"	f	class:sql::XAResource
