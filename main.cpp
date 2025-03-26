@@ -36,7 +36,7 @@ inline std::string getSQLQuery(pqxx::work &W, std::string querytext){
         for(int i = 0; i < row.size(); i++){
             textout += getWithoutSpace(row[i].as<std::string>()) + ":::";
         }
-        textout = textout.length() > 0 ? textout + ";;;\n" : "";
+        textout = textout.length() > 3 ? textout + ";;;\n" : "";
     }
 	return textout;
 }
@@ -47,11 +47,12 @@ int main(){
 
     if (C.is_open()) {
         cout << "Opened database successfully: " << C.dbname() << endl;
-        pqxx::work W(C);
         std::signal(SIGINT, signal_handler);
+        pqxx::work W(C);
         /*W.commit();*/
   //      std::cout << getSQLQuery(W, "SELECT id, name FROM users");
-        std::cout << getSQLQuery(W, "create table if not exists users(id int, name char(30))");
+  //      std::cout << getSQLQuery(W, "create table if not exists users(id int, name char(30))");
+        std::cout << getSQLQuery(W, "SELECT public.helloworld('Szabó Roland')");
         C.disconnect();
     } else {
         cout << "Can't open database" << endl;
