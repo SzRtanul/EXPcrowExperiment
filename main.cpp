@@ -44,16 +44,20 @@ inline std::string getSQLQuery(pqxx::work &W, std::string querytext){
 int main(){		
     crow::App<crow::CORSHandler> app;
 	auto& cors = app.get_middleware<crow::CORSHandler>();
+    //pqxx::work W(C);
 
     if (C.is_open()) {
         cout << "Opened database successfully: " << C.dbname() << endl;
         std::signal(SIGINT, signal_handler);
-        pqxx::work W(C);
         /*W.commit();*/
   //      std::cout << getSQLQuery(W, "SELECT id, name FROM users");
   //      std::cout << getSQLQuery(W, "create table if not exists users(id int, name char(30))");
-        std::cout << getSQLQuery(W, "SELECT public.helloworld('Szabó Roland')");
-        C.disconnect();
+  //      std::cout << getSQLQuery(W, "SELECT public.helloworld('Szabó Roland')");
+		CROW_ROUTE(app, "/ujvacsora")([](){
+			pqxx::work W(C);
+        	return getSQLQuery(W, "SELECT public.helloworld('Szabó Roland')");
+    	});
+  //      C.disconnect();
     } else {
         cout << "Can't open database" << endl;
         return 1;
