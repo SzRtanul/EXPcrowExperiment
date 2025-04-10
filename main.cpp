@@ -7,9 +7,14 @@
 #include <string>
 #include <thread>
 #include <chrono>
+#include <pg_query.h>
+#include "protobuf/pg_query.pb-c.h"
 
 using namespace std;
 using namespace pqxx;
+
+
+
 
 pqxx::connection C = pqxx::connection(R"(dbname = testdb user=postgres password=test123 hostaddr=127.0.0.1 port=5432)");
 int exat=0;
@@ -23,13 +28,13 @@ void signal_handler(int signal) {
     exit(0);  // Kilépés
 }
 
-inline bool isBenneVanRendezett(std::string[] array, std::string[] values){
+/*inline bool isBenneVanRendezett(std::string[] array, std::string[] values){
     /*for(int i = 0; i < arr){
         for(){
 
         }
     }
-    ;*/
+    ;
     return false;
 }
 
@@ -48,7 +53,7 @@ inline bool isBenneVan(std::string[] array, std::string value){
     }
     return both;
 }
-
+*/
 inline std::string getWithoutSpace(string text){
     int i = text.length() - 1;
     for(;i>-1 && text[i] == ' '; i--){};
@@ -99,6 +104,13 @@ inline bool isBenneVanRendezett(std::string[] array, std::string[] values){
 	;*/
 	return false;
 }
+
+int main(){
+
+	PgQueryParseResult result;
+	result = pg_query_parse("SELECT 1");
+	printf("%s\n", result.parse_tree);
+	pg_query_free_parse_result(result);
 
 	auto& cors = app.get_middleware<crow::CORSHandler>();
     //pqxx::work W(C);
