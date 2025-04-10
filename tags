@@ -243,10 +243,12 @@ STRINGIFY	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#define STRIN
 STRINGIFY	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define STRINGIFY(/;"	d	file:
 STRINGIFY_HELPER	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#define STRINGIFY_HELPER(/;"	d	file:
 STRINGIFY_HELPER	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define STRINGIFY_HELPER(/;"	d	file:
-__anon3b5b11db0102	main.cpp	/^		CROW_ROUTE(app, "\/ujvacsora")([](){$/;"	f	function:main	file:
-__anon3b5b11db0202	main.cpp	/^	CROW_ROUTE(app, "\/")([](){$/;"	f	function:main	file:
-__anon3b5b11db0302	main.cpp	/^    CROW_ROUTE(app, "\/exat")([](){$/;"	f	function:main	file:
-__anon3b5b11db0402	main.cpp	/^    CROW_ROUTE(app, "\/exat\/<int>").methods("POST"_method)([](int a){ $/;"	f	function:main	file:
+__anon3b5b11db0702	main.cpp	/^		CROW_ROUTE(app, "\/ujvacsora")([](){$/;"	f	function:main	file:
+__anon3b5b11db0802	main.cpp	/^	CROW_ROUTE(app, "\/")([](){$/;"	f	function:main	file:
+__anon3b5b11db0902	main.cpp	/^    CROW_ROUTE(app, "\/exat")([](){$/;"	f	function:main	file:
+__anon3b5b11db0a02	main.cpp	/^    CROW_ROUTE(app, "\/exat\/<int>").methods("POST"_method)([](int a){ $/;"	f	function:main	file:
+__anon3b5b11db0b02	main.cpp	/^    crow_route(app, "\/callquery").methods("POST"_method)([](int a){ $/;"	f	function:main	file:
+__anon3b5b11db0c02	main.cpp	/^    crow_route(app, "\/callmethod").methods("POST"_method)([](int a){ 	$/;"	f	function:main	file:
 __has_include	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define __has_include(/;"	d	file:
 __has_include	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define __has_include(/;"	d	file:
 all	build/Makefile	/^all: cmake_check_build_system$/;"	t
@@ -260,6 +262,7 @@ depend	build/Makefile	/^depend:$/;"	t
 edit_cache	build/Makefile	/^edit_cache:$/;"	t
 edit_cache/fast	build/Makefile	/^edit_cache\/fast: edit_cache$/;"	t
 exat	main.cpp	/^int exat=0;$/;"	v	typeref:typename:int
+getCallSimpleQuery	main.cpp	/^inline std::string getCallSimpleQuery(pqxx::work &W, std::string tablanev, std::string usertoken/;"	f	typeref:typename:std::string
 getSQLQuery	main.cpp	/^inline std::string getSQLQuery(pqxx::work &W, std::string querytext){$/;"	f	typeref:typename:std::string
 getWithoutSpace	main.cpp	/^inline std::string getWithoutSpace(string text){$/;"	f	typeref:typename:std::string
 help	build/Makefile	/^help:$/;"	t
@@ -287,6 +290,9 @@ info_version_internal	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^c
 info_version_internal	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^char const* info_version_internal = "INFO" ":" "compiler_version_internal[" COMPILER_VERSION_INT/;"	v	typeref:typename:char const *
 info_version_internal	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version_internal[] = {$/;"	v	typeref:typename:char const[]
 info_version_internal	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_version_internal = "INFO" ":" "compiler_version_internal[" COMPILER_VERSION_INT/;"	v	typeref:typename:char const *
+isBenneVan	main.cpp	/^inline bool isBenneVan(std::string[] array, std::string value){$/;"	f	typeref:typename:bool
+isBenneVanRendezett	main.cpp	/^inline bool isBenneVanRendezett(std::string[] array, std::string[] values){$/;"	f	typeref:typename:bool
+isBenneVannak	main.cpp	/^inline bool isBenneVannak(std::string[] array, std::string[] values){$/;"	f	typeref:typename:bool
 main	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
 main	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f	typeref:typename:void
 main	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f	typeref:typename:int
@@ -301,6 +307,7 @@ preinstall	build/Makefile	/^preinstall: all$/;"	t
 preinstall/fast	build/Makefile	/^preinstall\/fast:$/;"	t
 qnxnto	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v	typeref:typename:char const *
 qnxnto	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v	typeref:typename:char const *
+querytext	main.cpp	/^	std::string querytext = "";$/;"	v	typeref:typename:std::string
 rebuild_cache	build/Makefile	/^rebuild_cache:$/;"	t
 rebuild_cache/fast	build/Makefile	/^rebuild_cache\/fast: rebuild_cache$/;"	t
 signal_handler	main.cpp	/^void signal_handler(int signal) {$/;"	f	typeref:typename:void
