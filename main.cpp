@@ -41,6 +41,61 @@ inline std::string getSQLQuery(pqxx::work &W, std::string querytext){
 	return textout;
 }
 
+inline std::string getCallMethod(pqxx::work &W, std::string usertoken, std:string methodname){
+	//Jogosultság ellenörzés
+	return getSQLQuery(W, "Select " + methodname);
+}
+
+inline std::string getCallSimpleQuery(pqxx::work &W, std::string tablanev, std::string usertoken, std::string oszlopnevek, std::string wheretext, std::string innerjoins){
+//	bool both = 
+	// táblanév jogosultságok lekérdezése
+	std::string[] hozzaferhetoek = nullptr;
+
+	
+
+
+	/*std::string[] oszlopnevekArray = oszlopnevek.split(";");
+	for(int i = 0; i < oszlopnevekArray.size(); i++){
+		
+	}*/
+
+	
+	
+	return getSQLQuery("SELECT " + oszlopnevek + " FROM " tablanev + " ");
+}
+
+inline bool isBenneVanRendezett(std::string[] array, std::string[] values){
+	/*for(int i = 0; i < arr){
+		for(){
+
+		}
+	}
+	;*/
+	return false;
+}
+
+inline bool isBenneVannak(std::string[] array, std::string[] values){
+	bool both = false;
+	for(int i = 0; i<values.length && !both; i++){
+		both = isBenneVan(array, values[i]);
+	}
+	return both;
+}
+
+inline bool isBenneVan(std::string[] array, std::string value){
+	bool both = false;
+	for(int i = 0; i < array.length && !both; i++){
+		both = array[i].equals(value);
+	}
+	return both;
+}
+
+inline std::string getCallQuery(pqxx::work &W, std::string tablanev, std::string oszlopnevek, std::string wheretext, std::string innerjoins, ){
+	std::string querytext = "";
+
+	return getSQLQuery();
+}
+
 int main(){		
     crow::App<crow::CORSHandler> app;
 	auto& cors = app.get_middleware<crow::CORSHandler>();
@@ -75,6 +130,17 @@ int main(){
 		exat=a; 
 		return std::to_string(0b0111101); 
 	});
+	
+    crow_route(app, "/callquery").methods("POST"_method)([](int a){ 
+		exat=a;
+		return "";
+	}
+
+		
+    crow_route(app, "/callmethod").methods("POST"_method)([](int a){ 	
+		return "";
+	}
+
     app.port(18080).multithreaded().run();
-    return 0;
+  	return 0;
 }
