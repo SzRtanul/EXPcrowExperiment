@@ -266,7 +266,7 @@ getCallMethod	main.cpp	/^inline std::string getCallMethod(pqxx::work &W, std::st
 getCallSimpleQuery	main.cpp	/^inline std::string getCallSimpleQuery(pqxx::work &W, std::string tablanev, std::string usertoken/;"	f	typeref:typename:std::string
 getSQLQuery	main.cpp	/^inline std::string getSQLQuery(pqxx::work &W, const char* querytext){$/;"	f	typeref:typename:std::string
 getWithoutSpace	main.cpp	/^inline std::string getWithoutSpace(string text){$/;"	f	typeref:typename:std::string
-hasSubQuery	main.cpp	/^inline bool hasSubQuery(){$/;"	f	typeref:typename:bool
+hasSubQuery	main.cpp	/^inline bool hasSubQuery(const char querytext[]){$/;"	f	typeref:typename:bool
 help	build/Makefile	/^help:$/;"	t
 info_arch	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v	typeref:typename:char const *
 info_arch	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v	typeref:typename:char const *
@@ -292,7 +292,7 @@ info_version_internal	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^c
 info_version_internal	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^char const* info_version_internal = "INFO" ":" "compiler_version_internal[" COMPILER_VERSION_INT/;"	v	typeref:typename:char const *
 info_version_internal	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version_internal[] = {$/;"	v	typeref:typename:char const[]
 info_version_internal	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_version_internal = "INFO" ":" "compiler_version_internal[" COMPILER_VERSION_INT/;"	v	typeref:typename:char const *
-isBenneVanRendezett	main.cpp	/^inline bool isBenneVanRendezett(const char array[][50], const char values[][50]){$/;"	f	typeref:typename:bool
+isBenneVanRendezett	main.cpp	/^inline bool isBenneVanRendezett(const char array[][50], const char values[][50], int lengtharray/;"	f	typeref:typename:bool
 main	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
 main	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f	typeref:typename:void
 main	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f	typeref:typename:int

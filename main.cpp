@@ -7,6 +7,7 @@
 #include <string>
 #include <thread>
 #include <chrono>
+#include <regex>
 
 using namespace std;
 using namespace pqxx;
@@ -16,6 +17,25 @@ using namespace pqxx;
 
 pqxx::connection C = pqxx::connection(R"(dbname = testdb user=postgres password=test123 hostaddr=127.0.0.1 port=5432)");
 int exat=0;
+
+inline bool isBenneVanRendezett(const char array[][50], const char values[][50], int lengtharray, int lengthvalues){
+	bool bennevan = 1; // Minden benne van
+	for(int i = 0; i < lengthvalues && bennevan; i++){ // lista
+		std::cout<<"Ide még belép"<<endl;
+		bennevan = 0;
+		for(int j = 0; j < lengtharray && !bennevan; j++){
+			std::cout << "Ide is" << endl;
+			bool nemugyanolyan = false;
+			for(int k = 0; k < 50 && !nemugyanolyan; k++){
+				nemugyanolyan = (array[j][k] ^ values[i][k]) & 0b1;
+			}
+			bennevan = !nemugyanolyan;
+		}
+	}
+	;
+	return !bennevan;
+}
+
 
 void signal_handler(int signal) {
     if (C.is_open()) {
@@ -58,8 +78,9 @@ inline std::string getWithoutSpace(string text){
     return text.erase(i+1);
 }
 
-inline bool hasSubQuery(){
-	return false;
+inline bool hasSubQuery(const char querytext[]){
+	std::regex pattern(R"(\s*SELECT)", std::regex_constants::icase);
+	return std::regex_search(querytext, pattern);
 }
 
 inline std::string getSQLQuery(pqxx::work &W, const char* querytext){
@@ -84,43 +105,34 @@ inline std::string getCallSimpleQuery(pqxx::work &W, std::string tablanev, std::
 //	bool both = 
 	// táblanév jogosultságok lekérdezése
 	std::string hozzaferhetoek = nullptr;
-//	isBenneVanRendezett
-	
-
-
 	/*std::string[] oszlopnevekArray = oszlopnevek.split(";");
+//	isBenneVanRendezett
 	for(int i = 0; i < oszlopnevekArray.size(); i++){
 		
 	}*/
-
-	
-	
 	return "";//getSQLQuery(W, "SELECT " + oszlopnevek + " FROM " + tablanev + " ");
 }
 
-inline bool isBenneVanRendezett(const char array[][50], const char values[][50]){
-	char words[][10] = {
-   		"alma",
-	    "körte",
-	    "barack",
-//		nullptr
-	};
-	char nincsvege = 0;
-	for(int i = 0; ((nincsvege >> 1) & 0b1); i++){
-		nincsvege = (array[i] == nullptr) << 1;
-		for(int j = 0; (nincsvege <= 0); j++){
-			bool nemugyanolyan = true;
-			nincsvege = values[i] == nullptr;
-			for(int k = 0; k < 50 && nincsvege == 0 && nemugyanolyan; k++){
-				nemugyanolyan += array[i][k] == values[j][k];
-			}			
-		}
-	}
-	;
-	return false;
-}
+
 
 int main(){
+/*	
+ *	const char array[][50] = {
+		"ohIgen",
+		"OHIGEN",
+		"OHYea",
+		"n1",
+		"n2",
+		"n3"
+	};
+	const char values[][50] = {
+		//"oh",
+		"n3"
+	};
+	std::cout << sizeof(values)/50 << endl;
+	std::cout << "Működik?: " << isBenneVanRendezett(array, values, sizeof(array)/50, sizeof(values)/50) << endl;
+	return 0;
+*/
 	crow::App<crow::CORSHandler> app;
 	auto& cors = app.get_middleware<crow::CORSHandler>();
     //pqxx::work W(C);
