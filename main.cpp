@@ -7,8 +7,6 @@
 #include <string>
 #include <thread>
 #include <chrono>
-#include <pg_query.h>
-#include "protobuf/pg_query.pb-c.h"
 
 using namespace std;
 using namespace pqxx;
@@ -60,27 +58,32 @@ inline std::string getWithoutSpace(string text){
     return text.erase(i+1);
 }
 
-inline std::string getSQLQuery(pqxx::work &W, std::string querytext){
-    std::string textout = "";
+inline bool hasSubQuery(){
+	return false;
+}
+
+inline std::string getSQLQuery(pqxx::work &W, const char* querytext){
+	std::string textout = "";
     pqxx::result R = W.exec(querytext);
     for (const auto &row : R) {
         for(int i = 0; i < row.size(); i++){
-            textout += getWithoutSpace(row[i].as<std::string>()) + ":::";
+         // textout += "valami";
+		  textout += getWithoutSpace(row[i].as<std::string>()) + ":::";
         }
         textout = textout.length() > 3 ? textout + ";;;\n" : "";
     }
 	return textout;
 }
 
-inline std::string getCallMethod(pqxx::work &W, std::string usertoken, std:string methodname){
+inline std::string getCallMethod(pqxx::work &W, std::string usertoken, std::string methodname){
 	//Jogosultság ellenörzés
-	return getSQLQuery(W, "Select " + methodname);
+	return "";//getSQLQuery(W, "Select " + methodname);
 }
 
 inline std::string getCallSimpleQuery(pqxx::work &W, std::string tablanev, std::string usertoken, std::string oszlopnevek, std::string wheretext, std::string innerjoins){
 //	bool both = 
 	// táblanév jogosultságok lekérdezése
-	std::string[] hozzaferhetoek = nullptr;
+	std::string hozzaferhetoek = nullptr;
 //	isBenneVanRendezett
 	
 
@@ -92,26 +95,33 @@ inline std::string getCallSimpleQuery(pqxx::work &W, std::string tablanev, std::
 
 	
 	
-	return getSQLQuery("SELECT " + oszlopnevek + " FROM " tablanev + " ");
+	return "";//getSQLQuery(W, "SELECT " + oszlopnevek + " FROM " + tablanev + " ");
 }
 
-inline bool isBenneVanRendezett(std::string[] array, std::string[] values){
-	/*for(int i = 0; i < arr){
-		for(){
-
+inline bool isBenneVanRendezett(const char array[][50], const char values[][50]){
+	char words[][10] = {
+   		"alma",
+	    "körte",
+	    "barack",
+//		nullptr
+	};
+	char nincsvege = 0;
+	for(int i = 0; ((nincsvege >> 1) & 0b1); i++){
+		nincsvege = (array[i] == nullptr) << 1;
+		for(int j = 0; (nincsvege <= 0); j++){
+			bool nemugyanolyan = true;
+			nincsvege = values[i] == nullptr;
+			for(int k = 0; k < 50 && nincsvege == 0 && nemugyanolyan; k++){
+				nemugyanolyan += array[i][k] == values[j][k];
+			}			
 		}
 	}
-	;*/
+	;
 	return false;
 }
 
 int main(){
-
-	PgQueryParseResult result;
-	result = pg_query_parse("SELECT 1");
-	printf("%s\n", result.parse_tree);
-	pg_query_free_parse_result(result);
-
+	crow::App<crow::CORSHandler> app;
 	auto& cors = app.get_middleware<crow::CORSHandler>();
     //pqxx::work W(C);
 
@@ -127,15 +137,14 @@ int main(){
         	return getSQLQuery(W, "SELECT public.helloworld('Szabó Roland')");
     	});
 
-		CROW_ROUTE(app, "/callquery").methods("POST"_method)([](int a){
-       		exat=a;
+		CROW_ROUTE(app, "/callquery").methods("POST"_method)([](){
         	return "";
-    	}
+    	});
 	
 
-	    CROW_ROUTE(app, "/callmethod").methods("POST"_method)([](int a){
+	    CROW_ROUTE(app, "/callmethod").methods("POST"_method)([](){
         	return "";
-    	}
+    	});
   //      C.disconnect();
     } else {
         cout << "Can't open database" << endl;
