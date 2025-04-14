@@ -249,6 +249,7 @@ __anon3b5b11db0302	main.cpp	/^	    CROW_ROUTE(app, "\/callmethod").methods("POST
 __anon3b5b11db0402	main.cpp	/^	CROW_ROUTE(app, "\/")([](){$/;"	f	function:main	file:
 __anon3b5b11db0502	main.cpp	/^    CROW_ROUTE(app, "\/exat")([](){$/;"	f	function:main	file:
 __anon3b5b11db0602	main.cpp	/^    CROW_ROUTE(app, "\/exat\/<int>").methods("POST"_method)([](int a){ $/;"	f	function:main	file:
+__anon3b5b11db0702	main.cpp	/^	CROW_ROUTE(app, "\/pelda\/<int>").methods("POST"_method)([](const crow::request& req, const int/;"	f	function:main	file:
 __has_include	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define __has_include(/;"	d	file:
 __has_include	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define __has_include(/;"	d	file:
 all	build/Makefile	/^all: cmake_check_build_system$/;"	t

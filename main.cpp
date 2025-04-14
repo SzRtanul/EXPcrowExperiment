@@ -8,9 +8,12 @@
 #include <thread>
 #include <chrono>
 #include <regex>
+#include <nlohmann/json.hpp>
 
 using namespace std;
 using namespace pqxx;
+using json = nlohmann::json;
+
 
 
 
@@ -45,6 +48,8 @@ void signal_handler(int signal) {
     std::cout << "A program leállt." << std::endl;
     exit(0);  // Kilépés
 }
+
+
 
 /*inline bool isBenneVanRendezett(std::string[] array, std::string[] values){
     /*for(int i = 0; i < arr){
@@ -174,6 +179,19 @@ int main(){
     CROW_ROUTE(app, "/exat/<int>").methods("POST"_method)([](int a){ 
 		exat=a; 
 		return std::to_string(0b0111101); 
+	});
+
+	CROW_ROUTE(app, "/pelda/<int>").methods("POST"_method)([](const crow::request& req, const int ye){
+		std::cout << "Fejlec:" << ye << endl;
+		for (auto& header : req.headers)
+		{
+			std::cout << header.first << ": " << header.second << "\n";
+		}
+
+		std::cout << "\nBody:\n" << req.body << "\n";
+
+
+		return "Megkaptam!";
 	});
     app.port(18080).multithreaded().run();
   	return 0;
