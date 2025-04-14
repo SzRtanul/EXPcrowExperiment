@@ -8,11 +8,11 @@
 #include <thread>
 #include <chrono>
 #include <regex>
-#include <nlohmann/json.hpp>
+#include <crow/json.h>
 
 using namespace std;
 using namespace pqxx;
-using json = nlohmann::json;
+//using json = nlohmann::json;
 
 
 
@@ -142,6 +142,17 @@ int main(){
 	auto& cors = app.get_middleware<crow::CORSHandler>();
     //pqxx::work W(C);
 
+/*	cors
+		.global()
+			.headers("X-Custom-Header", "Upgrade-Insecure-Requests")
+          	.methods("POST"_method, "GET"_method)
+        .prefix("/login")
+	        //.origin("http://experimental.local:18080")
+	        .origin("http://localhost")
+				            .methods("GET"_method, "POST"_method, "OPTIONS"_method);
+	/*	.prefix("/nocors")
+		    .ignore();*/
+
     if (C.is_open()) {
         cout << "Opened database successfully: " << C.dbname() << endl;
         std::signal(SIGINT, signal_handler);
@@ -149,6 +160,20 @@ int main(){
   //      std::cout << getSQLQuery(W, "SELECT id, name FROM users");
   //      std::cout << getSQLQuery(W, "create table if not exists users(id int, name char(30))");
   //      std::cout << getSQLQuery(W, "SELECT public.helloworld('Szabó Roland')");
+		CROW_ROUTE(app, "/login")([](const crow::request& req) {
+	        crow::response res;
+			std::string token = "YOUR_SECURE_TOKEN";
+			res.set_header("Access-Control-Allow-Origin", "http://localhost");
+			res.set_header("Access-Control-Allow-Credentials", "true");
+			res.set_header("Access-Control-Allow-Headers", "Content-Type");
+			res.set_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+	       	res.set_header("Set-Cookie", "auth_token=" + token + "; HttpOnly; SameSite=Lax"); // Secure;
+			res.code = 200;
+		   	res.body = "Bejelentkezve!";
+			//res.end();
+		    return res;
+		});
+
 		CROW_ROUTE(app, "/ujvacsora")([](){
 			pqxx::work W(C);
         	return getSQLQuery(W, "SELECT public.helloworld('Szabó Roland')");
