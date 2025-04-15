@@ -142,14 +142,23 @@ int main(){
 	auto& cors = app.get_middleware<crow::CORSHandler>();
     //pqxx::work W(C);
 
-/*	cors
+	cors
 		.global()
-			.headers("X-Custom-Header", "Upgrade-Insecure-Requests")
-          	.methods("POST"_method, "GET"_method)
-        .prefix("/login")
+			.headers("Content-Type", "X-Custom-Header", "Upgrade-Insecure-Requests", "Cache")
+			.methods("GET"_method, "POST"_method, "PUT"_method, "DELETE"_method, "OPTIONS"_method)
 	        //.origin("http://experimental.local:18080")
 	        .origin("http://localhost")
-				            .methods("GET"_method, "POST"_method, "OPTIONS"_method);
+			.allow_credentials()
+		/*.on_preflight([](crow::response& res, crow::request& req) {
+        	std::cout << "Preflight request received for: " << req.url << std::endl;
+	        std::cout << "Origin: " << req.get_header_value("Origin") << std::endl;
+    	    res.set_header("Access-Control-Allow-Origin", req.get_header_value("Origin"));
+       		res.set_header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+	        res.set_header("Access-Control-Allow-Headers", "X-Custom-Header, Upgrade-Insecure-Requests, Content-Type");
+    	    res.set_header("Access-Control-Allow-Credentials", "true");
+	        res.end();
+    	});*/;
+				            //.methods("GET"_method, "POST"_method, "OPTIONS"_method);
 	/*	.prefix("/nocors")
 		    .ignore();*/
 
@@ -163,11 +172,11 @@ int main(){
 		CROW_ROUTE(app, "/login")([](const crow::request& req) {
 	        crow::response res;
 			std::string token = "YOUR_SECURE_TOKEN";
-			res.set_header("Access-Control-Allow-Origin", "http://localhost");
+		/*	res.set_header("Access-Control-Allow-Origin", "http://localhost");
 			res.set_header("Access-Control-Allow-Credentials", "true");
 			res.set_header("Access-Control-Allow-Headers", "Content-Type");
 			res.set_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-	       	res.set_header("Set-Cookie", "auth_token=" + token + "; HttpOnly; SameSite=Lax"); // Secure;
+	      */ 	res.set_header("Set-Cookie", "auth_token=" + token + "; HttpOnly; SameSite=Lax"); // Secure;
 			res.code = 200;
 		   	res.body = "Bejelentkezve!";
 			//res.end();
