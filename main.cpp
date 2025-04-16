@@ -118,7 +118,15 @@ inline std::string getCallSimpleQuery(pqxx::work &W, std::string tablanev, std::
 	return "";//getSQLQuery(W, "SELECT " + oszlopnevek + " FROM " + tablanev + " ");
 }
 
+inline std::string getDBQueryUnit(std::string unit, std::string value){
+	return value.length > 0 ? " " + unit + " " + value : "";
+}
 
+inline std::string getDBJoin(std::string type, std::string keypairs){
+	char keppairsch[][] = keypairs.split(';');
+
+	return "";
+}
 
 int main(){
 /*	
@@ -142,7 +150,7 @@ int main(){
 	auto& cors = app.get_middleware<crow::CORSHandler>();
     //pqxx::work W(C);
 
-	cors
+/*	cors
 		.global()
 			.headers("Content-Type", "X-Custom-Header", "Upgrade-Insecure-Requests", "Cache")
 			.methods("GET"_method, "POST"_method, "PUT"_method, "DELETE"_method, "OPTIONS"_method)
@@ -187,13 +195,54 @@ int main(){
 			pqxx::work W(C);
         	return getSQLQuery(W, "SELECT public.helloworld('Szabó Roland')");
     	});
+		
+		ROW_ROUTE(app, "/addrecord/<string>").methods("POST"_method)([](const crow::request& req, std::string tablename){
+            pqxx::work W(C); 
+			return getSQLQuery(W, "INSERT INTO " + tablename + "values ()");
+        });
 
-		CROW_ROUTE(app, "/callquery").methods("POST"_method)([](){
-        	return "";
+		CROW_ROUTE(app, "/callquery").methods("GET"_method)([](const crow::request& req){
+			std::string columnames = "";
+			std::string tablenames = "";
+			std::string whereclause = "";
+			std::string groupby = "";
+			std::string having = "";
+
+			pqxx::work W(C);
+        	return getSQLQuery(W, 
+				"SELECT " + columnames + 
+				" FROM " + tablenames + 
+				" INNER JOIN " +
+				" WHERE " + whereclause + 
+				" GROUP BY " + groupby +
+				" HAVING " + having
+			);
     	});
-	
 
-	    CROW_ROUTE(app, "/callmethod").methods("POST"_method)([](){
+		CROW_ROUTE(app, "/deletefrom/<string>/<int>").methods("POST"_method)([](const crow::request& req, const std::string tablename, const int id){ // Egyszerű kulcsos táblák
+            pqxx::work W(C); 
+			return getSQLQuery(W, "DELETE FROM " + tablename + " WHERE " + tablename +".id = " + id); // Feladat: User check hozzáadása
+        });
+
+/*		CROW_ROUTE(app, "/deletefrom/<string>").methods("POST"_method)([](const crow::request& req, const std::string tablename, const int id){ // Összetett kulcsos táblák
+            pqxx::work W(C); 
+			return getSQLQuery(W, "INSERT INTO " + tablename + "values ()");
+        });
+*/
+		CROW_ROUTE(app, "/update/<string>/<int>").methods("POST"_method)([](const crow::request& req, const std::string tablename, const int id){ // Egyszerű kulcsos táblák
+            // Miken
+			// Mikre
+			std::string keyvaluepairs = "";
+			pqxx::work W(C); 
+			return getSQLQuery(W, "UPDATE " + tablename + " SET " + keyvaluepairs + " WHERE " + tablename + ".id = " + id);
+        });
+
+/*		CROW_ROUTE(app, "/update/<string>").methods("POST"_method)([](const crow::request& req, const std::string tablename, const int id){ // Összetett kulcsos táblák
+            pqxx::work W(C); 
+			return getSQLQuery(W, "INSERT INTO " + tablename + "values ()");
+        });
+*/
+	    CROW_ROUTE(app, "/callmethod/<string>").methods("GET"_method)([](const crow::request& req, const std::string methodname){
         	return "";
     	});
   //      C.disconnect();
