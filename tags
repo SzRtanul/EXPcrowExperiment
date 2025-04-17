@@ -245,7 +245,7 @@ STRINGIFY_HELPER	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#defin
 STRINGIFY_HELPER	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define STRINGIFY_HELPER(/;"	d	file:
 __anon3b5b11db0102	main.cpp	/^		CROW_ROUTE(app, "\/login")([](const crow::request& req) {$/;"	f	function:main	file:
 __anon3b5b11db0202	main.cpp	/^		CROW_ROUTE(app, "\/ujvacsora")([](){$/;"	f	function:main	file:
-__anon3b5b11db0302	main.cpp	/^		ROW_ROUTE(app, "\/addrecord\/<string>").methods("POST"_method)([](const crow::request& req, st/;"	f	function:main	file:
+__anon3b5b11db0302	main.cpp	/^		CROW_ROUTE(app, "\/addrecord\/<string>").methods("POST"_method)([](const crow::request& req, s/;"	f	function:main	file:
 __anon3b5b11db0402	main.cpp	/^		CROW_ROUTE(app, "\/callquery").methods("GET"_method)([](const crow::request& req){$/;"	f	function:main	file:
 __anon3b5b11db0502	main.cpp	/^		CROW_ROUTE(app, "\/deletefrom\/<string>\/<int>").methods("POST"_method)([](const crow::request/;"	f	function:main	file:
 __anon3b5b11db0602	main.cpp	/^		CROW_ROUTE(app, "\/update\/<string>\/<int>").methods("POST"_method)([](const crow::request& re/;"	f	function:main	file:
@@ -269,11 +269,10 @@ edit_cache/fast	build/Makefile	/^edit_cache\/fast: edit_cache$/;"	t
 exat	main.cpp	/^int exat=0;$/;"	v	typeref:typename:int
 getCallMethod	main.cpp	/^inline std::string getCallMethod(pqxx::work &W, std::string usertoken, std::string methodname){$/;"	f	typeref:typename:std::string
 getCallSimpleQuery	main.cpp	/^inline std::string getCallSimpleQuery(pqxx::work &W, std::string tablanev, std::string usertoken/;"	f	typeref:typename:std::string
-getDBJoin	main.cpp	/^inline std::string getDBJoin(std::string type, std::string keypairs){$/;"	f	typeref:typename:std::string
 getDBQueryUnit	main.cpp	/^inline std::string getDBQueryUnit(std::string unit, std::string value){$/;"	f	typeref:typename:std::string
 getSQLQuery	main.cpp	/^inline std::string getSQLQuery(pqxx::work &W, const char* querytext){$/;"	f	typeref:typename:std::string
+getTextWithJSONValues	main.cpp	/^inline char* getTextWithJSONValues(const char text[]){$/;"	f	typeref:typename:char *
 getWithoutSpace	main.cpp	/^inline std::string getWithoutSpace(string text){$/;"	f	typeref:typename:std::string
-hasSubQuery	main.cpp	/^inline bool hasSubQuery(const char querytext[]){$/;"	f	typeref:typename:bool
 help	build/Makefile	/^help:$/;"	t
 info_arch	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v	typeref:typename:char const *
 info_arch	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v	typeref:typename:char const *
@@ -317,4 +316,5 @@ qnxnto	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const
 rebuild_cache	build/Makefile	/^rebuild_cache:$/;"	t
 rebuild_cache/fast	build/Makefile	/^rebuild_cache\/fast: rebuild_cache$/;"	t
 signal_handler	main.cpp	/^void signal_handler(int signal) {$/;"	f	typeref:typename:void
+sqlsyntaxt	main.cpp	/^const char sqlsyntaxt[][20]{$/;"	v	typeref:typename:const char[][20]
 volatile	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define volatile$/;"	d	file:

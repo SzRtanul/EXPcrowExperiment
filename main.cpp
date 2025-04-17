@@ -20,6 +20,32 @@ using namespace pqxx;
 
 pqxx::connection C = pqxx::connection(R"(dbname = testdb user=postgres password=test123 hostaddr=127.0.0.1 port=5432)");
 int exat=0;
+const char sqlsyntaxt[][20]{
+	"SELECT",
+	"FROM",
+	"INNER",
+	"JOIN",
+	"ON",
+	"OUTER",
+	"RIGHT",
+	"LEFT",
+	"EXISTS",
+	"IN",
+	"NOT",
+	"LIKE",
+};
+
+char bynarytree[][32]{
+	"SFIJORLENL",
+	"ERNOUIXN",
+	"LONITGFK"
+}
+
+char bynwoher[][300][32]{
+	{{1,5},{2,3}},
+	{"", ""}
+}
+
 
 inline bool isBenneVanRendezett(const char array[][50], const char values[][50], int lengtharray, int lengthvalues){
 	bool bennevan = 1; // Minden benne van
@@ -83,9 +109,29 @@ inline std::string getWithoutSpace(string text){
     return text.erase(i+1);
 }
 
-inline bool hasSubQuery(const char querytext[]){
+/*inline bool hasSubQuery(const char querytext[]){
 	std::regex pattern(R"(\s*SELECT)", std::regex_constants::icase);
 	return std::regex_search(querytext, pattern);
+}*/
+
+inline char* getTextWithJSONValues(const char text[]){
+	int i = 0;
+	std::string retn = "";
+	bool haved = false;
+	while(text[i] != '\0'){
+		if(text[i] > 96 && text[i] < 123) text[i] -= 32;
+		if(text[i] > 64 && text[i] < 91){
+			haved = true;
+
+			//std::cout << text[i] << ":" << (int)text[i] << std::endl;
+			// Bináris fa összehasonlítás
+		}
+		for(; text[i] != '\0'; i++){
+	
+		}
+	}
+
+	return nullptr;
 }
 
 inline std::string getSQLQuery(pqxx::work &W, const char* querytext){
@@ -119,16 +165,17 @@ inline std::string getCallSimpleQuery(pqxx::work &W, std::string tablanev, std::
 }
 
 inline std::string getDBQueryUnit(std::string unit, std::string value){
-	return value.length > 0 ? " " + unit + " " + value : "";
+	return value.length() > 0 ? " " + unit + " " + value : "";
 }
 
-inline std::string getDBJoin(std::string type, std::string keypairs){
-	char keppairsch[][] = keypairs.split(';');
-
+/*inline std::string getDBJoin(std::string type, std::string keypairs){
+	char keppairsch[][50] = keypairs.split(';');
 	return "";
-}
+}*/
 
 int main(){
+	getTextWithJSONValues("ABCDZabcz&$ -");
+	return 0;
 /*	
  *	const char array[][50] = {
 		"ohIgen",
@@ -196,9 +243,9 @@ int main(){
         	return getSQLQuery(W, "SELECT public.helloworld('Szabó Roland')");
     	});
 		
-		ROW_ROUTE(app, "/addrecord/<string>").methods("POST"_method)([](const crow::request& req, std::string tablename){
+		CROW_ROUTE(app, "/addrecord/<string>").methods("POST"_method)([](const crow::request& req, std::string tablename){
             pqxx::work W(C); 
-			return getSQLQuery(W, "INSERT INTO " + tablename + "values ()");
+			return getSQLQuery(W, ("INSERT INTO " + tablename + "values ()").c_str());
         });
 
 		CROW_ROUTE(app, "/callquery").methods("GET"_method)([](const crow::request& req){
@@ -209,19 +256,20 @@ int main(){
 			std::string having = "";
 
 			pqxx::work W(C);
-        	return getSQLQuery(W, 
-				"SELECT " + columnames + 
+        	return getSQLQuery(W,  
+				("SELECT " + columnames + 
 				" FROM " + tablenames + 
 				" INNER JOIN " +
 				" WHERE " + whereclause + 
 				" GROUP BY " + groupby +
-				" HAVING " + having
-			);
+				" HAVING " + having).c_str());
     	});
 
 		CROW_ROUTE(app, "/deletefrom/<string>/<int>").methods("POST"_method)([](const crow::request& req, const std::string tablename, const int id){ // Egyszerű kulcsos táblák
-            pqxx::work W(C); 
-			return getSQLQuery(W, "DELETE FROM " + tablename + " WHERE " + tablename +".id = " + id); // Feladat: User check hozzáadása
+            pqxx::work W(C);
+			std::ostringstream sqlStream;
+			sqlStream << "DELETE FROM " << tablename << " WHERE " << tablename << ".id = " << id;
+			return getSQLQuery(W, sqlStream.str().c_str()); // Feladat: User check hozzáadása
         });
 
 /*		CROW_ROUTE(app, "/deletefrom/<string>").methods("POST"_method)([](const crow::request& req, const std::string tablename, const int id){ // Összetett kulcsos táblák
@@ -233,8 +281,10 @@ int main(){
             // Miken
 			// Mikre
 			std::string keyvaluepairs = "";
-			pqxx::work W(C); 
-			return getSQLQuery(W, "UPDATE " + tablename + " SET " + keyvaluepairs + " WHERE " + tablename + ".id = " + id);
+			pqxx::work W(C);
+			std::ostringstream sqlStream;
+			sqlStream << "UPDATE " << tablename << " SET " << keyvaluepairs << " WHERE " << tablename << ".id = " << id;
+			return getSQLQuery(W, sqlStream.str().c_str());
         });
 
 /*		CROW_ROUTE(app, "/update/<string>").methods("POST"_method)([](const crow::request& req, const std::string tablename, const int id){ // Összetett kulcsos táblák
