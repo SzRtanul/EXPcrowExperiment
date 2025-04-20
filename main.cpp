@@ -20,32 +20,93 @@ using namespace pqxx;
 
 pqxx::connection C = pqxx::connection(R"(dbname = testdb user=postgres password=test123 hostaddr=127.0.0.1 port=5432)");
 int exat=0;
-const char sqlsyntaxt[][20]{
-	"SELECT",
-	"FROM",
-	"INNER",
-	"JOIN",
-	"ON",
-	"OUTER",
-	"RIGHT",
-	"LEFT",
-	"EXISTS",
-	"IN",
-	"NOT",
-	"LIKE",
+// SzóRaktár
+char szoRaktarSQLSyntaxt[] =
+	"SELECT;FROM;"
+	"INNER;"
+	"JOIN;"
+	"ON;"
+	"OUTER;"
+	"RIGHT;"
+	"LEFT;"
+	"EXISTS;"
+	"IN;"
+	"NOT;"
+	"LIKE;"
+;
+
+struct WordsCompare{
+	int leghosszabbSzo;
+	int szavakSzama;
+//Betűk jelölése oszloponként
+	int* bynarytree;
+//Honnan
+	int* bywoherin; // Inicializálás binarytree*32, Csökkentés: Ahány betű
+
+	char* byoszlop;
+//VégsőÉrték
+	char* vegsoErtekOszlopSzam; // Inicializálás a szavak számával
+	int* vegsoErtek;
+
+	WordsCompare(int leghosszabbSzo, int szavakSzama){
+		this->leghosszabbSzo = leghosszabbSzo;
+		this->szavakSzama = szavakSzama;
+        bynarytree = new int[leghosszabbSzo];
+        bywoherin = new int[leghosszabbSzo * 32];
+        byoszlop = new char[leghosszabbSzo * 32];
+        vegsoErtek = new int[szavakSzama];
+        vegsoErtekOszlopSzam = new char[szavakSzama];
+    }
+
+	~WordsCompare(){
+        delete[] bynarytree;
+        delete[] bywoherin;
+        delete[] byoszlop;
+        delete[] vegsoErtek;
+        delete[] vegsoErtekOszlopSzam;
+    }
 };
 
-char bynarytree[][32]{
-	"SFIJORLENL",
-	"ERNOUIXN",
-	"LONITGFK"
-}
+struct StoreNames{
+	int length;
+	int* sepIndexes;
+	char* characterChain;
 
-char bynwoher[][300][32]{
-	{{1,5},{2,3}},
-	{"", ""}
-}
+	StoreNames(char* characterChain){
+		this->characterChain = characterChain;
+		this->length = this->getSepNumber();
+		sepIndexes = new int[this->length];
+	}
 
+	~StoreNames(){
+		delete[] characterChain;
+	}
+
+	int getSepNumber(){
+		int sepNumberSum = 0;
+		char lastChar = ';';
+		int i = 0;
+		for(; characterChain[i] != '\0'; i++){
+			if(characterChain[i] > 96 && characterChain[i] < 123) characterChain[i] -= 32;
+			if(lastChar == ';' && (characterChain[i] > 64 && characterChain[i] < 91)) sepNumberSum++; 
+			if(characterChain[i] == ';' || (characterChain[i] > 64 && characterChain[i] < 91)) lastChar = characterChain[i]; 
+		}
+		return sepNumberSum;
+	}
+
+	void initSepIndexes(){
+		int sepPosition = 0;
+		char lastChar = ';';
+		int i = 0;
+		for(; characterChain[i] != '\0'; i++){
+			 if(lastChar == ';' && (characterChain[i] > 64 && characterChain[i] < 91)){
+				sepIndexes[sepPosition] = i;
+				sepPosition++;
+			 }
+			 if(characterChain[i] == ';' || (characterChain[i] > 64 && characterChain[i] < 91)) lastChar = characterChain[i]; 
+		}
+	}
+};
 
 inline bool isBenneVanRendezett(const char array[][50], const char values[][50], int lengtharray, int lengthvalues){
 	bool bennevan = 1; // Minden benne van
@@ -114,25 +175,151 @@ inline std::string getWithoutSpace(string text){
 	return std::regex_search(querytext, pattern);
 }*/
 
-inline char* getTextWithJSONValues(const char text[]){
-	int i = 0;
-	std::string retn = "";
-	bool haved = false;
-	while(text[i] != '\0'){
-		if(text[i] > 96 && text[i] < 123) text[i] -= 32;
-		if(text[i] > 64 && text[i] < 91){
-			haved = true;
+WordsCompare doSyntaxtCheckPreparation(char* characterChain){	
+	// Segéd
+	char szamlal = 0;
+	char lastChar = ';';
+	// Utófeltétel
+	int szavakSzama = 0; 
+	char leghosszabbSzo = 0;
 
+
+	int i = 0;
+	for(; characterChain[i] != '\0'; i++){
+		if(lastChar != ';' && (characterChain[i] == ';' || characterChain[i+1] == '\0')){
+			szavakSzama++;
+			leghosszabbSzo = szamlal > leghosszabbSzo ? szamlal : leghosszabbSzo;
+			szamlal = 0;
+		}
+		if(characterChain[i] > 96 && characterChain[i] < 123) characterChain[i] -= 32;
+		if(characterChain[i] > 64 && characterChain[i] < 91){
+			szamlal++;
+		}
+		if(characterChain[i] > 64 && characterChain[i] < 91 || lastChar == ';'){
+			lastChar = characterChain[i];
+		}
+	}
+	WordsCompare wordsCompare(leghosszabbSzo, szavakSzama);
+
+	//Reinit
+	szamlal = 0;
+	szavakSzama = 0;
+	lastChar = ';';
+	int position = 0;
+	int lastCharPosition = 0;
+	int wordValue = 0;
+	i = 0;
+	for(;i < characterChain[i] != '\0'; i++){
+		if(characterChain[i] > 64 && characterChain[i] < 91){
+			position = characterChain[i] - 65; // zyxwvutsrqponmlkjihgfedcba
+			wordValue += (26 * szamlal) + position;
+			wordsCompare.bynarytree[szamlal] |= 1 << position;
+			if(lastChar != ';') wordsCompare.bywoherin[(szavakSzama * 26) + position] |= 1 << lastCharPosition; //abcdefghijkmnopqrstuvwqyz
+			szamlal++;
+		}
+		else if (characterChain[i])
+		if(characterChain[i] > 64 && characterChain[i] < 91 || lastChar == ';'){ 
+			lastChar = characterChain[i];
+		}
+		if(lastChar != ';' && characterChain[i] == ';'){ 
+			wordsCompare.vegsoErtek[szavakSzama] = wordValue;
+			wordsCompare.vegsoErtekOszlopSzam[szavakSzama] = (char)szamlal;
+			szavakSzama++;
+			szamlal = 0;
+			wordValue = 0;
+		}
+	}
+	return wordsCompare;
+}
+
+inline std::string getTextWithJSONValues(WordsCompare& wordsCompare, StoreNames storeNames[], std::string JSONValuesString, char* text){
+	bool haved = false;
+	std::string retn = "";
+	retn.reserve(strlen(text) * 3 / 2);
+	int szamlal = 0;
+	int position = 0;
+	bool syntaxtGood = true;
+	char currentChar = '\0';
+	char lastChar = ';';
+	int wordValue = 0;
+
+	int usedStoreNames = -1;
+	auto JSONValues = crow::json::load(JSONValuesString);
+
+	int i = 0;
+	while(text[i] != '\0'){
+		text[i] = text[i] > 96 && text[i] < 123 ? text[i] - 32 : text[i];
+		if(text[i] > 64 && text[i] < 91){
+//			haved = true;
+			syntaxtGood = (wordsCompare.bynarytree[szamlal] >> (text[i] - 65)) & 0b1;
+			if(szamlal > 0) syntaxtGood = wordsCompare.bywoherin[((szamlal - 1) * 26) + szamlal] >> lastChar - 65;
+			szamlal++;
 			//std::cout << text[i] << ":" << (int)text[i] << std::endl;
 			// Bináris fa összehasonlítás
 		}
-		for(; text[i] != '\0'; i++){
-	
+		else if(lastChar > 64 && lastChar < 91){
+			syntaxtGood = false;
+			for(int j = 0 /*Kezdőérték*/; j < sizeof(wordsCompare.vegsoErtek) && !syntaxtGood; j++){
+				syntaxtGood = wordsCompare.vegsoErtek[j] == wordValue;
+			}
+			szamlal = 0;
+			wordValue = 0;
+			//if(text[i] != ' ') retn += ' ';
 		}
-	}
 
-	return nullptr;
-}
+		if(text[i] == '#'){
+			i++;
+			usedStoreNames = (unsigned)(text[i] - 36) < (39 - 36) ? text[i] - 36 : - 1;
+			if(usedStoreNames!=-1){
+				std::string field = "";
+				int wheres = -1;
+				bool addValue = false;
+				i++;
+				if(text[i] == '-'){
+					addValue = true;
+					i++;
+				}
+				if(!addValue){
+					field += text[i];
+					while((unsigned)(text[i] - 48) < (58 - 48)){
+						i++;
+					}
+					if(field.length() > 0){
+						StoreNames localStoreNames = storeNames[usedStoreNames];
+						wheres = std::stoi(field);
+						int j = localStoreNames.sepIndexes[wheres] ? localStoreNames.sepIndexes[wheres] : -1;
+						if(j > 0){
+							for(; localStoreNames.characterChain[j] != ';'; j++){
+								retn += localStoreNames.characterChain[j]; 
+							}
+						}
+					}
+				}
+				else{
+					while((unsigned)(text[i] - 65) < (91 - 65)){
+						field += text[i];
+					}
+					if(field.length() > 0 && JSONValues[field]){
+						if(JSONValues[field].t() == crow::json::type::String){
+							retn += "'"+std::string(JSONValues[field].s())+"'";
+						}
+						else{
+							crow::json::wvalue myOb(JSONValues[field]);
+							retn += myOb.dump();
+						}
+					}
+				}
+			}
+			
+		}
+		else{
+			retn += text[i];
+		}
+		lastChar = text[i];
+
+	}
+	return retn;
+};
 
 inline std::string getSQLQuery(pqxx::work &W, const char* querytext){
 	std::string textout = "";
@@ -174,8 +361,9 @@ inline std::string getDBQueryUnit(std::string unit, std::string value){
 }*/
 
 int main(){
-	getTextWithJSONValues("ABCDZabcz&$ -");
-	return 0;
+//	doSyntaxtCheckPreparation();
+//	getTextWithJSONValues("ABCDZabcz&$ -");
+//	return 0;
 /*	
  *	const char array[][50] = {
 		"ohIgen",
@@ -248,24 +436,33 @@ int main(){
 			return getSQLQuery(W, ("INSERT INTO " + tablename + "values ()").c_str());
         });
 
-		CROW_ROUTE(app, "/callquery").methods("GET"_method)([](const crow::request& req){
-			std::string columnames = "";
+		CROW_ROUTE(app, "/callquery").methods("POST"_method)([](const crow::request& req){
+			auto json = crow::json::load(req.body);
+			if (!json) return crow::response(400, "Invalid JSON");
+			crow::json::wvalue tablenames = json["db-tablenames"];
+			crow::json::wvalue columnames = json["db-columnames"];
+			crow::json::wvalue methodnames = json["db-methodnames"];
+			
+			crow::json::wvalue queryfrom = json["db-queryfrom"];
+			crow::json::wvalue querystatements = json["db-querystatements"];
+
+			/*std::string columnames = ;
 			std::string tablenames = "";
 			std::string whereclause = "";
 			std::string groupby = "";
-			std::string having = "";
+			std::string having = "";*/
 
 			pqxx::work W(C);
-        	return getSQLQuery(W,  
+        	return /*getSQLQuery(W,  
 				("SELECT " + columnames + 
 				" FROM " + tablenames + 
 				" INNER JOIN " +
 				" WHERE " + whereclause + 
 				" GROUP BY " + groupby +
-				" HAVING " + having).c_str());
+				" HAVING " + having).c_str())*/crow::response(200, "Megkaptam!");
     	});
 
-		CROW_ROUTE(app, "/deletefrom/<string>/<int>").methods("POST"_method)([](const crow::request& req, const std::string tablename, const int id){ // Egyszerű kulcsos táblák
+		CROW_ROUTE(app, "/deletefrom/<string>/<int>").methods("DELETE"_method)([](const crow::request& req, const std::string tablename, const int id){ // Egyszerű kulcsos táblák
             pqxx::work W(C);
 			std::ostringstream sqlStream;
 			sqlStream << "DELETE FROM " << tablename << " WHERE " << tablename << ".id = " << id;
@@ -277,9 +474,10 @@ int main(){
 			return getSQLQuery(W, "INSERT INTO " + tablename + "values ()");
         });
 */
-		CROW_ROUTE(app, "/update/<string>/<int>").methods("POST"_method)([](const crow::request& req, const std::string tablename, const int id){ // Egyszerű kulcsos táblák
+		CROW_ROUTE(app, "/update/<string>/<int>").methods("PUT"_method)([](const crow::request& req, const std::string tablename, const int id){ // Egyszerű kulcsos táblák
             // Miken
 			// Mikre
+//			crow::json::rvalue rval = 
 			std::string keyvaluepairs = "";
 			pqxx::work W(C);
 			std::ostringstream sqlStream;
@@ -315,16 +513,23 @@ int main(){
 	});
 
 	CROW_ROUTE(app, "/pelda/<int>").methods("POST"_method)([](const crow::request& req, const int ye){
+		
 		std::cout << "Fejlec:" << ye << endl;
 		for (auto& header : req.headers)
 		{
 			std::cout << header.first << ": " << header.second << "\n";
 		}
-
 		std::cout << "\nBody:\n" << req.body << "\n";
+		auto parsed = crow::json::load(req.body);
+	//	std::cout << "\nBody:\n" << parsed["datum"].dump() << "\n";
+		crow::json::wvalue temp(parsed);
+		std::cout << "\nBody:\n" << temp.dump() << "\n";
+		
+		/*if (value.t() == crow::json::type::Null) {
+		    //return true;
+		}*/
 
-
-		return "Megkaptam!";
+		return crow::response(200, "Megkaptam!");
 	});
     app.port(18080).multithreaded().run();
   	return 0;
