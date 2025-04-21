@@ -216,14 +216,14 @@ WordsCompare doSyntaxtCheckPreparation(char* characterChain){
 		if(characterChain[i] > 64 && characterChain[i] < 91){
 			position = characterChain[i] - 65; // zyxwvutsrqponmlkjihgfedcba
 			wordValue += (26 * szamlal) + position;
-		//	std::cout << "WordValue(Pre): " << wordValue << " - " << i << endl;
+//			std::cout << "WordValue(Pre): " << wordValue << " - " << i << endl;
 			wordsCompare.bynarytree[szamlal] |= 1 << position;
 			if(lastChar != ';') wordsCompare.bywoherin[(szavakSzama * 26) + position] |= 1 << lastCharPosition; //abcdefghijkmnopqrstuvwqyz
 			szamlal++;
 		}
 //		std::cout << "LastChar: " << lastChar << " Aktuel: " << characterChain[i+1] << endl;
 		if(lastChar != ';' && (characterChain[i] == ';' || characterChain[i] == '\n')){ 
-		//	std::cout << "WordValue(Pre): " << wordValue << endl;
+//			std::cout << "WordValue(Pre): " << wordValue << endl;
 			wordsCompare.vegsoErtek[szavakSzama] = wordValue;
 			wordsCompare.vegsoErtekOszlopSzam[szavakSzama] = (char)szamlal;
 			szavakSzama++;
@@ -254,31 +254,33 @@ inline std::string getTextWithJSONValues(WordsCompare& wordsCompare, StoreNames 
 
 	int i = 0;
 	std::cout << "Még megyen" << endl;
-	while(text[i] != '\0' && syntaxtGood){
-		std::cout << "Még megyen: " << i << endl;
+	while(text[i] != '\0' && syntaxtGood == true){
+//		std::cout << "Még megyen: " << i << endl;
 		text[i] = text[i] > 96 && text[i] < 123 ? text[i] - 32 : text[i];
 		if(text[i] > 64 && text[i] < 91){
 //			haved = true;
 			position = text[i] - 65;
-			syntaxtGood = true;//(wordsCompare.bynarytree[szamlal] >> (position)) & 0b1;
+			syntaxtGood = (wordsCompare.bynarytree[szamlal] >> (position)) & 0b1;
 			std::cout << "Számláló: " << text[i] <<
 					" - " << std::bitset<32>(wordsCompare.bynarytree[szamlal]) <<
 					" >> " << text[i] - 65 << " 0b " << 
 					std::bitset<32>((wordsCompare.bynarytree[szamlal] >> (position)) & 0b1) <<
 			endl;
-			std::cout << "Syn.: " << syntaxtGood << endl;
+//			std::cout << "Syn.: " << syntaxtGood << endl;
 
-			if(szamlal > 0) syntaxtGood = wordsCompare.bywoherin[((szamlal - 1) * 26) + position] >> lastChar - 65;
-			std::cout << "Még megyen: " << i << endl;
+			//if(szamlal > 0) syntaxtGood = wordsCompare.bywoherin[((szamlal - 1) * 26) + position] >> lastChar - 65;
+//			std::cout << "Még megyen: " << i << endl;
 			wordValue += ((szamlal) * 26) + position;
 			szamlal++;
 			//std::cout << text[i] << ":" << (int)text[i] << std::endl;
 			// Bináris fa összehasonlítás
+//			std::cout << "Syn.: " << syntaxtGood << endl;
 		}
+//		std::cout << "Synitty: " << syntaxtGood << endl;
 		
 		if((text[i+1] == '\0' && (lastChar > 64 && lastChar < 91 || text[i] > 64 && text[i] < 91)) ||
 						(!(text[i] > 64 && text[i] < 91) && lastChar > 64 && lastChar < 91)){
-			//syntaxtGood = false;
+			syntaxtGood = false;
 			int j = 0;
 			std::cout << "WordValue: " << wordValue << endl;
 			for(/*Kezdőérték*/; j < wordsCompare.szavakSzama && !syntaxtGood; j++){
@@ -287,10 +289,11 @@ inline std::string getTextWithJSONValues(WordsCompare& wordsCompare, StoreNames 
 			}
 			szamlal = 0;
 			wordValue = 0;
-			std::cout << "Syn.: " << syntaxtGood << endl;
+//			std::cout << "Syne: " << syntaxtGood << endl;
 			//if(text[i] != ' ') retn += ' ';
 		}
-		std::cout << "Még megyen: " << i << endl;
+//		std::cout << "Synitt: " << syntaxtGood << endl;
+//		std::cout << "Még megyen: " << i << endl;
 		if(text[i] == '#'){
 			i++;
 			usedStoreNames = (unsigned)(text[i] - 36) < (39 - 36) ? text[i] - 36 : - 1;
@@ -300,6 +303,7 @@ inline std::string getTextWithJSONValues(WordsCompare& wordsCompare, StoreNames 
 				bool addValue = false;
 				i++;
 				if(text[i] == '-'){
+//					syntaxtGood = static_cast<bool>(JSONValues);
 					addValue = true;
 					i++;
 				}
@@ -308,48 +312,60 @@ inline std::string getTextWithJSONValues(WordsCompare& wordsCompare, StoreNames 
 					while((unsigned)(text[i] - 48) < (58 - 48)){
 						i++;
 					}
-					std::cout << "Még megyeni: " << i << endl;
+//					std::cout << "Még megyeni: " << i << endl;
 					if(field.length() > 0){
 						StoreNames& localStoreNames = storeNames[usedStoreNames];
 						wheres = std::stoi(field);
 //						std::cout << "Wheres?:SepIndexes : " << wheres << ":" << localStoreNames.length << endl;
-						int j = localStoreNames.sepIndexes[wheres] ? localStoreNames.sepIndexes[wheres] : -1;
-						std::cout << "J?: " << j << endl;
-						if(j > 0){
+						syntaxtGood = ((unsigned)wheres) < localStoreNames.length;
+//						std::cout << "J?: " << j << endl;
+						if(syntaxtGood){
+							int j = localStoreNames.sepIndexes[wheres];
 							for(; localStoreNames.characterChain[j] != ';' && localStoreNames.characterChain[j] != '\0'; j++){
-								std::cout << localStoreNames.characterChain[j] << endl;
+//								std::cout << localStoreNames.characterChain[j] << endl;
 								retn += localStoreNames.characterChain[j]; 
 							}
-							std::cout << retn << endl;
+						//	retn += text[i];
+							i--;
+//							std::cout << retn << endl;
 						}
-						std::cout << "Még megyeni: " << i << endl;
+//						std::cout << "Még megyeni: " << i << endl;
 					}
-					std::cout << "Még megyeni: " << i << endl;
+//					std::cout << "Még megyeni: " << i << endl;
 				}
-				else{
+				else if(syntaxtGood){
 					while((unsigned)(text[i] - 65) < (91 - 65)){
 						field += text[i];
+						i++;
 					}
 					if(field.length() > 0 && JSONValues[field]){
+						syntaxtGood = JSONValues.has(field);
 						if(JSONValues[field].t() == crow::json::type::String){
 							retn += "'"+std::string(JSONValues[field].s())+"'";
 						}
-						else{
+						else if(syntaxtGood){
 							crow::json::wvalue myOb(JSONValues[field]);
 							retn += myOb.dump();
 						}
+						i--;
 					}
 				}
-				std::cout << "Még megyeni: " << i << endl;
+//				std::cout << "Syn.: " << syntaxtGood << endl;
+//				std::cout << "Még megyeni: " << i << endl;
 			}
-			std::cout << "Még mindig megyen" << endl;	
+//			std::cout << "Syn.: " << syntaxtGood << endl;
+//			std::cout << "Még mindig megyen" << endl;	
 		}
 		else{
+//			std::cout << "Synitt: " << syntaxtGood << endl;
 			retn += text[i];
 		}
+//		std::cout << "Synitt: " << syntaxtGood << endl;
 		lastChar = text[i];
-		if(text[i] != '\0') i++;
+		/*if(text[i] != '\0')*/ i++;
+//		std::cout << "Synitt: " << syntaxtGood << endl;
 	}
+//	std::cout << "Syny.: " << syntaxtGood << endl;
 	if(!syntaxtGood) retn = "-";
 	return retn;
 };
@@ -402,8 +418,8 @@ int main(){
 //	CompareWords compareWords = doSyntaxtCheckPreparation();
 	char jj[] = "dd;DD;DD;EE";
 	char jj1[] = "ABCDZabcz&$ -";
-	char jj2[] = "SILECT";
-	char jj3[] = "SELECT #$3";
+	char jj2[] = "SELECT #$3";
+	char jj3[] = "SELECT * FROM #$3 FROM FROM";
 
 	StoreNames storeNames[] = {
 		StoreNames(jj)
