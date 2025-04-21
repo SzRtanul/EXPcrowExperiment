@@ -25,7 +25,7 @@ getCallSimpleQuery	main.cpp	/^inline std::string getCallSimpleQuery(pqxx::work &
 getDBQueryUnit	main.cpp	/^inline std::string getDBQueryUnit(std::string unit, std::string value){$/;"	f	typeref:typename:std::string
 getSQLQuery	main.cpp	/^inline std::string getSQLQuery(pqxx::work &W, const char* querytext){$/;"	f	typeref:typename:std::string
 getSepNumber	main.cpp	/^	int getSepNumber(){$/;"	f	struct:StoreNames	typeref:typename:int	file:
-getTextWithJSONValues	main.cpp	/^inline std::string getTextWithJSONValues(WordsCompare& wordsCompare, StoreNames storeNames[], st/;"	f	typeref:typename:std::string
+getTextWithJSONValues	main.cpp	/^inline std::string getTextWithJSONValues(WordsCompare& wordsCompare, StoreNames storeNames[], co/;"	f	typeref:typename:std::string
 getWithoutSpace	main.cpp	/^inline std::string getWithoutSpace(string text){$/;"	f	typeref:typename:std::string
 initSepIndexes	main.cpp	/^	void initSepIndexes(){$/;"	f	struct:StoreNames	typeref:typename:void	file:
 isBenneVanRendezett	main.cpp	/^inline bool isBenneVanRendezett(const char array[][50], const char values[][50], int lengtharray/;"	f	typeref:typename:bool
