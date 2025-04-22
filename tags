@@ -22,6 +22,14 @@ ARCHITECTURE_ID	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  defi
 ARCHITECTURE_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#   define ARCHITECTURE_ID /;"	d	file:
 ARCHITECTURE_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define ARCHITECTURE_ID /;"	d	file:
 ARCHITECTURE_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define ARCHITECTURE_ID$/;"	d	file:
+Alany	TheToughtExperimental.sql	/^CREATE TABLE "Alany" ($/;"	t
+AlanyTulajdonsag	TheToughtExperimental.sql	/^CREATE TABLE "AlanyTulajdonsag" ($/;"	t
+AlanyVizsgalat	TheToughtExperimental.sql	/^CREATE TABLE "AlanyVizsgalat" ($/;"	t
+Alkotoresz	TheToughtExperimental.sql	/^CREATE TABLE "Alkotoresz" ($/;"	t
+AlkotoreszTipus	TheToughtExperimental.sql	/^CREATE TABLE "AlkotoreszTipus" ($/;"	t
+AlkotoreszTulajdonsag	TheToughtExperimental.sql	/^CREATE TABLE "AlkotoreszTulajdonsag" ($/;"	t
+Anyag	TheToughtExperimental.sql	/^CREATE TABLE "Anyag" ($/;"	t
+Atjaras	TheToughtExperimental.sql	/^CREATE TABLE "Atjaras" ($/;"	t
 C	main.cpp	/^pqxx::connection C = pqxx::connection(R"(dbname = testdb user=postgres password=test123 hostaddr/;"	v	typeref:typename:pqxx::connection
 CMAKE_AR	build/CMakeFiles/3.22.1/CMakeCCompiler.cmake	/^set(CMAKE_AR "\/usr\/bin\/ar")$/;"	v
 CMAKE_AR	build/CMakeFiles/3.22.1/CMakeCXXCompiler.cmake	/^set(CMAKE_AR "\/usr\/bin\/ar")$/;"	v
@@ -202,6 +210,7 @@ CXX_STD	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define
 C_VERSION	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define C_VERSION /;"	d	file:
 C_VERSION	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define C_VERSION$/;"	d	file:
 C_VERSION	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define C_VERSION /;"	d	file:
+Ceg	TheToughtExperimental.sql	/^CREATE TABLE "Ceg" ($/;"	t
 CrowSample	CMakeLists.txt	/^add_executable(CrowSample main.cpp)$/;"	t
 CrowSample	CMakeLists.txt	/^project(CrowSample)$/;"	p
 CrowSample	build/Makefile	/^CrowSample: cmake_check_build_system$/;"	t
@@ -209,10 +218,47 @@ CrowSample/fast	build/Makefile	/^CrowSample\/fast:$/;"	t
 DEC	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#define DEC(/;"	d	file:
 DEC	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define DEC(/;"	d	file:
 EQUALS	build/Makefile	/^EQUALS = =$/;"	m
+EngedelyezettSema	TheToughtExperimental.sql	/^CREATE TABLE "EngedelyezettSema" ($/;"	t
+EpuletHelyseg	TheToughtExperimental.sql	/^CREATE TABLE "EpuletHelyseg" ($/;"	t
+EpuletHelysegFerohely	TheToughtExperimental.sql	/^CREATE TABLE "EpuletHelysegFerohely" ($/;"	t
+ErintettAlkotoresz	TheToughtExperimental.sql	/^CREATE TABLE "ErintettAlkotoresz" ($/;"	t
+Ertekeles	TheToughtExperimental.sql	/^  "Ertekeles" int,$/;"	E	table:Oklevel
+EtelIntolarencia	TheToughtExperimental.sql	/^CREATE TABLE "EtelIntolarencia" ($/;"	t
+Etetes	TheToughtExperimental.sql	/^CREATE TABLE "Etetes" ($/;"	t
+Faj	TheToughtExperimental.sql	/^CREATE TABLE "Faj" ($/;"	t
+FajAlkotoresze	TheToughtExperimental.sql	/^CREATE TABLE "FajAlkotoresze" ($/;"	t
+Felhasznalo	TheToughtExperimental.sql	/^CREATE TABLE "Felhasznalo" ($/;"	t
 HEX	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#define HEX(/;"	d	file:
 HEX	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define HEX(/;"	d	file:
+HalottAlany	TheToughtExperimental.sql	/^CREATE TABLE "HalottAlany" ($/;"	t
+HozzaferesKategoria	TheToughtExperimental.sql	/^CREATE TABLE "HozzaferesKategoria" ($/;"	t
 ID_VOID_MAIN	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define ID_VOID_MAIN$/;"	d	file:
 INCLUDE_PATHS	CMakeLists.txt	/^set(INCLUDE_PATHS \/usr\/include)$/;"	v
+JogCsoport	TheToughtExperimental.sql	/^CREATE TABLE "JogCsoport" ($/;"	t
+JogCsoportHozzarendeles	TheToughtExperimental.sql	/^CREATE TABLE "JogCsoportHozzarendeles" ($/;"	t
+KLCsHozzarendeles	TheToughtExperimental.sql	/^CREATE TABLE "KLCsHozzarendeles" ($/;"	t
+KLCsHozzarendelesVegrehajtas	TheToughtExperimental.sql	/^CREATE TABLE "KLCsHozzarendelesVegrehajtas" ($/;"	t
+Kiserlet	TheToughtExperimental.sql	/^CREATE TABLE "Kiserlet" ($/;"	t
+KiserletLepes	TheToughtExperimental.sql	/^CREATE TABLE "KiserletLepes" ($/;"	t
+KiserletLepesCsoport	TheToughtExperimental.sql	/^CREATE TABLE "KiserletLepesCsoport" ($/;"	t
+KiserletLepesFeltetelesUgrasFeltetel	TheToughtExperimental.sql	/^CREATE TABLE "KiserletLepesFeltetelesUgrasFeltetel" ($/;"	t
+KiserletLepesSorrend	TheToughtExperimental.sql	/^CREATE TABLE "KiserletLepesSorrend" ($/;"	t
+KiserletLepesVegreHajtasEtetes	TheToughtExperimental.sql	/^CREATE TABLE "KiserletLepesVegreHajtasEtetes" ($/;"	t
+KiserletLepesVegreHajtasValasztottAlany	TheToughtExperimental.sql	/^CREATE TABLE "KiserletLepesVegreHajtasValasztottAlany" ($/;"	t
+KiserletLepesVegreHajtasValasztottLehetoseg	TheToughtExperimental.sql	/^CREATE TABLE "KiserletLepesVegreHajtasValasztottLehetoseg" ($/;"	t
+KiserletLepesVegreHajtasVizsgalat	TheToughtExperimental.sql	/^CREATE TABLE "KiserletLepesVegreHajtasVizsgalat" ($/;"	t
+KiserletLepesVegrehajtas	TheToughtExperimental.sql	/^CREATE TABLE "KiserletLepesVegrehajtas" ($/;"	t
+KiserletLepesVegrehajtasEsemeny	TheToughtExperimental.sql	/^CREATE TABLE "KiserletLepesVegrehajtasEsemeny" ($/;"	t
+KiserletResztvevo	TheToughtExperimental.sql	/^CREATE TABLE "KiserletResztvevo" ($/;"	t
+KiserletVegrehajtas	TheToughtExperimental.sql	/^CREATE TABLE "KiserletVegrehajtas" ($/;"	t
+KiserletlepesFeltetelesUgras	TheToughtExperimental.sql	/^CREATE TABLE "KiserletlepesFeltetelesUgras" ($/;"	t
+LepeshezTartozoVizsgalat	TheToughtExperimental.sql	/^CREATE TABLE "LepeshezTartozoVizsgalat" ($/;"	t
+MegetetendoEtelek	TheToughtExperimental.sql	/^CREATE TABLE "MegetetendoEtelek" ($/;"	t
+MegetetettEtelek	TheToughtExperimental.sql	/^CREATE TABLE "MegetetettEtelek" ($/;"	t
+Mertekegyseg	TheToughtExperimental.sql	/^CREATE TABLE "Mertekegyseg" ($/;"	t
+Munkatars	TheToughtExperimental.sql	/^CREATE TABLE "Munkatars" ($/;"	t
+Oklevel	TheToughtExperimental.sql	/^CREATE TABLE "Oklevel" ($/;"	t
+OktatasiIntezmeny	TheToughtExperimental.sql	/^CREATE TABLE "OktatasiIntezmeny" ($/;"	t
 PLATFORM_ID	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define PLATFORM_ID /;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define PLATFORM_ID$/;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define PLATFORM_ID /;"	d	file:
@@ -222,6 +268,8 @@ PLATFORM_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  de
 PLATFORM_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID /;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID$/;"	d	file:
 RM	build/Makefile	/^RM = \/usr\/bin\/cmake -E rm -f$/;"	m
+Recept	TheToughtExperimental.sql	/^CREATE TABLE "Recept" ($/;"	t
+ReceptVariacioNev	TheToughtExperimental.sql	/^CREATE TABLE "ReceptVariacioNev" ($/;"	t
 SHELL	build/Makefile	/^SHELL = \/bin\/sh$/;"	m
 SIMULATE_ID	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define SIMULATE_ID /;"	d	file:
 SIMULATE_ID	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define SIMULATE_ID /;"	d	file:
@@ -243,14 +291,31 @@ STRINGIFY	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#define STRIN
 STRINGIFY	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define STRINGIFY(/;"	d	file:
 STRINGIFY_HELPER	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#define STRINGIFY_HELPER(/;"	d	file:
 STRINGIFY_HELPER	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define STRINGIFY_HELPER(/;"	d	file:
+Sema	TheToughtExperimental.sql	/^CREATE TABLE "Sema" ($/;"	t
 StoreNames	main.cpp	/^	StoreNames(char* characterChain){$/;"	f	struct:StoreNames	file:
 StoreNames	main.cpp	/^struct StoreNames{$/;"	s	file:
+Szak	TheToughtExperimental.sql	/^CREATE TABLE "Szak" ($/;"	t
+Személy	TheToughtExperimental.sql	/^CREATE TABLE "Személy" ($/;"	t
+Szerepkor	TheToughtExperimental.sql	/^CREATE TABLE "Szerepkor" ($/;"	t
+Tapasztalat	TheToughtExperimental.sql	/^CREATE TABLE "Tapasztalat" ($/;"	t
+Tartalmaz	TheToughtExperimental.sql	/^CREATE TABLE "Tartalmaz" ($/;"	t
+Tualjdonsag	TheToughtExperimental.sql	/^CREATE TABLE "Tualjdonsag" ($/;"	t
+Tunet	TheToughtExperimental.sql	/^CREATE TABLE "Tunet" ($/;"	t
+TunetAllapot	TheToughtExperimental.sql	/^CREATE TABLE "TunetAllapot" ($/;"	t
+U_KiserletLepesSorrend	TheToughtExperimental.sql	/^CREATE UNIQUE INDEX "U_KiserletLepesSorrend" ON "KiserletLepesSorrend" ("kiserletLepesID", "hany/;"	i	table:KiserletLepesSorrend
+ValasztasiLehetoseg	TheToughtExperimental.sql	/^CREATE TABLE "ValasztasiLehetoseg" ($/;"	t
+Valaszthato	TheToughtExperimental.sql	/^CREATE TABLE "Valaszthato" ($/;"	t
+ValaszthatoAlany	TheToughtExperimental.sql	/^CREATE TABLE "ValaszthatoAlany" ($/;"	t
+ValaszthatoAlanyTipus	TheToughtExperimental.sql	/^CREATE TABLE "ValaszthatoAlanyTipus" ($/;"	t
+ValaszthatoAnyag	TheToughtExperimental.sql	/^CREATE TABLE "ValaszthatoAnyag" ($/;"	t
+VizsgalatElojegyzes	TheToughtExperimental.sql	/^CREATE TABLE "VizsgalatElojegyzes" ($/;"	t
+VizsgalatTipus	TheToughtExperimental.sql	/^CREATE TABLE "VizsgalatTipus" ($/;"	t
 WordsCompare	main.cpp	/^	WordsCompare(int leghosszabbSzo, int szavakSzama){$/;"	f	struct:WordsCompare	file:
 WordsCompare	main.cpp	/^struct WordsCompare{$/;"	s	file:
 __anon3b5b11db0102	main.cpp	/^		CROW_ROUTE(app, "\/login")([](const crow::request& req) {$/;"	f	function:main	file:
 __anon3b5b11db0202	main.cpp	/^		CROW_ROUTE(app, "\/ujvacsora")([](){$/;"	f	function:main	file:
 __anon3b5b11db0302	main.cpp	/^		CROW_ROUTE(app, "\/addrecord\/<string>").methods("POST"_method)([](const crow::request& req, s/;"	f	function:main	file:
-__anon3b5b11db0402	main.cpp	/^		CROW_ROUTE(app, "\/callquery").methods("POST"_method)([](const crow::request& req){$/;"	f	function:main	file:
+__anon3b5b11db0402	main.cpp	/^		CROW_ROUTE(app, "\/callquery").methods("POST"_method)([&compareWords](const crow::request& req/;"	f	function:main	file:
 __anon3b5b11db0502	main.cpp	/^		CROW_ROUTE(app, "\/deletefrom\/<string>\/<int>").methods("DELETE"_method)([](const crow::reque/;"	f	function:main	file:
 __anon3b5b11db0602	main.cpp	/^		CROW_ROUTE(app, "\/update\/<string>\/<int>").methods("PUT"_method)([](const crow::request& req/;"	f	function:main	file:
 __anon3b5b11db0702	main.cpp	/^	    CROW_ROUTE(app, "\/callmethod\/<string>").methods("GET"_method)([](const crow::request& req/;"	f	function:main	file:
@@ -260,30 +325,135 @@ __anon3b5b11db0a02	main.cpp	/^    CROW_ROUTE(app, "\/exat\/<int>").methods("POST
 __anon3b5b11db0b02	main.cpp	/^	CROW_ROUTE(app, "\/pelda\/<int>").methods("POST"_method)([](const crow::request& req, const int/;"	f	function:main	file:
 __has_include	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define __has_include(/;"	d	file:
 __has_include	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define __has_include(/;"	d	file:
+alanyID	TheToughtExperimental.sql	/^  "alanyID" int PRIMARY KEY,$/;"	E	table:HalottAlany
+alanyID	TheToughtExperimental.sql	/^  "alanyID" int,$/;"	E	table:AlanyVizsgalat
+alanyID	TheToughtExperimental.sql	/^  "alanyID" int,$/;"	E	table:Etetes
+alanyID	TheToughtExperimental.sql	/^  "alanyID" int,$/;"	E	table:KiserletLepesVegreHajtasValasztottAlany
+alanyID	TheToughtExperimental.sql	/^  "alanyID" int,$/;"	E	table:KiserletLepesVegrehajtas
+alanyID	TheToughtExperimental.sql	/^  "alanyID" int,$/;"	E	table:KiserletResztvevo
+alanyID	TheToughtExperimental.sql	/^  "alanyID" int,$/;"	E	table:ValaszthatoAlany
+alanyVizsgalatID	TheToughtExperimental.sql	/^  "alanyVizsgalatID" int,$/;"	E	table:KiserletLepesVegreHajtasVizsgalat
+alanyvizsgalata	TheToughtExperimental.sql	/^  "alanyvizsgalata" text,$/;"	E	table:KiserletResztvevo
+alkotoreszID	TheToughtExperimental.sql	/^  "alkotoreszID" int,$/;"	E	table:AlkotoreszTulajdonsag
+alkotoreszID	TheToughtExperimental.sql	/^  "alkotoreszID" int,$/;"	E	table:ErintettAlkotoresz
+alkotoreszID	TheToughtExperimental.sql	/^  "alkotoreszID" int,$/;"	E	table:FajAlkotoresze
+alkotoreszID	TheToughtExperimental.sql	/^  "alkotoreszID" int,$/;"	E	table:Tartalmaz
+alkotoreszIDazonbelul	TheToughtExperimental.sql	/^  "alkotoreszIDazonbelul" int,$/;"	E	table:Alkotoresz
+alkotoreszTipusID	TheToughtExperimental.sql	/^  "alkotoreszTipusID" int,$/;"	E	table:Alkotoresz
 all	build/Makefile	/^all: cmake_check_build_system$/;"	t
+anyagID	TheToughtExperimental.sql	/^  "anyagID" int$/;"	E	table:EtelIntolarencia
+anyagID	TheToughtExperimental.sql	/^  "anyagID" int,$/;"	E	table:MegetetendoEtelek
+anyagID	TheToughtExperimental.sql	/^  "anyagID" int,$/;"	E	table:MegetetettEtelek
+anyagID	TheToughtExperimental.sql	/^  "anyagID" int,$/;"	E	table:Recept
+anyagID	TheToughtExperimental.sql	/^  "anyagID" int,$/;"	E	table:Tartalmaz
+anyagID	TheToughtExperimental.sql	/^  "anyagID" int,$/;"	E	table:ValaszthatoAnyag
+anyagIDOsszetevo	TheToughtExperimental.sql	/^  "anyagIDOsszetevo" int,$/;"	E	table:Recept
+anyjaNeve	TheToughtExperimental.sql	/^  "anyjaNeve" varchar(100) NOT NULL,$/;"	E	table:Személy
+befejezetlen	TheToughtExperimental.sql	/^  "befejezetlen" bit,$/;"	E	table:Oklevel
+bevonasDatuma	TheToughtExperimental.sql	/^  "bevonasDatuma" date,$/;"	E	table:KiserletResztvevo
 bynarytree	main.cpp	/^	int* bynarytree;$/;"	m	struct:WordsCompare	typeref:typename:int *	file:
 byoszlop	main.cpp	/^	char* byoszlop;$/;"	m	struct:WordsCompare	typeref:typename:char *	file:
 bywoherin	main.cpp	/^	int* bywoherin; \/\/ Inicializálás binarytree*32, Csökkentés: Ahány betű$/;"	m	struct:WordsCompare	typeref:typename:int *	file:
+cegID	TheToughtExperimental.sql	/^  "cegID" int,$/;"	E	table:Tapasztalat
 characterChain	main.cpp	/^	char* characterChain;$/;"	m	struct:StoreNames	typeref:typename:char *	file:
 clean	build/Makefile	/^clean:$/;"	t
 clean/fast	build/Makefile	/^clean\/fast: clean$/;"	t
 cmake_check_build_system	build/Makefile	/^cmake_check_build_system:$/;"	t
 cmake_force	build/Makefile	/^cmake_force:$/;"	t
 const	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define const$/;"	d	file:
+csoportszam	TheToughtExperimental.sql	/^  "csoportszam" int$/;"	E	table:KiserletLepesSorrend
+csoportszam	TheToughtExperimental.sql	/^  "csoportszam" int,$/;"	E	table:KLCsHozzarendeles
+csoportszam	TheToughtExperimental.sql	/^  "csoportszam" int,$/;"	E	table:KiserletResztvevo
+csoportszam	TheToughtExperimental.sql	/^  "csoportszam" int,$/;"	E	table:ValasztasiLehetoseg
+csoportszam	TheToughtExperimental.sql	/^  "csoportszam" int,$/;"	E	table:ValaszthatoAlanyTipus
+csoportszam	TheToughtExperimental.sql	/^  "csoportszam" int,$/;"	E	table:ValaszthatoAnyag
+datum	TheToughtExperimental.sql	/^  "datum" date,$/;"	E	table:Etetes
 default_target	build/Makefile	/^default_target: all$/;"	t
 depend	build/Makefile	/^depend:$/;"	t
 doSyntaxtCheckPreparation	main.cpp	/^WordsCompare doSyntaxtCheckPreparation(char* characterChain){	$/;"	f	typeref:typename:WordsCompare
 edit_cache	build/Makefile	/^edit_cache:$/;"	t
 edit_cache/fast	build/Makefile	/^edit_cache\/fast: edit_cache$/;"	t
+egyenlo	TheToughtExperimental.sql	/^  "egyenlo" bit,$/;"	E	table:AlanyTulajdonsag
+egyenlo	TheToughtExperimental.sql	/^  "egyenlo" bit,$/;"	E	table:AlkotoreszTulajdonsag
+egyenlo	TheToughtExperimental.sql	/^  "egyenlo" bit,$/;"	E	table:Tartalmaz
+egyenlo	TheToughtExperimental.sql	/^  "egyenlo" bit,$/;"	E	table:TunetAllapot
+elemzes	TheToughtExperimental.sql	/^  "elemzes" text,$/;"	E	table:KiserletLepesVegrehajtasEsemeny
+elnevezes	TheToughtExperimental.sql	/^  "elnevezes" int UNIQUE NOT NULL,$/;"	E	table:Kiserlet
+elnevezes	TheToughtExperimental.sql	/^  "elnevezes" varchar(100) UNIQUE NOT NULL$/;"	E	table:AlkotoreszTipus
+elnevezes	TheToughtExperimental.sql	/^  "elnevezes" varchar(100) UNIQUE NOT NULL$/;"	E	table:Faj
+elnevezes	TheToughtExperimental.sql	/^  "elnevezes" varchar(100) UNIQUE NOT NULL,$/;"	E	table:KLCsHozzarendeles
+elnevezes	TheToughtExperimental.sql	/^  "elnevezes" varchar(100) UNIQUE NOT NULL,$/;"	E	table:KiserletLepesCsoport
+elnevezes	TheToughtExperimental.sql	/^  "elnevezes" varchar(100) UNIQUE NOT NULL,$/;"	E	table:Mertekegyseg
+elnevezes	TheToughtExperimental.sql	/^  "elnevezes" varchar(100) UNIQUE NOT NULL,$/;"	E	table:Tunet
+elnevezes	TheToughtExperimental.sql	/^  "elnevezes" varchar(100),$/;"	E	table:KiserletLepes
+elnevezes	TheToughtExperimental.sql	/^  "elnevezes" varchar(30) UNIQUE NOT NULL$/;"	E	table:Alkotoresz
+elnevezes	TheToughtExperimental.sql	/^  "elnevezes" varchar(30) UNIQUE NOT NULL$/;"	E	table:EpuletHelyseg
+elnevezes	TheToughtExperimental.sql	/^  "elnevezes" varchar(30) UNIQUE NOT NULL$/;"	E	table:Valaszthato
+elnevezes	TheToughtExperimental.sql	/^  "elnevezes" varchar(30) UNIQUE NOT NULL$/;"	E	table:VizsgalatTipus
+elnevezes	TheToughtExperimental.sql	/^  "elnevezes" varchar(30) UNIQUE NOT NULL,$/;"	E	table:Tualjdonsag
+elteroIdopont	TheToughtExperimental.sql	/^  "elteroIdopont" date,$/;"	E	table:MegetetettEtelek
+elvevezes	TheToughtExperimental.sql	/^  "elvevezes" varchar(100) UNIQUE NOT NULL$/;"	E	table:Szerepkor
+email	TheToughtExperimental.sql	/^  "email" varchar(60) UNIQUE,$/;"	E	table:Felhasznalo
+epuletHelysegID	TheToughtExperimental.sql	/^  "epuletHelysegID" int,$/;"	E	table:Atjaras
+epuletHelysegID	TheToughtExperimental.sql	/^  "epuletHelysegID" int,$/;"	E	table:EpuletHelysegFerohely
+epuletHelysegID	TheToughtExperimental.sql	/^  "epuletHelysegID" int,$/;"	E	table:KiserletLepes
+epuletHelysegIDcel	TheToughtExperimental.sql	/^  "epuletHelysegIDcel" int,$/;"	E	table:Atjaras
+etetesID	TheToughtExperimental.sql	/^  "etetesID" int,$/;"	E	table:EtelIntolarencia
+etetesID	TheToughtExperimental.sql	/^  "etetesID" int,$/;"	E	table:KiserletLepesVegreHajtasEtetes
+etetesID	TheToughtExperimental.sql	/^  "etetesID" int,$/;"	E	table:MegetetettEtelek
 exat	main.cpp	/^int exat=0;$/;"	v	typeref:typename:int
+fajID	TheToughtExperimental.sql	/^  "fajID" int$/;"	E	table:Alany
+fajID	TheToughtExperimental.sql	/^  "fajID" int,$/;"	E	table:FajAlkotoresze
+fazis	TheToughtExperimental.sql	/^  "fazis" INT GENERATED BY DEFAULT AS IDENTITY,$/;"	E	table:KLCsHozzarendeles
+felhasznaloID	TheToughtExperimental.sql	/^  "felhasznaloID" int,$/;"	E	table:JogCsoportHozzarendeles
+felhasznalonev	TheToughtExperimental.sql	/^  "felhasznalonev" char(30) UNIQUE,$/;"	E	table:Felhasznalo
 getCallMethod	main.cpp	/^inline std::string getCallMethod(pqxx::work &W, std::string usertoken, std::string methodname){$/;"	f	typeref:typename:std::string
 getCallSimpleQuery	main.cpp	/^inline std::string getCallSimpleQuery(pqxx::work &W, std::string tablanev, std::string usertoken/;"	f	typeref:typename:std::string
 getDBQueryUnit	main.cpp	/^inline std::string getDBQueryUnit(std::string unit, std::string value){$/;"	f	typeref:typename:std::string
 getSQLQuery	main.cpp	/^inline std::string getSQLQuery(pqxx::work &W, const char* querytext){$/;"	f	typeref:typename:std::string
 getSepNumber	main.cpp	/^	int getSepNumber(){$/;"	f	struct:StoreNames	typeref:typename:int	file:
-getTextWithJSONValues	main.cpp	/^inline std::string getTextWithJSONValues(WordsCompare& wordsCompare, StoreNames storeNames[], co/;"	f	typeref:typename:std::string
+getTextWithJSONValues	main.cpp	/^inline std::string getTextWithJSONValues(WordsCompare& wordsCompare, StoreNames storeNames[], \//;"	f	typeref:typename:std::string
 getWithoutSpace	main.cpp	/^inline std::string getWithoutSpace(string text){$/;"	f	typeref:typename:std::string
+gyorsleiras	TheToughtExperimental.sql	/^  "gyorsleiras" varchar(200),$/;"	E	table:KiserletLepesVegrehajtasEsemeny
+halalIdopontja	TheToughtExperimental.sql	/^  "halalIdopontja" date,$/;"	E	table:HalottAlany
+hanyadik	TheToughtExperimental.sql	/^  "hanyadik" INT GENERATED BY DEFAULT AS IDENTITY,$/;"	E	table:KiserletLepesVegrehajtasEsemeny
+hanyadik	TheToughtExperimental.sql	/^  "hanyadik" int,$/;"	E	table:KiserletLepesSorrend
 help	build/Makefile	/^help:$/;"	t
+hozzaferesKategoriaID	TheToughtExperimental.sql	/^  "hozzaferesKategoriaID" int,$/;"	E	table:EngedelyezettSema
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:Alany
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:Alkotoresz
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:AlkotoreszTipus
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:Anyag
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:Ceg
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:EpuletHelyseg
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:Faj
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:Felhasznalo
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:JogCsoport
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:Kiserlet
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:Mertekegyseg
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:Munkatars
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:OktatasiIntezmeny
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:Szak
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:Személy
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:Szerepkor
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:Tualjdonsag
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:Tunet
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:Valaszthato
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:VizsgalatElojegyzes
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:VizsgalatTipus
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY UNIQUE NOT NULL,$/;"	E	table:AlanyVizsgalat
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY UNIQUE NOT NULL,$/;"	E	table:Etetes
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY UNIQUE NOT NULL,$/;"	E	table:KLCsHozzarendeles
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY UNIQUE NOT NULL,$/;"	E	table:KLCsHozzarendelesVegrehajtas
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY UNIQUE NOT NULL,$/;"	E	table:KiserletLepes
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY UNIQUE NOT NULL,$/;"	E	table:KiserletLepesCsoport
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY UNIQUE NOT NULL,$/;"	E	table:KiserletLepesVegrehajtas
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY UNIQUE NOT NULL,$/;"	E	table:KiserletVegrehajtas
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY UNIQUE NOT NULL,$/;"	E	table:KiserletlepesFeltetelesUgras
+id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY UNIQUE NOT NULL,$/;"	E	table:ValaszthatoAlanyTipus
+id	TheToughtExperimental.sql	/^  "id" int PRIMARY KEY,$/;"	E	table:HozzaferesKategoria
+id	TheToughtExperimental.sql	/^  "id" int PRIMARY KEY,$/;"	E	table:ReceptVariacioNev
+id	TheToughtExperimental.sql	/^  "id" int PRIMARY KEY,$/;"	E	table:Sema
 info_arch	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v	typeref:typename:char const *
 info_arch	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v	typeref:typename:char const *
 info_compiler	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v	typeref:typename:char const *
@@ -310,7 +480,54 @@ info_version_internal	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.c
 info_version_internal	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_version_internal = "INFO" ":" "compiler_version_internal[" COMPILER_VERSION_INT/;"	v	typeref:typename:char const *
 initSepIndexes	main.cpp	/^	void initSepIndexes(){$/;"	f	struct:StoreNames	typeref:typename:void	file:
 isBenneVanRendezett	main.cpp	/^inline bool isBenneVanRendezett(const char array[][50], const char values[][50], int lengtharray/;"	f	typeref:typename:bool
+jelszoHASH	TheToughtExperimental.sql	/^  "jelszoHASH" text$/;"	E	table:Felhasznalo
+jogCsoportID	TheToughtExperimental.sql	/^  "jogCsoportID" int,$/;"	E	table:EngedelyezettSema
+jogCsoportID	TheToughtExperimental.sql	/^  "jogCsoportID" int,$/;"	E	table:JogCsoportHozzarendeles
+kLCsHozzarendelesID	TheToughtExperimental.sql	/^  "kLCsHozzarendelesID" int,$/;"	E	table:KLCsHozzarendelesVegrehajtas
+kLCsHozzarendelesVegrehajtasID	TheToughtExperimental.sql	/^  "kLCsHozzarendelesVegrehajtasID" int,$/;"	E	table:KiserletLepesVegrehajtas
+kLCsHozzarendelesVegrehajtasID	TheToughtExperimental.sql	/^  "kLCsHozzarendelesVegrehajtasID" int,$/;"	E	table:KiserletResztvevo
+kLCsHozzarendelesVegrehajtasID	TheToughtExperimental.sql	/^  "kLCsHozzarendelesVegrehajtasID" int,$/;"	E	table:ValaszthatoAlany
+kevesebb	TheToughtExperimental.sql	/^  "kevesebb" bit,$/;"	E	table:AlanyTulajdonsag
+kevesebb	TheToughtExperimental.sql	/^  "kevesebb" bit,$/;"	E	table:AlkotoreszTulajdonsag
+kevesebb	TheToughtExperimental.sql	/^  "kevesebb" bit,$/;"	E	table:Tartalmaz
+kevesebb	TheToughtExperimental.sql	/^  "kevesebb" bit,$/;"	E	table:TunetAllapot
+kezd	TheToughtExperimental.sql	/^  "kezd" date,$/;"	E	table:KLCsHozzarendelesVegrehajtas
+kezdesEve	TheToughtExperimental.sql	/^  "kezdesEve" int,$/;"	E	table:Oklevel
+kiserletCsoportID	TheToughtExperimental.sql	/^  "kiserletCsoportID" int,$/;"	E	table:EpuletHelysegFerohely
+kiserletID	TheToughtExperimental.sql	/^  "kiserletID" int,$/;"	E	table:KLCsHozzarendeles
+kiserletID	TheToughtExperimental.sql	/^  "kiserletID" int,$/;"	E	table:KiserletVegrehajtas
+kiserletLepesCsoportID	TheToughtExperimental.sql	/^  "kiserletLepesCsoportID" int,$/;"	E	table:KLCsHozzarendeles
+kiserletLepesCsoportID	TheToughtExperimental.sql	/^  "kiserletLepesCsoportID" int,$/;"	E	table:KiserletLepes
+kiserletLepesID	TheToughtExperimental.sql	/^  "kiserletLepesID" int,$/;"	E	table:KiserletLepesSorrend
+kiserletLepesID	TheToughtExperimental.sql	/^  "kiserletLepesID" int,$/;"	E	table:KiserletLepesVegrehajtas
+kiserletLepesID	TheToughtExperimental.sql	/^  "kiserletLepesID" int,$/;"	E	table:KiserletlepesFeltetelesUgras
+kiserletLepesID	TheToughtExperimental.sql	/^  "kiserletLepesID" int,$/;"	E	table:LepeshezTartozoVizsgalat
+kiserletLepesID	TheToughtExperimental.sql	/^  "kiserletLepesID" int,$/;"	E	table:MegetetendoEtelek
+kiserletLepesID	TheToughtExperimental.sql	/^  "kiserletLepesID" int,$/;"	E	table:ValasztasiLehetoseg
+kiserletLepesID	TheToughtExperimental.sql	/^  "kiserletLepesID" int,$/;"	E	table:ValaszthatoAlanyTipus
+kiserletLepesID	TheToughtExperimental.sql	/^  "kiserletLepesID" int,$/;"	E	table:ValaszthatoAnyag
+kiserletLepesIDcel	TheToughtExperimental.sql	/^  "kiserletLepesIDcel" int,$/;"	E	table:KiserletlepesFeltetelesUgras
+kiserletLepesIDszuloelem	TheToughtExperimental.sql	/^  "kiserletLepesIDszuloelem" int,$/;"	E	table:KiserletLepesSorrend
+kiserletLepesVegrehajtasID	TheToughtExperimental.sql	/^  "kiserletLepesVegrehajtasID" int,$/;"	E	table:KiserletLepesVegreHajtasEtetes
+kiserletLepesVegrehajtasID	TheToughtExperimental.sql	/^  "kiserletLepesVegrehajtasID" int,$/;"	E	table:KiserletLepesVegreHajtasValasztottAlany
+kiserletLepesVegrehajtasID	TheToughtExperimental.sql	/^  "kiserletLepesVegrehajtasID" int,$/;"	E	table:KiserletLepesVegreHajtasValasztottLehetoseg
+kiserletLepesVegrehajtasID	TheToughtExperimental.sql	/^  "kiserletLepesVegrehajtasID" int,$/;"	E	table:KiserletLepesVegreHajtasVizsgalat
+kiserletLepesVegrehajtasID	TheToughtExperimental.sql	/^  "kiserletLepesVegrehajtasID" int,$/;"	E	table:KiserletLepesVegrehajtasEsemeny
+kiserletVegrehajtasID	TheToughtExperimental.sql	/^  "kiserletVegrehajtasID" int,$/;"	E	table:KLCsHozzarendelesVegrehajtas
+kiserletlepesFeltetelesUgrasID	TheToughtExperimental.sql	/^  "kiserletlepesFeltetelesUgrasID" int,$/;"	E	table:KiserletLepesFeltetelesUgrasFeltetel
+kivonasDatuma	TheToughtExperimental.sql	/^  "kivonasDatuma" date,$/;"	E	table:KiserletResztvevo
+kodnev	TheToughtExperimental.sql	/^  "kodnev" char(30) UNIQUE NOT NULL,$/;"	E	table:Alany
 leghosszabbSzo	main.cpp	/^	int leghosszabbSzo;$/;"	m	struct:WordsCompare	typeref:typename:int	file:
+leiras	TheToughtExperimental.sql	/^  "leiras" text$/;"	E	table:HalottAlany
+leiras	TheToughtExperimental.sql	/^  "leiras" text$/;"	E	table:Kiserlet
+leiras	TheToughtExperimental.sql	/^  "leiras" text$/;"	E	table:KiserletLepesCsoport
+leiras	TheToughtExperimental.sql	/^  "leiras" text$/;"	E	table:Tunet
+leiras	TheToughtExperimental.sql	/^  "leiras" text,$/;"	E	table:AlkotoreszTulajdonsag
+leiras	TheToughtExperimental.sql	/^  "leiras" text,$/;"	E	table:KLCsHozzarendeles
+leiras	TheToughtExperimental.sql	/^  "leiras" text,$/;"	E	table:KiserletLepes
+leiras	TheToughtExperimental.sql	/^  "leiras" text,$/;"	E	table:KiserletLepesVegrehajtas
+leiras	TheToughtExperimental.sql	/^  "leiras" text,$/;"	E	table:Tapasztalat
+leiras	TheToughtExperimental.sql	/^  "leiras" text,$/;"	E	table:TunetAllapot
 length	main.cpp	/^	int length;$/;"	m	struct:StoreNames	typeref:typename:int	file:
 main	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
 main	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f	typeref:typename:void
@@ -322,18 +539,87 @@ main.cpp.s	build/Makefile	/^main.cpp.s:$/;"	t
 main.i	build/Makefile	/^main.i: main.cpp.i$/;"	t
 main.o	build/Makefile	/^main.o: main.cpp.o$/;"	t
 main.s	build/Makefile	/^main.s: main.cpp.s$/;"	t
+megjegyzes	TheToughtExperimental.sql	/^  "megjegyzes" text$/;"	E	table:AlanyVizsgalat
+mennyi	TheToughtExperimental.sql	/^  "mennyi" float,$/;"	E	table:AlanyTulajdonsag
+mennyi	TheToughtExperimental.sql	/^  "mennyi" float,$/;"	E	table:AlkotoreszTulajdonsag
+mennyi	TheToughtExperimental.sql	/^  "mennyi" int,$/;"	E	table:ValaszthatoAlanyTipus
+mennyien	TheToughtExperimental.sql	/^  "mennyien" int,$/;"	E	table:EpuletHelysegFerohely
+mennyiseg	TheToughtExperimental.sql	/^  "mennyiseg" float,$/;"	E	table:Anyag
+mennyiseg	TheToughtExperimental.sql	/^  "mennyiseg" float,$/;"	E	table:MegetetendoEtelek
+mennyiseg	TheToughtExperimental.sql	/^  "mennyiseg" float,$/;"	E	table:MegetetettEtelek
+mennyiseg	TheToughtExperimental.sql	/^  "mennyiseg" float,$/;"	E	table:Recept
+mennyiseg	TheToughtExperimental.sql	/^  "mennyiseg" float,$/;"	E	table:Tartalmaz
+mertekegysegID	TheToughtExperimental.sql	/^  "mertekegysegID" int$/;"	E	table:Anyag
+mertekegysegID	TheToughtExperimental.sql	/^  "mertekegysegID" int$/;"	E	table:Tualjdonsag
+mikor	TheToughtExperimental.sql	/^  "mikor" date,$/;"	E	table:KiserletLepesVegrehajtas
+mikor	TheToughtExperimental.sql	/^  "mikor" date,$/;"	E	table:KiserletLepesVegrehajtasEsemeny
+mikor	TheToughtExperimental.sql	/^  "mikor" date,$/;"	E	table:KiserletVegrehajtas
+mintfeltetelletezik	TheToughtExperimental.sql	/^  "mintfeltetelletezik" bit$/;"	E	table:VizsgalatElojegyzes
+munkakor	TheToughtExperimental.sql	/^  "munkakor" varchar(200),$/;"	E	table:Tapasztalat
+munkatarsID	TheToughtExperimental.sql	/^  "munkatarsID" int,$/;"	E	table:KiserletLepesVegrehajtas
+munkatarsID	TheToughtExperimental.sql	/^  "munkatarsID" int,$/;"	E	table:KiserletVegrehajtas
+munkatarsID	TheToughtExperimental.sql	/^  "munkatarsID" int,$/;"	E	table:Oklevel
+munkatarsID	TheToughtExperimental.sql	/^  "munkatarsID" int,$/;"	E	table:Tapasztalat
+munkatarsIDseged	TheToughtExperimental.sql	/^  "munkatarsIDseged" int,$/;"	E	table:Etetes
+munkatarsIDvezeto	TheToughtExperimental.sql	/^  "munkatarsIDvezeto" int,$/;"	E	table:KLCsHozzarendelesVegrehajtas
+munkaviszonyKezdete	TheToughtExperimental.sql	/^  "munkaviszonyKezdete" date,$/;"	E	table:Tapasztalat
+munkaviszonyVege	TheToughtExperimental.sql	/^  "munkaviszonyVege" date,$/;"	E	table:Tapasztalat
+nem	TheToughtExperimental.sql	/^  "nem" bit,$/;"	E	table:Alany
+nev	TheToughtExperimental.sql	/^  "nev" int UNIQUE$/;"	E	table:HozzaferesKategoria
+nev	TheToughtExperimental.sql	/^  "nev" varchar(100) NOT NULL,$/;"	E	table:Alany
+nev	TheToughtExperimental.sql	/^  "nev" varchar(100) NOT NULL,$/;"	E	table:Személy
+nev	TheToughtExperimental.sql	/^  "nev" varchar(100) UNIQUE NOT NULL,$/;"	E	table:Anyag
+nev	TheToughtExperimental.sql	/^  "nev" varchar(200) UNIQUE NOT NULL$/;"	E	table:Ceg
+nev	TheToughtExperimental.sql	/^  "nev" varchar(200) UNIQUE NOT NULL$/;"	E	table:OktatasiIntezmeny
+nev	TheToughtExperimental.sql	/^  "nev" varchar(30)$/;"	E	table:JogCsoport
+nev	TheToughtExperimental.sql	/^  "nev" varchar(30)$/;"	E	table:ReceptVariacioNev
+nev	TheToughtExperimental.sql	/^  "nev" varchar(30)$/;"	E	table:Sema
+oktatasiIntezmenyID	TheToughtExperimental.sql	/^  "oktatasiIntezmenyID" int,$/;"	E	table:Oklevel
+oktatasiIntezmenyID	TheToughtExperimental.sql	/^  "oktatasiIntezmenyID" int,$/;"	E	table:Szak
 preinstall	build/Makefile	/^preinstall: all$/;"	t
 preinstall/fast	build/Makefile	/^preinstall\/fast:$/;"	t
+probalkozas	TheToughtExperimental.sql	/^  "probalkozas" INT GENERATED BY DEFAULT AS IDENTITY,$/;"	E	table:KiserletLepesVegrehajtas
 qnxnto	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v	typeref:typename:char const *
 qnxnto	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v	typeref:typename:char const *
 rebuild_cache	build/Makefile	/^rebuild_cache:$/;"	t
 rebuild_cache/fast	build/Makefile	/^rebuild_cache\/fast: rebuild_cache$/;"	t
+rekurzivnakszant	TheToughtExperimental.sql	/^  "rekurzivnakszant" bit,$/;"	E	table:KiserletlepesFeltetelesUgras
+rovidites	TheToughtExperimental.sql	/^  "rovidites" varchar(6) UNIQUE NOT NULL$/;"	E	table:Mertekegyseg
+semaID	TheToughtExperimental.sql	/^  "semaID" int,$/;"	E	table:EngedelyezettSema
 sepIndexes	main.cpp	/^	int* sepIndexes;$/;"	m	struct:StoreNames	typeref:typename:int *	file:
 signal_handler	main.cpp	/^void signal_handler(int signal) {$/;"	f	typeref:typename:void
+sikeres	TheToughtExperimental.sql	/^  "sikeres" bit,$/;"	E	table:KiserletLepesVegrehajtas
+sulyossagMerteke	TheToughtExperimental.sql	/^  "sulyossagMerteke" int,$/;"	E	table:TunetAllapot
+szakID	TheToughtExperimental.sql	/^  "szakID" int,$/;"	E	table:Oklevel
+szakmegnevezes	TheToughtExperimental.sql	/^  "szakmegnevezes" varchar(200) UNIQUE NOT NULL$/;"	E	table:Szak
 szavakSzama	main.cpp	/^	int szavakSzama;$/;"	m	struct:WordsCompare	typeref:typename:int	file:
+szemelyiSzam	TheToughtExperimental.sql	/^  "szemelyiSzam" char(6) UNIQUE,$/;"	E	table:Személy
+szerepkorID	TheToughtExperimental.sql	/^  "szerepkorID" int NOT NULL$/;"	E	table:Munkatars
 szoRaktarSQLSyntaxt	main.cpp	/^char szoRaktarSQLSyntaxt[] =$/;"	v	typeref:typename:char[]
+szuletes	TheToughtExperimental.sql	/^  "szuletes" date,$/;"	E	table:Alany
+szuletesiIdo	TheToughtExperimental.sql	/^  "szuletesiIdo" date NOT NULL$/;"	E	table:Személy
+tulajdonsagID	TheToughtExperimental.sql	/^  "tulajdonsagID" int,$/;"	E	table:AlanyTulajdonsag
+tulajdonsagID	TheToughtExperimental.sql	/^  "tulajdonsagID" int,$/;"	E	table:AlkotoreszTulajdonsag
+tunetID	TheToughtExperimental.sql	/^  "tunetID" int,$/;"	E	table:ErintettAlkotoresz
+tunetID	TheToughtExperimental.sql	/^  "tunetID" int,$/;"	E	table:TunetAllapot
+valaszthatoAlanyTipusID	TheToughtExperimental.sql	/^  "valaszthatoAlanyTipusID" int,$/;"	E	table:ValaszthatoAlany
+valaszthatoID	TheToughtExperimental.sql	/^  "valaszthatoID" int,$/;"	E	table:KiserletLepesVegreHajtasValasztottLehetoseg
+valaszthatoID	TheToughtExperimental.sql	/^  "valaszthatoID" int,$/;"	E	table:ValasztasiLehetoseg
+variacioNevID	TheToughtExperimental.sql	/^  "variacioNevID" int,$/;"	E	table:Recept
+vege	TheToughtExperimental.sql	/^  "vege" date,$/;"	E	table:KLCsHozzarendelesVegrehajtas
 vegsoErtek	main.cpp	/^	int* vegsoErtek;$/;"	m	struct:WordsCompare	typeref:typename:int *	file:
 vegsoErtekOszlopSzam	main.cpp	/^	char* vegsoErtekOszlopSzam; \/\/ Inicializálás a szavak számával$/;"	m	struct:WordsCompare	typeref:typename:char *	file:
+vegzesEve	TheToughtExperimental.sql	/^  "vegzesEve" int,$/;"	E	table:Oklevel
+vizsgalatElojegyzesID	TheToughtExperimental.sql	/^  "vizsgalatElojegyzesID" int PRIMARY KEY,$/;"	E	table:AlanyVizsgalat
+vizsgalatElojegyzesID	TheToughtExperimental.sql	/^  "vizsgalatElojegyzesID" int,$/;"	E	table:KiserletLepesFeltetelesUgrasFeltetel
+vizsgalatElojegyzesID	TheToughtExperimental.sql	/^  "vizsgalatElojegyzesID" int,$/;"	E	table:LepeshezTartozoVizsgalat
+vizsgalatElojegyzesID	TheToughtExperimental.sql	/^  "vizsgalatElojegyzesID" int,$/;"	E	table:ValaszthatoAlanyTipus
+vizsgalatID	TheToughtExperimental.sql	/^  "vizsgalatID" int,$/;"	E	table:AlanyTulajdonsag
+vizsgalatID	TheToughtExperimental.sql	/^  "vizsgalatID" int,$/;"	E	table:AlkotoreszTulajdonsag
+vizsgalatID	TheToughtExperimental.sql	/^  "vizsgalatID" int,$/;"	E	table:Tartalmaz
+vizsgalatID	TheToughtExperimental.sql	/^  "vizsgalatID" int,$/;"	E	table:TunetAllapot
+vizsgalatIdopont	TheToughtExperimental.sql	/^  "vizsgalatIdopont" date,$/;"	E	table:AlanyVizsgalat
+vizsgalatTipusID	TheToughtExperimental.sql	/^  "vizsgalatTipusID" int,$/;"	E	table:VizsgalatElojegyzes
 volatile	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define volatile$/;"	d	file:
 ~StoreNames	main.cpp	/^	~StoreNames(){$/;"	f	struct:StoreNames	file:
 ~WordsCompare	main.cpp	/^	~WordsCompare(){$/;"	f	struct:WordsCompare	file:
