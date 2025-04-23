@@ -363,6 +363,10 @@ inline std::string getTextWithJSONValues(WordsCompare& wordsCompare, StoreNames 
 						retn += "'"+s+"'";
 					}
 					else if(syntaxtGood){
+						std::cout << "OOOOOOOOOOOOOO" << endl;
+//						std::string szamStr = (JSONValues[field].nt() == crow::json::num_type::Signed_integer) ? 
+//								std::to_string(JSONValues[field].i()) : std::to_string(JSONValues[field].d());
+
 						crow::json::wvalue myOb(JSONValues[field]);
 						retn += myOb.dump();
 					}
@@ -544,12 +548,10 @@ std::cout << "Még megy" << endl;
 				StoreNames(methodNames)
 			};
 			std::cout << "Elmegy";
-			std::cout << getTextWithJSONValues(compareWords, storeNames, CAzon, queryJ) << endl;
-			std::cout << "Elmegy";
+			std::string quer = getTextWithJSONValues(compareWords, storeNames, CAzon, queryJ);
+			std::cout << quer << endl;
 			pqxx::work W(C);
-        	return /*getSQLQuery(W,  
-				(
-				*/crow::response(200, "Megkaptam!");
+        	return crow::response(200, getSQLQuery(W, quer.c_str()));
     	});
 
 		CROW_ROUTE(app, "/deletefrom/<string>/<int>").methods("DELETE"_method)([](const crow::request& req, const std::string tablename, const int id){ // Egyszerű kulcsos táblák
