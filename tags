@@ -30,7 +30,7 @@ AlkotoreszTipus	TheToughtExperimental.sql	/^CREATE TABLE "AlkotoreszTipus" ($/;"
 AlkotoreszTulajdonsag	TheToughtExperimental.sql	/^CREATE TABLE "AlkotoreszTulajdonsag" ($/;"	t
 Anyag	TheToughtExperimental.sql	/^CREATE TABLE "Anyag" ($/;"	t
 Atjaras	TheToughtExperimental.sql	/^CREATE TABLE "Atjaras" ($/;"	t
-C	main.cpp	/^pqxx::connection C = pqxx::connection(R"(dbname = testdb user=postgres password=test123 hostaddr/;"	v	typeref:typename:pqxx::connection
+C	main.cpp	/^pqxx::connection C = pqxx::connection(R"(dbname = testdb2 user=postgres password=test123 hostadd/;"	v	typeref:typename:pqxx::connection
 CMAKE_AR	build/CMakeFiles/3.22.1/CMakeCCompiler.cmake	/^set(CMAKE_AR "\/usr\/bin\/ar")$/;"	v
 CMAKE_AR	build/CMakeFiles/3.22.1/CMakeCXXCompiler.cmake	/^set(CMAKE_AR "\/usr\/bin\/ar")$/;"	v
 CMAKE_BINARY_DIR	build/Makefile	/^CMAKE_BINARY_DIR = \/home\/test\/crowwebsite\/build$/;"	m

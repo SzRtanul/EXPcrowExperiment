@@ -18,7 +18,7 @@ using namespace pqxx;
 
 
 
-pqxx::connection C = pqxx::connection(R"(dbname = testdb user=postgres password=test123 hostaddr=127.0.0.1 port=5432)");
+pqxx::connection C = pqxx::connection(R"(dbname = testdb2 user=postgres password=test123 hostaddr=127.0.0.1 port=5432)");
 int exat=0;
 // SzóRaktár
 char szoRaktarSQLSyntaxt[] =
@@ -342,30 +342,33 @@ inline std::string getTextWithJSONValues(WordsCompare& wordsCompare, StoreNames 
 					std::cout << "Még megyeni: " << i << endl;
 				}
 			}
-				else if(addValue && syntaxtGood){
-					std::cout << (int)text[i]-65 << " JELLLLL "<< endl;
-					while(((unsigned)(text[i] - 65) < (91 - 65) || (unsigned)(text[i] - 97) < (123-97))){
-						field += text[i];
-						i++;
-					}
-					std::cout << field << endl;
-					if(field.length() > 0 && JSONValues.has(field)){
-						syntaxtGood = JSONValues.has(field);
-						if(JSONValues[field].t() == crow::json::type::String){
-							retn += "'"+std::string(JSONValues[field].s())+"'";
-						}
-						else if(syntaxtGood){
-							crow::json::wvalue myOb(JSONValues[field]);
-							retn += myOb.dump();
-						}
-						i--;
-					}
+			else if(addValue && syntaxtGood){
+				std::cout << (int)text[i]-65 << " JELLLLL "<< endl;
+				while(((unsigned)(text[i] - 65) < (91 - 65) || (unsigned)(text[i] - 97) < (123-97))){
+					field += text[i];
+					i++;
 				}
-//				std::cout << "Syn.: " << syntaxtGood << endl;
-//				std::cout << "Még megyeni: " << i << endl;
-			
-//			std::cout << "Syn.: " << syntaxtGood << endl;
-//			std::cout << "Még mindig megyen" << endl;	
+				std::cout << field << endl;
+				if(field.length() > 0 && JSONValues.has(field)){
+					syntaxtGood = JSONValues.has(field);
+					if(JSONValues[field].t() == crow::json::type::String){
+						std::string JSONSTR = std::string(JSONValues[field].s());
+						std::string::size_type pos = 0;
+						std::string s = JSONSTR; 
+						while ((pos = s.find("'", pos)) != std::string::npos) {
+						    s.replace(pos, 1, "''");
+						    pos += 2;
+						}
+//						JSONSTR = s;
+						retn += "'"+s+"'";
+					}
+					else if(syntaxtGood){
+						crow::json::wvalue myOb(JSONValues[field]);
+						retn += myOb.dump();
+					}
+					i--;
+				}
+			}
 		}
 		else{
 //			std::cout << "Synitt: " << syntaxtGood << endl;
