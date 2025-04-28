@@ -1,4 +1,4 @@
-C	main.cpp	/^pqxx::connection C = pqxx::connection(R"(dbname = testdb2 user=postgres password=test123 hostadd/;"	v	typeref:typename:pqxx::connection
+C	main.cpp	/^pqxx::connection C = pqxx::connection(R"(dbname = testdb3 user=postgres password=test123 hostadd/;"	v	typeref:typename:pqxx::connection
 StoreNames	main.cpp	/^	StoreNames(char* characterChain){$/;"	f	struct:StoreNames	file:
 StoreNames	main.cpp	/^struct StoreNames{$/;"	s	file:
 WordsCompare	main.cpp	/^	WordsCompare(int leghosszabbSzo, int szavakSzama){$/;"	f	struct:WordsCompare	file:
@@ -20,15 +20,12 @@ bywoherin	main.cpp	/^	int* bywoherin; \/\/ Inicializálás binarytree*32, Csökk
 characterChain	main.cpp	/^	char* characterChain;$/;"	m	struct:StoreNames	typeref:typename:char *	file:
 doSyntaxtCheckPreparation	main.cpp	/^WordsCompare doSyntaxtCheckPreparation(char* characterChain){	$/;"	f	typeref:typename:WordsCompare
 exat	main.cpp	/^int exat=0;$/;"	v	typeref:typename:int
-getCallMethod	main.cpp	/^inline std::string getCallMethod(pqxx::work &W, std::string usertoken, std::string methodname){$/;"	f	typeref:typename:std::string
-getCallSimpleQuery	main.cpp	/^inline std::string getCallSimpleQuery(pqxx::work &W, std::string tablanev, std::string usertoken/;"	f	typeref:typename:std::string
-getDBQueryUnit	main.cpp	/^inline std::string getDBQueryUnit(std::string unit, std::string value){$/;"	f	typeref:typename:std::string
 getSQLQuery	main.cpp	/^inline std::string getSQLQuery(pqxx::work &W, const char* querytext){$/;"	f	typeref:typename:std::string
+getSQLQuery	main.cpp	/^inline std::string getSQLQuery(pqxx::work &W, const char* querytext, const std::string recordsep/;"	f	typeref:typename:std::string
 getSepNumber	main.cpp	/^	int getSepNumber(){$/;"	f	struct:StoreNames	typeref:typename:int	file:
-getTextWithJSONValues	main.cpp	/^inline std::string getTextWithJSONValues(WordsCompare& wordsCompare, StoreNames storeNames[], \//;"	f	typeref:typename:std::string
+getTextWithJSONValues	main.cpp	/^inline std::string getTextWithJSONValues($/;"	f	typeref:typename:std::string
 getWithoutSpace	main.cpp	/^inline std::string getWithoutSpace(string text){$/;"	f	typeref:typename:std::string
 initSepIndexes	main.cpp	/^	void initSepIndexes(){$/;"	f	struct:StoreNames	typeref:typename:void	file:
-isBenneVanRendezett	main.cpp	/^inline bool isBenneVanRendezett(const char array[][50], const char values[][50], int lengtharray/;"	f	typeref:typename:bool
 leghosszabbSzo	main.cpp	/^	int leghosszabbSzo;$/;"	m	struct:WordsCompare	typeref:typename:int	file:
 length	main.cpp	/^	int length;$/;"	m	struct:StoreNames	typeref:typename:int	file:
 main	main.cpp	/^int main(){$/;"	f	typeref:typename:int
@@ -38,5 +35,6 @@ szavakSzama	main.cpp	/^	int szavakSzama;$/;"	m	struct:WordsCompare	typeref:typen
 szoRaktarSQLSyntaxt	main.cpp	/^char szoRaktarSQLSyntaxt[] =$/;"	v	typeref:typename:char[]
 vegsoErtek	main.cpp	/^	int* vegsoErtek;$/;"	m	struct:WordsCompare	typeref:typename:int *	file:
 vegsoErtekOszlopSzam	main.cpp	/^	char* vegsoErtekOszlopSzam; \/\/ Inicializálás a szavak számával$/;"	m	struct:WordsCompare	typeref:typename:char *	file:
+whatIsChar	main.cpp	/^inline bool whatIsChar(char character){$/;"	f	typeref:typename:bool
 ~StoreNames	main.cpp	/^	~StoreNames(){$/;"	f	struct:StoreNames	file:
 ~WordsCompare	main.cpp	/^	~WordsCompare(){$/;"	f	struct:WordsCompare	file:
