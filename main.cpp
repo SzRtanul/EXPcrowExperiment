@@ -61,11 +61,11 @@ struct WordsCompare{
     }
 
 	~WordsCompare(){
-        delete[] bynarytree;
+        /*delete[] bynarytree;
         delete[] bywoherin;
         delete[] byoszlop;
         delete[] vegsoErtek;
-        delete[] vegsoErtekOszlopSzam;
+        delete[] vegsoErtekOszlopSzam;*/
     }
 };
 
@@ -161,11 +161,7 @@ inline std::string getWithoutSpace(string text){
 }*/
 
 inline bool whatIsChar(char character){
-//	std::cout << "FUGG: " << character << endl;
 	bool vmia = ((unsigned)(character - 65) < (91- 65)) || character == '_';
-//	std::cout << "FUGGBz: " << vmia << endl;
-//	std::cout << "FUGG: " << character-65 << endl;
-//	std::cout << "FUGG: " << 91 - 65 << endl;
 	return vmia;
 	
 }
@@ -266,17 +262,6 @@ inline std::string getSQLQuery(pqxx::work &W, const char* querytext, const std::
 inline std::string getSQLQuery(pqxx::work &W, const char* querytext){
 	return getSQLQuery(W, querytext, ";;;\n", ":::");
 }
-
-inline WordsCompare getVand(){
-	pqxx::work WG(C);
-	std::string query = getSQLQuery(WG, "SELECT word FROM pg_get_keywords()", ";", "");
-	char* SQLkeywords = strdup(query.c_str());
-	return doSyntaxtCheckPreparation(SQLkeywords);
-
-
-}
-
-static const WordsCompare compareWords =  getVand();
 
 inline std::string getTextWithJSONValues(
 		 pqxx::work &W,
@@ -456,6 +441,10 @@ inline std::string getTextWithJSONValues(
 };
 
 int main(){
+	pqxx::work WG(C);
+	std::string query = getSQLQuery(WG, "SELECT word FROM pg_get_keywords()", ";", "");
+	char* SQLkeywords = strdup(query.c_str());
+	WordsCompare compareWords = doSyntaxtCheckPreparation(SQLkeywords);
 	crow::App<crow::CORSHandler> app;
 	auto& cors = app.get_middleware<crow::CORSHandler>();
 /*	cors
@@ -479,11 +468,9 @@ int main(){
 		    .ignore();*/
 
     if (C.is_open()) {
-
-	
         cout << "Opened database successfully: " << C.dbname() << endl;
-        std::signal(SIGINT, signal_handler);
-		std::cout << "OOOO" << endl;
+        //std::signal(SIGINT, signal_handler);
+		//std::cout << "OOOO" << endl;
         /*W.commit();*/
   //      std::cout << getSQLQuery(W, "SELECT id, name FROM users");
   //      std::cout << getSQLQuery(W, "create table if not exists users(id int, name char(30))");
@@ -512,7 +499,7 @@ int main(){
 			return getSQLQuery(W, ("INSERT INTO " + tablename + "values ()").c_str());
         });
 
-		CROW_ROUTE(app, "/callquery").methods("POST"_method)([](const crow::request& req){
+		CROW_ROUTE(app, "/callquery").methods("POST"_method)([&compareWords](const crow::request& req){
 			auto json = crow::json::load(req.body);
 			std::cout << req.body;
 			std::cout << "Elmegy";
