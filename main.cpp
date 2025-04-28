@@ -229,7 +229,8 @@ WordsCompare doSyntaxtCheckPreparation(char* characterChain){
 	return wordsCompare;
 }
 
-inline std::string getSQLQuery(pqxx::work &W, const char* querytext, const std::string recordsep, const std::string columnsep){
+inline std::string getSQLQuery(const char* querytext, const std::string recordsep, const std::string columnsep){
+	pqxx::work W(C);
 	std::string textout = "-";
     try
 	{
@@ -244,6 +245,7 @@ inline std::string getSQLQuery(pqxx::work &W, const char* querytext, const std::
         	textout = textout.length() > recordsep.length() ? textout + recordsep : "";
 		}
 		textout += '\0';
+		W.commit();
     }
 	catch (const pqxx::sql_error &e)
 	{
@@ -254,21 +256,21 @@ inline std::string getSQLQuery(pqxx::work &W, const char* querytext, const std::
 	{
 		std::cerr << "Egyéb hiba: " << e.what() << std::endl;
 	}
-	W.commit();
+	//W.commit();
 //	pqxx::result R = W.exec(querytext);
  	return textout;
 }
 
-inline std::string getSQLQuery(pqxx::work &W, const char* querytext){
-	return getSQLQuery(W, querytext, ";;;\n", ":::");
+inline std::string getSQLQuery(const char* querytext){
+	return getSQLQuery(querytext, ";;;\n", ":::");
 }
 
 inline std::string getTextWithJSONValues(
-		 pqxx::work &W,
 		const WordsCompare wordsCompare, 
 		StoreNames storeNames[], /*const std::string*/ 
 		const crow::json::rvalue JSONValuesString, 
-		const char* text
+		const char* text,
+		std::string usertoken
 ){
 	std::string retn = "";
 	retn.reserve(strlen(text) * 3 / 2);
@@ -281,10 +283,10 @@ inline std::string getTextWithJSONValues(
 
 	int usedStoreNames = -1;
 	auto JSONValues = JSONValuesString;//crow::json::load(JSONValuesString);
-	std::string hh = "select sysadmin.getaccesfullschemasfromgroups(5, '" + std::string(storeNames[0].characterChain) + "')";
-	std::string qre = getSQLQuery(W, hh.c_str(), "", "");
-	syntaxtGood = qre.compare("t");
-
+	std::string hh = "select sysadmin.getaccesfullschemasfromgroups(" + usertoken + std::string(", '") + std::string(storeNames[0].characterChain) + "')";
+	std::string qre = getSQLQuery(hh.c_str(), "", "");
+	syntaxtGood = !qre.compare("t");
+	std::cout << "Te oltári faszfej geci!: " << syntaxtGood << " hh: " << hh << " qre " << qre << endl;
 	int i = 0;
 	std::cout << "Még megyen" << endl;
 	while(text[i] != '\0' && syntaxtGood == true){
@@ -441,8 +443,7 @@ inline std::string getTextWithJSONValues(
 };
 
 int main(){
-	pqxx::work WG(C);
-	std::string query = getSQLQuery(WG, "SELECT word FROM pg_get_keywords()", ";", "");
+	std::string query = getSQLQuery("SELECT word FROM pg_get_keywords()", ";", "");
 	char* SQLkeywords = strdup(query.c_str());
 	WordsCompare compareWords = doSyntaxtCheckPreparation(SQLkeywords);
 	crow::App<crow::CORSHandler> app;
@@ -490,13 +491,11 @@ int main(){
 		});
 
 		CROW_ROUTE(app, "/ujvacsora")([](){
-			pqxx::work W(C);
-        	return getSQLQuery(W, "SELECT public.helloworld('Szabó Roland')");
+        	return getSQLQuery("SELECT public.helloworld('Szabó Roland')");
     	});
 		
 		CROW_ROUTE(app, "/addrecord/<string>").methods("POST"_method)([](const crow::request& req, std::string tablename){
-            pqxx::work W(C); 
-			return getSQLQuery(W, ("INSERT INTO " + tablename + "values ()").c_str());
+			return getSQLQuery(("INSERT INTO " + tablename + "values ()").c_str());
         });
 
 		CROW_ROUTE(app, "/callquery").methods("POST"_method)([&compareWords](const crow::request& req){
@@ -538,17 +537,16 @@ int main(){
 				StoreNames(methodNames)
 			};
 			std::cout << "Elmegy";
-			pqxx::work W(C);
-			std::string quer = getTextWithJSONValues(W, compareWords, storeNames, CAzon, queryJ);
+			crow::json::wvalue gh = json["token"];
+			std::string quer = getTextWithJSONValues(compareWords, storeNames, CAzon, queryJ, gh.dump());
 			std::cout << quer << endl;
-        	return crow::response(200, getSQLQuery(W, quer.c_str()));
+        	return crow::response(200, getSQLQuery(quer.c_str()));
     	});
 
 		CROW_ROUTE(app, "/deletefrom/<string>/<int>").methods("DELETE"_method)([](const crow::request& req, const std::string tablename, const int id){ // Egyszerű kulcsos táblák
-            pqxx::work W(C);
 			std::ostringstream sqlStream;
 			sqlStream << "DELETE FROM " << tablename << " WHERE " << tablename << ".id = " << id;
-			return getSQLQuery(W, sqlStream.str().c_str()); // Feladat: User check hozzáadása
+			return getSQLQuery(sqlStream.str().c_str()); // Feladat: User check hozzáadása
         });
 
 /*		CROW_ROUTE(app, "/deletefrom/<string>").methods("POST"_method)([](const crow::request& req, const std::string tablename, const int id){ // Összetett kulcsos táblák
@@ -561,10 +559,9 @@ int main(){
 			// Mikre
 //			crow::json::rvalue rval = 
 			std::string keyvaluepairs = "";
-			pqxx::work W(C);
 			std::ostringstream sqlStream;
 			sqlStream << "UPDATE " << tablename << " SET " << keyvaluepairs << " WHERE " << tablename << ".id = " << id;
-			return getSQLQuery(W, sqlStream.str().c_str());
+			return getSQLQuery(sqlStream.str().c_str());
         });
 
 /*		CROW_ROUTE(app, "/update/<string>").methods("POST"_method)([](const crow::request& req, const std::string tablename, const int id){ // Összetett kulcsos táblák
