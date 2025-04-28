@@ -286,7 +286,7 @@ inline std::string getTextWithJSONValues(
 	std::string hh = "select sysadmin.getaccesfullschemasfromgroups(" + usertoken + std::string(", '") + std::string(storeNames[0].characterChain) + "')";
 	std::string qre = getSQLQuery(hh.c_str(), "", "");
 	syntaxtGood = !qre.compare("t");
-	std::cout << "Te oltári faszfej geci!: " << syntaxtGood << " hh: " << hh << " qre " << qre << endl;
+	std::cout << "Ehhhhh: " << syntaxtGood << " hh: " << hh << " qre " << qre << endl;
 	int i = 0;
 	std::cout << "Még megyen" << endl;
 	while(text[i] != '\0' && syntaxtGood == true){
