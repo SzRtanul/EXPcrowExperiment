@@ -6,7 +6,7 @@ WordsCompare	main.cpp	/^struct WordsCompare{$/;"	s	file:
 __anon3b5b11db0102	main.cpp	/^		CROW_ROUTE(app, "\/login")([](const crow::request& req) {$/;"	f	function:main	file:
 __anon3b5b11db0202	main.cpp	/^		CROW_ROUTE(app, "\/ujvacsora")([](){$/;"	f	function:main	file:
 __anon3b5b11db0302	main.cpp	/^		CROW_ROUTE(app, "\/addrecord\/<string>").methods("POST"_method)([](const crow::request& req, s/;"	f	function:main	file:
-__anon3b5b11db0402	main.cpp	/^		CROW_ROUTE(app, "\/callquery").methods("POST"_method)([&compareWords](const crow::request& req/;"	f	function:main	file:
+__anon3b5b11db0402	main.cpp	/^		CROW_ROUTE(app, "\/callquery").methods("POST"_method)([](const crow::request& req){$/;"	f	function:main	file:
 __anon3b5b11db0502	main.cpp	/^		CROW_ROUTE(app, "\/deletefrom\/<string>\/<int>").methods("DELETE"_method)([](const crow::reque/;"	f	function:main	file:
 __anon3b5b11db0602	main.cpp	/^		CROW_ROUTE(app, "\/update\/<string>\/<int>").methods("PUT"_method)([](const crow::request& req/;"	f	function:main	file:
 __anon3b5b11db0702	main.cpp	/^	    CROW_ROUTE(app, "\/callmethod\/<string>").methods("GET"_method)([](const crow::request& req/;"	f	function:main	file:
@@ -18,12 +18,14 @@ bynarytree	main.cpp	/^	int* bynarytree;$/;"	m	struct:WordsCompare	typeref:typena
 byoszlop	main.cpp	/^	char* byoszlop;$/;"	m	struct:WordsCompare	typeref:typename:char *	file:
 bywoherin	main.cpp	/^	int* bywoherin; \/\/ Inicializálás binarytree*32, Csökkentés: Ahány betű$/;"	m	struct:WordsCompare	typeref:typename:int *	file:
 characterChain	main.cpp	/^	char* characterChain;$/;"	m	struct:StoreNames	typeref:typename:char *	file:
+compareWords	main.cpp	/^static const WordsCompare compareWords =  getVand();$/;"	v	typeref:typename:const WordsCompare	file:
 doSyntaxtCheckPreparation	main.cpp	/^WordsCompare doSyntaxtCheckPreparation(char* characterChain){	$/;"	f	typeref:typename:WordsCompare
 exat	main.cpp	/^int exat=0;$/;"	v	typeref:typename:int
 getSQLQuery	main.cpp	/^inline std::string getSQLQuery(pqxx::work &W, const char* querytext){$/;"	f	typeref:typename:std::string
 getSQLQuery	main.cpp	/^inline std::string getSQLQuery(pqxx::work &W, const char* querytext, const std::string recordsep/;"	f	typeref:typename:std::string
 getSepNumber	main.cpp	/^	int getSepNumber(){$/;"	f	struct:StoreNames	typeref:typename:int	file:
 getTextWithJSONValues	main.cpp	/^inline std::string getTextWithJSONValues($/;"	f	typeref:typename:std::string
+getVand	main.cpp	/^inline WordsCompare getVand(){$/;"	f	typeref:typename:WordsCompare
 getWithoutSpace	main.cpp	/^inline std::string getWithoutSpace(string text){$/;"	f	typeref:typename:std::string
 initSepIndexes	main.cpp	/^	void initSepIndexes(){$/;"	f	struct:StoreNames	typeref:typename:void	file:
 leghosszabbSzo	main.cpp	/^	int leghosszabbSzo;$/;"	m	struct:WordsCompare	typeref:typename:int	file:

@@ -50,6 +50,7 @@ struct WordsCompare{
 	int* vegsoErtek;
 
 	WordsCompare(int leghosszabbSzo, int szavakSzama){
+		std::cout << "DEFIN: " << leghosszabbSzo << ":" << szavakSzama << endl;
 		this->leghosszabbSzo = leghosszabbSzo;
 		this->szavakSzama = szavakSzama;
         bynarytree = new int[leghosszabbSzo]();
@@ -160,7 +161,13 @@ inline std::string getWithoutSpace(string text){
 }*/
 
 inline bool whatIsChar(char character){
-	return ((unsigned)(character - 65) < (91- 65)) || character == '_';
+//	std::cout << "FUGG: " << character << endl;
+	bool vmia = ((unsigned)(character - 65) < (91- 65)) || character == '_';
+//	std::cout << "FUGGBz: " << vmia << endl;
+//	std::cout << "FUGG: " << character-65 << endl;
+//	std::cout << "FUGG: " << 91 - 65 << endl;
+	return vmia;
+	
 }
 
 WordsCompare doSyntaxtCheckPreparation(char* characterChain){	
@@ -181,7 +188,7 @@ WordsCompare doSyntaxtCheckPreparation(char* characterChain){
 		}
 		if(characterChain[i] > 96 && characterChain[i] < 123) characterChain[i] -= 32;
 		if(whatIsChar(characterChain[i])){
-		//	if(szamlal == 127) return WordsCompare(0, 0);
+			if(szamlal == 127) return WordsCompare(0, 0);
 			szamlal++;
 		}
 		if(whatIsChar(characterChain[i]) && lastChar == ';'){
@@ -207,7 +214,7 @@ WordsCompare doSyntaxtCheckPreparation(char* characterChain){
 			wordValue += (31 * szamlal) + position;
 			std::cout << "WordValue(Pre): " << wordValue << " - " << i << endl;
 			wordsCompare.bynarytree[szamlal] |= 1 << position;
-//			if(lastChar != ';') wordsCompare.bywoherin[(szavakSzama * 26) + position] |= 1 << lastCharPosition; //abcdefghijkmnopqrstuvwqyz
+//			if(lastChar != ';') wordsCompare.bywoherin[(szavakSzama * 31) + position] |= 1 << lastCharPosition; //abcdefghijkmnopqrstuvwqyz
 			szamlal++;
 		}
 		std::cout << "LastChar: " << lastChar << " Aktuel: " << characterChain[i] << endl;
@@ -251,6 +258,7 @@ inline std::string getSQLQuery(pqxx::work &W, const char* querytext, const std::
 	{
 		std::cerr << "Egyéb hiba: " << e.what() << std::endl;
 	}
+	W.commit();
 //	pqxx::result R = W.exec(querytext);
  	return textout;
 }
@@ -259,14 +267,24 @@ inline std::string getSQLQuery(pqxx::work &W, const char* querytext){
 	return getSQLQuery(W, querytext, ";;;\n", ":::");
 }
 
+inline WordsCompare getVand(){
+	pqxx::work WG(C);
+	std::string query = getSQLQuery(WG, "SELECT word FROM pg_get_keywords()", ";", "");
+	char* SQLkeywords = strdup(query.c_str());
+	return doSyntaxtCheckPreparation(SQLkeywords);
+
+
+}
+
+static const WordsCompare compareWords =  getVand();
+
 inline std::string getTextWithJSONValues(
-		pqxx::work &W,
-		WordsCompare& wordsCompare, 
+		 pqxx::work &W,
+		const WordsCompare wordsCompare, 
 		StoreNames storeNames[], /*const std::string*/ 
-		crow::json::rvalue JSONValuesString, 
-		char* text
+		const crow::json::rvalue JSONValuesString, 
+		const char* text
 ){
-	bool haved = false;
 	std::string retn = "";
 	retn.reserve(strlen(text) * 3 / 2);
 	int szamlal = 0;
@@ -287,18 +305,28 @@ inline std::string getTextWithJSONValues(
 	while(text[i] != '\0' && syntaxtGood == true){
 		std::cout << "Meddig1" << endl;
 //		std::cout << "Még megyen: " << i << endl;
-		text[i] = text[i] > 96 && text[i] < 123 ? text[i] - 32 : text[i];
+		currentChar = text[i] > 96 && text[i] < 123 ? text[i] - 32 : text[i];
 		std::cout << "Meddig2" << endl;
-		if(whatIsChar(text[i])){
+		std::cout << "Karakter: " << text[i] << " Max: " << wordsCompare.leghosszabbSzo << " Szamlal: " << szamlal << endl;
+
+//		 std::cout << wordsCompare.leghosszabbSzo << endl;
+//		 std::cout << wordsCompare.bynarytree[0] << endl;
+		std::cout << whatIsChar(text[i]);
+		if(whatIsChar(currentChar)){
 			std::cout << "Meddig3" << endl;
+//		 	std::cout << wordsCompare.leghosszabbSzo << endl;
+//		 std::cout << wordsCompare.bynarytree[0] << endl;
 //			haved = true;
-			position = text[i] - 65;
+			position = currentChar - 65;
 			std::cout << "Meddig4" << endl;
+			
+		 	std::cout << wordsCompare.leghosszabbSzo << endl;
+			std::cout << "Számlál: " << szamlal << endl;
 			syntaxtGood = szamlal < wordsCompare.leghosszabbSzo && ((wordsCompare.bynarytree[szamlal] >> (position)) & 0b1);
 			std::cout << "Meddig5" << endl;
-			if(syntaxtGood) std::cout << "Számláló: " << text[i] <<
+			if(syntaxtGood) std::cout << "Számláló: " << currentChar <<
 					" - " << std::bitset<32>(wordsCompare.bynarytree[szamlal]) <<
-					" >> " << text[i] - 65 << " 0b " << 
+					" >> " << currentChar - 65 << " 0b " << 
 					std::bitset<32>((wordsCompare.bynarytree[szamlal] >> (position)) & 0b1) <<
 			endl;
 //			std::cout << "Syn.: " << syntaxtGood << endl;
@@ -313,19 +341,20 @@ inline std::string getTextWithJSONValues(
 		}
 //		std::cout << "Synitty: " << syntaxtGood << endl;
 		
-		if((text[i+1] == '\0' && (whatIsChar(lastChar) || whatIsChar(text[i]))) ||
-						(!(whatIsChar(text[i])) && whatIsChar(lastChar))
+		if((text[i+1] == '\0' && (whatIsChar(lastChar) || whatIsChar(currentChar))) ||
+						(!(whatIsChar(currentChar)) && whatIsChar(lastChar))
 		){
 			syntaxtGood = false;
 			int j = 0;
 			std::cout << "WordValue: " << wordValue << endl;
 			for(/*Kezdőérték*/; j < wordsCompare.szavakSzama && !syntaxtGood; j++){
 				syntaxtGood = wordsCompare.vegsoErtek[j] == wordValue;
-				std::cout << "VegsoErtek: " << wordsCompare.vegsoErtek[j] << endl;
+				//std::cout << "VegsoErtek: " << wordsCompare.vegsoErtek[j] << endl;
 			}
+			std::cout << "VegsoErtek" << endl;
 			szamlal = 0;
 			wordValue = 0;
-//			std::cout << "Syne: " << syntaxtGood << endl;
+			std::cout << "Syne: " << syntaxtGood << endl;
 			//if(text[i] != ' ') retn += ' ';
 		}
 //		std::cout << "Synitt: " << syntaxtGood << endl;
@@ -427,7 +456,6 @@ inline std::string getTextWithJSONValues(
 };
 
 int main(){
-	WordsCompare compareWords(0, 0); 
 	crow::App<crow::CORSHandler> app;
 	auto& cors = app.get_middleware<crow::CORSHandler>();
 /*	cors
@@ -451,17 +479,8 @@ int main(){
 		    .ignore();*/
 
     if (C.is_open()) {
-		pqxx::work WG(C);
 
-		std::string query = getSQLQuery(WG, "SELECT word FROM pg_get_keywords()", ";", "");
-		char* SQLkeywords = new char[query.size() + 1];
-		std::copy(query.begin(), query.end(), SQLkeywords);
-		SQLkeywords[query.size()] = '\0';
-
-		compareWords = doSyntaxtCheckPreparation(SQLkeywords);
-		std::cout<<SQLkeywords<<endl;
-		delete[] SQLkeywords;
-
+	
         cout << "Opened database successfully: " << C.dbname() << endl;
         std::signal(SIGINT, signal_handler);
 		std::cout << "OOOO" << endl;
@@ -493,7 +512,7 @@ int main(){
 			return getSQLQuery(W, ("INSERT INTO " + tablename + "values ()").c_str());
         });
 
-		CROW_ROUTE(app, "/callquery").methods("POST"_method)([&compareWords](const crow::request& req){
+		CROW_ROUTE(app, "/callquery").methods("POST"_method)([](const crow::request& req){
 			auto json = crow::json::load(req.body);
 			std::cout << req.body;
 			std::cout << "Elmegy";
@@ -518,11 +537,11 @@ int main(){
 			std::string queryStr = DBdataJSON["query"].s();
 			std::cout << "Elmegy4";
 
-			char* schemaNames = const_cast<char*>(schemaNamesStr.c_str());
-			char* tableNames = const_cast<char*>(tableNamesStr.c_str());
-			char* columnNames = const_cast<char*>(columnNamesStr.c_str());
-			char* methodNames = const_cast<char*>(methodNamesStr.c_str());
-			char* queryJ = const_cast<char*>(queryStr.c_str());
+			char* schemaNames = strdup(schemaNamesStr.c_str());
+			char* tableNames = strdup(tableNamesStr.c_str());
+			char* columnNames = strdup(columnNamesStr.c_str());
+			char* methodNames = strdup(methodNamesStr.c_str());
+			char* queryJ = strdup(queryStr.c_str());
 			std::cout << "Elmegy";
 
 			StoreNames storeNames[] = {
@@ -572,12 +591,14 @@ int main(){
 		
 		std::cout << "OOOO" << endl;
   //      C.disconnect();
+		std::cout << compareWords.leghosszabbSzo << endl;
     } else {
         cout << "Can't open database" << endl;
         return 1;
-    }
+    }	
+	std::cout << compareWords.leghosszabbSzo << endl;
+	std::cout << "OOOO" << endl;
 	
-		std::cout << "OOOO" << endl;
 	CROW_ROUTE(app, "/")([](){
 		return "Hello world";
 	});
