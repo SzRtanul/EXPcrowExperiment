@@ -9,6 +9,11 @@
 #include <chrono>
 #include <regex>
 #include <crow/json.h>
+#include <chrono>
+#include <atomic>
+#include <thread>
+#include <queue>
+#include <mutex>
 
 using namespace std;
 using namespace pqxx;
@@ -35,6 +40,80 @@ char szoRaktarSQLSyntaxt[] =
 	"LIKE;"
 	"AS;"
 ;
+
+struct PoolDBConnection{
+	std::string conninfo;
+	int min_size;
+	int max_size;
+	int active_connections;
+	std::mutex mtx;
+	std::queue<std::shared_ptr<pqxx::connection>> pool;
+	const std::chrono::milliseconds scale_threshold{2000};
+
+	PoolDBConnection(std::string conninfo, int min_size, int max_size){
+		active_connections = 0;
+		this->conninfo = conninfo;
+		this->min_size = min_size;
+		this->max_size = max_size;
+		if(create_connection()){
+			for(int i = 0; i < min_size; i++){
+				pool.push(std::make_shared<pqxx::connection>(conninfo));
+			}
+		}
+	}
+
+	inline bool create_connection(){
+		auto conn = std::make_shared<pqxx::connection>(conninfo);
+		if (conn->is_open()){
+			pool.push(conn);
+		}
+		else{
+			std::cout << "Connection to database is failed;" << endl;
+		}
+		return conn->is_open();
+	}
+
+	std::shared_ptr<pqxx::connection> getDBConn(){
+		std::lock_guard<std::mutex> lock(mtx);
+		std::shared_ptr<pqxx::connection> conn = nullptr;
+		if((pool.empty() || !pool.front()->is_open())){
+			std::cout << "ENEN" << endl;
+			while(!pool.empty()){
+				pool.pop();
+			}
+			if(create_connection()){
+				std::cout << "ENEC" << endl;
+				for(int i = 0; i < min_size; i++){
+					pool.push(std::make_shared<pqxx::connection>(conninfo));
+				}
+				conn = pool.front();
+				pool.pop();
+				active_connections++;
+				std::cout << "ENEC" << endl;
+			}
+		}
+		else{
+			std::cout << "ENE" << endl;
+			conn = pool.front(); 
+			pool.pop();
+			active_connections++;
+			std::cout << "ENE" << endl;
+		}
+		return conn;	
+	}
+
+	void giveBackConnect(std::shared_ptr<pqxx::connection> conn){
+		if(active_connections > 0 && conn && conn->is_open()){
+			pool.push(conn);
+			active_connections--;
+		}
+		else if(active_connections > 0){
+			active_connections--;
+		}
+	}
+};
+
+PoolDBConnection poolDB("dbname = testdb3 user=postgres password=test123 hostaddr=127.0.0.1 port=5432", 15, 50);
 
 struct WordsCompare{
 	int leghosszabbSzo;
@@ -229,8 +308,8 @@ WordsCompare doSyntaxtCheckPreparation(char* characterChain){
 	return wordsCompare;
 }
 
-inline std::string getSQLQuery(const char* querytext, const std::string recordsep, const std::string columnsep){
-	pqxx::work W(C);
+inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char* querytext, const std::string recordsep, const std::string columnsep){
+	pqxx::work W(*NC);
 	std::string textout = "-";
     try
 	{
@@ -240,11 +319,11 @@ inline std::string getSQLQuery(const char* querytext, const std::string recordse
 	    for (const auto &row : R) {
 	        for(int i = 0; i < row.size(); i++){
 	          // textout += "valami";
-			  textout += getWithoutSpace(row[i].as<std::string>()) + columnsep;
+			  textout += !row[i].is_null() ? getWithoutSpace(row[i].as<std::string>()) + columnsep : "null" + columnsep;
         	}
         	textout = textout.length() > recordsep.length() ? textout + recordsep : "";
 		}
-		textout += '\0';
+//		textout += '\0';
 		W.commit();
     }
 	catch (const pqxx::sql_error &e)
@@ -261,11 +340,12 @@ inline std::string getSQLQuery(const char* querytext, const std::string recordse
  	return textout;
 }
 
-inline std::string getSQLQuery(const char* querytext){
-	return getSQLQuery(querytext, ";;;\n", ":::");
+inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char* querytext){
+	return getSQLQuery(NC, querytext, ";;;\n", ":::");
 }
 
 inline std::string getTextWithJSONValues(
+		std::shared_ptr<pqxx::connection> NC,
 		const WordsCompare wordsCompare, 
 		StoreNames storeNames[], /*const std::string*/ 
 		const crow::json::rvalue JSONValuesString, 
@@ -284,9 +364,9 @@ inline std::string getTextWithJSONValues(
 	int usedStoreNames = -1;
 	auto JSONValues = JSONValuesString;//crow::json::load(JSONValuesString);
 	std::string hh = "select sysadmin.getaccesfullschemasfromgroups(" + usertoken + std::string(", '") + std::string(storeNames[0].characterChain) + "')";
-	std::string qre = getSQLQuery(hh.c_str(), "", "");
-	syntaxtGood = !qre.compare("t");
-	std::cout << "Ehhhhh: " << syntaxtGood << " hh: " << hh << " qre " << qre << endl;
+	std::string qre = getSQLQuery(NC, hh.c_str(), "", "");
+	syntaxtGood = qre.length() > 0 ? qre[0] == 't' : 0;
+	std::cout << "Ehhhhh: " << syntaxtGood << " hh: " << hh << " qre " << qre << "qre compat: " << (qre[0] == 't') << endl;
 	int i = 0;
 	std::cout << "Még megyen" << endl;
 	while(text[i] != '\0' && syntaxtGood == true){
@@ -443,7 +523,9 @@ inline std::string getTextWithJSONValues(
 };
 
 int main(){
-	std::string query = getSQLQuery("SELECT word FROM pg_get_keywords()", ";", "");
+	std::shared_ptr<pqxx::connection> RC = poolDB.getDBConn();
+	std::string query = getSQLQuery(RC, "SELECT word FROM pg_get_keywords()", ";", "");
+	poolDB.giveBackConnect(RC);
 	char* SQLkeywords = strdup(query.c_str());
 	WordsCompare compareWords = doSyntaxtCheckPreparation(SQLkeywords);
 	crow::App<crow::CORSHandler> app;
@@ -490,14 +572,14 @@ int main(){
 		    return res;
 		});
 
-		CROW_ROUTE(app, "/ujvacsora")([](){
+	/*	CROW_ROUTE(app, "/ujvacsora")([](){
         	return getSQLQuery("SELECT public.helloworld('Szabó Roland')");
     	});
 		
 		CROW_ROUTE(app, "/addrecord/<string>").methods("POST"_method)([](const crow::request& req, std::string tablename){
 			return getSQLQuery(("INSERT INTO " + tablename + "values ()").c_str());
         });
-
+*/
 		CROW_ROUTE(app, "/callquery").methods("POST"_method)([&compareWords](const crow::request& req){
 			auto json = crow::json::load(req.body);
 			std::cout << req.body;
@@ -538,41 +620,15 @@ int main(){
 			};
 			std::cout << "Elmegy";
 			crow::json::wvalue gh = json["token"];
-			std::string quer = getTextWithJSONValues(compareWords, storeNames, CAzon, queryJ, gh.dump());
+			
+			std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn(); 
+			std::string quer = getTextWithJSONValues(NC, compareWords, storeNames, CAzon, queryJ, gh.dump());
 			std::cout << quer << endl;
-        	return crow::response(200, getSQLQuery(quer.c_str()));
+        	std::string resdb = getSQLQuery(NC, quer.c_str());
+			poolDB.giveBackConnect(NC);
+			return crow::response(200, resdb);
     	});
-
-		CROW_ROUTE(app, "/deletefrom/<string>/<int>").methods("DELETE"_method)([](const crow::request& req, const std::string tablename, const int id){ // Egyszerű kulcsos táblák
-			std::ostringstream sqlStream;
-			sqlStream << "DELETE FROM " << tablename << " WHERE " << tablename << ".id = " << id;
-			return getSQLQuery(sqlStream.str().c_str()); // Feladat: User check hozzáadása
-        });
-
-/*		CROW_ROUTE(app, "/deletefrom/<string>").methods("POST"_method)([](const crow::request& req, const std::string tablename, const int id){ // Összetett kulcsos táblák
-            pqxx::work W(C); 
-			return getSQLQuery(W, "INSERT INTO " + tablename + "values ()");
-        });
-*/
-		CROW_ROUTE(app, "/update/<string>/<int>").methods("PUT"_method)([](const crow::request& req, const std::string tablename, const int id){ // Egyszerű kulcsos táblák
-            // Miken
-			// Mikre
-//			crow::json::rvalue rval = 
-			std::string keyvaluepairs = "";
-			std::ostringstream sqlStream;
-			sqlStream << "UPDATE " << tablename << " SET " << keyvaluepairs << " WHERE " << tablename << ".id = " << id;
-			return getSQLQuery(sqlStream.str().c_str());
-        });
-
-/*		CROW_ROUTE(app, "/update/<string>").methods("POST"_method)([](const crow::request& req, const std::string tablename, const int id){ // Összetett kulcsos táblák
-            pqxx::work W(C); 
-			return getSQLQuery(W, "INSERT INTO " + tablename + "values ()");
-        });
-*/
-	    CROW_ROUTE(app, "/callmethod/<string>").methods("GET"_method)([](const crow::request& req, const std::string methodname){
-        	return "";
-    	});
-		
+	  
 		std::cout << "OOOO" << endl;
   //      C.disconnect();
 		std::cout << compareWords.leghosszabbSzo << endl;

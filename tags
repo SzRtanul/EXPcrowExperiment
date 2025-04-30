@@ -267,6 +267,8 @@ PLATFORM_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  de
 PLATFORM_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define PLATFORM_ID$/;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID /;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID$/;"	d	file:
+PoolDBConnection	main.cpp	/^	PoolDBConnection(std::string conninfo, int min_size, int max_size){$/;"	f	struct:PoolDBConnection	file:
+PoolDBConnection	main.cpp	/^struct PoolDBConnection{$/;"	s	file:
 RM	build/Makefile	/^RM = \/usr\/bin\/cmake -E rm -f$/;"	m
 Recept	TheToughtExperimental.sql	/^CREATE TABLE "Recept" ($/;"	t
 ReceptVariacioNev	TheToughtExperimental.sql	/^CREATE TABLE "ReceptVariacioNev" ($/;"	t
@@ -314,18 +316,14 @@ VizsgalatTipus	TheToughtExperimental.sql	/^CREATE TABLE "VizsgalatTipus" ($/;"	t
 WordsCompare	main.cpp	/^	WordsCompare(int leghosszabbSzo, int szavakSzama){$/;"	f	struct:WordsCompare	file:
 WordsCompare	main.cpp	/^struct WordsCompare{$/;"	s	file:
 __anon3b5b11db0102	main.cpp	/^		CROW_ROUTE(app, "\/login")([](const crow::request& req) {$/;"	f	function:main	file:
-__anon3b5b11db0202	main.cpp	/^		CROW_ROUTE(app, "\/ujvacsora")([](){$/;"	f	function:main	file:
-__anon3b5b11db0302	main.cpp	/^		CROW_ROUTE(app, "\/addrecord\/<string>").methods("POST"_method)([](const crow::request& req, s/;"	f	function:main	file:
-__anon3b5b11db0402	main.cpp	/^		CROW_ROUTE(app, "\/callquery").methods("POST"_method)([&compareWords](const crow::request& req/;"	f	function:main	file:
-__anon3b5b11db0502	main.cpp	/^		CROW_ROUTE(app, "\/deletefrom\/<string>\/<int>").methods("DELETE"_method)([](const crow::reque/;"	f	function:main	file:
-__anon3b5b11db0602	main.cpp	/^		CROW_ROUTE(app, "\/update\/<string>\/<int>").methods("PUT"_method)([](const crow::request& req/;"	f	function:main	file:
-__anon3b5b11db0702	main.cpp	/^	    CROW_ROUTE(app, "\/callmethod\/<string>").methods("GET"_method)([](const crow::request& req/;"	f	function:main	file:
-__anon3b5b11db0802	main.cpp	/^	CROW_ROUTE(app, "\/")([](){$/;"	f	function:main	file:
-__anon3b5b11db0902	main.cpp	/^    CROW_ROUTE(app, "\/exat")([](){$/;"	f	function:main	file:
-__anon3b5b11db0a02	main.cpp	/^    CROW_ROUTE(app, "\/exat\/<int>").methods("POST"_method)([](int a){ $/;"	f	function:main	file:
-__anon3b5b11db0b02	main.cpp	/^	CROW_ROUTE(app, "\/pelda\/<int>").methods("POST"_method)([](const crow::request& req, const int/;"	f	function:main	file:
+__anon3b5b11db0202	main.cpp	/^		CROW_ROUTE(app, "\/callquery").methods("POST"_method)([&compareWords](const crow::request& req/;"	f	function:main	file:
+__anon3b5b11db0302	main.cpp	/^	CROW_ROUTE(app, "\/")([](){$/;"	f	function:main	file:
+__anon3b5b11db0402	main.cpp	/^    CROW_ROUTE(app, "\/exat")([](){$/;"	f	function:main	file:
+__anon3b5b11db0502	main.cpp	/^    CROW_ROUTE(app, "\/exat\/<int>").methods("POST"_method)([](int a){ $/;"	f	function:main	file:
+__anon3b5b11db0602	main.cpp	/^	CROW_ROUTE(app, "\/pelda\/<int>").methods("POST"_method)([](const crow::request& req, const int/;"	f	function:main	file:
 __has_include	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define __has_include(/;"	d	file:
 __has_include	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define __has_include(/;"	d	file:
+active_connections	main.cpp	/^	int active_connections;$/;"	m	struct:PoolDBConnection	typeref:typename:int	file:
 alany	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.alany ($/;"	t
 alanyID	TheToughtExperimental.sql	/^  "alanyID" int PRIMARY KEY,$/;"	E	table:HalottAlany
 alanyID	TheToughtExperimental.sql	/^  "alanyID" int,$/;"	E	table:AlanyVizsgalat
@@ -397,7 +395,9 @@ clean	build/Makefile	/^clean:$/;"	t
 clean/fast	build/Makefile	/^clean\/fast: clean$/;"	t
 cmake_check_build_system	build/Makefile	/^cmake_check_build_system:$/;"	t
 cmake_force	build/Makefile	/^cmake_force:$/;"	t
+conninfo	main.cpp	/^	std::string conninfo;$/;"	m	struct:PoolDBConnection	typeref:typename:std::string	file:
 const	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define const$/;"	d	file:
+create_connection	main.cpp	/^	inline bool create_connection(){$/;"	f	struct:PoolDBConnection	typeref:typename:bool	file:
 csoportszam	TheToughtExperimental.sql	/^  "csoportszam" int$/;"	E	table:KiserletLepesSorrend
 csoportszam	TheToughtExperimental.sql	/^  "csoportszam" int,$/;"	E	table:KLCsHozzarendeles
 csoportszam	TheToughtExperimental.sql	/^  "csoportszam" int,$/;"	E	table:KiserletResztvevo
@@ -495,14 +495,16 @@ felhasznaloid	thetoughtexperimentwithdata.sql	/^    felhasznaloid integer NOT NU
 felhasznaloid	thetoughtexperimentwithdata.sql	/^    felhasznaloid integer$/;"	E	table:bearertoken
 felhasznalonev	TheToughtExperimental.sql	/^  "felhasznalonev" char(30) UNIQUE,$/;"	E	table:Felhasznalo
 felhasznalonev	thetoughtexperimentwithdata.sql	/^    felhasznalonev character(30),$/;"	E	table:felhasznalo
-getSQLQuery	main.cpp	/^inline std::string getSQLQuery(const char* querytext){$/;"	f	typeref:typename:std::string
-getSQLQuery	main.cpp	/^inline std::string getSQLQuery(const char* querytext, const std::string recordsep, const std::st/;"	f	typeref:typename:std::string
+getDBConn	main.cpp	/^	std::shared_ptr<pqxx::connection> getDBConn(){$/;"	f	struct:PoolDBConnection	typeref:typename:std::shared_ptr<pqxx::connection>	file:
+getSQLQuery	main.cpp	/^inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char* querytext){$/;"	f	typeref:typename:std::string
+getSQLQuery	main.cpp	/^inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char* querytext, cons/;"	f	typeref:typename:std::string
 getSepNumber	main.cpp	/^	int getSepNumber(){$/;"	f	struct:StoreNames	typeref:typename:int	file:
 getTextWithJSONValues	main.cpp	/^inline std::string getTextWithJSONValues($/;"	f	typeref:typename:std::string
 getWithoutSpace	main.cpp	/^inline std::string getWithoutSpace(string text){$/;"	f	typeref:typename:std::string
 getaccesfullschemasfromgroups	thetoughtexperimentwithdata.sql	/^CREATE FUNCTION sysadmin.getaccesfullschemasfromgroups(usertoken bigint, schemacharchain text) R/;"	f
 getuserfromtoken	thetoughtexperimentwithdata.sql	/^CREATE FUNCTION sysadmin.getuserfromtoken(usertoken bigint) RETURNS integer$/;"	f
 getusergroups	thetoughtexperimentwithdata.sql	/^CREATE FUNCTION sysadmin.getusergroups(userid integer) RETURNS integer[]$/;"	f
+giveBackConnect	main.cpp	/^	void giveBackConnect(std::shared_ptr<pqxx::connection> conn){$/;"	f	struct:PoolDBConnection	typeref:typename:void	file:
 gyorsleiras	TheToughtExperimental.sql	/^  "gyorsleiras" varchar(200),$/;"	E	table:KiserletLepesVegrehajtasEsemeny
 gyorsleiras	thetoughtexperimentwithdata.sql	/^    gyorsleiras character varying(200),$/;"	E	table:kiserletlepesvegrehajtasesemeny
 halalIdopontja	TheToughtExperimental.sql	/^  "halalIdopontja" date,$/;"	E	table:HalottAlany
@@ -734,6 +736,7 @@ main.cpp.s	build/Makefile	/^main.cpp.s:$/;"	t
 main.i	build/Makefile	/^main.i: main.cpp.i$/;"	t
 main.o	build/Makefile	/^main.o: main.cpp.o$/;"	t
 main.s	build/Makefile	/^main.s: main.cpp.s$/;"	t
+max_size	main.cpp	/^	int max_size;$/;"	m	struct:PoolDBConnection	typeref:typename:int	file:
 megetetendoetelek	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.megetetendoetelek ($/;"	t
 megetetettetelek	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.megetetettetelek ($/;"	t
 megjegyzes	TheToughtExperimental.sql	/^  "megjegyzes" text$/;"	E	table:AlanyVizsgalat
@@ -767,8 +770,10 @@ mikor	TheToughtExperimental.sql	/^  "mikor" date,$/;"	E	table:KiserletVegrehajta
 mikor	thetoughtexperimentwithdata.sql	/^    mikor date NOT NULL,$/;"	E	table:kiserletvegrehajtas
 mikor	thetoughtexperimentwithdata.sql	/^    mikor date,$/;"	E	table:kiserletlepesvegrehajtas
 mikor	thetoughtexperimentwithdata.sql	/^    mikor date,$/;"	E	table:kiserletlepesvegrehajtasesemeny
+min_size	main.cpp	/^	int min_size;$/;"	m	struct:PoolDBConnection	typeref:typename:int	file:
 mintfeltetelletezik	TheToughtExperimental.sql	/^  "mintfeltetelletezik" bit$/;"	E	table:VizsgalatElojegyzes
 mintfeltetelletezik	thetoughtexperimentwithdata.sql	/^    mintfeltetelletezik bit(1)$/;"	E	table:vizsgalatelojegyzes
+mtx	main.cpp	/^	std::mutex mtx;$/;"	m	struct:PoolDBConnection	typeref:typename:std::mutex	file:
 munkakor	TheToughtExperimental.sql	/^  "munkakor" varchar(200),$/;"	E	table:Tapasztalat
 munkakor	thetoughtexperimentwithdata.sql	/^    munkakor character varying(200),$/;"	E	table:tapasztalat
 munkatars	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.munkatars ($/;"	t
@@ -813,6 +818,8 @@ oktatasiIntezmenyID	TheToughtExperimental.sql	/^  "oktatasiIntezmenyID" int,$/;"
 oktatasiintezmeny	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.oktatasiintezmeny ($/;"	t
 oktatasiintezmenyid	thetoughtexperimentwithdata.sql	/^    oktatasiintezmenyid integer NOT NULL,$/;"	E	table:oklevel
 oktatasiintezmenyid	thetoughtexperimentwithdata.sql	/^    oktatasiintezmenyid integer,$/;"	E	table:szak
+pool	main.cpp	/^	std::queue<std::shared_ptr<pqxx::connection>> pool;$/;"	m	struct:PoolDBConnection	typeref:typename:std::queue<std::shared_ptr<pqxx::connection>>	file:
+poolDB	main.cpp	/^PoolDBConnection poolDB("dbname = testdb3 user=postgres password=test123 hostaddr=127.0.0.1 port/;"	v	typeref:typename:PoolDBConnection
 preinstall	build/Makefile	/^preinstall: all$/;"	t
 preinstall/fast	build/Makefile	/^preinstall\/fast:$/;"	t
 probalkozas	TheToughtExperimental.sql	/^  "probalkozas" INT GENERATED BY DEFAULT AS IDENTITY,$/;"	E	table:KiserletLepesVegrehajtas
@@ -827,6 +834,7 @@ rekurzivnakszant	TheToughtExperimental.sql	/^  "rekurzivnakszant" bit,$/;"	E	tab
 rekurzivnakszant	thetoughtexperimentwithdata.sql	/^    rekurzivnakszant bit(1)$/;"	E	table:kiserletlepesfeltetelesugras
 rovidites	TheToughtExperimental.sql	/^  "rovidites" varchar(6) UNIQUE NOT NULL$/;"	E	table:Mertekegyseg
 rovidites	thetoughtexperimentwithdata.sql	/^    rovidites character varying(6) NOT NULL$/;"	E	table:mertekegyseg
+scale_threshold	main.cpp	/^	const std::chrono::milliseconds scale_threshold{2000};$/;"	m	struct:PoolDBConnection	typeref:typename:const std::chrono::milliseconds	file:
 semaID	TheToughtExperimental.sql	/^  "semaID" int,$/;"	E	table:EngedelyezettSema
 semaid	thetoughtexperimentwithdata.sql	/^    semaid integer NOT NULL,$/;"	E	table:engedelyezettsema
 sepIndexes	main.cpp	/^	int* sepIndexes;$/;"	m	struct:StoreNames	typeref:typename:int *	file:
