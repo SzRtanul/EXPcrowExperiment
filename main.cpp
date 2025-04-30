@@ -200,49 +200,15 @@ void signal_handler(int signal) {
     exit(0);  // Kilépés
 }
 
-
-
-/*inline bool isBenneVanRendezett(std::string[] array, std::string[] values){
-    /*for(int i = 0; i < arr){
-        for(){
-
-        }
-    }
-    ;
-    return false;
-}
-
-inline bool isBenneVannak(std::string[] array, std::string[] values){
-    bool both = false;
-    for(int i = 0; i<values.length && !both; i++){
-        both = isBenneVan(array, values[i]);
-    }
-    return both;
-}
-
-inline bool isBenneVan(std::string[] array, std::string value){
-    bool both = false;
-    for(int i = 0; i < array.length && !both; i++){
-        both = array[i].equals(value);
-    }
-    return both;
-}
-*/
 inline std::string getWithoutSpace(string text){
     int i = text.length() - 1;
     for(;i>-1 && text[i] == ' '; i--){};
     return text.erase(i+1);
 }
 
-/*inline bool hasSubQuery(const char querytext[]){
-	std::regex pattern(R"(\s*SELECT)", std::regex_constants::icase);
-	return std::regex_search(querytext, pattern);
-}*/
-
 inline bool whatIsChar(char character){
 	bool vmia = ((unsigned)(character - 65) < (91- 65)) || character == '_';
 	return vmia;
-	
 }
 
 WordsCompare doSyntaxtCheckPreparation(char* characterChain){	
@@ -336,7 +302,6 @@ inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char*
 		std::cerr << "Egyéb hiba: " << e.what() << std::endl;
 	}
 	//W.commit();
-//	pqxx::result R = W.exec(querytext);
  	return textout;
 }
 
@@ -553,11 +518,6 @@ int main(){
     if (C.is_open()) {
         cout << "Opened database successfully: " << C.dbname() << endl;
         //std::signal(SIGINT, signal_handler);
-		//std::cout << "OOOO" << endl;
-        /*W.commit();*/
-  //      std::cout << getSQLQuery(W, "SELECT id, name FROM users");
-  //      std::cout << getSQLQuery(W, "create table if not exists users(id int, name char(30))");
-  //      std::cout << getSQLQuery(W, "SELECT public.helloworld('Szabó Roland')");
 		CROW_ROUTE(app, "/login")([](const crow::request& req) {
 	        crow::response res;
 			std::string token = "YOUR_SECURE_TOKEN";
@@ -572,59 +532,61 @@ int main(){
 		    return res;
 		});
 
-	/*	CROW_ROUTE(app, "/ujvacsora")([](){
-        	return getSQLQuery("SELECT public.helloworld('Szabó Roland')");
-    	});
-		
-		CROW_ROUTE(app, "/addrecord/<string>").methods("POST"_method)([](const crow::request& req, std::string tablename){
-			return getSQLQuery(("INSERT INTO " + tablename + "values ()").c_str());
-        });
-*/
 		CROW_ROUTE(app, "/callquery").methods("POST"_method)([&compareWords](const crow::request& req){
-			auto json = crow::json::load(req.body);
-			std::cout << req.body;
-			std::cout << "Elmegy";
-			if (!json) return crow::response(400, "Invalid JSON");
-			std::cout << "Elmegy";
-			auto& DBdataJSON = json["db"];
-			std::cout << "Elmegy";
-			crow::json::rvalue CAzon = json["CAzon"];
-			std::cout << "Elmegy";
-			std::cout << "Elmegy1";
-//			auto& query = json["query"];
-			std::string CAzonStr = "";//CAzon.s();
-			std::cout << "Elmegy1";
-			std::string schemaNamesStr = DBdataJSON["schemanames"].s();
-			std::cout << "Elmegy1";
-			std::string tableNamesStr = DBdataJSON["tablenames"].s();
-			std::cout << "Elmegy1";
-			std::string columnNamesStr = DBdataJSON["columnnames"].s();
-			std::cout << "Elmegy2";
-			std::string methodNamesStr = DBdataJSON["methodnames"].s();
-			std::cout << "Elmegy3";
-			std::string queryStr = DBdataJSON["query"].s();
-			std::cout << "Elmegy4";
-
-			char* schemaNames = strdup(schemaNamesStr.c_str());
-			char* tableNames = strdup(tableNamesStr.c_str());
-			char* columnNames = strdup(columnNamesStr.c_str());
-			char* methodNames = strdup(methodNamesStr.c_str());
-			char* queryJ = strdup(queryStr.c_str());
-			std::cout << "Elmegy";
-
-			StoreNames storeNames[] = {
-				StoreNames(schemaNames),
-				StoreNames(tableNames),
-				StoreNames(columnNames),
-				StoreNames(methodNames)
-			};
-			std::cout << "Elmegy";
-			crow::json::wvalue gh = json["token"];
-			
+			std::string quer = "-";
 			std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn(); 
-			std::string quer = getTextWithJSONValues(NC, compareWords, storeNames, CAzon, queryJ, gh.dump());
+			try{
+				auto json = crow::json::load(req.body);
+				std::cout << req.body;
+				std::cout << "Elmegy";
+				if (!json) {
+					poolDB.giveBackConnect(NC);
+					return crow::response(400, "Invalid JSON");
+				}
+				std::cout << "Elmegy";
+				auto& DBdataJSON = json["db"];
+				std::cout << "Elmegy";
+				crow::json::rvalue CAzon = json["CAzon"];
+				std::cout << "Elmegy";
+				std::cout << "Elmegy1";
+//			auto& query = json["query"];
+				std::string CAzonStr = "";//CAzon.s();
+				std::cout << "Elmegy1";
+				std::string schemaNamesStr = DBdataJSON["schemanames"].s();
+				std::cout << "Elmegy1";
+				std::string tableNamesStr = DBdataJSON["tablenames"].s();
+				std::cout << "Elmegy1";
+				std::string columnNamesStr = DBdataJSON["columnnames"].s();
+				std::cout << "Elmegy2";
+				std::string methodNamesStr = DBdataJSON["methodnames"].s();
+				std::cout << "Elmegy3";
+				std::string queryStr = DBdataJSON["query"].s();
+				std::cout << "Elmegy4";
+
+				char* schemaNames = strdup(schemaNamesStr.c_str());
+				char* tableNames = strdup(tableNamesStr.c_str());
+				char* columnNames = strdup(columnNamesStr.c_str());
+				char* methodNames = strdup(methodNamesStr.c_str());
+				char* queryJ = strdup(queryStr.c_str());
+				std::cout << "Elmegy";
+
+				StoreNames storeNames[] = {
+					StoreNames(schemaNames),
+					StoreNames(tableNames),
+					StoreNames(columnNames),
+					StoreNames(methodNames)
+				};
+				std::cout << "Elmegy";
+				crow::json::wvalue gh = json["token"];
+				
+				quer = getTextWithJSONValues(NC, compareWords, storeNames, CAzon, queryJ, gh.dump());
+			}
+			catch(const std::exception &e){				
+				std::cerr << "Egyéb hiba: " << e.what() << std::endl;
+			}
 			std::cout << quer << endl;
-        	std::string resdb = getSQLQuery(NC, quer.c_str());
+			std::string resdb = "err:Hiba történt!";
+			if(!quer.compare("-")) resdb = getSQLQuery(NC, quer.c_str());
 			poolDB.giveBackConnect(NC);
 			return crow::response(200, resdb);
     	});
@@ -643,15 +605,6 @@ int main(){
 		return "Hello world";
 	});
 
-    CROW_ROUTE(app, "/exat")([](){
-		return std::to_string(exat);
-	});
-
-    CROW_ROUTE(app, "/exat/<int>").methods("POST"_method)([](int a){ 
-		exat=a; 
-		return std::to_string(0b0111101); 
-	});
-
 	CROW_ROUTE(app, "/pelda/<int>").methods("POST"_method)([](const crow::request& req, const int ye){
 		
 		std::cout << "Fejlec:" << ye << endl;
@@ -667,7 +620,7 @@ int main(){
 
 		return crow::response(200, "Megkaptam!");
 	});
-		std::cout << "OOOO" << endl;
-    app.port(18080).multithreaded().run();
+    
+	app.port(18080).multithreaded().run();
   	return 0;
 }
