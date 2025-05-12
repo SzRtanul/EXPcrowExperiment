@@ -861,6 +861,12 @@ szuletesiIdo	TheToughtExperimental.sql	/^  "szuletesiIdo" date NOT NULL$/;"	E	ta
 szuletesiido	thetoughtexperimentwithdata.sql	/^    szuletesiido date NOT NULL$/;"	E	table:szemely
 tapasztalat	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.tapasztalat ($/;"	t
 tartalmaz	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.tartalmaz ($/;"	t
+test.cpp.i	build/Makefile	/^test.cpp.i:$/;"	t
+test.cpp.o	build/Makefile	/^test.cpp.o:$/;"	t
+test.cpp.s	build/Makefile	/^test.cpp.s:$/;"	t
+test.i	build/Makefile	/^test.i: test.cpp.i$/;"	t
+test.o	build/Makefile	/^test.o: test.cpp.o$/;"	t
+test.s	build/Makefile	/^test.s: test.cpp.s$/;"	t
 token	thetoughtexperimentwithdata.sql	/^    token bigint NOT NULL,$/;"	E	table:bearertoken
 tulajdonsag	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.tulajdonsag ($/;"	t
 tulajdonsagID	TheToughtExperimental.sql	/^  "tulajdonsagID" int,$/;"	E	table:AlanyTulajdonsag
