@@ -28,10 +28,10 @@ struct WordsCompare{
         bynarytree = new int[leghosszabbSzo]();
 //        bywoherin = new int[leghosszabbSzo * 32]();
 //        byoszlop = new char[leghosszabbSzo * 32]();
-        vegsoErtek = new int[szavakSzama];
-        vegsoErtekOszlopSzam = new char[szavakSzama];
-		szakaszOszlopSzam = new char[szakaszSzam];
-		kezd = new int[szakaszSzam];
+        vegsoErtek = new int[szavakSzama]();
+        vegsoErtekOszlopSzam = new char[szavakSzama]();
+		szakaszOszlopSzam = new char[szakaszSzam]();
+		kezd = new int[szakaszSzam]();
     }
 
 	~WordsCompare(){
@@ -85,6 +85,7 @@ WordsCompare doSyntaxtCheckPreparation(const char* characterChain){
 	}
 	std::cout<<characterChain << endl;
 	std::cout << leghosszabbSzo << " : " << szavakSzama << endl;
+	std::cout << "SzakaszSzám: " << szakaszSzam << endl;
 	WordsCompare wordsCompare(leghosszabbSzo, szavakSzama, szakaszSzam);
 	
 	//Reinit
@@ -94,9 +95,10 @@ WordsCompare doSyntaxtCheckPreparation(const char* characterChain){
 	int position = 0;
 	int lastCharPosition = 0;
 	int wordValue = 0;
-	int szakaszszam = 0;
+	szakaszSzam = 0;
 	i = 0;
-	for(; currentChar != '\0'; i++){
+	for(; characterChain[i] != '\0'; i++){
+		currentChar = characterChain[i] > 96 && characterChain[i] < 123 ? characterChain[i] - 32 : characterChain[i];
 		if(whatIsChar(currentChar)){
 			position = currentChar - 65; // zyxwvutsrqponmlkjihgfedcba
 			wordValue += (31 * szamlal) + position;
@@ -125,5 +127,4 @@ WordsCompare doSyntaxtCheckPreparation(const char* characterChain){
 		}
 	}
 	return wordsCompare;
-}
-
+}S

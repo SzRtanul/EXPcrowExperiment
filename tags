@@ -211,7 +211,7 @@ C_VERSION	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define C_V
 C_VERSION	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define C_VERSION$/;"	d	file:
 C_VERSION	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define C_VERSION /;"	d	file:
 Ceg	TheToughtExperimental.sql	/^CREATE TABLE "Ceg" ($/;"	t
-CrowSample	CMakeLists.txt	/^add_executable(CrowSample main.cpp)$/;"	t
+CrowSample	CMakeLists.txt	/^add_executable(CrowSample main.cpp test.cpp)$/;"	t
 CrowSample	CMakeLists.txt	/^project(CrowSample)$/;"	p
 CrowSample	build/Makefile	/^CrowSample: cmake_check_build_system$/;"	t
 CrowSample/fast	build/Makefile	/^CrowSample\/fast:$/;"	t
@@ -233,7 +233,7 @@ HEX	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define HEX(/
 HalottAlany	TheToughtExperimental.sql	/^CREATE TABLE "HalottAlany" ($/;"	t
 HozzaferesKategoria	TheToughtExperimental.sql	/^CREATE TABLE "HozzaferesKategoria" ($/;"	t
 ID_VOID_MAIN	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define ID_VOID_MAIN$/;"	d	file:
-INCLUDE_PATHS	CMakeLists.txt	/^set(INCLUDE_PATHS ${CMAKE_SOURCE_DIR}\/models \/usr\/include)$/;"	v
+INCLUDE_PATHS	CMakeLists.txt	/^set(INCLUDE_PATHS \/usr\/include)$/;"	v
 JogCsoport	TheToughtExperimental.sql	/^CREATE TABLE "JogCsoport" ($/;"	t
 JogCsoportHozzarendeles	TheToughtExperimental.sql	/^CREATE TABLE "JogCsoportHozzarendeles" ($/;"	t
 KLCsHozzarendeles	TheToughtExperimental.sql	/^CREATE TABLE "KLCsHozzarendeles" ($/;"	t
