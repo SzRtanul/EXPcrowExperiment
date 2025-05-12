@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 project(CrowSample)
-set(INCLUDE_PATHS /usr/include)
+set(INCLUDE_PATHS ${CMAKE_SOURCE_DIR}/models /usr/include)
 add_executable(CrowSample main.cpp)
 target_include_directories(CrowSample PUBLIC ${INCLUDE_PATHS})
 link_directories(/usr/lib)

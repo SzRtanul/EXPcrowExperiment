@@ -128,10 +128,10 @@ CMAKE_DEPENDS_LANGUAGES	build/CMakeFiles/CrowSample.dir/DependInfo.cmake	/^set(C
 CMAKE_DEPEND_INFO_FILES	build/CMakeFiles/Makefile.cmake	/^set(CMAKE_DEPEND_INFO_FILES$/;"	v
 CMAKE_FORCE_UNIX_PATHS	build/CMakeFiles/CMakeDirectoryInformation.cmake	/^set(CMAKE_FORCE_UNIX_PATHS 1)$/;"	v
 CMAKE_Fortran_TARGET_MODULE_DIR	build/CMakeFiles/CrowSample.dir/DependInfo.cmake	/^set(CMAKE_Fortran_TARGET_MODULE_DIR "")$/;"	v
-CMAKE_HOST_SYSTEM	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM "Linux-5.15.0-134-generic")$/;"	v
+CMAKE_HOST_SYSTEM	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM "Linux-5.15.0-136-generic")$/;"	v
 CMAKE_HOST_SYSTEM_NAME	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM_NAME "Linux")$/;"	v
 CMAKE_HOST_SYSTEM_PROCESSOR	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM_PROCESSOR "x86_64")$/;"	v
-CMAKE_HOST_SYSTEM_VERSION	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM_VERSION "5.15.0-134-generic")$/;"	v
+CMAKE_HOST_SYSTEM_VERSION	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM_VERSION "5.15.0-136-generic")$/;"	v
 CMAKE_INSTALL_COMPONENT	build/cmake_install.cmake	/^    set(CMAKE_INSTALL_COMPONENT "${COMPONENT}")$/;"	v
 CMAKE_INSTALL_COMPONENT	build/cmake_install.cmake	/^    set(CMAKE_INSTALL_COMPONENT)$/;"	v
 CMAKE_INSTALL_CONFIG_NAME	build/cmake_install.cmake	/^    set(CMAKE_INSTALL_CONFIG_NAME "")$/;"	v
@@ -158,11 +158,11 @@ CMAKE_RELATIVE_PATH_TOP_SOURCE	build/CMakeFiles/CMakeDirectoryInformation.cmake	
 CMAKE_SIZEOF_VOID_P	build/CMakeFiles/3.22.1/CMakeCCompiler.cmake	/^  set(CMAKE_SIZEOF_VOID_P "${CMAKE_C_SIZEOF_DATA_PTR}")$/;"	v
 CMAKE_SIZEOF_VOID_P	build/CMakeFiles/3.22.1/CMakeCXXCompiler.cmake	/^  set(CMAKE_SIZEOF_VOID_P "${CMAKE_CXX_SIZEOF_DATA_PTR}")$/;"	v
 CMAKE_SOURCE_DIR	build/Makefile	/^CMAKE_SOURCE_DIR = \/home\/test\/crowwebsite$/;"	m
-CMAKE_SYSTEM	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM "Linux-5.15.0-134-generic")$/;"	v
+CMAKE_SYSTEM	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM "Linux-5.15.0-136-generic")$/;"	v
 CMAKE_SYSTEM_LOADED	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_LOADED 1)$/;"	v
 CMAKE_SYSTEM_NAME	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_NAME "Linux")$/;"	v
 CMAKE_SYSTEM_PROCESSOR	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_PROCESSOR "x86_64")$/;"	v
-CMAKE_SYSTEM_VERSION	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_VERSION "5.15.0-134-generic")$/;"	v
+CMAKE_SYSTEM_VERSION	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_VERSION "5.15.0-136-generic")$/;"	v
 CMAKE_TARGET_LINKED_INFO_FILES	build/CMakeFiles/CrowSample.dir/DependInfo.cmake	/^set(CMAKE_TARGET_LINKED_INFO_FILES$/;"	v
 COMPILER_ID	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_ID /;"	d	file:
 COMPILER_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_ID /;"	d	file:
@@ -233,7 +233,7 @@ HEX	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define HEX(/
 HalottAlany	TheToughtExperimental.sql	/^CREATE TABLE "HalottAlany" ($/;"	t
 HozzaferesKategoria	TheToughtExperimental.sql	/^CREATE TABLE "HozzaferesKategoria" ($/;"	t
 ID_VOID_MAIN	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define ID_VOID_MAIN$/;"	d	file:
-INCLUDE_PATHS	CMakeLists.txt	/^set(INCLUDE_PATHS \/usr\/include)$/;"	v
+INCLUDE_PATHS	CMakeLists.txt	/^set(INCLUDE_PATHS ${CMAKE_SOURCE_DIR}\/models \/usr\/include)$/;"	v
 JogCsoport	TheToughtExperimental.sql	/^CREATE TABLE "JogCsoport" ($/;"	t
 JogCsoportHozzarendeles	TheToughtExperimental.sql	/^CREATE TABLE "JogCsoportHozzarendeles" ($/;"	t
 KLCsHozzarendeles	TheToughtExperimental.sql	/^CREATE TABLE "KLCsHozzarendeles" ($/;"	t
@@ -267,8 +267,8 @@ PLATFORM_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  de
 PLATFORM_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define PLATFORM_ID$/;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID /;"	d	file:
 PLATFORM_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define PLATFORM_ID$/;"	d	file:
-PoolDBConnection	main.cpp	/^	PoolDBConnection(std::string conninfo, int min_size, int max_size){$/;"	f	struct:PoolDBConnection	file:
-PoolDBConnection	main.cpp	/^struct PoolDBConnection{$/;"	s	file:
+PoolDBConnection	models/PoolDBConnection.cpp	/^	PoolDBConnection(std::string conninfo, int min_size, int max_size){$/;"	f	struct:PoolDBConnection	file:
+PoolDBConnection	models/PoolDBConnection.cpp	/^struct PoolDBConnection{$/;"	s	file:
 RM	build/Makefile	/^RM = \/usr\/bin\/cmake -E rm -f$/;"	m
 Recept	TheToughtExperimental.sql	/^CREATE TABLE "Recept" ($/;"	t
 ReceptVariacioNev	TheToughtExperimental.sql	/^CREATE TABLE "ReceptVariacioNev" ($/;"	t
@@ -294,8 +294,8 @@ STRINGIFY	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define
 STRINGIFY_HELPER	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#define STRINGIFY_HELPER(/;"	d	file:
 STRINGIFY_HELPER	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define STRINGIFY_HELPER(/;"	d	file:
 Sema	TheToughtExperimental.sql	/^CREATE TABLE "Sema" ($/;"	t
-StoreNames	main.cpp	/^	StoreNames(char* characterChain){$/;"	f	struct:StoreNames	file:
-StoreNames	main.cpp	/^struct StoreNames{$/;"	s	file:
+StoreNames	models/StoreNames.cpp	/^	StoreNames(const char* characterChain){$/;"	f	struct:StoreNames	file:
+StoreNames	models/StoreNames.cpp	/^struct StoreNames{$/;"	s	file:
 Szak	TheToughtExperimental.sql	/^CREATE TABLE "Szak" ($/;"	t
 Személy	TheToughtExperimental.sql	/^CREATE TABLE "Személy" ($/;"	t
 Szerepkor	TheToughtExperimental.sql	/^CREATE TABLE "Szerepkor" ($/;"	t
@@ -313,15 +313,15 @@ ValaszthatoAlanyTipus	TheToughtExperimental.sql	/^CREATE TABLE "ValaszthatoAlany
 ValaszthatoAnyag	TheToughtExperimental.sql	/^CREATE TABLE "ValaszthatoAnyag" ($/;"	t
 VizsgalatElojegyzes	TheToughtExperimental.sql	/^CREATE TABLE "VizsgalatElojegyzes" ($/;"	t
 VizsgalatTipus	TheToughtExperimental.sql	/^CREATE TABLE "VizsgalatTipus" ($/;"	t
-WordsCompare	main.cpp	/^	WordsCompare(int leghosszabbSzo, int szavakSzama){$/;"	f	struct:WordsCompare	file:
-WordsCompare	main.cpp	/^struct WordsCompare{$/;"	s	file:
+WordsCompare	models/WordsCompare.cpp	/^	WordsCompare(char leghosszabbSzo, int szavakSzama, int szakaszSzam){$/;"	f	struct:WordsCompare	file:
+WordsCompare	models/WordsCompare.cpp	/^struct WordsCompare{$/;"	s	file:
 __anon3b5b11db0102	main.cpp	/^		CROW_ROUTE(app, "\/login")([](const crow::request& req) {$/;"	f	function:main	file:
 __anon3b5b11db0202	main.cpp	/^		CROW_ROUTE(app, "\/callquery").methods("POST"_method)([&compareWords](const crow::request& req/;"	f	function:main	file:
 __anon3b5b11db0302	main.cpp	/^	CROW_ROUTE(app, "\/")([](){$/;"	f	function:main	file:
 __anon3b5b11db0402	main.cpp	/^	CROW_ROUTE(app, "\/pelda\/<int>").methods("POST"_method)([](const crow::request& req, const int/;"	f	function:main	file:
 __has_include	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define __has_include(/;"	d	file:
 __has_include	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define __has_include(/;"	d	file:
-active_connections	main.cpp	/^	int active_connections;$/;"	m	struct:PoolDBConnection	typeref:typename:int	file:
+active_connections	models/PoolDBConnection.cpp	/^	int active_connections;$/;"	m	struct:PoolDBConnection	typeref:typename:int	file:
 alany	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.alany ($/;"	t
 alanyID	TheToughtExperimental.sql	/^  "alanyID" int PRIMARY KEY,$/;"	E	table:HalottAlany
 alanyID	TheToughtExperimental.sql	/^  "alanyID" int,$/;"	E	table:AlanyVizsgalat
@@ -382,20 +382,18 @@ befejezetlen	TheToughtExperimental.sql	/^  "befejezetlen" bit,$/;"	E	table:Oklev
 befejezetlen	thetoughtexperimentwithdata.sql	/^    befejezetlen bit(1)$/;"	E	table:oklevel
 bevonasDatuma	TheToughtExperimental.sql	/^  "bevonasDatuma" date,$/;"	E	table:KiserletResztvevo
 bevonasdatuma	thetoughtexperimentwithdata.sql	/^    bevonasdatuma date,$/;"	E	table:kiserletresztvevo
-bynarytree	main.cpp	/^	int* bynarytree;$/;"	m	struct:WordsCompare	typeref:typename:int *	file:
-byoszlop	main.cpp	/^	char* byoszlop;$/;"	m	struct:WordsCompare	typeref:typename:char *	file:
-bywoherin	main.cpp	/^	int* bywoherin; \/\/ Inicializálás binarytree*32, Csökkentés: Ahány betű$/;"	m	struct:WordsCompare	typeref:typename:int *	file:
+bynarytree	models/WordsCompare.cpp	/^	int* bynarytree;$/;"	m	struct:WordsCompare	typeref:typename:int *	file:
 ceg	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.ceg ($/;"	t
 cegID	TheToughtExperimental.sql	/^  "cegID" int,$/;"	E	table:Tapasztalat
 cegid	thetoughtexperimentwithdata.sql	/^    cegid integer NOT NULL,$/;"	E	table:tapasztalat
-characterChain	main.cpp	/^	char* characterChain;$/;"	m	struct:StoreNames	typeref:typename:char *	file:
+characterChain	models/StoreNames.cpp	/^	char* characterChain;$/;"	m	struct:StoreNames	typeref:typename:char *	file:
 clean	build/Makefile	/^clean:$/;"	t
 clean/fast	build/Makefile	/^clean\/fast: clean$/;"	t
 cmake_check_build_system	build/Makefile	/^cmake_check_build_system:$/;"	t
 cmake_force	build/Makefile	/^cmake_force:$/;"	t
-conninfo	main.cpp	/^	std::string conninfo;$/;"	m	struct:PoolDBConnection	typeref:typename:std::string	file:
+conninfo	models/PoolDBConnection.cpp	/^	std::string conninfo;$/;"	m	struct:PoolDBConnection	typeref:typename:std::string	file:
 const	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define const$/;"	d	file:
-create_connection	main.cpp	/^	inline bool create_connection(){$/;"	f	struct:PoolDBConnection	typeref:typename:bool	file:
+create_connection	models/PoolDBConnection.cpp	/^	inline bool create_connection(){$/;"	f	struct:PoolDBConnection	typeref:typename:bool	file:
 csoportszam	TheToughtExperimental.sql	/^  "csoportszam" int$/;"	E	table:KiserletLepesSorrend
 csoportszam	TheToughtExperimental.sql	/^  "csoportszam" int,$/;"	E	table:KLCsHozzarendeles
 csoportszam	TheToughtExperimental.sql	/^  "csoportszam" int,$/;"	E	table:KiserletResztvevo
@@ -412,7 +410,7 @@ datum	TheToughtExperimental.sql	/^  "datum" date,$/;"	E	table:Etetes
 datum	thetoughtexperimentwithdata.sql	/^    datum date NOT NULL,$/;"	E	table:etetes
 default_target	build/Makefile	/^default_target: all$/;"	t
 depend	build/Makefile	/^depend:$/;"	t
-doSyntaxtCheckPreparation	main.cpp	/^WordsCompare doSyntaxtCheckPreparation(char* characterChain){	$/;"	f	typeref:typename:WordsCompare
+doSyntaxtCheckPreparation	models/WordsCompare.cpp	/^WordsCompare doSyntaxtCheckPreparation(const char* characterChain){	$/;"	f	typeref:typename:WordsCompare
 edit_cache	build/Makefile	/^edit_cache:$/;"	t
 edit_cache/fast	build/Makefile	/^edit_cache\/fast: edit_cache$/;"	t
 egyenlo	TheToughtExperimental.sql	/^  "egyenlo" bit,$/;"	E	table:AlanyTulajdonsag
@@ -493,16 +491,16 @@ felhasznaloid	thetoughtexperimentwithdata.sql	/^    felhasznaloid integer NOT NU
 felhasznaloid	thetoughtexperimentwithdata.sql	/^    felhasznaloid integer$/;"	E	table:bearertoken
 felhasznalonev	TheToughtExperimental.sql	/^  "felhasznalonev" char(30) UNIQUE,$/;"	E	table:Felhasznalo
 felhasznalonev	thetoughtexperimentwithdata.sql	/^    felhasznalonev character(30),$/;"	E	table:felhasznalo
-getDBConn	main.cpp	/^	std::shared_ptr<pqxx::connection> getDBConn(){$/;"	f	struct:PoolDBConnection	typeref:typename:std::shared_ptr<pqxx::connection>	file:
+getDBConn	models/PoolDBConnection.cpp	/^	std::shared_ptr<pqxx::connection> getDBConn(){$/;"	f	struct:PoolDBConnection	typeref:typename:std::shared_ptr<pqxx::connection>	file:
 getSQLQuery	main.cpp	/^inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char* querytext){$/;"	f	typeref:typename:std::string
 getSQLQuery	main.cpp	/^inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char* querytext, cons/;"	f	typeref:typename:std::string
-getSepNumber	main.cpp	/^	int getSepNumber(){$/;"	f	struct:StoreNames	typeref:typename:int	file:
-getTextWithJSONValues	main.cpp	/^inline std::string getTextWithJSONValues($/;"	f	typeref:typename:std::string
+getSepNumber	models/StoreNames.cpp	/^	int getSepNumber(){$/;"	f	struct:StoreNames	typeref:typename:int	file:
+getTextWithJSONValues	models/gTXTJValues.cpp	/^inline std::string getTextWithJSONValues($/;"	f	typeref:typename:std::string
 getWithoutSpace	main.cpp	/^inline std::string getWithoutSpace(string text){$/;"	f	typeref:typename:std::string
 getaccesfullschemasfromgroups	thetoughtexperimentwithdata.sql	/^CREATE FUNCTION sysadmin.getaccesfullschemasfromgroups(usertoken bigint, schemacharchain text) R/;"	f
 getuserfromtoken	thetoughtexperimentwithdata.sql	/^CREATE FUNCTION sysadmin.getuserfromtoken(usertoken bigint) RETURNS integer$/;"	f
 getusergroups	thetoughtexperimentwithdata.sql	/^CREATE FUNCTION sysadmin.getusergroups(userid integer) RETURNS integer[]$/;"	f
-giveBackConnect	main.cpp	/^	void giveBackConnect(std::shared_ptr<pqxx::connection> conn){$/;"	f	struct:PoolDBConnection	typeref:typename:void	file:
+giveBackConnect	models/PoolDBConnection.cpp	/^	void giveBackConnect(std::shared_ptr<pqxx::connection> conn){$/;"	f	struct:PoolDBConnection	typeref:typename:void	file:
 gyorsleiras	TheToughtExperimental.sql	/^  "gyorsleiras" varchar(200),$/;"	E	table:KiserletLepesVegrehajtasEsemeny
 gyorsleiras	thetoughtexperimentwithdata.sql	/^    gyorsleiras character varying(200),$/;"	E	table:kiserletlepesvegrehajtasesemeny
 halalIdopontja	TheToughtExperimental.sql	/^  "halalIdopontja" date,$/;"	E	table:HalottAlany
@@ -607,7 +605,7 @@ info_version_internal	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^c
 info_version_internal	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^char const* info_version_internal = "INFO" ":" "compiler_version_internal[" COMPILER_VERSION_INT/;"	v	typeref:typename:char const *
 info_version_internal	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version_internal[] = {$/;"	v	typeref:typename:char const[]
 info_version_internal	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_version_internal = "INFO" ":" "compiler_version_internal[" COMPILER_VERSION_INT/;"	v	typeref:typename:char const *
-initSepIndexes	main.cpp	/^	void initSepIndexes(){$/;"	f	struct:StoreNames	typeref:typename:void	file:
+initSepIndexes	models/StoreNames.cpp	/^	void initSepIndexes(){$/;"	f	struct:StoreNames	typeref:typename:void	file:
 jelszoHASH	TheToughtExperimental.sql	/^  "jelszoHASH" text$/;"	E	table:Felhasznalo
 jelszohash	thetoughtexperimentwithdata.sql	/^    jelszohash text$/;"	E	table:felhasznalo
 jogCsoportID	TheToughtExperimental.sql	/^  "jogCsoportID" int,$/;"	E	table:EngedelyezettSema
@@ -630,6 +628,7 @@ kevesebb	thetoughtexperimentwithdata.sql	/^    kevesebb bit(1),$/;"	E	table:alko
 kevesebb	thetoughtexperimentwithdata.sql	/^    kevesebb bit(1),$/;"	E	table:tartalmaz
 kevesebb	thetoughtexperimentwithdata.sql	/^    kevesebb bit(1),$/;"	E	table:tunetallapot
 kezd	TheToughtExperimental.sql	/^  "kezd" date,$/;"	E	table:KLCsHozzarendelesVegrehajtas
+kezd	models/WordsCompare.cpp	/^	int* kezd;$/;"	m	struct:WordsCompare	typeref:typename:int *	file:
 kezd	thetoughtexperimentwithdata.sql	/^    kezd date NOT NULL,$/;"	E	table:klcshozzarendelesvegrehajtas
 kezdesEve	TheToughtExperimental.sql	/^  "kezdesEve" int,$/;"	E	table:Oklevel
 kezdeseve	thetoughtexperimentwithdata.sql	/^    kezdeseve integer NOT NULL,$/;"	E	table:oklevel
@@ -701,7 +700,7 @@ klcshozzarendelesvegrehajtasid	thetoughtexperimentwithdata.sql	/^    klcshozzare
 klcshozzarendelesvegrehajtasid	thetoughtexperimentwithdata.sql	/^    klcshozzarendelesvegrehajtasid integer NOT NULL,$/;"	E	table:valaszthatoalany
 kodnev	TheToughtExperimental.sql	/^  "kodnev" char(30) UNIQUE NOT NULL,$/;"	E	table:Alany
 kodnev	thetoughtexperimentwithdata.sql	/^    kodnev character(30) NOT NULL,$/;"	E	table:alany
-leghosszabbSzo	main.cpp	/^	int leghosszabbSzo;$/;"	m	struct:WordsCompare	typeref:typename:int	file:
+leghosszabbSzo	models/WordsCompare.cpp	/^	char leghosszabbSzo;$/;"	m	struct:WordsCompare	typeref:typename:char	file:
 leiras	TheToughtExperimental.sql	/^  "leiras" text$/;"	E	table:HalottAlany
 leiras	TheToughtExperimental.sql	/^  "leiras" text$/;"	E	table:Kiserlet
 leiras	TheToughtExperimental.sql	/^  "leiras" text$/;"	E	table:KiserletLepesCsoport
@@ -722,7 +721,7 @@ leiras	thetoughtexperimentwithdata.sql	/^    leiras text$/;"	E	table:klcshozzare
 leiras	thetoughtexperimentwithdata.sql	/^    leiras text$/;"	E	table:tunet
 leiras	thetoughtexperimentwithdata.sql	/^    leiras text$/;"	E	table:tunetallapot
 leiras	thetoughtexperimentwithdata.sql	/^    leiras text,$/;"	E	table:tapasztalat
-length	main.cpp	/^	int length;$/;"	m	struct:StoreNames	typeref:typename:int	file:
+length	models/StoreNames.cpp	/^	int length;$/;"	m	struct:StoreNames	typeref:typename:int	file:
 lepesheztartozovizsgalat	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.lepesheztartozovizsgalat ($/;"	t
 main	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
 main	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f	typeref:typename:void
@@ -734,7 +733,7 @@ main.cpp.s	build/Makefile	/^main.cpp.s:$/;"	t
 main.i	build/Makefile	/^main.i: main.cpp.i$/;"	t
 main.o	build/Makefile	/^main.o: main.cpp.o$/;"	t
 main.s	build/Makefile	/^main.s: main.cpp.s$/;"	t
-max_size	main.cpp	/^	int max_size;$/;"	m	struct:PoolDBConnection	typeref:typename:int	file:
+max_size	models/PoolDBConnection.cpp	/^	int max_size;$/;"	m	struct:PoolDBConnection	typeref:typename:int	file:
 megetetendoetelek	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.megetetendoetelek ($/;"	t
 megetetettetelek	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.megetetettetelek ($/;"	t
 megjegyzes	TheToughtExperimental.sql	/^  "megjegyzes" text$/;"	E	table:AlanyVizsgalat
@@ -768,10 +767,10 @@ mikor	TheToughtExperimental.sql	/^  "mikor" date,$/;"	E	table:KiserletVegrehajta
 mikor	thetoughtexperimentwithdata.sql	/^    mikor date NOT NULL,$/;"	E	table:kiserletvegrehajtas
 mikor	thetoughtexperimentwithdata.sql	/^    mikor date,$/;"	E	table:kiserletlepesvegrehajtas
 mikor	thetoughtexperimentwithdata.sql	/^    mikor date,$/;"	E	table:kiserletlepesvegrehajtasesemeny
-min_size	main.cpp	/^	int min_size;$/;"	m	struct:PoolDBConnection	typeref:typename:int	file:
+min_size	models/PoolDBConnection.cpp	/^	int min_size;$/;"	m	struct:PoolDBConnection	typeref:typename:int	file:
 mintfeltetelletezik	TheToughtExperimental.sql	/^  "mintfeltetelletezik" bit$/;"	E	table:VizsgalatElojegyzes
 mintfeltetelletezik	thetoughtexperimentwithdata.sql	/^    mintfeltetelletezik bit(1)$/;"	E	table:vizsgalatelojegyzes
-mtx	main.cpp	/^	std::mutex mtx;$/;"	m	struct:PoolDBConnection	typeref:typename:std::mutex	file:
+mtx	models/PoolDBConnection.cpp	/^	std::mutex mtx;$/;"	m	struct:PoolDBConnection	typeref:typename:std::mutex	file:
 munkakor	TheToughtExperimental.sql	/^  "munkakor" varchar(200),$/;"	E	table:Tapasztalat
 munkakor	thetoughtexperimentwithdata.sql	/^    munkakor character varying(200),$/;"	E	table:tapasztalat
 munkatars	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.munkatars ($/;"	t
@@ -816,7 +815,7 @@ oktatasiIntezmenyID	TheToughtExperimental.sql	/^  "oktatasiIntezmenyID" int,$/;"
 oktatasiintezmeny	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.oktatasiintezmeny ($/;"	t
 oktatasiintezmenyid	thetoughtexperimentwithdata.sql	/^    oktatasiintezmenyid integer NOT NULL,$/;"	E	table:oklevel
 oktatasiintezmenyid	thetoughtexperimentwithdata.sql	/^    oktatasiintezmenyid integer,$/;"	E	table:szak
-pool	main.cpp	/^	std::queue<std::shared_ptr<pqxx::connection>> pool;$/;"	m	struct:PoolDBConnection	typeref:typename:std::queue<std::shared_ptr<pqxx::connection>>	file:
+pool	models/PoolDBConnection.cpp	/^	std::queue<std::shared_ptr<pqxx::connection>> pool;$/;"	m	struct:PoolDBConnection	typeref:typename:std::queue<std::shared_ptr<pqxx::connection>>	file:
 poolDB	main.cpp	/^PoolDBConnection poolDB("dbname = testdb3 user=postgres password=test123 hostaddr=127.0.0.1 port/;"	v	typeref:typename:PoolDBConnection
 preinstall	build/Makefile	/^preinstall: all$/;"	t
 preinstall/fast	build/Makefile	/^preinstall\/fast:$/;"	t
@@ -832,10 +831,10 @@ rekurzivnakszant	TheToughtExperimental.sql	/^  "rekurzivnakszant" bit,$/;"	E	tab
 rekurzivnakszant	thetoughtexperimentwithdata.sql	/^    rekurzivnakszant bit(1)$/;"	E	table:kiserletlepesfeltetelesugras
 rovidites	TheToughtExperimental.sql	/^  "rovidites" varchar(6) UNIQUE NOT NULL$/;"	E	table:Mertekegyseg
 rovidites	thetoughtexperimentwithdata.sql	/^    rovidites character varying(6) NOT NULL$/;"	E	table:mertekegyseg
-scale_threshold	main.cpp	/^	const std::chrono::milliseconds scale_threshold{2000};$/;"	m	struct:PoolDBConnection	typeref:typename:const std::chrono::milliseconds	file:
+scale_threshold	models/PoolDBConnection.cpp	/^	const std::chrono::milliseconds scale_threshold{2000};$/;"	m	struct:PoolDBConnection	typeref:typename:const std::chrono::milliseconds	file:
 semaID	TheToughtExperimental.sql	/^  "semaID" int,$/;"	E	table:EngedelyezettSema
 semaid	thetoughtexperimentwithdata.sql	/^    semaid integer NOT NULL,$/;"	E	table:engedelyezettsema
-sepIndexes	main.cpp	/^	int* sepIndexes;$/;"	m	struct:StoreNames	typeref:typename:int *	file:
+sepIndexes	models/StoreNames.cpp	/^	int* sepIndexes;$/;"	m	struct:StoreNames	typeref:typename:int *	file:
 signal_handler	main.cpp	/^void signal_handler(int signal) {$/;"	f	typeref:typename:void
 sikeres	TheToughtExperimental.sql	/^  "sikeres" bit,$/;"	E	table:KiserletLepesVegrehajtas
 sikeres	thetoughtexperimentwithdata.sql	/^    sikeres bit(1),$/;"	E	table:kiserletlepesvegrehajtas
@@ -843,10 +842,12 @@ sulyossagMerteke	TheToughtExperimental.sql	/^  "sulyossagMerteke" int,$/;"	E	tab
 sulyossagmerteke	thetoughtexperimentwithdata.sql	/^    sulyossagmerteke integer,$/;"	E	table:tunetallapot
 szak	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.szak ($/;"	t
 szakID	TheToughtExperimental.sql	/^  "szakID" int,$/;"	E	table:Oklevel
+szakaszOszlopSzam	models/WordsCompare.cpp	/^	char* szakaszOszlopSzam;$/;"	m	struct:WordsCompare	typeref:typename:char *	file:
+szakaszSzam	models/WordsCompare.cpp	/^	int szakaszSzam;$/;"	m	struct:WordsCompare	typeref:typename:int	file:
 szakid	thetoughtexperimentwithdata.sql	/^    szakid integer NOT NULL,$/;"	E	table:oklevel
 szakmegnevezes	TheToughtExperimental.sql	/^  "szakmegnevezes" varchar(200) UNIQUE NOT NULL$/;"	E	table:Szak
 szakmegnevezes	thetoughtexperimentwithdata.sql	/^    szakmegnevezes character varying(200) NOT NULL$/;"	E	table:szak
-szavakSzama	main.cpp	/^	int szavakSzama;$/;"	m	struct:WordsCompare	typeref:typename:int	file:
+szavakSzama	models/WordsCompare.cpp	/^	int szavakSzama;$/;"	m	struct:WordsCompare	typeref:typename:int	file:
 szemely	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.szemely ($/;"	t
 szemelyiSzam	TheToughtExperimental.sql	/^  "szemelyiSzam" char(6) UNIQUE,$/;"	E	table:Személy
 szemelyiszam	thetoughtexperimentwithdata.sql	/^    szemelyiszam character(6),$/;"	E	table:szemely
@@ -888,8 +889,8 @@ variacioNevID	TheToughtExperimental.sql	/^  "variacioNevID" int,$/;"	E	table:Rec
 variacionevid	thetoughtexperimentwithdata.sql	/^    variacionevid integer NOT NULL,$/;"	E	table:recept
 vege	TheToughtExperimental.sql	/^  "vege" date,$/;"	E	table:KLCsHozzarendelesVegrehajtas
 vege	thetoughtexperimentwithdata.sql	/^    vege date,$/;"	E	table:klcshozzarendelesvegrehajtas
-vegsoErtek	main.cpp	/^	int* vegsoErtek;$/;"	m	struct:WordsCompare	typeref:typename:int *	file:
-vegsoErtekOszlopSzam	main.cpp	/^	char* vegsoErtekOszlopSzam; \/\/ Inicializálás a szavak számával$/;"	m	struct:WordsCompare	typeref:typename:char *	file:
+vegsoErtek	models/WordsCompare.cpp	/^	int* vegsoErtek; \/\/3000$/;"	m	struct:WordsCompare	typeref:typename:int *	file:
+vegsoErtekOszlopSzam	models/WordsCompare.cpp	/^	char* vegsoErtekOszlopSzam; \/\/ Inicializálás a szavak számával$/;"	m	struct:WordsCompare	typeref:typename:char *	file:
 vegzesEve	TheToughtExperimental.sql	/^  "vegzesEve" int,$/;"	E	table:Oklevel
 vegzeseve	thetoughtexperimentwithdata.sql	/^    vegzeseve integer,$/;"	E	table:oklevel
 vizsgalatElojegyzesID	TheToughtExperimental.sql	/^  "vizsgalatElojegyzesID" int PRIMARY KEY,$/;"	E	table:AlanyVizsgalat
@@ -915,6 +916,6 @@ vizsgalatidopont	thetoughtexperimentwithdata.sql	/^    vizsgalatidopont date,$/;
 vizsgalattipus	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.vizsgalattipus ($/;"	t
 vizsgalattipusid	thetoughtexperimentwithdata.sql	/^    vizsgalattipusid integer,$/;"	E	table:vizsgalatelojegyzes
 volatile	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define volatile$/;"	d	file:
-whatIsChar	main.cpp	/^inline bool whatIsChar(char character){$/;"	f	typeref:typename:bool
-~StoreNames	main.cpp	/^	~StoreNames(){$/;"	f	struct:StoreNames	file:
-~WordsCompare	main.cpp	/^	~WordsCompare(){$/;"	f	struct:WordsCompare	file:
+whatIsChar	models/WordsCompare.cpp	/^inline bool whatIsChar(char character){$/;"	f	typeref:typename:bool
+~StoreNames	models/StoreNames.cpp	/^	~StoreNames(){$/;"	f	struct:StoreNames	file:
+~WordsCompare	models/WordsCompare.cpp	/^	~WordsCompare(){$/;"	f	struct:WordsCompare	file:
