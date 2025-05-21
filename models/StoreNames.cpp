@@ -6,6 +6,7 @@ struct StoreNames{
 	char* characterChain;
 
 	StoreNames(const char* characterChain){
+		std::cout << "CARA: " <<  characterChain << std::endl;
 		this->characterChain = strdup(characterChain);
 		this->length = this->getSepNumber();
 		sepIndexes = new int[this->length]();
@@ -23,10 +24,13 @@ struct StoreNames{
 		int i = 0;
 		for(; characterChain[i] != '\0'; i++){
 			characterChain[i] = characterChain[i] > 96 && characterChain[i] < 123 ? characterChain[i] - 32 : characterChain[i];
+			currentchar = characterChain[i];
 			if(lastChar == ';' && (currentchar > 64 && currentchar < 91)) sepNumberSum++; 
 			if(currentchar == ';' || (currentchar > 64 && currentchar < 91)) lastChar = currentchar;
 			else if(currentchar != '_') characterChain[i] = '_';
 		}
+		std::cout << "SepNumberSum: " << sepNumberSum << std::endl; 
+		//if(lastChar != ';') sepNumberSum++; 
 		return sepNumberSum;
 	}
 

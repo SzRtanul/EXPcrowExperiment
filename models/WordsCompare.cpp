@@ -111,14 +111,16 @@ WordsCompare doSyntaxtCheckPreparation(const char* characterChain){
 		if((lastChar != ';' && (currentChar == ';') || (lastChar != ';' && characterChain[i+1] == '\0'))){ 
 			std::cout << "WordValue(Pret): " << wordValue << endl;
 			wordsCompare.vegsoErtek[szavakSzama] = wordValue;
+			std::cout << "Szavak száma: " << szavakSzama << endl; 
 			wordsCompare.vegsoErtekOszlopSzam[szavakSzama] = (char)szamlal;
-			szavakSzama++;
+
 			if(lastszamlal != szamlal){
-				wordsCompare.kezd[szakaszSzam] = i;
+				wordsCompare.kezd[szakaszSzam] = szavakSzama;
 				wordsCompare.szakaszOszlopSzam[szakaszSzam] = szamlal;
 				lastszamlal = szamlal;
 				szakaszSzam++;
 			}
+			szavakSzama++;
 			szamlal = 0;
 			wordValue = 0;
 		}
@@ -126,5 +128,8 @@ WordsCompare doSyntaxtCheckPreparation(const char* characterChain){
 			lastChar = currentChar;
 		}
 	}
+	for(int k = 0; k < wordsCompare.szavakSzama; k++){
+		std::cout << k << ".: " << wordsCompare.vegsoErtek[k] << " VégsőértékOszlop: " << (unsigned)wordsCompare.vegsoErtekOszlopSzam[k] << std::endl;
+	}
 	return wordsCompare;
-}S
+}

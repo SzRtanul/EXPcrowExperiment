@@ -153,6 +153,7 @@ int main(){
 				std::cout << "Elmegy1";
 //			auto& query = json["query"];
 				std::string CAzonStr = "";//CAzon.s();
+			//	std::string keywordNamesStr = DBdataJSON["keywordnames"].s();
 				std::cout << "Elmegy1";
 				std::string schemaNamesStr = DBdataJSON["schemanames"].s();
 				std::cout << "Elmegy1";
@@ -165,6 +166,7 @@ int main(){
 				std::string queryStr = DBdataJSON["query"].s();
 				std::cout << "Elmegy4";
 
+			//	StoreNames keywordNames(keywordNamesStr.c_str()),
 				StoreNames storeNames[] = {
 					StoreNames(schemaNamesStr.c_str()),
 					StoreNames(tableNamesStr.c_str()),
@@ -183,7 +185,7 @@ int main(){
 			}
 			std::cout << quer << endl;
 			std::string resdb = "err:Hiba történt!";
-			if(!quer.compare("-")) resdb = getSQLQuery(NC, quer.c_str());
+			if(quer.compare("-")) resdb = getSQLQuery(NC, quer.c_str());
 			poolDB.giveBackConnect(NC);
 			return crow::response(200, resdb);
     	});
