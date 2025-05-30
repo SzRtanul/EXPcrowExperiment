@@ -162,6 +162,7 @@ int main(){
 				std::string columnNamesStr = DBdataJSON["columnnames"].s();
 				std::cout << "Elmegy2";
 				std::string methodNamesStr = DBdataJSON["methodnames"].s();
+				std::string aliasesStr = DBdataJSON["aliases"].s();
 				std::cout << "Elmegy3";
 				std::string queryStr = DBdataJSON["query"].s();
 				std::cout << "Elmegy4";
@@ -171,10 +172,17 @@ int main(){
 					StoreNames(schemaNamesStr.c_str()),
 					StoreNames(tableNamesStr.c_str()),
 					StoreNames(columnNamesStr.c_str()),
-					StoreNames(methodNamesStr.c_str())
+					StoreNames(methodNamesStr.c_str()),
+					StoreNames(aliasesStr.c_str())
 				};
 				crow::json::wvalue gh = json["token"];
-				std::string hh = "select sysadmin.getaccesfullschemasfromgroups(" + gh.dump() + std::string(", '") + std::string(storeNames[0].characterChain) + "')";
+				std::string hh = 
+						"SELECT set_config('app.current_user_id', '"+ gh.dump() +"', false);" +
+						"" +
+						"" +
+						"" + 
+						"select sysadmin.getaccesfullschemasfromgroups(" + 
+						gh.dump() + std::string(", '") + std::string(storeNames[0].characterChain) + "')";
 				std::string qre = getSQLQuery(NC, hh.c_str(), "", "");
 				bool syntaxtGood = qre.length() > 0 ? qre[0] == 't' : 0;
 

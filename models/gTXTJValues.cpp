@@ -109,7 +109,7 @@ inline std::string getTextWithJSONValues(
 			std::cout<< text[i] << "ALAAAAA " << syntaxtGood << endl;
 			bool addValue = false;
 			std::string field = "";
-			usedStoreNames = (unsigned)(text[i] - 36) < (40 - 36) ? text[i] - 36 : - 1;
+			usedStoreNames = (unsigned)(text[i] - 36) < (41 - 36) ? text[i] - 36 : - 1;
 			if(text[i] == '-'){
 				std::cout<< text[i] << endl;
 				if(!JSONValues){ 
@@ -140,7 +140,8 @@ inline std::string getTextWithJSONValues(
 						if(syntaxtGood){
 							int j = localStoreNames.sepIndexes[wheres];
 							std::cout << "J?: " << j << endl;
-							if(usedStoreNames > 0 && lastChar != '.') retn += '.';
+							if(usedStoreNames == 4) retn += "p9_";
+							else if(usedStoreNames > 0 && lastChar != '.') retn += '.';
 							for(; localStoreNames.characterChain[j] != ';' && localStoreNames.characterChain[j] != '\0'; j++){
 								std::cout << localStoreNames.characterChain[j] << endl;
 								retn += localStoreNames.characterChain[j]; 
