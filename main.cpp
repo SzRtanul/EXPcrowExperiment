@@ -53,7 +53,7 @@ inline std::string getWithoutSpace(string text){
     return text.erase(i+1);
 }
 
-inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char* querytext, const std::string recordsep, const std::string columnsep){
+inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char* querytext, const std::string recordsep, const std::string columnsep, bool columnnames){
 	pqxx::work W(*NC);
 	std::string textout = "-";
     try
@@ -61,6 +61,12 @@ inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char*
 		pqxx::result R = W.exec(querytext);
 		// Itt folytatódik a sikeres lekérdezés feldolgozása
 		textout = "";
+		if(columnnames){
+			for (int i = 0; i < R.columns(); ++i) {
+				textout += R.column_name(i) + columnsep;
+			}
+			textout += recordsep;
+		}
 	    for (const auto &row : R) {
 	        for(int i = 0; i < row.size(); i++){
 	          // textout += "valami";
@@ -84,14 +90,16 @@ inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char*
  	return textout;
 }
 
+
+
 inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char* querytext){
-	return getSQLQuery(NC, querytext, ";;;\n", ":::");
+	return getSQLQuery(NC, querytext, ";;;\n", ":::", true);
 }
 
 
 int main(){
 	std::shared_ptr<pqxx::connection> RC = poolDB.getDBConn();
-	std::string query = getSQLQuery(RC, "SELECT word FROM pg_get_keywords() ORDER BY LENGTH(word), word", ";", "");
+	std::string query = getSQLQuery(RC, "SELECT word FROM pg_get_keywords() ORDER BY LENGTH(word), word", ";", "", false);
 	poolDB.giveBackConnect(RC);
 	WordsCompare compareWords = doSyntaxtCheckPreparation(query.c_str());
 	
@@ -183,7 +191,7 @@ int main(){
 						"" + 
 						"select sysadmin.getaccesfullschemasfromgroups(" + 
 						gh.dump() + std::string(", '") + std::string(storeNames[0].characterChain) + "')";
-				std::string qre = getSQLQuery(NC, hh.c_str(), "", "");
+				std::string qre = getSQLQuery(NC, hh.c_str(), "", "", false);
 				bool syntaxtGood = qre.length() > 0 ? qre[0] == 't' : 0;
 
 				quer = syntaxtGood ? getTextWithJSONValues(compareWords, storeNames, CAzon, queryStr.c_str()) : "-";
