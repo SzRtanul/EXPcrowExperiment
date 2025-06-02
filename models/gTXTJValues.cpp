@@ -187,6 +187,9 @@ inline std::string getTextWithJSONValues(
 					i--;
 				}
 			}
+			else{
+				retn += "#";
+			}
 		}
 		else{
 //			std::cout << "Synitt: " << syntaxtGood << endl;

@@ -62,6 +62,7 @@ inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char*
 		// Itt folytatódik a sikeres lekérdezés feldolgozása
 		textout = "";
 		if(columnnames){
+			textout = "-;";
 			for (int i = 0; i < R.columns(); ++i) {
 				textout += R.column_name(i) + columnsep;
 			}
