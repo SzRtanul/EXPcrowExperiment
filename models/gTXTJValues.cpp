@@ -9,7 +9,7 @@ inline bool isSmallCharToo(char character){
 
 inline std::string getTextWithJSONValues(
 		const WordsCompare wordsCompare, 
-		StoreNames storeNames[], /*const std::string*/ 
+		StoreNames storeNames, /*const std::string*/ 
 		const crow::json::rvalue JSONValuesString, 
 		const char* text
 ){
@@ -109,7 +109,8 @@ inline std::string getTextWithJSONValues(
 			std::cout<< text[i] << "ALAAAAA " << syntaxtGood << endl;
 			bool addValue = false;
 			std::string field = "";
-			usedStoreNames = (unsigned)(text[i] - 36) < (41 - 36) ? text[i] - 36 : - 1;
+			char ohne = (unsigned)(text[i] - 36);
+			usedStoreNames = ohne < 5 && ohne < storeNames.glength ? ohne : -1;
 			if(text[i] == '-'){
 				std::cout<< text[i] << endl;
 				if(!JSONValues){ 
@@ -124,39 +125,39 @@ inline std::string getTextWithJSONValues(
 			if(usedStoreNames!=-1){
 				int wheres = -1;
 				i++;
-				std::cout << (int)text[i] <<" JELLLLL "<< endl;
+				std::cout << (int)text[i] << " JELLLLL "<< endl;
 				if(!addValue){
-					field += text[i];
-					while((unsigned)(text[i] - 48) < (58 - 48)){
+					while((unsigned)text[i] - 48 < (58 - 48)){
+						field += text[i];
 						i++;
 					}
 					std::cout << "Még megyeni: " << i << endl;
 					if(field.length() > 0){
 						std::cout << "ANE: " << usedStoreNames <<  std::endl;
-						StoreNames& localStoreNames = storeNames[usedStoreNames];
 						wheres = std::stoi(field);
-						std::cout << "Wheres?:SepIndexes : " << wheres << ":" << localStoreNames.length << endl;
-						syntaxtGood = ((unsigned)wheres) < localStoreNames.length;
+						std::cout << "Wheres?:SepIndexes : " << wheres << ":" << storeNames.length << endl;
+						char ohigen = (storeNames.groupIndexes[usedStoreNames] + (unsigned)wheres);
+						syntaxtGood = ohigen < storeNames.length;
 						if(syntaxtGood){
-							int j = localStoreNames.sepIndexes[wheres];
+							int j = storeNames.sepIndexes[ohigen];
 							std::cout << "J?: " << j << endl;
 							if(usedStoreNames == 4) retn += "p9_";
 							else if(usedStoreNames > 0 && lastChar != '.') retn += '.';
-							for(; localStoreNames.characterChain[j] != ';' && localStoreNames.characterChain[j] != '\0'; j++){
-								std::cout << localStoreNames.characterChain[j] << endl;
-								retn += localStoreNames.characterChain[j]; 
+							for(; (unsigned)storeNames.characterChain[j] - 63 > 1 && (unsigned)storeNames.characterChain[j] > 1; j++){
+								std::cout << storeNames.characterChain[j] << endl;
+								retn += storeNames.characterChain[j]; 
 							}
 						//	retn += text[i];
 							i--;
 							std::cout << retn << endl;
 						}
-						std::cout << "Még megyeni: " << i << endl;
+						std::cout << "Még megyeni: " << i << std::endl;
 					}
-					std::cout << "Még megyeni: " << i << endl;
+					std::cout << "Még megyeni: " << i << std::endl;
 				}
 			}
 			else if(addValue && syntaxtGood){
-				std::cout << (int)text[i]-65 << " JELLLLL "<< endl;
+				std::cout << (int)text[i] - 65 << " JELLLLL "<< endl;
 				while(((unsigned)(text[i] - 65) < (91 - 65) || (unsigned)(text[i] - 97) < (123-97))){
 					field += text[i];
 					i++;

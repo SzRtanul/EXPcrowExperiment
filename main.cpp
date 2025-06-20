@@ -36,7 +36,7 @@ char szoRaktarSQLSyntaxt[] =
 	"AS;"
 ;
 
-PoolDBConnection poolDB("dbname = testdb3 user=postgres password=test123 hostaddr=127.0.0.1 port=5432", 15, 50);
+PoolDBConnection poolDB("dbname=testdb3 user=postgres password=test123 hostaddr=127.0.0.1 port=5432", 15, 50);
 
 void signal_handler(int signal) {
     if (C.is_open()) {
@@ -54,13 +54,18 @@ inline std::string getWithoutSpace(string text){
 }
 
 inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char* querytext, const std::string recordsep, const std::string columnsep, bool columnnames){
+	std::cout << "DBBBBB: " << std::endl;
 	pqxx::work W(*NC);
+	std::cout << "DBBBBB: " << std::endl;
 	std::string textout = "-";
     try
 	{
+		std::cout << "qText: " << querytext << std::endl;
 		pqxx::result R = W.exec(querytext);
+		std::cout << "DBBBBB: " << std::endl;
 		// Itt folytatódik a sikeres lekérdezés feldolgozása
 		textout = "";
+		std::cout << "DBBBBB: " << std::endl;
 		if(columnnames){
 			textout = "-;";
 			for (int i = 0; i < R.columns(); ++i) {
@@ -68,6 +73,7 @@ inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char*
 			}
 			textout += recordsep;
 		}
+		std::cout << "DBBBBB: " << std::endl;
 	    for (const auto &row : R) {
 	        for(int i = 0; i < row.size(); i++){
 	          // textout += "valami";
@@ -75,6 +81,7 @@ inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char*
         	}
         	textout = textout.length() > recordsep.length() ? textout + recordsep : "";
 		}
+		std::cout << "DBBBBB: " << std::endl;
 //		textout += '\0';
 		W.commit();
     }
@@ -155,47 +162,51 @@ int main(){
 					return crow::response(400, "Invalid JSON");
 				}
 				std::cout << "Elmegy";
-				auto& DBdataJSON = json["db"];
-				std::cout << "Elmegy";
+				std::string DBDataStr = json["db"].s();
 				crow::json::rvalue CAzon = json["CAzon"];
-				std::cout << "Elmegy";
-				std::cout << "Elmegy1";
-//			auto& query = json["query"];
-				std::string CAzonStr = "";//CAzon.s();
-			//	std::string keywordNamesStr = DBdataJSON["keywordnames"].s();
-				std::cout << "Elmegy1";
-				std::string schemaNamesStr = DBdataJSON["schemanames"].s();
-				std::cout << "Elmegy1";
-				std::string tableNamesStr = DBdataJSON["tablenames"].s();
-				std::cout << "Elmegy1";
-				std::string columnNamesStr = DBdataJSON["columnnames"].s();
-				std::cout << "Elmegy2";
-				std::string methodNamesStr = DBdataJSON["methodnames"].s();
-				std::string aliasesStr = DBdataJSON["aliases"].s();
-				std::cout << "Elmegy3";
-				std::string queryStr = DBdataJSON["query"].s();
-				std::cout << "Elmegy4";
-
-			//	StoreNames keywordNames(keywordNamesStr.c_str()),
-				StoreNames storeNames[] = {
+				const char* DBDataChr = DBDataStr.c_str();				
+				StoreNames keywordNames(DBDataChr);
+				/*StoreNames storeNames[] = {
 					StoreNames(schemaNamesStr.c_str()),
 					StoreNames(tableNamesStr.c_str()),
 					StoreNames(columnNamesStr.c_str()),
 					StoreNames(methodNamesStr.c_str()),
 					StoreNames(aliasesStr.c_str())
-				};
-				crow::json::wvalue gh = json["token"];
+				};*/
+				crow::json::wvalue gnn = json["token"];
+				int qfa = keywordNames.glength > 1 ? (unsigned)keywordNames.sepIndexes[keywordNames.groupIndexes[1]] - 1 : keywordNames.spellNumber;
+				std::cout << "QFAi: " << keywordNames.characterChain << std::endl;
+				std::cout << "QFA: " << qfa << std::endl;
+				std::cout << "MyFast: " << keywordNames.characterChain[keywordNames.spellNumber-1] 
+						<< ":" << (int)keywordNames.characterChain[keywordNames.spellNumber-1] << std::endl;
+				char qfabsv = '\0'; 
+				/*if(keywordNames.characterChain[qfa]){
+					qfabsv = keywordNames.characterChain[qfa];
+					keywordNames.characterChain[qfa] = '\0';
+				}*/
+				std::cout << "QFA: " << qfa << std::endl;
+				qfabsv = keywordNames.characterChain[qfa];
+				keywordNames.characterChain[qfa] = '\0';
+				std::cout << "QFA: " << qfa << std::endl;
 				std::string hh = 
-						"SELECT set_config('app.current_user_id', '"+ gh.dump() +"', false);" +
+						"SELECT set_config('app.current_user_id', '"+ gnn.dump() +"', false);" +
 						"" +
 						"" +
 						"" + 
 						"select sysadmin.getaccesfullschemasfromgroups(" + 
-						gh.dump() + std::string(", '") + std::string(storeNames[0].characterChain) + "')";
+						gnn.dump() + std::string(", '\?',  '") + std::string(keywordNames.characterChain) + "')";
+				std::cout << "QFA: " << qfa << std::endl;
+				keywordNames.characterChain[qfa] = qfabsv;
+				std::cout << "QFA: " << qfa << std::endl;
 				std::string qre = getSQLQuery(NC, hh.c_str(), "", "", false);
+				std::cout << "QFA: " << qfa << std::endl;
 				bool syntaxtGood = qre.length() > 0 ? qre[0] == 't' : 0;
-
-				quer = syntaxtGood ? getTextWithJSONValues(compareWords, storeNames, CAzon, queryStr.c_str()) : "-";
+				const char* jk = &DBDataChr[
+					DBDataChr[keywordNames.spellNumber] ? keywordNames.spellNumber + 1 : keywordNames.spellNumber
+				];
+				quer = syntaxtGood ? getTextWithJSONValues(compareWords, keywordNames, CAzon, jk) : "-";
+				std::cout << "ENLY: " << (unsigned)keywordNames.characterChain[keywordNames.spellNumber] << ":" 
+						<< (unsigned)keywordNames.characterChain[keywordNames.spellNumber + 1] << std::endl;
 			}
 			catch(const std::exception &e){				
 				std::cerr << "Egyéb hiba: " << e.what() << std::endl;
@@ -223,7 +234,7 @@ int main(){
 
 	CROW_ROUTE(app, "/pelda/<int>").methods("POST"_method)([](const crow::request& req, const int ye){
 		
-		std::cout << "Fejlec:" << ye << endl;
+		std::cout << "Fejlec:" << ye << std::endl;
 		for (auto& header : req.headers)
 		{
 			std::cout << header.first << ": " << header.second << "\n";
@@ -236,7 +247,6 @@ int main(){
 
 		return crow::response(200, "Megkaptam!");
 	});
-    
 	app.port(18080).multithreaded().run();
   	return 0;
 }
