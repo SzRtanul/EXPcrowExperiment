@@ -492,8 +492,8 @@ felhasznaloid	thetoughtexperimentwithdata.sql	/^    felhasznaloid integer$/;"	E	
 felhasznalonev	TheToughtExperimental.sql	/^  "felhasznalonev" char(30) UNIQUE,$/;"	E	table:Felhasznalo
 felhasznalonev	thetoughtexperimentwithdata.sql	/^    felhasznalonev character(30),$/;"	E	table:felhasznalo
 getDBConn	models/PoolDBConnection.cpp	/^	std::shared_ptr<pqxx::connection> getDBConn(){$/;"	f	struct:PoolDBConnection	typeref:typename:std::shared_ptr<pqxx::connection>	file:
+getSQLQuery	main.cpp	/^inline std::string getSQLQuery($/;"	f	typeref:typename:std::string
 getSQLQuery	main.cpp	/^inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char* querytext){$/;"	f	typeref:typename:std::string
-getSQLQuery	main.cpp	/^inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char* querytext, cons/;"	f	typeref:typename:std::string
 getSepNumber	models/StoreNames.cpp	/^	void getSepNumber(const char* characterChain){$/;"	f	struct:StoreNames	typeref:typename:void	file:
 getTextWithJSONValues	models/gTXTJValues.cpp	/^inline std::string getTextWithJSONValues($/;"	f	typeref:typename:std::string
 getWithoutSpace	main.cpp	/^inline std::string getWithoutSpace(string text){$/;"	f	typeref:typename:std::string

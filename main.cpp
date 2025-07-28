@@ -53,7 +53,13 @@ inline std::string getWithoutSpace(string text){
     return text.erase(i+1);
 }
 
-inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char* querytext, const std::string recordsep, const std::string columnsep, bool columnnames){
+inline std::string getSQLQuery(
+				std::shared_ptr<pqxx::connection> NC,
+				const char* querytext,
+				const std::string recordsep,
+				const std::string columnsep,
+				bool columnnames, bool sign
+){
 	std::cout << "DBBBBB: " << std::endl;
 	pqxx::work W(*NC);
 	std::cout << "DBBBBB: " << std::endl;
@@ -64,10 +70,10 @@ inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char*
 		pqxx::result R = W.exec(querytext);
 		std::cout << "DBBBBB: " << std::endl;
 		// Itt folytatódik a sikeres lekérdezés feldolgozása
-		textout = "";
+		textout = sign ? std::string("F") + static_cast<char>(R.columns()) : "";
 		std::cout << "DBBBBB: " << std::endl;
 		if(columnnames){
-			textout = "-;";
+			textout = sign ? std::string("T") + static_cast<char>(R.columns()) : "";
 			for (int i = 0; i < R.columns(); ++i) {
 				textout += R.column_name(i) + columnsep;
 			}
@@ -95,19 +101,21 @@ inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char*
 		std::cerr << "Egyéb hiba: " << e.what() << std::endl;
 	}
 	//W.commit();
+	std::cout << "FAAAAAAAAAAAAAsz!:" << std::endl;
+	std::cout << textout << std::endl;
  	return textout;
 }
 
 
 
 inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char* querytext){
-	return getSQLQuery(NC, querytext, ";;;\n", ":::", true);
+	return getSQLQuery(NC, querytext, ";;;\n", ":::", true, true);
 }
 
 
 int main(){
 	std::shared_ptr<pqxx::connection> RC = poolDB.getDBConn();
-	std::string query = getSQLQuery(RC, "SELECT word FROM pg_get_keywords() ORDER BY LENGTH(word), word", ";", "", false);
+	std::string query = getSQLQuery(RC, "SELECT word FROM pg_get_keywords() ORDER BY LENGTH(word), word", ";", "", false, false);
 	poolDB.giveBackConnect(RC);
 	WordsCompare compareWords = doSyntaxtCheckPreparation(query.c_str());
 	
@@ -198,7 +206,7 @@ int main(){
 				std::cout << "QFA: " << qfa << std::endl;
 				keywordNames.characterChain[qfa] = qfabsv;
 				std::cout << "QFA: " << qfa << std::endl;
-				std::string qre = getSQLQuery(NC, hh.c_str(), "", "", false);
+				std::string qre = getSQLQuery(NC, hh.c_str(), "", "", false, false);
 				std::cout << "QFA: " << qfa << std::endl;
 				bool syntaxtGood = qre.length() > 0 ? qre[0] == 't' : 0;
 				const char* jk = &DBDataChr[
@@ -212,7 +220,7 @@ int main(){
 				std::cerr << "Egyéb hiba: " << e.what() << std::endl;
 			}
 			std::cout << quer << endl;
-			std::string resdb = "err:Hiba történt!";
+			std::string resdb = "erre:Hiba történt!";
 			if(quer.compare("-")) resdb = getSQLQuery(NC, quer.c_str());
 			poolDB.giveBackConnect(NC);
 			return crow::response(200, resdb);
