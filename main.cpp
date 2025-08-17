@@ -106,12 +106,26 @@ inline std::string getSQLQuery(
  	return textout;
 }
 
-
-
 inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char* querytext){
-	return getSQLQuery(NC, querytext, ";;;\n", ":::", true, true);
+	return getSQLQuery(NC, querytext, "", ":::", true, true);
 }
 
+inline std::string getHH(std::string gnndump, std::string keynames){
+	return "SELECT set_config('app.current_user_id', '"+ gnndump +"', false);" +
+		"" +
+		"" +
+		"" + 
+		"select sysadmin.getaccesfullschemasfromgroups(" + 
+		gnndump + std::string(", '\?',  '") + keynames + "')";
+}
+
+inline std::string getTextWithJustChars(std::string text){
+	std::string out = "";
+	for (int i = 0; text[i] != '\0'; i++){
+		if((unsigned)text[i] - 65 < 58 && text[i] - 91 > 5) out += text[i];
+	}
+	return out;
+}
 
 int main(){
 	std::shared_ptr<pqxx::connection> RC = poolDB.getDBConn();
@@ -157,6 +171,22 @@ int main(){
 			//res.end();
 		    return res;
 		});
+		
+		CROW_ROUTE(app, "/gettable/<string>/<string>/<string>")([](
+			const crow::request& req,
+			const std::string schema,
+			const std::string tablename,
+			const std::string datevalue
+		){
+			std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
+			std::string hjut = "select * from "+getTextWithJustChars(schema)+"."+getTextWithJustChars(tablename)+";";
+			std::cout << "HOLAAA: " << hjut<<std::endl;
+			const char* hja = hjut.c_str();
+			std::string out = getSQLQuery(NC, hja); 
+			poolDB.giveBackConnect(NC);
+			std::cout << out << std::endl;
+			return out; 
+		});
 
 		CROW_ROUTE(app, "/callquery").methods("POST"_method)([&compareWords](const crow::request& req){
 			std::string quer = "-";
@@ -174,13 +204,7 @@ int main(){
 				crow::json::rvalue CAzon = json["CAzon"];
 				const char* DBDataChr = DBDataStr.c_str();				
 				StoreNames keywordNames(DBDataChr);
-				/*StoreNames storeNames[] = {
-					StoreNames(schemaNamesStr.c_str()),
-					StoreNames(tableNamesStr.c_str()),
-					StoreNames(columnNamesStr.c_str()),
-					StoreNames(methodNamesStr.c_str()),
-					StoreNames(aliasesStr.c_str())
-				};*/
+				
 				crow::json::wvalue gnn = json["token"];
 				int qfa = keywordNames.glength > 1 ? (unsigned)keywordNames.sepIndexes[keywordNames.groupIndexes[1]] - 1 : keywordNames.spellNumber;
 				std::cout << "QFAi: " << keywordNames.characterChain << std::endl;

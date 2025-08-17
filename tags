@@ -316,9 +316,10 @@ VizsgalatTipus	TheToughtExperimental.sql	/^CREATE TABLE "VizsgalatTipus" ($/;"	t
 WordsCompare	models/WordsCompare.cpp	/^	WordsCompare(char leghosszabbSzo, int szavakSzama, int szakaszSzam){$/;"	f	struct:WordsCompare	file:
 WordsCompare	models/WordsCompare.cpp	/^struct WordsCompare{$/;"	s	file:
 __anon3b5b11db0102	main.cpp	/^		CROW_ROUTE(app, "\/login")([](const crow::request& req) {$/;"	f	function:main	file:
-__anon3b5b11db0202	main.cpp	/^		CROW_ROUTE(app, "\/callquery").methods("POST"_method)([&compareWords](const crow::request& req/;"	f	function:main	file:
-__anon3b5b11db0302	main.cpp	/^	CROW_ROUTE(app, "\/")([](){$/;"	f	function:main	file:
-__anon3b5b11db0402	main.cpp	/^	CROW_ROUTE(app, "\/pelda\/<int>").methods("POST"_method)([](const crow::request& req, const int/;"	f	function:main	file:
+__anon3b5b11db0202	main.cpp	/^		){$/;"	f	function:main	file:
+__anon3b5b11db0302	main.cpp	/^		CROW_ROUTE(app, "\/callquery").methods("POST"_method)([&compareWords](const crow::request& req/;"	f	function:main	file:
+__anon3b5b11db0402	main.cpp	/^	CROW_ROUTE(app, "\/")([](){$/;"	f	function:main	file:
+__anon3b5b11db0502	main.cpp	/^	CROW_ROUTE(app, "\/pelda\/<int>").methods("POST"_method)([](const crow::request& req, const int/;"	f	function:main	file:
 __has_include	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define __has_include(/;"	d	file:
 __has_include	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define __has_include(/;"	d	file:
 active_connections	models/PoolDBConnection.cpp	/^	int active_connections;$/;"	m	struct:PoolDBConnection	typeref:typename:int	file:
@@ -492,10 +493,12 @@ felhasznaloid	thetoughtexperimentwithdata.sql	/^    felhasznaloid integer$/;"	E	
 felhasznalonev	TheToughtExperimental.sql	/^  "felhasznalonev" char(30) UNIQUE,$/;"	E	table:Felhasznalo
 felhasznalonev	thetoughtexperimentwithdata.sql	/^    felhasznalonev character(30),$/;"	E	table:felhasznalo
 getDBConn	models/PoolDBConnection.cpp	/^	std::shared_ptr<pqxx::connection> getDBConn(){$/;"	f	struct:PoolDBConnection	typeref:typename:std::shared_ptr<pqxx::connection>	file:
+getHH	main.cpp	/^inline std::string getHH(std::string gnndump, std::string keynames){$/;"	f	typeref:typename:std::string
 getSQLQuery	main.cpp	/^inline std::string getSQLQuery($/;"	f	typeref:typename:std::string
 getSQLQuery	main.cpp	/^inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char* querytext){$/;"	f	typeref:typename:std::string
 getSepNumber	models/StoreNames.cpp	/^	void getSepNumber(const char* characterChain){$/;"	f	struct:StoreNames	typeref:typename:void	file:
 getTextWithJSONValues	models/gTXTJValues.cpp	/^inline std::string getTextWithJSONValues($/;"	f	typeref:typename:std::string
+getTextWithJustChars	main.cpp	/^inline std::string getTextWithJustChars(std::string text){$/;"	f	typeref:typename:std::string
 getWithoutSpace	main.cpp	/^inline std::string getWithoutSpace(string text){$/;"	f	typeref:typename:std::string
 getaccesfullschemasfromgroups	thetoughtexperimentwithdata.sql	/^CREATE FUNCTION sysadmin.getaccesfullschemasfromgroups(usertoken bigint, schemacharchain text) R/;"	f
 getuserfromtoken	thetoughtexperimentwithdata.sql	/^CREATE FUNCTION sysadmin.getuserfromtoken(usertoken bigint) RETURNS integer$/;"	f
