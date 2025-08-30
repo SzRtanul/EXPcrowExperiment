@@ -71,20 +71,20 @@ inline std::string getTextWithJSONValues(
 			syntaxtGood = false;
 			int j = 0;
 			for(;j < wordsCompare.szakaszSzam && !syntaxtGood; j++){
-				std::cout << "ehj" << wordsCompare.szakaszOszlopSzam[j] << " szamlal: " << (int)szamlal <<  std::endl;
+std::cout << "ehj" << wordsCompare.szakaszOszlopSzam[j] << " szamlal: " << (int)szamlal <<  std::endl;
 				syntaxtGood = wordsCompare.szakaszOszlopSzam[j] == szamlal;
 			}
 			j--;	
 		
 			for(int k = 0; k < wordsCompare.szavakSzama; k++){
-				std::cout << k << ".: " << wordsCompare.vegsoErtek[k] << " VégsőértékOszlop: " << (unsigned)wordsCompare.vegsoErtekOszlopSzam[k] << std::endl;
+//	std::cout << k << ".: " << wordsCompare.vegsoErtek[k] << " VégsőértékOszlop: " << (unsigned)wordsCompare.vegsoErtekOszlopSzam[k] << std::endl;
 			}
 			for(int k = 0; k < wordsCompare.szakaszSzam; k++){
-				std::cout << k << ".: " << wordsCompare.kezd[k] << " VégsőértékOszlop: " << (unsigned)wordsCompare.szakaszOszlopSzam[k] << std::endl;
+//std::cout << k << ".: " << wordsCompare.kezd[k] << " VégsőértékOszlop: " << (unsigned)wordsCompare.szakaszOszlopSzam[k] << std::endl;
 			}
 			
-			std::cout << "jkezd: " << j << " számlál: " <<  endl;
-			std::cout << "WordValue: " << wordValue << endl;
+std::cout << "jkezd: " << j << " számlál: " <<  endl;
+std::cout << "WordValue: " << wordValue << endl;
 			int vege = j + 1 < wordsCompare.szakaszSzam ? wordsCompare.kezd[j + 1] : wordsCompare.szavakSzama;
 			j = syntaxtGood ? wordsCompare.kezd[j] : wordsCompare.szavakSzama;
 			syntaxtGood = false;
@@ -94,19 +94,19 @@ inline std::string getTextWithJSONValues(
 				syntaxtGood = wordsCompare.vegsoErtek[j] == wordValue;
 				//std::cout << "VegsoErtek: " << wordsCompare.vegsoErtek[j] << endl;
 			}
-			std::cout << "wV:" << wordValue << endl;
-			std::cout << "szSz:" << wordsCompare.szakaszSzam << endl;
+std::cout << "wV:" << wordValue << endl;
+std::cout << "szSz:" << wordsCompare.szakaszSzam << endl;
 			szamlal = 0;
 			wordValue = 0;
 			std::cout << "Syne: " << syntaxtGood << endl;
 			//if(text[i] != ' ') retn += ' ';
 		}
-//		std::cout << "Synitt: " << syntaxtGood << endl;
-//		std::cout << "Még megyen: " << i << endl;
-		std::cout<< text[i] << endl;
+//std::cout << "Synitt: " << syntaxtGood << endl;
+//std::cout << "Még megyen: " << i << endl;
+std::cout<< text[i] << endl;
 		if(text[i] == '#'){
 			i++;
-			std::cout<< text[i] << "ALAAAAA " << syntaxtGood << endl;
+std::cout<< text[i] << "ALAAAAA " << syntaxtGood << endl;
 			bool addValue = false;
 			std::string field = "";
 			char ohne = (unsigned)(text[i] - 36);
@@ -125,17 +125,17 @@ inline std::string getTextWithJSONValues(
 			if(usedStoreNames!=-1){
 				int wheres = -1;
 				i++;
-				std::cout << (int)text[i] << " JELLLLL "<< endl;
+std::cout << (int)text[i] << " JELLLLL "<< endl;
 				if(!addValue){
 					while((unsigned)text[i] - 48 < (58 - 48)){
 						field += text[i];
 						i++;
 					}
-					std::cout << "Még megyeni: " << i << endl;
+std::cout << "Még megyeni: " << i << endl;
 					if(field.length() > 0){
-						std::cout << "ANE: " << usedStoreNames <<  std::endl;
+std::cout << "ANE: " << usedStoreNames <<  std::endl;
 						wheres = std::stoi(field);
-						std::cout << "Wheres?:SepIndexes : " << wheres << ":" << storeNames.length << endl;
+std::cout << "Wheres?:SepIndexes : " << wheres << ":" << storeNames.length << endl;
 						char ohigen = (storeNames.groupIndexes[usedStoreNames] + (unsigned)wheres);
 						syntaxtGood = ohigen < storeNames.length;
 						if(syntaxtGood){
@@ -144,25 +144,25 @@ inline std::string getTextWithJSONValues(
 							if(usedStoreNames == 4) retn += "p9_";
 							else if(usedStoreNames > 0 && lastChar != '.') retn += '.';
 							for(; (unsigned)storeNames.characterChain[j] - 63 > 1 && (unsigned)storeNames.characterChain[j] > 1; j++){
-								std::cout << storeNames.characterChain[j] << endl;
+std::cout << storeNames.characterChain[j] << endl;
 								retn += storeNames.characterChain[j]; 
 							}
 						//	retn += text[i];
 							i--;
-							std::cout << retn << endl;
+std::cout << retn << endl;
 						}
-						std::cout << "Még megyeni: " << i << std::endl;
+std::cout << "Még megyeni: " << i << std::endl;
 					}
-					std::cout << "Még megyeni: " << i << std::endl;
+std::cout << "Még megyeni: " << i << std::endl;
 				}
 			}
 			else if(addValue && syntaxtGood){
-				std::cout << (int)text[i] - 65 << " JELLLLL "<< endl;
+std::cout << (int)text[i] - 65 << " JELLLLL "<< endl;
 				while(((unsigned)(text[i] - 65) < (91 - 65) || (unsigned)(text[i] - 97) < (123-97))){
 					field += text[i];
 					i++;
 				}
-				std::cout << field << endl;
+std::cout << field << endl;
 				if(field.length() > 0 && JSONValues.has(field)){
 					syntaxtGood = JSONValues.has(field);
 					if(JSONValues[field].t() == crow::json::type::String){
@@ -178,7 +178,7 @@ inline std::string getTextWithJSONValues(
 						retn += "'"+s+"'";
 					}
 					else if(syntaxtGood){
-						std::cout << "OOOOOOOOOOOOOO" << endl;
+std::cout << "OOOOOOOOOOOOOO" << endl;
 //						std::string szamStr = (JSONValues[field].nt() == crow::json::num_type::Signed_integer) ? 
 //								std::to_string(JSONValues[field].i()) : std::to_string(JSONValues[field].d());
 
@@ -202,6 +202,7 @@ inline std::string getTextWithJSONValues(
 //		std::cout << "Synitt: " << syntaxtGood << endl;
 	}
 //	std::cout << "Syny.: " << syntaxtGood << endl;
+std::cout<<"-------------\n" << retn << std::endl; 
 	if(!syntaxtGood) retn = "-";
 	return retn;
 };

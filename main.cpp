@@ -101,8 +101,8 @@ inline std::string getSQLQuery(
 		std::cerr << "Egyéb hiba: " << e.what() << std::endl;
 	}
 	//W.commit();
-	std::cout << "FAAAAAAAAAAAAAsz!:" << std::endl;
-	std::cout << textout << std::endl;
+	std::cout << "ADAT KIÍRÁS!" << std::endl;
+//std::cout << textout << std::endl;
  	return textout;
 }
 
@@ -122,7 +122,7 @@ inline std::string getHH(std::string gnndump, std::string keynames){
 inline std::string getTextWithJustChars(std::string text){
 	std::string out = "";
 	for (int i = 0; text[i] != '\0'; i++){
-		if((unsigned)text[i] - 65 < 58 && text[i] - 91 > 5) out += text[i];
+		if(((unsigned)text[i] - 65 < 58 && (unsigned)text[i] - 91 > 5) || text[i] == 95) out += text[i];
 	}
 	return out;
 }
@@ -184,8 +184,16 @@ int main(){
 			const char* hja = hjut.c_str();
 			std::string out = getSQLQuery(NC, hja); 
 			poolDB.giveBackConnect(NC);
-			std::cout << out << std::endl;
-			return out; 
+//			std::cout << out << std::endl;
+std::cout << "ADAT KIÍRÁS!" << std::endl;
+			crow::response rescr(200, out);
+			std::cout << "Letra: " << req.get_header_value("COOKIES") << std::endl;
+			rescr.add_header("Access-Control-Allow-Origin", "http://localhost");
+			rescr.add_header("Access-Control-Allow-Credentials", "true");
+			rescr.add_header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+		    rescr.add_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+			rescr.write("OK");
+			return rescr;
 		});
 
 		CROW_ROUTE(app, "/callquery").methods("POST"_method)([&compareWords](const crow::request& req){
@@ -246,8 +254,16 @@ int main(){
 			std::cout << quer << endl;
 			std::string resdb = "erre:Hiba történt!";
 			if(quer.compare("-")) resdb = getSQLQuery(NC, quer.c_str());
+			crow::response rescr(200, resdb);
+			std::cout << "Letra: " << req.get_header_value("COOKIES") << std::endl;
+			rescr.add_header("SET-COOKIE", "token=" + getSQLQuery(NC, "SELECT current_setting('app.current_user_id')")+"; Path=/");
+			rescr.add_header("Access-Control-Allow-Origin", "http://localhost");
+			rescr.add_header("Access-Control-Allow-Credentials", "true");
+			rescr.add_header("Access-Control-Allow-Headers", "Content-Type, Authorization");
+		    rescr.add_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+			rescr.write("OK");
 			poolDB.giveBackConnect(NC);
-			return crow::response(200, resdb);
+			return rescr;
     	});
 	  
 		std::cout << "OOOO" << endl;
