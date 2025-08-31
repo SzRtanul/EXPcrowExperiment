@@ -238,12 +238,20 @@ std::cout << "ADAT KIÍRÁS!" << std::endl;
 				std::cout << "QFA: " << qfa << std::endl;
 				keywordNames.characterChain[qfa] = qfabsv;
 				std::cout << "QFA: " << qfa << std::endl;
-				std::string qre = getSQLQuery(NC, hh.c_str(), "", "", false, false);
+				std::string qre = getSQLQuery(NC, hh.c_str(), "", "", false, false); // Get check 1.
 				std::cout << "QFA: " << qfa << std::endl;
 				bool syntaxtGood = qre.length() > 0 ? qre[0] == 't' : 0;
 				const char* jk = &DBDataChr[
 					DBDataChr[keywordNames.spellNumber] ? keywordNames.spellNumber + 1 : keywordNames.spellNumber
 				];
+/*				if(keywordNames.glength > 4){ 
+					std::string hh2 = "select sysadmin.isnotinschemalist('\?' "+ std::string(
+						&keywordNames.characterChain[keywordNames.sepIndexes[keywordNames.groupIndexes[4]]]
+					) +")";
+					std::string qrek = getSQLQuery(NC, hh.c_str(), "", "", false, false);
+					syntaxtGood = syntaxtGood && qrek.length() > 0 ? qrek[0] == 't' : 0;
+				}
+*/				std::cout << "BEFLA: " << syntaxtGood << std::endl;
 				quer = syntaxtGood ? getTextWithJSONValues(compareWords, keywordNames, CAzon, jk) : "-";
 				std::cout << "ENLY: " << (unsigned)keywordNames.characterChain[keywordNames.spellNumber] << ":" 
 						<< (unsigned)keywordNames.characterChain[keywordNames.spellNumber + 1] << std::endl;

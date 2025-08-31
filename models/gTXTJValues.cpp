@@ -110,10 +110,12 @@ std::cout<< text[i] << "ALAAAAA " << syntaxtGood << endl;
 			bool addValue = false;
 			std::string field = "";
 			char ohne = (unsigned)(text[i] - 36);
-			usedStoreNames = ohne < 5 && ohne < storeNames.glength ? ohne : -1;
+			usedStoreNames = ohne < 6 && ohne < storeNames.glength ? ohne : -1;
+std::cout << "glength: " << storeNames.glength << " ohne: " << (unsigned)ohne << " usedstorenames:  " <<  usedStoreNames << std::endl;
 			if(text[i] == '-'){
-				std::cout<< text[i] << endl;
 				if(!JSONValues){ 
+std::cout<< (unsigned)text[i] << endl;
+std::cout<< text[i] << endl;
 					std::cout << "Szívás a javából:";
 					syntaxtGood = false;
 				}
@@ -142,7 +144,7 @@ std::cout << "Wheres?:SepIndexes : " << wheres << ":" << storeNames.length << en
 							int j = storeNames.sepIndexes[ohigen];
 							std::cout << "J?: " << j << endl;
 							if(usedStoreNames == 4) retn += "p9_";
-							else if(usedStoreNames > 0 && lastChar != '.') retn += '.';
+							else if(usedStoreNames > 0 && usedStoreNames != 5 && lastChar != '.') retn += '.';
 							for(; (unsigned)storeNames.characterChain[j] - 63 > 1 && (unsigned)storeNames.characterChain[j] > 1; j++){
 std::cout << storeNames.characterChain[j] << endl;
 								retn += storeNames.characterChain[j]; 
@@ -172,10 +174,10 @@ std::cout << field << endl;
 						for(int j = 0; JSONSTR[j] != '\0'; j++) {
 							s += JSONSTR[j];
 							if(JSONSTR[j] == '\'') s += '\'';
-							if(j > 1 && isSmallCharToo(JSONSTR[j-1]) && !isSmallCharToo(JSONSTR[j])) s += '$';
+//							if(j > 1 && isSmallCharToo(JSONSTR[j-1]) && !isSmallCharToo(JSONSTR[j])) s += '$';
 						}
 //						JSONSTR = s;
-						retn += "'"+s+"'";
+						retn += "'`"+s+"`'";
 					}
 					else if(syntaxtGood){
 std::cout << "OOOOOOOOOOOOOO" << endl;
