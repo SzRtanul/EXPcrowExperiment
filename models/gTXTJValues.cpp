@@ -116,7 +116,7 @@ std::cout << "glength: " << storeNames.glength << " ohne: " << (unsigned)ohne <<
 				if(!JSONValues){ 
 std::cout<< (unsigned)text[i] << endl;
 std::cout<< text[i] << endl;
-					std::cout << "Szívás a javából:";
+std::cout << "Szívás a javából:";
 					syntaxtGood = false;
 				}
 //				syntaxtGood = static_cast<bool>(JSONValues); // MemoryErrorSource
@@ -168,16 +168,11 @@ std::cout << field << endl;
 				if(field.length() > 0 && JSONValues.has(field)){
 					syntaxtGood = JSONValues.has(field);
 					if(JSONValues[field].t() == crow::json::type::String){
-						const char* JSONSTR = std::string(JSONValues[field].s()).c_str();
-						std::string::size_type pos = 0;
-						std::string s = ""; 
-						for(int j = 0; JSONSTR[j] != '\0'; j++) {
-							s += JSONSTR[j];
-							if(JSONSTR[j] == '\'') s += '\'';
-//							if(j > 1 && isSmallCharToo(JSONSTR[j-1]) && !isSmallCharToo(JSONSTR[j])) s += '$';
-						}
-//						JSONSTR = s;
-						retn += "'`"+s+"`'";
+std::cout << "Field: " << field << std::endl;
+std::cout << JSONValues[field].s() << std::endl;
+						auto rstr = JSONValues[field].s();
+						std::string val(rstr.begin(), rstr.end());
+						retn += "'`" + val + "`'";
 					}
 					else if(syntaxtGood){
 std::cout << "OOOOOOOOOOOOOO" << endl;
