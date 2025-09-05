@@ -54,11 +54,11 @@ inline std::string getWithoutSpace(string text){
 }
 
 inline std::string getSQLQuery(
-				std::shared_ptr<pqxx::connection> NC,
-				const char* querytext,
-				const std::string recordsep,
-				const std::string columnsep,
-				bool columnnames, bool sign
+	std::shared_ptr<pqxx::connection> NC,
+	const char* querytext,
+	const std::string recordsep,
+	const std::string columnsep,
+	bool columnnames, bool sign
 ){
 	std::cout << "DBBBBB: " << std::endl;
 	pqxx::work W(*NC);
@@ -172,7 +172,7 @@ int main(){
 		    return res;
 		});
 		
-		CROW_ROUTE(app, "/gettable/<string>/<string>/<string>")([](
+		CROW_ROUTE(app, "/gettable/<string>/<string>/<string>").methods("POST"_method)([](
 			const crow::request& req,
 			const std::string schema,
 			const std::string tablename,
@@ -180,11 +180,11 @@ int main(){
 		){
 			std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
 			std::string hjut = "select * from "+getTextWithJustChars(schema)+"."+getTextWithJustChars(tablename)+";";
-			std::cout << "HOLAAA: " << hjut<<std::endl;
 			const char* hja = hjut.c_str();
 			std::string out = getSQLQuery(NC, hja); 
 			poolDB.giveBackConnect(NC);
-//			std::cout << out << std::endl;
+std::cout << "HOLAAA(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((: " << hjut<<std::endl;
+std::cout << out << std::endl;
 std::cout << "ADAT KIÍRÁS!" << std::endl;
 			crow::response rescr(200, out);
 			std::cout << "Letra: " << req.get_header_value("COOKIES") << std::endl;
@@ -220,10 +220,10 @@ std::cout << "ADAT KIÍRÁS!" << std::endl;
 				std::cout << "MyFast: " << keywordNames.characterChain[keywordNames.spellNumber-1] 
 						<< ":" << (int)keywordNames.characterChain[keywordNames.spellNumber-1] << std::endl;
 				char qfabsv = '\0'; 
-				/*if(keywordNames.characterChain[qfa]){
+				if(keywordNames.characterChain[qfa]){
 					qfabsv = keywordNames.characterChain[qfa];
 					keywordNames.characterChain[qfa] = '\0';
-				}*/
+				}
 				std::cout << "QFA: " << qfa << std::endl;
 				qfabsv = keywordNames.characterChain[qfa];
 				keywordNames.characterChain[qfa] = '\0';
