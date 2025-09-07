@@ -493,7 +493,7 @@ felhasznaloid	thetoughtexperimentwithdata.sql	/^    felhasznaloid integer$/;"	E	
 felhasznalonev	TheToughtExperimental.sql	/^  "felhasznalonev" char(30) UNIQUE,$/;"	E	table:Felhasznalo
 felhasznalonev	thetoughtexperimentwithdata.sql	/^    felhasznalonev character(30),$/;"	E	table:felhasznalo
 getDBConn	models/PoolDBConnection.cpp	/^	std::shared_ptr<pqxx::connection> getDBConn(){$/;"	f	struct:PoolDBConnection	typeref:typename:std::shared_ptr<pqxx::connection>	file:
-getHH	main.cpp	/^inline std::string getHH(std::string gnndump, std::string keynames){$/;"	f	typeref:typename:std::string
+getHH	main.cpp	/^inline bool getHH(std::shared_ptr<pqxx::connection> NC, std::string gnndump, std::string keyname/;"	f	typeref:typename:bool
 getSQLQuery	main.cpp	/^inline std::string getSQLQuery($/;"	f	typeref:typename:std::string
 getSQLQuery	main.cpp	/^inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char* querytext){$/;"	f	typeref:typename:std::string
 getSepNumber	models/StoreNames.cpp	/^	void getSepNumber(const char* characterChain){$/;"	f	struct:StoreNames	typeref:typename:void	file:

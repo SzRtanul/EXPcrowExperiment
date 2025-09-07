@@ -110,13 +110,15 @@ inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char*
 	return getSQLQuery(NC, querytext, "", ":::", true, true);
 }
 
-inline std::string getHH(std::string gnndump, std::string keynames){
-	return "SELECT set_config('app.current_user_id', '"+ gnndump +"', false);" +
+inline bool getHH(std::shared_ptr<pqxx::connection> NC, std::string gnndump, std::string keynames){
+		std::string hh ="SELECT set_config('app.token', '"+ gnndump +"', false);" +
 		"" +
 		"" +
 		"" + 
-		"select sysadmin.getaccesfullschemasfromgroups(" + 
-		gnndump + std::string(", '\?',  '") + keynames + "')";
+		"select sysadmin.getaccesfullschemasfromgroups(" + gnndump + std::string(", '\?',  '") + keynames + "')";
+
+		std::string qre = getSQLQuery(NC, hh.c_str(), "", "", false, false); // Get check 1.
+		return qre.length() > 0 ? qre[0] == 't' : 0;
 }
 
 inline std::string getTextWithJustChars(std::string text){
@@ -178,10 +180,18 @@ int main(){
 			const std::string tablename,
 			const std::string datevalue
 		){
+			auto json = crow::json::load(req.body);
+			if(!json) return crow::response(400, "Invalid JSON;");
+			crow::json::wvalue gnn = json["token"];
+			
 			std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
-			std::string hjut = "select * from "+getTextWithJustChars(schema)+"."+getTextWithJustChars(tablename)+";";
+			std::string transedschema = getTextWithJustChars(schema);
+			if(!getHH(NC, gnn.dump(), transedschema)){
+				return crow::response(400, "Invalid schema;");
+			}
+			std::string hjut = "select * from "+ transedschema + "." + getTextWithJustChars(tablename) + ";";
 			const char* hja = hjut.c_str();
-			std::string out = getSQLQuery(NC, hja); 
+			std::string out = getSQLQuery(NC, hja);
 			poolDB.giveBackConnect(NC);
 std::cout << "HOLAAA(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((: " << hjut<<std::endl;
 std::cout << out << std::endl;
@@ -229,7 +239,7 @@ std::cout << "ADAT KIÍRÁS!" << std::endl;
 				keywordNames.characterChain[qfa] = '\0';
 				std::cout << "QFA: " << qfa << std::endl;
 				std::string hh = 
-						"SELECT set_config('app.current_user_id', '"+ gnn.dump() +"', false);" +
+						"SELECT set_config('app.token', '"+ gnn.dump() +"', false);" +
 						"" +
 						"" +
 						"" + 
