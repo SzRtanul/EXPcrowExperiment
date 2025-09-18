@@ -480,7 +480,7 @@ elvevezes	thente.sql	/^    elvevezes character varying(100) NOT NULL$/;"	E	table
 email	TheToughtExperimental.sql	/^  "email" varchar(60) UNIQUE,$/;"	E	table:Felhasznalo
 email	thente.sql	/^    email character varying(60),$/;"	E	table:felhasznalo
 engedelyezettsema	thente.sql	/^CREATE TABLE sysadmin.engedelyezettsema ($/;"	t
-entraceMethod	core.cpp	/^int entraceMethod(int crowPort, std::string postgresDBlocation, std::string postgresDBport, std:/;"	f	typeref:typename:int
+entraceMethod	core.cpp	/^int entraceMethod($/;"	f	typeref:typename:int
 epuletHelysegID	TheToughtExperimental.sql	/^  "epuletHelysegID" int,$/;"	E	table:Atjaras
 epuletHelysegID	TheToughtExperimental.sql	/^  "epuletHelysegID" int,$/;"	E	table:EpuletHelysegFerohely
 epuletHelysegID	TheToughtExperimental.sql	/^  "epuletHelysegID" int,$/;"	E	table:KiserletLepes
