@@ -30,7 +30,7 @@ AlkotoreszTipus	TheToughtExperimental.sql	/^CREATE TABLE "AlkotoreszTipus" ($/;"
 AlkotoreszTulajdonsag	TheToughtExperimental.sql	/^CREATE TABLE "AlkotoreszTulajdonsag" ($/;"	t
 Anyag	TheToughtExperimental.sql	/^CREATE TABLE "Anyag" ($/;"	t
 Atjaras	TheToughtExperimental.sql	/^CREATE TABLE "Atjaras" ($/;"	t
-C	main.cpp	/^pqxx::connection C = pqxx::connection(R"(dbname = testdb3 user=postgres password=test123 hostadd/;"	v	typeref:typename:pqxx::connection
+C	core.cpp	/^pqxx::connection C = pqxx::connection(R"(dbname=testdb3 user=postgres password=test123 hostaddr=/;"	v	typeref:typename:pqxx::connection
 CMAKE_AR	build/CMakeFiles/3.22.1/CMakeCCompiler.cmake	/^set(CMAKE_AR "\/usr\/bin\/ar")$/;"	v
 CMAKE_AR	build/CMakeFiles/3.22.1/CMakeCXXCompiler.cmake	/^set(CMAKE_AR "\/usr\/bin\/ar")$/;"	v
 CMAKE_BINARY_DIR	build/Makefile	/^CMAKE_BINARY_DIR = \/home\/test\/crowwebsite\/build$/;"	m
@@ -121,17 +121,29 @@ CMAKE_C_SIMULATE_VERSION	build/CMakeFiles/3.22.1/CMakeCCompiler.cmake	/^set(CMAK
 CMAKE_C_SIZEOF_DATA_PTR	build/CMakeFiles/3.22.1/CMakeCCompiler.cmake	/^set(CMAKE_C_SIZEOF_DATA_PTR "8")$/;"	v
 CMAKE_C_SOURCE_FILE_EXTENSIONS	build/CMakeFiles/3.22.1/CMakeCCompiler.cmake	/^set(CMAKE_C_SOURCE_FILE_EXTENSIONS c;m)$/;"	v
 CMAKE_C_STANDARD_COMPUTED_DEFAULT	build/CMakeFiles/3.22.1/CMakeCCompiler.cmake	/^set(CMAKE_C_STANDARD_COMPUTED_DEFAULT "17")$/;"	v
-CMAKE_DEPENDS_DEPENDENCY_FILES	build/CMakeFiles/CrowSample.dir/DependInfo.cmake	/^set(CMAKE_DEPENDS_DEPENDENCY_FILES$/;"	v
+CMAKE_DEPENDS_DEPENDENCY_FILES	build/CMakeFiles/core.dir/DependInfo.cmake	/^set(CMAKE_DEPENDS_DEPENDENCY_FILES$/;"	v
+CMAKE_DEPENDS_DEPENDENCY_FILES	build/CMakeFiles/jgj.dir/DependInfo.cmake	/^set(CMAKE_DEPENDS_DEPENDENCY_FILES$/;"	v
+CMAKE_DEPENDS_DEPENDENCY_FILES	build/CMakeFiles/jgja.dir/DependInfo.cmake	/^set(CMAKE_DEPENDS_DEPENDENCY_FILES$/;"	v
+CMAKE_DEPENDS_DEPENDENCY_FILES	build/CMakeFiles/jgje.dir/DependInfo.cmake	/^set(CMAKE_DEPENDS_DEPENDENCY_FILES$/;"	v
 CMAKE_DEPENDS_GENERATOR	build/CMakeFiles/Makefile.cmake	/^set(CMAKE_DEPENDS_GENERATOR "Unix Makefiles")$/;"	v
-CMAKE_DEPENDS_IN_PROJECT_ONLY	build/CMakeFiles/CrowSample.dir/DependInfo.cmake	/^set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)$/;"	v
-CMAKE_DEPENDS_LANGUAGES	build/CMakeFiles/CrowSample.dir/DependInfo.cmake	/^set(CMAKE_DEPENDS_LANGUAGES$/;"	v
+CMAKE_DEPENDS_IN_PROJECT_ONLY	build/CMakeFiles/core.dir/DependInfo.cmake	/^set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)$/;"	v
+CMAKE_DEPENDS_IN_PROJECT_ONLY	build/CMakeFiles/jgj.dir/DependInfo.cmake	/^set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)$/;"	v
+CMAKE_DEPENDS_IN_PROJECT_ONLY	build/CMakeFiles/jgja.dir/DependInfo.cmake	/^set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)$/;"	v
+CMAKE_DEPENDS_IN_PROJECT_ONLY	build/CMakeFiles/jgje.dir/DependInfo.cmake	/^set(CMAKE_DEPENDS_IN_PROJECT_ONLY OFF)$/;"	v
+CMAKE_DEPENDS_LANGUAGES	build/CMakeFiles/core.dir/DependInfo.cmake	/^set(CMAKE_DEPENDS_LANGUAGES$/;"	v
+CMAKE_DEPENDS_LANGUAGES	build/CMakeFiles/jgj.dir/DependInfo.cmake	/^set(CMAKE_DEPENDS_LANGUAGES$/;"	v
+CMAKE_DEPENDS_LANGUAGES	build/CMakeFiles/jgja.dir/DependInfo.cmake	/^set(CMAKE_DEPENDS_LANGUAGES$/;"	v
+CMAKE_DEPENDS_LANGUAGES	build/CMakeFiles/jgje.dir/DependInfo.cmake	/^set(CMAKE_DEPENDS_LANGUAGES$/;"	v
 CMAKE_DEPEND_INFO_FILES	build/CMakeFiles/Makefile.cmake	/^set(CMAKE_DEPEND_INFO_FILES$/;"	v
 CMAKE_FORCE_UNIX_PATHS	build/CMakeFiles/CMakeDirectoryInformation.cmake	/^set(CMAKE_FORCE_UNIX_PATHS 1)$/;"	v
-CMAKE_Fortran_TARGET_MODULE_DIR	build/CMakeFiles/CrowSample.dir/DependInfo.cmake	/^set(CMAKE_Fortran_TARGET_MODULE_DIR "")$/;"	v
-CMAKE_HOST_SYSTEM	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM "Linux-5.15.0-136-generic")$/;"	v
+CMAKE_Fortran_TARGET_MODULE_DIR	build/CMakeFiles/core.dir/DependInfo.cmake	/^set(CMAKE_Fortran_TARGET_MODULE_DIR "")$/;"	v
+CMAKE_Fortran_TARGET_MODULE_DIR	build/CMakeFiles/jgj.dir/DependInfo.cmake	/^set(CMAKE_Fortran_TARGET_MODULE_DIR "")$/;"	v
+CMAKE_Fortran_TARGET_MODULE_DIR	build/CMakeFiles/jgja.dir/DependInfo.cmake	/^set(CMAKE_Fortran_TARGET_MODULE_DIR "")$/;"	v
+CMAKE_Fortran_TARGET_MODULE_DIR	build/CMakeFiles/jgje.dir/DependInfo.cmake	/^set(CMAKE_Fortran_TARGET_MODULE_DIR "")$/;"	v
+CMAKE_HOST_SYSTEM	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM "Linux-5.15.0-153-generic")$/;"	v
 CMAKE_HOST_SYSTEM_NAME	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM_NAME "Linux")$/;"	v
 CMAKE_HOST_SYSTEM_PROCESSOR	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM_PROCESSOR "x86_64")$/;"	v
-CMAKE_HOST_SYSTEM_VERSION	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM_VERSION "5.15.0-136-generic")$/;"	v
+CMAKE_HOST_SYSTEM_VERSION	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_HOST_SYSTEM_VERSION "5.15.0-153-generic")$/;"	v
 CMAKE_INSTALL_COMPONENT	build/cmake_install.cmake	/^    set(CMAKE_INSTALL_COMPONENT "${COMPONENT}")$/;"	v
 CMAKE_INSTALL_COMPONENT	build/cmake_install.cmake	/^    set(CMAKE_INSTALL_COMPONENT)$/;"	v
 CMAKE_INSTALL_CONFIG_NAME	build/cmake_install.cmake	/^    set(CMAKE_INSTALL_CONFIG_NAME "")$/;"	v
@@ -158,12 +170,15 @@ CMAKE_RELATIVE_PATH_TOP_SOURCE	build/CMakeFiles/CMakeDirectoryInformation.cmake	
 CMAKE_SIZEOF_VOID_P	build/CMakeFiles/3.22.1/CMakeCCompiler.cmake	/^  set(CMAKE_SIZEOF_VOID_P "${CMAKE_C_SIZEOF_DATA_PTR}")$/;"	v
 CMAKE_SIZEOF_VOID_P	build/CMakeFiles/3.22.1/CMakeCXXCompiler.cmake	/^  set(CMAKE_SIZEOF_VOID_P "${CMAKE_CXX_SIZEOF_DATA_PTR}")$/;"	v
 CMAKE_SOURCE_DIR	build/Makefile	/^CMAKE_SOURCE_DIR = \/home\/test\/crowwebsite$/;"	m
-CMAKE_SYSTEM	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM "Linux-5.15.0-136-generic")$/;"	v
+CMAKE_SYSTEM	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM "Linux-5.15.0-153-generic")$/;"	v
 CMAKE_SYSTEM_LOADED	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_LOADED 1)$/;"	v
 CMAKE_SYSTEM_NAME	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_NAME "Linux")$/;"	v
 CMAKE_SYSTEM_PROCESSOR	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_PROCESSOR "x86_64")$/;"	v
-CMAKE_SYSTEM_VERSION	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_VERSION "5.15.0-136-generic")$/;"	v
-CMAKE_TARGET_LINKED_INFO_FILES	build/CMakeFiles/CrowSample.dir/DependInfo.cmake	/^set(CMAKE_TARGET_LINKED_INFO_FILES$/;"	v
+CMAKE_SYSTEM_VERSION	build/CMakeFiles/3.22.1/CMakeSystem.cmake	/^set(CMAKE_SYSTEM_VERSION "5.15.0-153-generic")$/;"	v
+CMAKE_TARGET_LINKED_INFO_FILES	build/CMakeFiles/core.dir/DependInfo.cmake	/^set(CMAKE_TARGET_LINKED_INFO_FILES$/;"	v
+CMAKE_TARGET_LINKED_INFO_FILES	build/CMakeFiles/jgj.dir/DependInfo.cmake	/^set(CMAKE_TARGET_LINKED_INFO_FILES$/;"	v
+CMAKE_TARGET_LINKED_INFO_FILES	build/CMakeFiles/jgja.dir/DependInfo.cmake	/^set(CMAKE_TARGET_LINKED_INFO_FILES$/;"	v
+CMAKE_TARGET_LINKED_INFO_FILES	build/CMakeFiles/jgje.dir/DependInfo.cmake	/^set(CMAKE_TARGET_LINKED_INFO_FILES$/;"	v
 COMPILER_ID	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define COMPILER_ID /;"	d	file:
 COMPILER_ID	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^# define COMPILER_ID /;"	d	file:
 COMPILER_VERSION	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#   define COMPILER_VERSION /;"	d	file:
@@ -211,10 +226,7 @@ C_VERSION	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define C_V
 C_VERSION	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define C_VERSION$/;"	d	file:
 C_VERSION	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define C_VERSION /;"	d	file:
 Ceg	TheToughtExperimental.sql	/^CREATE TABLE "Ceg" ($/;"	t
-CrowSample	CMakeLists.txt	/^add_executable(CrowSample main.cpp test.cpp)$/;"	t
 CrowSample	CMakeLists.txt	/^project(CrowSample)$/;"	p
-CrowSample	build/Makefile	/^CrowSample: cmake_check_build_system$/;"	t
-CrowSample/fast	build/Makefile	/^CrowSample\/fast:$/;"	t
 DEC	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#define DEC(/;"	d	file:
 DEC	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#define DEC(/;"	d	file:
 EQUALS	build/Makefile	/^EQUALS = =$/;"	m
@@ -305,7 +317,7 @@ Tualjdonsag	TheToughtExperimental.sql	/^CREATE TABLE "Tualjdonsag" ($/;"	t
 Tunet	TheToughtExperimental.sql	/^CREATE TABLE "Tunet" ($/;"	t
 TunetAllapot	TheToughtExperimental.sql	/^CREATE TABLE "TunetAllapot" ($/;"	t
 U_KiserletLepesSorrend	TheToughtExperimental.sql	/^CREATE UNIQUE INDEX "U_KiserletLepesSorrend" ON "KiserletLepesSorrend" ("kiserletLepesID", "hany/;"	i	table:KiserletLepesSorrend
-U_KiserletLepesSorrend	thetoughtexperimentwithdata.sql	/^CREATE UNIQUE INDEX "U_KiserletLepesSorrend" ON admin.kiserletlepessorrend USING btree (kiserlet/;"	i	table:kiserletlepessorrend
+U_KiserletLepesSorrend	thente.sql	/^CREATE UNIQUE INDEX "U_KiserletLepesSorrend" ON admin.kiserletlepessorrend USING btree (kiserlet/;"	i	table:kiserletlepessorrend
 ValasztasiLehetoseg	TheToughtExperimental.sql	/^CREATE TABLE "ValasztasiLehetoseg" ($/;"	t
 Valaszthato	TheToughtExperimental.sql	/^CREATE TABLE "Valaszthato" ($/;"	t
 ValaszthatoAlany	TheToughtExperimental.sql	/^CREATE TABLE "ValaszthatoAlany" ($/;"	t
@@ -315,15 +327,15 @@ VizsgalatElojegyzes	TheToughtExperimental.sql	/^CREATE TABLE "VizsgalatElojegyze
 VizsgalatTipus	TheToughtExperimental.sql	/^CREATE TABLE "VizsgalatTipus" ($/;"	t
 WordsCompare	models/WordsCompare.cpp	/^	WordsCompare(char leghosszabbSzo, int szavakSzama, int szakaszSzam){$/;"	f	struct:WordsCompare	file:
 WordsCompare	models/WordsCompare.cpp	/^struct WordsCompare{$/;"	s	file:
-__anon3b5b11db0102	main.cpp	/^		CROW_ROUTE(app, "\/login")([](const crow::request& req) {$/;"	f	function:main	file:
-__anon3b5b11db0202	main.cpp	/^		){$/;"	f	function:main	file:
-__anon3b5b11db0302	main.cpp	/^		CROW_ROUTE(app, "\/callquery").methods("POST"_method)([&compareWords](const crow::request& req/;"	f	function:main	file:
-__anon3b5b11db0402	main.cpp	/^	CROW_ROUTE(app, "\/")([](){$/;"	f	function:main	file:
-__anon3b5b11db0502	main.cpp	/^	CROW_ROUTE(app, "\/pelda\/<int>").methods("POST"_method)([](const crow::request& req, const int/;"	f	function:main	file:
+__anon4ad3a4bf0102	core.cpp	/^		CROW_ROUTE(app, "\/login")([](const crow::request& req) {$/;"	f	function:entraceMethod	file:
+__anon4ad3a4bf0202	core.cpp	/^		){$/;"	f	function:entraceMethod	file:
+__anon4ad3a4bf0302	core.cpp	/^		CROW_ROUTE(app, "\/callquery").methods("POST"_method)([&compareWords](const crow::request& req/;"	f	function:entraceMethod	file:
+__anon4ad3a4bf0402	core.cpp	/^	CROW_ROUTE(app, "\/")([](){$/;"	f	function:entraceMethod	file:
+__anon4ad3a4bf0502	core.cpp	/^	CROW_ROUTE(app, "\/pelda\/<int>").methods("POST"_method)([](const crow::request& req, const int/;"	f	function:entraceMethod	file:
 __has_include	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^#  define __has_include(/;"	d	file:
 __has_include	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^#  define __has_include(/;"	d	file:
 active_connections	models/PoolDBConnection.cpp	/^	int active_connections;$/;"	m	struct:PoolDBConnection	typeref:typename:int	file:
-alany	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.alany ($/;"	t
+alany	thente.sql	/^CREATE TABLE admin.alany ($/;"	t
 alanyID	TheToughtExperimental.sql	/^  "alanyID" int PRIMARY KEY,$/;"	E	table:HalottAlany
 alanyID	TheToughtExperimental.sql	/^  "alanyID" int,$/;"	E	table:AlanyVizsgalat
 alanyID	TheToughtExperimental.sql	/^  "alanyID" int,$/;"	E	table:Etetes
@@ -332,35 +344,35 @@ alanyID	TheToughtExperimental.sql	/^  "alanyID" int,$/;"	E	table:KiserletLepesVe
 alanyID	TheToughtExperimental.sql	/^  "alanyID" int,$/;"	E	table:KiserletResztvevo
 alanyID	TheToughtExperimental.sql	/^  "alanyID" int,$/;"	E	table:ValaszthatoAlany
 alanyVizsgalatID	TheToughtExperimental.sql	/^  "alanyVizsgalatID" int,$/;"	E	table:KiserletLepesVegreHajtasVizsgalat
-alanyid	thetoughtexperimentwithdata.sql	/^    alanyid integer NOT NULL$/;"	E	table:kiserletlepesvegrehajtasvalasztottalany
-alanyid	thetoughtexperimentwithdata.sql	/^    alanyid integer NOT NULL,$/;"	E	table:etetes
-alanyid	thetoughtexperimentwithdata.sql	/^    alanyid integer NOT NULL,$/;"	E	table:halottalany
-alanyid	thetoughtexperimentwithdata.sql	/^    alanyid integer NOT NULL,$/;"	E	table:kiserletlepesvegrehajtas
-alanyid	thetoughtexperimentwithdata.sql	/^    alanyid integer NOT NULL,$/;"	E	table:kiserletresztvevo
-alanyid	thetoughtexperimentwithdata.sql	/^    alanyid integer NOT NULL,$/;"	E	table:valaszthatoalany
-alanyid	thetoughtexperimentwithdata.sql	/^    alanyid integer,$/;"	E	table:alanyvizsgalat
-alanytulajdonsag	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.alanytulajdonsag ($/;"	t
-alanyvizsgalat	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.alanyvizsgalat ($/;"	t
+alanyid	thente.sql	/^    alanyid integer NOT NULL$/;"	E	table:kiserletlepesvegrehajtasvalasztottalany
+alanyid	thente.sql	/^    alanyid integer NOT NULL,$/;"	E	table:etetes
+alanyid	thente.sql	/^    alanyid integer NOT NULL,$/;"	E	table:halottalany
+alanyid	thente.sql	/^    alanyid integer NOT NULL,$/;"	E	table:kiserletlepesvegrehajtas
+alanyid	thente.sql	/^    alanyid integer NOT NULL,$/;"	E	table:kiserletresztvevo
+alanyid	thente.sql	/^    alanyid integer NOT NULL,$/;"	E	table:valaszthatoalany
+alanyid	thente.sql	/^    alanyid integer,$/;"	E	table:alanyvizsgalat
+alanytulajdonsag	thente.sql	/^CREATE TABLE admin.alanytulajdonsag ($/;"	t
+alanyvizsgalat	thente.sql	/^CREATE TABLE admin.alanyvizsgalat ($/;"	t
 alanyvizsgalata	TheToughtExperimental.sql	/^  "alanyvizsgalata" text,$/;"	E	table:KiserletResztvevo
-alanyvizsgalata	thetoughtexperimentwithdata.sql	/^    alanyvizsgalata text$/;"	E	table:kiserletresztvevo
-alanyvizsgalatid	thetoughtexperimentwithdata.sql	/^    alanyvizsgalatid integer NOT NULL$/;"	E	table:kiserletlepesvegrehajtasvizsgalat
-alkotoresz	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.alkotoresz ($/;"	t
+alanyvizsgalata	thente.sql	/^    alanyvizsgalata text$/;"	E	table:kiserletresztvevo
+alanyvizsgalatid	thente.sql	/^    alanyvizsgalatid integer NOT NULL$/;"	E	table:kiserletlepesvegrehajtasvizsgalat
+alkotoresz	thente.sql	/^CREATE TABLE admin.alkotoresz ($/;"	t
 alkotoreszID	TheToughtExperimental.sql	/^  "alkotoreszID" int,$/;"	E	table:AlkotoreszTulajdonsag
 alkotoreszID	TheToughtExperimental.sql	/^  "alkotoreszID" int,$/;"	E	table:ErintettAlkotoresz
 alkotoreszID	TheToughtExperimental.sql	/^  "alkotoreszID" int,$/;"	E	table:FajAlkotoresze
 alkotoreszID	TheToughtExperimental.sql	/^  "alkotoreszID" int,$/;"	E	table:Tartalmaz
 alkotoreszIDazonbelul	TheToughtExperimental.sql	/^  "alkotoreszIDazonbelul" int,$/;"	E	table:Alkotoresz
 alkotoreszTipusID	TheToughtExperimental.sql	/^  "alkotoreszTipusID" int,$/;"	E	table:Alkotoresz
-alkotoreszid	thetoughtexperimentwithdata.sql	/^    alkotoreszid integer NOT NULL$/;"	E	table:fajalkotoresze
-alkotoreszid	thetoughtexperimentwithdata.sql	/^    alkotoreszid integer NOT NULL,$/;"	E	table:alkotoresztulajdonsag
-alkotoreszid	thetoughtexperimentwithdata.sql	/^    alkotoreszid integer NOT NULL,$/;"	E	table:erintettalkotoresz
-alkotoreszid	thetoughtexperimentwithdata.sql	/^    alkotoreszid integer NOT NULL,$/;"	E	table:tartalmaz
-alkotoreszidazonbelul	thetoughtexperimentwithdata.sql	/^    alkotoreszidazonbelul integer,$/;"	E	table:alkotoresz
-alkotoresztipus	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.alkotoresztipus ($/;"	t
-alkotoresztipusid	thetoughtexperimentwithdata.sql	/^    alkotoresztipusid integer,$/;"	E	table:alkotoresz
-alkotoresztulajdonsag	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.alkotoresztulajdonsag ($/;"	t
+alkotoreszid	thente.sql	/^    alkotoreszid integer NOT NULL$/;"	E	table:fajalkotoresze
+alkotoreszid	thente.sql	/^    alkotoreszid integer NOT NULL,$/;"	E	table:alkotoresztulajdonsag
+alkotoreszid	thente.sql	/^    alkotoreszid integer NOT NULL,$/;"	E	table:erintettalkotoresz
+alkotoreszid	thente.sql	/^    alkotoreszid integer NOT NULL,$/;"	E	table:tartalmaz
+alkotoreszidazonbelul	thente.sql	/^    alkotoreszidazonbelul integer,$/;"	E	table:alkotoresz
+alkotoresztipus	thente.sql	/^CREATE TABLE admin.alkotoresztipus ($/;"	t
+alkotoresztipusid	thente.sql	/^    alkotoresztipusid integer,$/;"	E	table:alkotoresz
+alkotoresztulajdonsag	thente.sql	/^CREATE TABLE admin.alkotoresztulajdonsag ($/;"	t
 all	build/Makefile	/^all: cmake_check_build_system$/;"	t
-anyag	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.anyag ($/;"	t
+anyag	thente.sql	/^CREATE TABLE admin.anyag ($/;"	t
 anyagID	TheToughtExperimental.sql	/^  "anyagID" int$/;"	E	table:EtelIntolarencia
 anyagID	TheToughtExperimental.sql	/^  "anyagID" int,$/;"	E	table:MegetetendoEtelek
 anyagID	TheToughtExperimental.sql	/^  "anyagID" int,$/;"	E	table:MegetetettEtelek
@@ -368,47 +380,58 @@ anyagID	TheToughtExperimental.sql	/^  "anyagID" int,$/;"	E	table:Recept
 anyagID	TheToughtExperimental.sql	/^  "anyagID" int,$/;"	E	table:Tartalmaz
 anyagID	TheToughtExperimental.sql	/^  "anyagID" int,$/;"	E	table:ValaszthatoAnyag
 anyagIDOsszetevo	TheToughtExperimental.sql	/^  "anyagIDOsszetevo" int,$/;"	E	table:Recept
-anyagid	thetoughtexperimentwithdata.sql	/^    anyagid integer NOT NULL,$/;"	E	table:megetetendoetelek
-anyagid	thetoughtexperimentwithdata.sql	/^    anyagid integer NOT NULL,$/;"	E	table:megetetettetelek
-anyagid	thetoughtexperimentwithdata.sql	/^    anyagid integer NOT NULL,$/;"	E	table:recept
-anyagid	thetoughtexperimentwithdata.sql	/^    anyagid integer NOT NULL,$/;"	E	table:tartalmaz
-anyagid	thetoughtexperimentwithdata.sql	/^    anyagid integer NOT NULL,$/;"	E	table:valaszthatoanyag
-anyagid	thetoughtexperimentwithdata.sql	/^    anyagid integer$/;"	E	table:etelintolarencia
-anyagidosszetevo	thetoughtexperimentwithdata.sql	/^    anyagidosszetevo integer NOT NULL,$/;"	E	table:recept
+anyagid	thente.sql	/^    anyagid integer NOT NULL,$/;"	E	table:megetetendoetelek
+anyagid	thente.sql	/^    anyagid integer NOT NULL,$/;"	E	table:megetetettetelek
+anyagid	thente.sql	/^    anyagid integer NOT NULL,$/;"	E	table:recept
+anyagid	thente.sql	/^    anyagid integer NOT NULL,$/;"	E	table:tartalmaz
+anyagid	thente.sql	/^    anyagid integer NOT NULL,$/;"	E	table:valaszthatoanyag
+anyagid	thente.sql	/^    anyagid integer$/;"	E	table:etelintolarencia
+anyagidosszetevo	thente.sql	/^    anyagidosszetevo integer NOT NULL,$/;"	E	table:recept
 anyjaNeve	TheToughtExperimental.sql	/^  "anyjaNeve" varchar(100) NOT NULL,$/;"	E	table:Személy
-anyjaneve	thetoughtexperimentwithdata.sql	/^    anyjaneve character varying(100) NOT NULL,$/;"	E	table:szemely
-atjaras	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.atjaras ($/;"	t
-bearertoken	thetoughtexperimentwithdata.sql	/^CREATE TABLE sysadmin.bearertoken ($/;"	t
+anyjaneve	thente.sql	/^    anyjaneve character varying(100) NOT NULL,$/;"	E	table:szemely
+atjaras	thente.sql	/^CREATE TABLE admin.atjaras ($/;"	t
+bearertoken	thente.sql	/^CREATE TABLE sysadmin.bearertoken ($/;"	t
 befejezetlen	TheToughtExperimental.sql	/^  "befejezetlen" bit,$/;"	E	table:Oklevel
-befejezetlen	thetoughtexperimentwithdata.sql	/^    befejezetlen bit(1)$/;"	E	table:oklevel
+befejezetlen	thente.sql	/^    befejezetlen bit(1)$/;"	E	table:oklevel
 bevonasDatuma	TheToughtExperimental.sql	/^  "bevonasDatuma" date,$/;"	E	table:KiserletResztvevo
-bevonasdatuma	thetoughtexperimentwithdata.sql	/^    bevonasdatuma date,$/;"	E	table:kiserletresztvevo
+bevonasdatuma	thente.sql	/^    bevonasdatuma date,$/;"	E	table:kiserletresztvevo
 bynarytree	models/WordsCompare.cpp	/^	int* bynarytree;$/;"	m	struct:WordsCompare	typeref:typename:int *	file:
-ceg	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.ceg ($/;"	t
+ceg	thente.sql	/^CREATE TABLE admin.ceg ($/;"	t
 cegID	TheToughtExperimental.sql	/^  "cegID" int,$/;"	E	table:Tapasztalat
-cegid	thetoughtexperimentwithdata.sql	/^    cegid integer NOT NULL,$/;"	E	table:tapasztalat
+cegid	thente.sql	/^    cegid integer NOT NULL,$/;"	E	table:tapasztalat
 characterChain	models/StoreNames.cpp	/^	char* characterChain;$/;"	m	struct:StoreNames	typeref:typename:char *	file:
 clean	build/Makefile	/^clean:$/;"	t
 clean/fast	build/Makefile	/^clean\/fast: clean$/;"	t
 cmake_check_build_system	build/Makefile	/^cmake_check_build_system:$/;"	t
 cmake_force	build/Makefile	/^cmake_force:$/;"	t
+columnsview	thente.sql	/^CREATE VIEW sysadmin.columnsview AS$/;"	V
 conninfo	models/PoolDBConnection.cpp	/^	std::string conninfo;$/;"	m	struct:PoolDBConnection	typeref:typename:std::string	file:
 const	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define const$/;"	d	file:
+core	CMakeLists.txt	/^add_library(core core.cpp)$/;"	t
+core	build/Makefile	/^core: cmake_check_build_system$/;"	t
+core.cpp.i	build/Makefile	/^core.cpp.i:$/;"	t
+core.cpp.o	build/Makefile	/^core.cpp.o:$/;"	t
+core.cpp.s	build/Makefile	/^core.cpp.s:$/;"	t
+core.i	build/Makefile	/^core.i: core.cpp.i$/;"	t
+core.o	build/Makefile	/^core.o: core.cpp.o$/;"	t
+core.s	build/Makefile	/^core.s: core.cpp.s$/;"	t
+core/fast	build/Makefile	/^core\/fast:$/;"	t
 create_connection	models/PoolDBConnection.cpp	/^	inline bool create_connection(){$/;"	f	struct:PoolDBConnection	typeref:typename:bool	file:
+createuninjschema	thente.sql	/^CREATE FUNCTION sysadmin.createuninjschema(schemaname text) RETURNS boolean$/;"	f
 csoportszam	TheToughtExperimental.sql	/^  "csoportszam" int$/;"	E	table:KiserletLepesSorrend
 csoportszam	TheToughtExperimental.sql	/^  "csoportszam" int,$/;"	E	table:KLCsHozzarendeles
 csoportszam	TheToughtExperimental.sql	/^  "csoportszam" int,$/;"	E	table:KiserletResztvevo
 csoportszam	TheToughtExperimental.sql	/^  "csoportszam" int,$/;"	E	table:ValasztasiLehetoseg
 csoportszam	TheToughtExperimental.sql	/^  "csoportszam" int,$/;"	E	table:ValaszthatoAlanyTipus
 csoportszam	TheToughtExperimental.sql	/^  "csoportszam" int,$/;"	E	table:ValaszthatoAnyag
-csoportszam	thetoughtexperimentwithdata.sql	/^    csoportszam integer$/;"	E	table:kiserletlepessorrend
-csoportszam	thetoughtexperimentwithdata.sql	/^    csoportszam integer$/;"	E	table:valasztasilehetoseg
-csoportszam	thetoughtexperimentwithdata.sql	/^    csoportszam integer$/;"	E	table:valaszthatoalanytipus
-csoportszam	thetoughtexperimentwithdata.sql	/^    csoportszam integer$/;"	E	table:valaszthatoanyag
-csoportszam	thetoughtexperimentwithdata.sql	/^    csoportszam integer,$/;"	E	table:kiserletresztvevo
-csoportszam	thetoughtexperimentwithdata.sql	/^    csoportszam integer,$/;"	E	table:klcshozzarendeles
+csoportszam	thente.sql	/^    csoportszam integer$/;"	E	table:kiserletlepessorrend
+csoportszam	thente.sql	/^    csoportszam integer$/;"	E	table:valasztasilehetoseg
+csoportszam	thente.sql	/^    csoportszam integer$/;"	E	table:valaszthatoalanytipus
+csoportszam	thente.sql	/^    csoportszam integer$/;"	E	table:valaszthatoanyag
+csoportszam	thente.sql	/^    csoportszam integer,$/;"	E	table:kiserletresztvevo
+csoportszam	thente.sql	/^    csoportszam integer,$/;"	E	table:klcshozzarendeles
 datum	TheToughtExperimental.sql	/^  "datum" date,$/;"	E	table:Etetes
-datum	thetoughtexperimentwithdata.sql	/^    datum date NOT NULL,$/;"	E	table:etetes
+datum	thente.sql	/^    datum date NOT NULL,$/;"	E	table:etetes
 default_target	build/Makefile	/^default_target: all$/;"	t
 depend	build/Makefile	/^depend:$/;"	t
 doSyntaxtCheckPreparation	models/WordsCompare.cpp	/^WordsCompare doSyntaxtCheckPreparation(const char* characterChain){	$/;"	f	typeref:typename:WordsCompare
@@ -418,12 +441,12 @@ egyenlo	TheToughtExperimental.sql	/^  "egyenlo" bit,$/;"	E	table:AlanyTulajdonsa
 egyenlo	TheToughtExperimental.sql	/^  "egyenlo" bit,$/;"	E	table:AlkotoreszTulajdonsag
 egyenlo	TheToughtExperimental.sql	/^  "egyenlo" bit,$/;"	E	table:Tartalmaz
 egyenlo	TheToughtExperimental.sql	/^  "egyenlo" bit,$/;"	E	table:TunetAllapot
-egyenlo	thetoughtexperimentwithdata.sql	/^    egyenlo bit(1)$/;"	E	table:alanytulajdonsag
-egyenlo	thetoughtexperimentwithdata.sql	/^    egyenlo bit(1)$/;"	E	table:tartalmaz
-egyenlo	thetoughtexperimentwithdata.sql	/^    egyenlo bit(1),$/;"	E	table:alkotoresztulajdonsag
-egyenlo	thetoughtexperimentwithdata.sql	/^    egyenlo bit(1),$/;"	E	table:tunetallapot
+egyenlo	thente.sql	/^    egyenlo bit(1)$/;"	E	table:alanytulajdonsag
+egyenlo	thente.sql	/^    egyenlo bit(1)$/;"	E	table:tartalmaz
+egyenlo	thente.sql	/^    egyenlo bit(1),$/;"	E	table:alkotoresztulajdonsag
+egyenlo	thente.sql	/^    egyenlo bit(1),$/;"	E	table:tunetallapot
 elemzes	TheToughtExperimental.sql	/^  "elemzes" text,$/;"	E	table:KiserletLepesVegrehajtasEsemeny
-elemzes	thetoughtexperimentwithdata.sql	/^    elemzes text$/;"	E	table:kiserletlepesvegrehajtasesemeny
+elemzes	thente.sql	/^    elemzes text$/;"	E	table:kiserletlepesvegrehajtasesemeny
 elnevezes	TheToughtExperimental.sql	/^  "elnevezes" int UNIQUE NOT NULL,$/;"	E	table:Kiserlet
 elnevezes	TheToughtExperimental.sql	/^  "elnevezes" varchar(100) UNIQUE NOT NULL$/;"	E	table:AlkotoreszTipus
 elnevezes	TheToughtExperimental.sql	/^  "elnevezes" varchar(100) UNIQUE NOT NULL$/;"	E	table:Faj
@@ -437,88 +460,90 @@ elnevezes	TheToughtExperimental.sql	/^  "elnevezes" varchar(30) UNIQUE NOT NULL$
 elnevezes	TheToughtExperimental.sql	/^  "elnevezes" varchar(30) UNIQUE NOT NULL$/;"	E	table:Valaszthato
 elnevezes	TheToughtExperimental.sql	/^  "elnevezes" varchar(30) UNIQUE NOT NULL$/;"	E	table:VizsgalatTipus
 elnevezes	TheToughtExperimental.sql	/^  "elnevezes" varchar(30) UNIQUE NOT NULL,$/;"	E	table:Tualjdonsag
-elnevezes	thetoughtexperimentwithdata.sql	/^    elnevezes character varying(100) NOT NULL$/;"	E	table:alkotoresztipus
-elnevezes	thetoughtexperimentwithdata.sql	/^    elnevezes character varying(100) NOT NULL$/;"	E	table:faj
-elnevezes	thetoughtexperimentwithdata.sql	/^    elnevezes character varying(100) NOT NULL,$/;"	E	table:kiserletlepes
-elnevezes	thetoughtexperimentwithdata.sql	/^    elnevezes character varying(100) NOT NULL,$/;"	E	table:kiserletlepescsoport
-elnevezes	thetoughtexperimentwithdata.sql	/^    elnevezes character varying(100) NOT NULL,$/;"	E	table:klcshozzarendeles
-elnevezes	thetoughtexperimentwithdata.sql	/^    elnevezes character varying(100) NOT NULL,$/;"	E	table:mertekegyseg
-elnevezes	thetoughtexperimentwithdata.sql	/^    elnevezes character varying(100) NOT NULL,$/;"	E	table:tunet
-elnevezes	thetoughtexperimentwithdata.sql	/^    elnevezes character varying(30) NOT NULL$/;"	E	table:alkotoresz
-elnevezes	thetoughtexperimentwithdata.sql	/^    elnevezes character varying(30) NOT NULL$/;"	E	table:epulethelyseg
-elnevezes	thetoughtexperimentwithdata.sql	/^    elnevezes character varying(30) NOT NULL$/;"	E	table:valaszthato
-elnevezes	thetoughtexperimentwithdata.sql	/^    elnevezes character varying(30) NOT NULL$/;"	E	table:vizsgalattipus
-elnevezes	thetoughtexperimentwithdata.sql	/^    elnevezes character varying(30) NOT NULL,$/;"	E	table:tulajdonsag
-elnevezes	thetoughtexperimentwithdata.sql	/^    elnevezes integer NOT NULL,$/;"	E	table:kiserlet
+elnevezes	thente.sql	/^    elnevezes character varying(100) NOT NULL$/;"	E	table:alkotoresztipus
+elnevezes	thente.sql	/^    elnevezes character varying(100) NOT NULL$/;"	E	table:faj
+elnevezes	thente.sql	/^    elnevezes character varying(100) NOT NULL,$/;"	E	table:kiserletlepes
+elnevezes	thente.sql	/^    elnevezes character varying(100) NOT NULL,$/;"	E	table:kiserletlepescsoport
+elnevezes	thente.sql	/^    elnevezes character varying(100) NOT NULL,$/;"	E	table:klcshozzarendeles
+elnevezes	thente.sql	/^    elnevezes character varying(100) NOT NULL,$/;"	E	table:mertekegyseg
+elnevezes	thente.sql	/^    elnevezes character varying(100) NOT NULL,$/;"	E	table:tunet
+elnevezes	thente.sql	/^    elnevezes character varying(30) NOT NULL$/;"	E	table:alkotoresz
+elnevezes	thente.sql	/^    elnevezes character varying(30) NOT NULL$/;"	E	table:epulethelyseg
+elnevezes	thente.sql	/^    elnevezes character varying(30) NOT NULL$/;"	E	table:valaszthato
+elnevezes	thente.sql	/^    elnevezes character varying(30) NOT NULL$/;"	E	table:vizsgalattipus
+elnevezes	thente.sql	/^    elnevezes character varying(30) NOT NULL,$/;"	E	table:tulajdonsag
+elnevezes	thente.sql	/^    elnevezes integer NOT NULL,$/;"	E	table:kiserlet
 elteroIdopont	TheToughtExperimental.sql	/^  "elteroIdopont" date,$/;"	E	table:MegetetettEtelek
-elteroidopont	thetoughtexperimentwithdata.sql	/^    elteroidopont date$/;"	E	table:megetetettetelek
+elteroidopont	thente.sql	/^    elteroidopont date$/;"	E	table:megetetettetelek
 elvevezes	TheToughtExperimental.sql	/^  "elvevezes" varchar(100) UNIQUE NOT NULL$/;"	E	table:Szerepkor
-elvevezes	thetoughtexperimentwithdata.sql	/^    elvevezes character varying(100) NOT NULL$/;"	E	table:szerepkor
+elvevezes	thente.sql	/^    elvevezes character varying(100) NOT NULL$/;"	E	table:szerepkor
 email	TheToughtExperimental.sql	/^  "email" varchar(60) UNIQUE,$/;"	E	table:Felhasznalo
-email	thetoughtexperimentwithdata.sql	/^    email character varying(60),$/;"	E	table:felhasznalo
-engedelyezettsema	thetoughtexperimentwithdata.sql	/^CREATE TABLE sysadmin.engedelyezettsema ($/;"	t
+email	thente.sql	/^    email character varying(60),$/;"	E	table:felhasznalo
+engedelyezettsema	thente.sql	/^CREATE TABLE sysadmin.engedelyezettsema ($/;"	t
+entraceMethod	core.cpp	/^int entraceMethod(int crowPort, std::string postgresDBlocation, std::string postgresDBport, std:/;"	f	typeref:typename:int
 epuletHelysegID	TheToughtExperimental.sql	/^  "epuletHelysegID" int,$/;"	E	table:Atjaras
 epuletHelysegID	TheToughtExperimental.sql	/^  "epuletHelysegID" int,$/;"	E	table:EpuletHelysegFerohely
 epuletHelysegID	TheToughtExperimental.sql	/^  "epuletHelysegID" int,$/;"	E	table:KiserletLepes
 epuletHelysegIDcel	TheToughtExperimental.sql	/^  "epuletHelysegIDcel" int,$/;"	E	table:Atjaras
-epulethelyseg	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.epulethelyseg ($/;"	t
-epulethelysegferohely	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.epulethelysegferohely ($/;"	t
-epulethelysegid	thetoughtexperimentwithdata.sql	/^    epulethelysegid integer NOT NULL,$/;"	E	table:atjaras
-epulethelysegid	thetoughtexperimentwithdata.sql	/^    epulethelysegid integer NOT NULL,$/;"	E	table:epulethelysegferohely
-epulethelysegid	thetoughtexperimentwithdata.sql	/^    epulethelysegid integer,$/;"	E	table:kiserletlepes
-epulethelysegidcel	thetoughtexperimentwithdata.sql	/^    epulethelysegidcel integer NOT NULL$/;"	E	table:atjaras
-erintettalkotoresz	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.erintettalkotoresz ($/;"	t
-ertekeles	thetoughtexperimentwithdata.sql	/^    ertekeles integer,$/;"	E	table:oklevel
-etelintolarencia	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.etelintolarencia ($/;"	t
-etetes	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.etetes ($/;"	t
+epulethelyseg	thente.sql	/^CREATE TABLE admin.epulethelyseg ($/;"	t
+epulethelysegferohely	thente.sql	/^CREATE TABLE admin.epulethelysegferohely ($/;"	t
+epulethelysegid	thente.sql	/^    epulethelysegid integer NOT NULL,$/;"	E	table:atjaras
+epulethelysegid	thente.sql	/^    epulethelysegid integer NOT NULL,$/;"	E	table:epulethelysegferohely
+epulethelysegid	thente.sql	/^    epulethelysegid integer,$/;"	E	table:kiserletlepes
+epulethelysegidcel	thente.sql	/^    epulethelysegidcel integer NOT NULL$/;"	E	table:atjaras
+erintettalkotoresz	thente.sql	/^CREATE TABLE admin.erintettalkotoresz ($/;"	t
+ertekeles	thente.sql	/^    ertekeles integer,$/;"	E	table:oklevel
+etelintolarencia	thente.sql	/^CREATE TABLE admin.etelintolarencia ($/;"	t
+etetes	thente.sql	/^CREATE TABLE admin.etetes ($/;"	t
 etetesID	TheToughtExperimental.sql	/^  "etetesID" int,$/;"	E	table:EtelIntolarencia
 etetesID	TheToughtExperimental.sql	/^  "etetesID" int,$/;"	E	table:KiserletLepesVegreHajtasEtetes
 etetesID	TheToughtExperimental.sql	/^  "etetesID" int,$/;"	E	table:MegetetettEtelek
-etetesid	thetoughtexperimentwithdata.sql	/^    etetesid integer NOT NULL$/;"	E	table:kiserletlepesvegrehajtasetetes
-etetesid	thetoughtexperimentwithdata.sql	/^    etetesid integer NOT NULL,$/;"	E	table:megetetettetelek
-etetesid	thetoughtexperimentwithdata.sql	/^    etetesid integer,$/;"	E	table:etelintolarencia
-exat	main.cpp	/^int exat=0;$/;"	v	typeref:typename:int
-faj	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.faj ($/;"	t
+etetesid	thente.sql	/^    etetesid integer NOT NULL$/;"	E	table:kiserletlepesvegrehajtasetetes
+etetesid	thente.sql	/^    etetesid integer NOT NULL,$/;"	E	table:megetetettetelek
+etetesid	thente.sql	/^    etetesid integer,$/;"	E	table:etelintolarencia
+exat	core.cpp	/^int exat=0;$/;"	v	typeref:typename:int
+faj	thente.sql	/^CREATE TABLE admin.faj ($/;"	t
 fajID	TheToughtExperimental.sql	/^  "fajID" int$/;"	E	table:Alany
 fajID	TheToughtExperimental.sql	/^  "fajID" int,$/;"	E	table:FajAlkotoresze
-fajalkotoresze	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.fajalkotoresze ($/;"	t
-fajid	thetoughtexperimentwithdata.sql	/^    fajid integer NOT NULL,$/;"	E	table:fajalkotoresze
-fajid	thetoughtexperimentwithdata.sql	/^    fajid integer$/;"	E	table:alany
+fajalkotoresze	thente.sql	/^CREATE TABLE admin.fajalkotoresze ($/;"	t
+fajid	thente.sql	/^    fajid integer NOT NULL,$/;"	E	table:fajalkotoresze
+fajid	thente.sql	/^    fajid integer$/;"	E	table:alany
 fazis	TheToughtExperimental.sql	/^  "fazis" INT GENERATED BY DEFAULT AS IDENTITY,$/;"	E	table:KLCsHozzarendeles
-fazis	thetoughtexperimentwithdata.sql	/^    fazis integer NOT NULL,$/;"	E	table:klcshozzarendeles
-felhasznalo	thetoughtexperimentwithdata.sql	/^CREATE TABLE sysadmin.felhasznalo ($/;"	t
+fazis	thente.sql	/^    fazis integer NOT NULL,$/;"	E	table:klcshozzarendeles
+felhasznalo	thente.sql	/^CREATE TABLE sysadmin.felhasznalo ($/;"	t
 felhasznaloID	TheToughtExperimental.sql	/^  "felhasznaloID" int,$/;"	E	table:JogCsoportHozzarendeles
-felhasznaloid	thetoughtexperimentwithdata.sql	/^    felhasznaloid integer NOT NULL$/;"	E	table:jogcsoporthozzarendeles
-felhasznaloid	thetoughtexperimentwithdata.sql	/^    felhasznaloid integer$/;"	E	table:bearertoken
+felhasznaloid	thente.sql	/^    felhasznaloid integer NOT NULL$/;"	E	table:jogcsoporthozzarendeles
+felhasznaloid	thente.sql	/^    felhasznaloid integer$/;"	E	table:bearertoken
 felhasznalonev	TheToughtExperimental.sql	/^  "felhasznalonev" char(30) UNIQUE,$/;"	E	table:Felhasznalo
-felhasznalonev	thetoughtexperimentwithdata.sql	/^    felhasznalonev character(30),$/;"	E	table:felhasznalo
+felhasznalonev	thente.sql	/^    felhasznalonev character(30),$/;"	E	table:felhasznalo
+felhasznaloview	thente.sql	/^CREATE VIEW lobby.felhasznaloview AS$/;"	V
 getDBConn	models/PoolDBConnection.cpp	/^	std::shared_ptr<pqxx::connection> getDBConn(){$/;"	f	struct:PoolDBConnection	typeref:typename:std::shared_ptr<pqxx::connection>	file:
-getHH	main.cpp	/^inline bool getHH(std::shared_ptr<pqxx::connection> NC, std::string gnndump, std::string keyname/;"	f	typeref:typename:bool
-getSQLQuery	main.cpp	/^inline std::string getSQLQuery($/;"	f	typeref:typename:std::string
-getSQLQuery	main.cpp	/^inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char* querytext){$/;"	f	typeref:typename:std::string
+getHH	core.cpp	/^inline bool getHH(std::shared_ptr<pqxx::connection> NC, std::string gnndump, std::string keyname/;"	f	typeref:typename:bool
+getSQLQuery	core.cpp	/^inline std::string getSQLQuery($/;"	f	typeref:typename:std::string
+getSQLQuery	core.cpp	/^inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char* querytext){$/;"	f	typeref:typename:std::string
 getSepNumber	models/StoreNames.cpp	/^	void getSepNumber(const char* characterChain){$/;"	f	struct:StoreNames	typeref:typename:void	file:
 getTextWithJSONValues	models/gTXTJValues.cpp	/^inline std::string getTextWithJSONValues($/;"	f	typeref:typename:std::string
-getTextWithJustChars	main.cpp	/^inline std::string getTextWithJustChars(std::string text){$/;"	f	typeref:typename:std::string
-getWithoutSpace	main.cpp	/^inline std::string getWithoutSpace(string text){$/;"	f	typeref:typename:std::string
-getaccesfullschemasfromgroups	thetoughtexperimentwithdata.sql	/^CREATE FUNCTION sysadmin.getaccesfullschemasfromgroups(usertoken bigint, schemacharchain text) R/;"	f
-getuserfromtoken	thetoughtexperimentwithdata.sql	/^CREATE FUNCTION sysadmin.getuserfromtoken(usertoken bigint) RETURNS integer$/;"	f
-getusergroups	thetoughtexperimentwithdata.sql	/^CREATE FUNCTION sysadmin.getusergroups(userid integer) RETURNS integer[]$/;"	f
+getTextWithJustChars	core.cpp	/^inline std::string getTextWithJustChars(std::string text){$/;"	f	typeref:typename:std::string
+getWithoutSpace	core.cpp	/^inline std::string getWithoutSpace(string text){$/;"	f	typeref:typename:std::string
+getaccesfullschemasfromgroups	thente.sql	/^CREATE FUNCTION sysadmin.getaccesfullschemasfromgroups(usertoken bigint, sep character, schemach/;"	f
+getuserfromtoken	thente.sql	/^CREATE FUNCTION sysadmin.getuserfromtoken(usertoken bigint) RETURNS integer$/;"	f
+getusergroups	thente.sql	/^CREATE FUNCTION sysadmin.getusergroups(userid integer) RETURNS integer[]$/;"	f
 giveBackConnect	models/PoolDBConnection.cpp	/^	void giveBackConnect(std::shared_ptr<pqxx::connection> conn){$/;"	f	struct:PoolDBConnection	typeref:typename:void	file:
 glength	models/StoreNames.cpp	/^	int glength;$/;"	m	struct:StoreNames	typeref:typename:int	file:
 groupIndexes	models/StoreNames.cpp	/^	int* groupIndexes;$/;"	m	struct:StoreNames	typeref:typename:int *	file:
 gyorsleiras	TheToughtExperimental.sql	/^  "gyorsleiras" varchar(200),$/;"	E	table:KiserletLepesVegrehajtasEsemeny
-gyorsleiras	thetoughtexperimentwithdata.sql	/^    gyorsleiras character varying(200),$/;"	E	table:kiserletlepesvegrehajtasesemeny
+gyorsleiras	thente.sql	/^    gyorsleiras character varying(200),$/;"	E	table:kiserletlepesvegrehajtasesemeny
 halalIdopontja	TheToughtExperimental.sql	/^  "halalIdopontja" date,$/;"	E	table:HalottAlany
-halalidopontja	thetoughtexperimentwithdata.sql	/^    halalidopontja date,$/;"	E	table:halottalany
-halottalany	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.halottalany ($/;"	t
+halalidopontja	thente.sql	/^    halalidopontja date,$/;"	E	table:halottalany
+halottalany	thente.sql	/^CREATE TABLE admin.halottalany ($/;"	t
 hanyadik	TheToughtExperimental.sql	/^  "hanyadik" INT GENERATED BY DEFAULT AS IDENTITY,$/;"	E	table:KiserletLepesVegrehajtasEsemeny
 hanyadik	TheToughtExperimental.sql	/^  "hanyadik" int,$/;"	E	table:KiserletLepesSorrend
-hanyadik	thetoughtexperimentwithdata.sql	/^    hanyadik integer NOT NULL,$/;"	E	table:kiserletlepesvegrehajtasesemeny
-hanyadik	thetoughtexperimentwithdata.sql	/^    hanyadik integer,$/;"	E	table:kiserletlepessorrend
+hanyadik	thente.sql	/^    hanyadik integer NOT NULL,$/;"	E	table:kiserletlepesvegrehajtasesemeny
+hanyadik	thente.sql	/^    hanyadik integer,$/;"	E	table:kiserletlepessorrend
 help	build/Makefile	/^help:$/;"	t
 hozzaferesKategoriaID	TheToughtExperimental.sql	/^  "hozzaferesKategoriaID" int,$/;"	E	table:EngedelyezettSema
-hozzafereskategoria	thetoughtexperimentwithdata.sql	/^CREATE TABLE sysadmin.hozzafereskategoria ($/;"	t
-hozzafereskategoriaid	thetoughtexperimentwithdata.sql	/^    hozzafereskategoriaid integer$/;"	E	table:engedelyezettsema
+hozzafereskategoria	thente.sql	/^CREATE TABLE sysadmin.hozzafereskategoria ($/;"	t
+hozzafereskategoriaid	thente.sql	/^    hozzafereskategoriaid integer$/;"	E	table:engedelyezettsema
 id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:Alany
 id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:Alkotoresz
 id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY PRIMARY KEY,$/;"	E	table:AlkotoreszTipus
@@ -553,39 +578,39 @@ id	TheToughtExperimental.sql	/^  "id" INT GENERATED BY DEFAULT AS IDENTITY UNIQU
 id	TheToughtExperimental.sql	/^  "id" int PRIMARY KEY,$/;"	E	table:HozzaferesKategoria
 id	TheToughtExperimental.sql	/^  "id" int PRIMARY KEY,$/;"	E	table:ReceptVariacioNev
 id	TheToughtExperimental.sql	/^  "id" int PRIMARY KEY,$/;"	E	table:Sema
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:alany
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:alanyvizsgalat
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:alkotoresz
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:alkotoresztipus
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:anyag
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:ceg
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:epulethelyseg
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:etetes
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:faj
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:felhasznalo
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:hozzafereskategoria
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:jogcsoport
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:kiserlet
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:kiserletlepes
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:kiserletlepescsoport
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:kiserletlepesfeltetelesugras
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:kiserletlepesvegrehajtas
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:kiserletvegrehajtas
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:klcshozzarendeles
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:klcshozzarendelesvegrehajtas
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:mertekegyseg
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:munkatars
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:oktatasiintezmeny
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:receptvariacionev
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:szak
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:szemely
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:szerepkor
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:tulajdonsag
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:tunet
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:valaszthato
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:valaszthatoalanytipus
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:vizsgalatelojegyzes
-id	thetoughtexperimentwithdata.sql	/^    id integer NOT NULL,$/;"	E	table:vizsgalattipus
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:alany
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:alanyvizsgalat
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:alkotoresz
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:alkotoresztipus
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:anyag
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:ceg
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:epulethelyseg
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:etetes
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:faj
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:felhasznalo
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:hozzafereskategoria
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:jogcsoport
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:kiserlet
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:kiserletlepes
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:kiserletlepescsoport
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:kiserletlepesfeltetelesugras
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:kiserletlepesvegrehajtas
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:kiserletvegrehajtas
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:klcshozzarendeles
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:klcshozzarendelesvegrehajtas
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:mertekegyseg
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:munkatars
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:oktatasiintezmeny
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:receptvariacionev
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:szak
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:szemely
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:szerepkor
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:tulajdonsag
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:tunet
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:valaszthato
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:valaszthatoalanytipus
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:vizsgalatelojegyzes
+id	thente.sql	/^    id integer NOT NULL,$/;"	E	table:vizsgalattipus
 info_arch	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v	typeref:typename:char const *
 info_arch	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v	typeref:typename:char const *
 info_compiler	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v	typeref:typename:char const *
@@ -611,15 +636,22 @@ info_version_internal	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^c
 info_version_internal	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version_internal[] = {$/;"	v	typeref:typename:char const[]
 info_version_internal	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_version_internal = "INFO" ":" "compiler_version_internal[" COMPILER_VERSION_INT/;"	v	typeref:typename:char const *
 isSmallCharToo	models/gTXTJValues.cpp	/^inline bool isSmallCharToo(char character){$/;"	f	typeref:typename:bool
+isnotinschemalist	thente.sql	/^CREATE FUNCTION sysadmin.isnotinschemalist(sep character, columncharchain text) RETURNS boolean$/;"	f
 jelszoHASH	TheToughtExperimental.sql	/^  "jelszoHASH" text$/;"	E	table:Felhasznalo
-jelszohash	thetoughtexperimentwithdata.sql	/^    jelszohash text$/;"	E	table:felhasznalo
+jelszohash	thente.sql	/^    jelszohash text$/;"	E	table:felhasznalo
+jgj	build/Makefile	/^jgj: cmake_check_build_system$/;"	t
+jgj/fast	build/Makefile	/^jgj\/fast:$/;"	t
+jgja	build/Makefile	/^jgja: cmake_check_build_system$/;"	t
+jgja/fast	build/Makefile	/^jgja\/fast:$/;"	t
+jgje	build/Makefile	/^jgje: cmake_check_build_system$/;"	t
+jgje/fast	build/Makefile	/^jgje\/fast:$/;"	t
 jogCsoportID	TheToughtExperimental.sql	/^  "jogCsoportID" int,$/;"	E	table:EngedelyezettSema
 jogCsoportID	TheToughtExperimental.sql	/^  "jogCsoportID" int,$/;"	E	table:JogCsoportHozzarendeles
-jogcsoport	thetoughtexperimentwithdata.sql	/^CREATE TABLE sysadmin.jogcsoport ($/;"	t
-jogcsoporthozzarendeles	thetoughtexperimentwithdata.sql	/^CREATE TABLE sysadmin.jogcsoporthozzarendeles ($/;"	t
-jogcsoportid	thetoughtexperimentwithdata.sql	/^    jogcsoportid integer NOT NULL,$/;"	E	table:engedelyezettsema
-jogcsoportid	thetoughtexperimentwithdata.sql	/^    jogcsoportid integer NOT NULL,$/;"	E	table:jogcsoporthozzarendeles
-jogengedelyview	thetoughtexperimentwithdata.sql	/^CREATE VIEW sysadmin.jogengedelyview AS$/;"	V
+jogcsoport	thente.sql	/^CREATE TABLE sysadmin.jogcsoport ($/;"	t
+jogcsoporthozzarendeles	thente.sql	/^CREATE TABLE sysadmin.jogcsoporthozzarendeles ($/;"	t
+jogcsoportid	thente.sql	/^    jogcsoportid integer NOT NULL,$/;"	E	table:engedelyezettsema
+jogcsoportid	thente.sql	/^    jogcsoportid integer NOT NULL,$/;"	E	table:jogcsoporthozzarendeles
+jogengedelyview	thente.sql	/^CREATE VIEW sysadmin.jogengedelyview AS$/;"	V
 kLCsHozzarendelesID	TheToughtExperimental.sql	/^  "kLCsHozzarendelesID" int,$/;"	E	table:KLCsHozzarendelesVegrehajtas
 kLCsHozzarendelesVegrehajtasID	TheToughtExperimental.sql	/^  "kLCsHozzarendelesVegrehajtasID" int,$/;"	E	table:KiserletLepesVegrehajtas
 kLCsHozzarendelesVegrehajtasID	TheToughtExperimental.sql	/^  "kLCsHozzarendelesVegrehajtasID" int,$/;"	E	table:KiserletResztvevo
@@ -628,16 +660,16 @@ kevesebb	TheToughtExperimental.sql	/^  "kevesebb" bit,$/;"	E	table:AlanyTulajdon
 kevesebb	TheToughtExperimental.sql	/^  "kevesebb" bit,$/;"	E	table:AlkotoreszTulajdonsag
 kevesebb	TheToughtExperimental.sql	/^  "kevesebb" bit,$/;"	E	table:Tartalmaz
 kevesebb	TheToughtExperimental.sql	/^  "kevesebb" bit,$/;"	E	table:TunetAllapot
-kevesebb	thetoughtexperimentwithdata.sql	/^    kevesebb bit(1),$/;"	E	table:alanytulajdonsag
-kevesebb	thetoughtexperimentwithdata.sql	/^    kevesebb bit(1),$/;"	E	table:alkotoresztulajdonsag
-kevesebb	thetoughtexperimentwithdata.sql	/^    kevesebb bit(1),$/;"	E	table:tartalmaz
-kevesebb	thetoughtexperimentwithdata.sql	/^    kevesebb bit(1),$/;"	E	table:tunetallapot
+kevesebb	thente.sql	/^    kevesebb bit(1),$/;"	E	table:alanytulajdonsag
+kevesebb	thente.sql	/^    kevesebb bit(1),$/;"	E	table:alkotoresztulajdonsag
+kevesebb	thente.sql	/^    kevesebb bit(1),$/;"	E	table:tartalmaz
+kevesebb	thente.sql	/^    kevesebb bit(1),$/;"	E	table:tunetallapot
 kezd	TheToughtExperimental.sql	/^  "kezd" date,$/;"	E	table:KLCsHozzarendelesVegrehajtas
 kezd	models/WordsCompare.cpp	/^	int* kezd;$/;"	m	struct:WordsCompare	typeref:typename:int *	file:
-kezd	thetoughtexperimentwithdata.sql	/^    kezd date NOT NULL,$/;"	E	table:klcshozzarendelesvegrehajtas
+kezd	thente.sql	/^    kezd date NOT NULL,$/;"	E	table:klcshozzarendelesvegrehajtas
 kezdesEve	TheToughtExperimental.sql	/^  "kezdesEve" int,$/;"	E	table:Oklevel
-kezdeseve	thetoughtexperimentwithdata.sql	/^    kezdeseve integer NOT NULL,$/;"	E	table:oklevel
-kiserlet	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.kiserlet ($/;"	t
+kezdeseve	thente.sql	/^    kezdeseve integer NOT NULL,$/;"	E	table:oklevel
+kiserlet	thente.sql	/^CREATE TABLE admin.kiserlet ($/;"	t
 kiserletCsoportID	TheToughtExperimental.sql	/^  "kiserletCsoportID" int,$/;"	E	table:EpuletHelysegFerohely
 kiserletID	TheToughtExperimental.sql	/^  "kiserletID" int,$/;"	E	table:KLCsHozzarendeles
 kiserletID	TheToughtExperimental.sql	/^  "kiserletID" int,$/;"	E	table:KiserletVegrehajtas
@@ -659,52 +691,52 @@ kiserletLepesVegrehajtasID	TheToughtExperimental.sql	/^  "kiserletLepesVegrehajt
 kiserletLepesVegrehajtasID	TheToughtExperimental.sql	/^  "kiserletLepesVegrehajtasID" int,$/;"	E	table:KiserletLepesVegreHajtasVizsgalat
 kiserletLepesVegrehajtasID	TheToughtExperimental.sql	/^  "kiserletLepesVegrehajtasID" int,$/;"	E	table:KiserletLepesVegrehajtasEsemeny
 kiserletVegrehajtasID	TheToughtExperimental.sql	/^  "kiserletVegrehajtasID" int,$/;"	E	table:KLCsHozzarendelesVegrehajtas
-kiserletcsoportid	thetoughtexperimentwithdata.sql	/^    kiserletcsoportid integer NOT NULL,$/;"	E	table:epulethelysegferohely
-kiserletid	thetoughtexperimentwithdata.sql	/^    kiserletid integer NOT NULL,$/;"	E	table:kiserletvegrehajtas
-kiserletid	thetoughtexperimentwithdata.sql	/^    kiserletid integer NOT NULL,$/;"	E	table:klcshozzarendeles
-kiserletlepes	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.kiserletlepes ($/;"	t
+kiserletcsoportid	thente.sql	/^    kiserletcsoportid integer NOT NULL,$/;"	E	table:epulethelysegferohely
+kiserletid	thente.sql	/^    kiserletid integer NOT NULL,$/;"	E	table:kiserletvegrehajtas
+kiserletid	thente.sql	/^    kiserletid integer NOT NULL,$/;"	E	table:klcshozzarendeles
+kiserletlepes	thente.sql	/^CREATE TABLE admin.kiserletlepes ($/;"	t
 kiserletlepesFeltetelesUgrasID	TheToughtExperimental.sql	/^  "kiserletlepesFeltetelesUgrasID" int,$/;"	E	table:KiserletLepesFeltetelesUgrasFeltetel
-kiserletlepescsoport	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.kiserletlepescsoport ($/;"	t
-kiserletlepescsoportid	thetoughtexperimentwithdata.sql	/^    kiserletlepescsoportid integer NOT NULL,$/;"	E	table:kiserletlepes
-kiserletlepescsoportid	thetoughtexperimentwithdata.sql	/^    kiserletlepescsoportid integer NOT NULL,$/;"	E	table:klcshozzarendeles
-kiserletlepesfeltetelesugras	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.kiserletlepesfeltetelesugras ($/;"	t
-kiserletlepesfeltetelesugrasfeltetel	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.kiserletlepesfeltetelesugrasfeltetel ($/;"	t
-kiserletlepesfeltetelesugrasid	thetoughtexperimentwithdata.sql	/^    kiserletlepesfeltetelesugrasid integer NOT NULL,$/;"	E	table:kiserletlepesfeltetelesugrasfeltetel
-kiserletlepesid	thetoughtexperimentwithdata.sql	/^    kiserletlepesid integer NOT NULL,$/;"	E	table:kiserletlepesfeltetelesugras
-kiserletlepesid	thetoughtexperimentwithdata.sql	/^    kiserletlepesid integer NOT NULL,$/;"	E	table:kiserletlepesvegrehajtas
-kiserletlepesid	thetoughtexperimentwithdata.sql	/^    kiserletlepesid integer NOT NULL,$/;"	E	table:lepesheztartozovizsgalat
-kiserletlepesid	thetoughtexperimentwithdata.sql	/^    kiserletlepesid integer NOT NULL,$/;"	E	table:megetetendoetelek
-kiserletlepesid	thetoughtexperimentwithdata.sql	/^    kiserletlepesid integer NOT NULL,$/;"	E	table:valasztasilehetoseg
-kiserletlepesid	thetoughtexperimentwithdata.sql	/^    kiserletlepesid integer NOT NULL,$/;"	E	table:valaszthatoalanytipus
-kiserletlepesid	thetoughtexperimentwithdata.sql	/^    kiserletlepesid integer NOT NULL,$/;"	E	table:valaszthatoanyag
-kiserletlepesid	thetoughtexperimentwithdata.sql	/^    kiserletlepesid integer,$/;"	E	table:kiserletlepessorrend
-kiserletlepesidcel	thetoughtexperimentwithdata.sql	/^    kiserletlepesidcel integer NOT NULL,$/;"	E	table:kiserletlepesfeltetelesugras
-kiserletlepesidszuloelem	thetoughtexperimentwithdata.sql	/^    kiserletlepesidszuloelem integer,$/;"	E	table:kiserletlepessorrend
-kiserletlepessorrend	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.kiserletlepessorrend ($/;"	t
-kiserletlepesvegrehajtas	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.kiserletlepesvegrehajtas ($/;"	t
-kiserletlepesvegrehajtasesemeny	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.kiserletlepesvegrehajtasesemeny ($/;"	t
-kiserletlepesvegrehajtasetetes	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.kiserletlepesvegrehajtasetetes ($/;"	t
-kiserletlepesvegrehajtasid	thetoughtexperimentwithdata.sql	/^    kiserletlepesvegrehajtasid integer NOT NULL,$/;"	E	table:kiserletlepesvegrehajtasesemeny
-kiserletlepesvegrehajtasid	thetoughtexperimentwithdata.sql	/^    kiserletlepesvegrehajtasid integer NOT NULL,$/;"	E	table:kiserletlepesvegrehajtasetetes
-kiserletlepesvegrehajtasid	thetoughtexperimentwithdata.sql	/^    kiserletlepesvegrehajtasid integer NOT NULL,$/;"	E	table:kiserletlepesvegrehajtasvalasztottalany
-kiserletlepesvegrehajtasid	thetoughtexperimentwithdata.sql	/^    kiserletlepesvegrehajtasid integer NOT NULL,$/;"	E	table:kiserletlepesvegrehajtasvalasztottlehetoseg
-kiserletlepesvegrehajtasid	thetoughtexperimentwithdata.sql	/^    kiserletlepesvegrehajtasid integer NOT NULL,$/;"	E	table:kiserletlepesvegrehajtasvizsgalat
-kiserletlepesvegrehajtasvalasztottalany	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.kiserletlepesvegrehajtasvalasztottalany ($/;"	t
-kiserletlepesvegrehajtasvalasztottlehetoseg	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.kiserletlepesvegrehajtasvalasztottlehetoseg ($/;"	t
-kiserletlepesvegrehajtasvizsgalat	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.kiserletlepesvegrehajtasvizsgalat ($/;"	t
-kiserletresztvevo	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.kiserletresztvevo ($/;"	t
-kiserletvegrehajtas	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.kiserletvegrehajtas ($/;"	t
-kiserletvegrehajtasid	thetoughtexperimentwithdata.sql	/^    kiserletvegrehajtasid integer NOT NULL,$/;"	E	table:klcshozzarendelesvegrehajtas
+kiserletlepescsoport	thente.sql	/^CREATE TABLE admin.kiserletlepescsoport ($/;"	t
+kiserletlepescsoportid	thente.sql	/^    kiserletlepescsoportid integer NOT NULL,$/;"	E	table:kiserletlepes
+kiserletlepescsoportid	thente.sql	/^    kiserletlepescsoportid integer NOT NULL,$/;"	E	table:klcshozzarendeles
+kiserletlepesfeltetelesugras	thente.sql	/^CREATE TABLE admin.kiserletlepesfeltetelesugras ($/;"	t
+kiserletlepesfeltetelesugrasfeltetel	thente.sql	/^CREATE TABLE admin.kiserletlepesfeltetelesugrasfeltetel ($/;"	t
+kiserletlepesfeltetelesugrasid	thente.sql	/^    kiserletlepesfeltetelesugrasid integer NOT NULL,$/;"	E	table:kiserletlepesfeltetelesugrasfeltetel
+kiserletlepesid	thente.sql	/^    kiserletlepesid integer NOT NULL,$/;"	E	table:kiserletlepesfeltetelesugras
+kiserletlepesid	thente.sql	/^    kiserletlepesid integer NOT NULL,$/;"	E	table:kiserletlepesvegrehajtas
+kiserletlepesid	thente.sql	/^    kiserletlepesid integer NOT NULL,$/;"	E	table:lepesheztartozovizsgalat
+kiserletlepesid	thente.sql	/^    kiserletlepesid integer NOT NULL,$/;"	E	table:megetetendoetelek
+kiserletlepesid	thente.sql	/^    kiserletlepesid integer NOT NULL,$/;"	E	table:valasztasilehetoseg
+kiserletlepesid	thente.sql	/^    kiserletlepesid integer NOT NULL,$/;"	E	table:valaszthatoalanytipus
+kiserletlepesid	thente.sql	/^    kiserletlepesid integer NOT NULL,$/;"	E	table:valaszthatoanyag
+kiserletlepesid	thente.sql	/^    kiserletlepesid integer,$/;"	E	table:kiserletlepessorrend
+kiserletlepesidcel	thente.sql	/^    kiserletlepesidcel integer NOT NULL,$/;"	E	table:kiserletlepesfeltetelesugras
+kiserletlepesidszuloelem	thente.sql	/^    kiserletlepesidszuloelem integer,$/;"	E	table:kiserletlepessorrend
+kiserletlepessorrend	thente.sql	/^CREATE TABLE admin.kiserletlepessorrend ($/;"	t
+kiserletlepesvegrehajtas	thente.sql	/^CREATE TABLE admin.kiserletlepesvegrehajtas ($/;"	t
+kiserletlepesvegrehajtasesemeny	thente.sql	/^CREATE TABLE admin.kiserletlepesvegrehajtasesemeny ($/;"	t
+kiserletlepesvegrehajtasetetes	thente.sql	/^CREATE TABLE admin.kiserletlepesvegrehajtasetetes ($/;"	t
+kiserletlepesvegrehajtasid	thente.sql	/^    kiserletlepesvegrehajtasid integer NOT NULL,$/;"	E	table:kiserletlepesvegrehajtasesemeny
+kiserletlepesvegrehajtasid	thente.sql	/^    kiserletlepesvegrehajtasid integer NOT NULL,$/;"	E	table:kiserletlepesvegrehajtasetetes
+kiserletlepesvegrehajtasid	thente.sql	/^    kiserletlepesvegrehajtasid integer NOT NULL,$/;"	E	table:kiserletlepesvegrehajtasvalasztottalany
+kiserletlepesvegrehajtasid	thente.sql	/^    kiserletlepesvegrehajtasid integer NOT NULL,$/;"	E	table:kiserletlepesvegrehajtasvalasztottlehetoseg
+kiserletlepesvegrehajtasid	thente.sql	/^    kiserletlepesvegrehajtasid integer NOT NULL,$/;"	E	table:kiserletlepesvegrehajtasvizsgalat
+kiserletlepesvegrehajtasvalasztottalany	thente.sql	/^CREATE TABLE admin.kiserletlepesvegrehajtasvalasztottalany ($/;"	t
+kiserletlepesvegrehajtasvalasztottlehetoseg	thente.sql	/^CREATE TABLE admin.kiserletlepesvegrehajtasvalasztottlehetoseg ($/;"	t
+kiserletlepesvegrehajtasvizsgalat	thente.sql	/^CREATE TABLE admin.kiserletlepesvegrehajtasvizsgalat ($/;"	t
+kiserletresztvevo	thente.sql	/^CREATE TABLE admin.kiserletresztvevo ($/;"	t
+kiserletvegrehajtas	thente.sql	/^CREATE TABLE admin.kiserletvegrehajtas ($/;"	t
+kiserletvegrehajtasid	thente.sql	/^    kiserletvegrehajtasid integer NOT NULL,$/;"	E	table:klcshozzarendelesvegrehajtas
 kivonasDatuma	TheToughtExperimental.sql	/^  "kivonasDatuma" date,$/;"	E	table:KiserletResztvevo
-kivonasdatuma	thetoughtexperimentwithdata.sql	/^    kivonasdatuma date,$/;"	E	table:kiserletresztvevo
-klcshozzarendeles	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.klcshozzarendeles ($/;"	t
-klcshozzarendelesid	thetoughtexperimentwithdata.sql	/^    klcshozzarendelesid integer NOT NULL,$/;"	E	table:klcshozzarendelesvegrehajtas
-klcshozzarendelesvegrehajtas	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.klcshozzarendelesvegrehajtas ($/;"	t
-klcshozzarendelesvegrehajtasid	thetoughtexperimentwithdata.sql	/^    klcshozzarendelesvegrehajtasid integer NOT NULL,$/;"	E	table:kiserletlepesvegrehajtas
-klcshozzarendelesvegrehajtasid	thetoughtexperimentwithdata.sql	/^    klcshozzarendelesvegrehajtasid integer NOT NULL,$/;"	E	table:kiserletresztvevo
-klcshozzarendelesvegrehajtasid	thetoughtexperimentwithdata.sql	/^    klcshozzarendelesvegrehajtasid integer NOT NULL,$/;"	E	table:valaszthatoalany
+kivonasdatuma	thente.sql	/^    kivonasdatuma date,$/;"	E	table:kiserletresztvevo
+klcshozzarendeles	thente.sql	/^CREATE TABLE admin.klcshozzarendeles ($/;"	t
+klcshozzarendelesid	thente.sql	/^    klcshozzarendelesid integer NOT NULL,$/;"	E	table:klcshozzarendelesvegrehajtas
+klcshozzarendelesvegrehajtas	thente.sql	/^CREATE TABLE admin.klcshozzarendelesvegrehajtas ($/;"	t
+klcshozzarendelesvegrehajtasid	thente.sql	/^    klcshozzarendelesvegrehajtasid integer NOT NULL,$/;"	E	table:kiserletlepesvegrehajtas
+klcshozzarendelesvegrehajtasid	thente.sql	/^    klcshozzarendelesvegrehajtasid integer NOT NULL,$/;"	E	table:kiserletresztvevo
+klcshozzarendelesvegrehajtasid	thente.sql	/^    klcshozzarendelesvegrehajtasid integer NOT NULL,$/;"	E	table:valaszthatoalany
 kodnev	TheToughtExperimental.sql	/^  "kodnev" char(30) UNIQUE NOT NULL,$/;"	E	table:Alany
-kodnev	thetoughtexperimentwithdata.sql	/^    kodnev character(30) NOT NULL,$/;"	E	table:alany
+kodnev	thente.sql	/^    kodnev character(30) NOT NULL,$/;"	E	table:alany
 leghosszabbSzo	models/WordsCompare.cpp	/^	char leghosszabbSzo;$/;"	m	struct:WordsCompare	typeref:typename:char	file:
 leiras	TheToughtExperimental.sql	/^  "leiras" text$/;"	E	table:HalottAlany
 leiras	TheToughtExperimental.sql	/^  "leiras" text$/;"	E	table:Kiserlet
@@ -716,18 +748,20 @@ leiras	TheToughtExperimental.sql	/^  "leiras" text,$/;"	E	table:KiserletLepes
 leiras	TheToughtExperimental.sql	/^  "leiras" text,$/;"	E	table:KiserletLepesVegrehajtas
 leiras	TheToughtExperimental.sql	/^  "leiras" text,$/;"	E	table:Tapasztalat
 leiras	TheToughtExperimental.sql	/^  "leiras" text,$/;"	E	table:TunetAllapot
-leiras	thetoughtexperimentwithdata.sql	/^    leiras text$/;"	E	table:alkotoresztulajdonsag
-leiras	thetoughtexperimentwithdata.sql	/^    leiras text$/;"	E	table:halottalany
-leiras	thetoughtexperimentwithdata.sql	/^    leiras text$/;"	E	table:kiserlet
-leiras	thetoughtexperimentwithdata.sql	/^    leiras text$/;"	E	table:kiserletlepes
-leiras	thetoughtexperimentwithdata.sql	/^    leiras text$/;"	E	table:kiserletlepescsoport
-leiras	thetoughtexperimentwithdata.sql	/^    leiras text$/;"	E	table:kiserletlepesvegrehajtas
-leiras	thetoughtexperimentwithdata.sql	/^    leiras text$/;"	E	table:klcshozzarendeles
-leiras	thetoughtexperimentwithdata.sql	/^    leiras text$/;"	E	table:tunet
-leiras	thetoughtexperimentwithdata.sql	/^    leiras text$/;"	E	table:tunetallapot
-leiras	thetoughtexperimentwithdata.sql	/^    leiras text,$/;"	E	table:tapasztalat
+leiras	thente.sql	/^    leiras text$/;"	E	table:alkotoresztulajdonsag
+leiras	thente.sql	/^    leiras text$/;"	E	table:halottalany
+leiras	thente.sql	/^    leiras text$/;"	E	table:kiserlet
+leiras	thente.sql	/^    leiras text$/;"	E	table:kiserletlepes
+leiras	thente.sql	/^    leiras text$/;"	E	table:kiserletlepescsoport
+leiras	thente.sql	/^    leiras text$/;"	E	table:kiserletlepesvegrehajtas
+leiras	thente.sql	/^    leiras text$/;"	E	table:klcshozzarendeles
+leiras	thente.sql	/^    leiras text$/;"	E	table:tunet
+leiras	thente.sql	/^    leiras text$/;"	E	table:tunetallapot
+leiras	thente.sql	/^    leiras text,$/;"	E	table:tapasztalat
 length	models/StoreNames.cpp	/^	int length;$/;"	m	struct:StoreNames	typeref:typename:int	file:
-lepesheztartozovizsgalat	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.lepesheztartozovizsgalat ($/;"	t
+lepesheztartozovizsgalat	thente.sql	/^CREATE TABLE admin.lepesheztartozovizsgalat ($/;"	t
+login	thente.sql	/^CREATE FUNCTION lobby.login(infelhasznalonev character varying, injelszohash text) RETURNS integ/;"	f
+login	thente.sql	/^CREATE FUNCTION lobby.login(infelhasznalonev text, injelszohash text) RETURNS integer$/;"	f
 main	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^int main(argc, argv) int argc; char *argv[];$/;"	f
 main	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f	typeref:typename:void
 main	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f	typeref:typename:int
@@ -739,64 +773,64 @@ main.i	build/Makefile	/^main.i: main.cpp.i$/;"	t
 main.o	build/Makefile	/^main.o: main.cpp.o$/;"	t
 main.s	build/Makefile	/^main.s: main.cpp.s$/;"	t
 max_size	models/PoolDBConnection.cpp	/^	int max_size;$/;"	m	struct:PoolDBConnection	typeref:typename:int	file:
-megetetendoetelek	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.megetetendoetelek ($/;"	t
-megetetettetelek	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.megetetettetelek ($/;"	t
+megetetendoetelek	thente.sql	/^CREATE TABLE admin.megetetendoetelek ($/;"	t
+megetetettetelek	thente.sql	/^CREATE TABLE admin.megetetettetelek ($/;"	t
 megjegyzes	TheToughtExperimental.sql	/^  "megjegyzes" text$/;"	E	table:AlanyVizsgalat
-megjegyzes	thetoughtexperimentwithdata.sql	/^    megjegyzes text$/;"	E	table:alanyvizsgalat
+megjegyzes	thente.sql	/^    megjegyzes text$/;"	E	table:alanyvizsgalat
 mennyi	TheToughtExperimental.sql	/^  "mennyi" float,$/;"	E	table:AlanyTulajdonsag
 mennyi	TheToughtExperimental.sql	/^  "mennyi" float,$/;"	E	table:AlkotoreszTulajdonsag
 mennyi	TheToughtExperimental.sql	/^  "mennyi" int,$/;"	E	table:ValaszthatoAlanyTipus
-mennyi	thetoughtexperimentwithdata.sql	/^    mennyi double precision,$/;"	E	table:alanytulajdonsag
-mennyi	thetoughtexperimentwithdata.sql	/^    mennyi double precision,$/;"	E	table:alkotoresztulajdonsag
-mennyi	thetoughtexperimentwithdata.sql	/^    mennyi integer,$/;"	E	table:valaszthatoalanytipus
+mennyi	thente.sql	/^    mennyi double precision,$/;"	E	table:alanytulajdonsag
+mennyi	thente.sql	/^    mennyi double precision,$/;"	E	table:alkotoresztulajdonsag
+mennyi	thente.sql	/^    mennyi integer,$/;"	E	table:valaszthatoalanytipus
 mennyien	TheToughtExperimental.sql	/^  "mennyien" int,$/;"	E	table:EpuletHelysegFerohely
-mennyien	thetoughtexperimentwithdata.sql	/^    mennyien integer$/;"	E	table:epulethelysegferohely
+mennyien	thente.sql	/^    mennyien integer$/;"	E	table:epulethelysegferohely
 mennyiseg	TheToughtExperimental.sql	/^  "mennyiseg" float,$/;"	E	table:Anyag
 mennyiseg	TheToughtExperimental.sql	/^  "mennyiseg" float,$/;"	E	table:MegetetendoEtelek
 mennyiseg	TheToughtExperimental.sql	/^  "mennyiseg" float,$/;"	E	table:MegetetettEtelek
 mennyiseg	TheToughtExperimental.sql	/^  "mennyiseg" float,$/;"	E	table:Recept
 mennyiseg	TheToughtExperimental.sql	/^  "mennyiseg" float,$/;"	E	table:Tartalmaz
-mennyiseg	thetoughtexperimentwithdata.sql	/^    mennyiseg double precision$/;"	E	table:megetetendoetelek
-mennyiseg	thetoughtexperimentwithdata.sql	/^    mennyiseg double precision$/;"	E	table:recept
-mennyiseg	thetoughtexperimentwithdata.sql	/^    mennyiseg double precision,$/;"	E	table:anyag
-mennyiseg	thetoughtexperimentwithdata.sql	/^    mennyiseg double precision,$/;"	E	table:megetetettetelek
-mennyiseg	thetoughtexperimentwithdata.sql	/^    mennyiseg double precision,$/;"	E	table:tartalmaz
-mertekegyseg	thetoughtexperimentwithdata.sql	/^CREATE TABLE szotar.mertekegyseg ($/;"	t
+mennyiseg	thente.sql	/^    mennyiseg double precision$/;"	E	table:megetetendoetelek
+mennyiseg	thente.sql	/^    mennyiseg double precision$/;"	E	table:recept
+mennyiseg	thente.sql	/^    mennyiseg double precision,$/;"	E	table:anyag
+mennyiseg	thente.sql	/^    mennyiseg double precision,$/;"	E	table:megetetettetelek
+mennyiseg	thente.sql	/^    mennyiseg double precision,$/;"	E	table:tartalmaz
+mertekegyseg	thente.sql	/^CREATE TABLE szotar.mertekegyseg ($/;"	t
 mertekegysegID	TheToughtExperimental.sql	/^  "mertekegysegID" int$/;"	E	table:Anyag
 mertekegysegID	TheToughtExperimental.sql	/^  "mertekegysegID" int$/;"	E	table:Tualjdonsag
-mertekegysegid	thetoughtexperimentwithdata.sql	/^    mertekegysegid integer$/;"	E	table:anyag
-mertekegysegid	thetoughtexperimentwithdata.sql	/^    mertekegysegid integer$/;"	E	table:tulajdonsag
+mertekegysegid	thente.sql	/^    mertekegysegid integer$/;"	E	table:anyag
+mertekegysegid	thente.sql	/^    mertekegysegid integer$/;"	E	table:tulajdonsag
 mikor	TheToughtExperimental.sql	/^  "mikor" date,$/;"	E	table:KiserletLepesVegrehajtas
 mikor	TheToughtExperimental.sql	/^  "mikor" date,$/;"	E	table:KiserletLepesVegrehajtasEsemeny
 mikor	TheToughtExperimental.sql	/^  "mikor" date,$/;"	E	table:KiserletVegrehajtas
-mikor	thetoughtexperimentwithdata.sql	/^    mikor date NOT NULL,$/;"	E	table:kiserletvegrehajtas
-mikor	thetoughtexperimentwithdata.sql	/^    mikor date,$/;"	E	table:kiserletlepesvegrehajtas
-mikor	thetoughtexperimentwithdata.sql	/^    mikor date,$/;"	E	table:kiserletlepesvegrehajtasesemeny
+mikor	thente.sql	/^    mikor date NOT NULL,$/;"	E	table:kiserletvegrehajtas
+mikor	thente.sql	/^    mikor date,$/;"	E	table:kiserletlepesvegrehajtas
+mikor	thente.sql	/^    mikor date,$/;"	E	table:kiserletlepesvegrehajtasesemeny
 min_size	models/PoolDBConnection.cpp	/^	int min_size;$/;"	m	struct:PoolDBConnection	typeref:typename:int	file:
 mintfeltetelletezik	TheToughtExperimental.sql	/^  "mintfeltetelletezik" bit$/;"	E	table:VizsgalatElojegyzes
-mintfeltetelletezik	thetoughtexperimentwithdata.sql	/^    mintfeltetelletezik bit(1)$/;"	E	table:vizsgalatelojegyzes
+mintfeltetelletezik	thente.sql	/^    mintfeltetelletezik bit(1)$/;"	E	table:vizsgalatelojegyzes
 mtx	models/PoolDBConnection.cpp	/^	std::mutex mtx;$/;"	m	struct:PoolDBConnection	typeref:typename:std::mutex	file:
 munkakor	TheToughtExperimental.sql	/^  "munkakor" varchar(200),$/;"	E	table:Tapasztalat
-munkakor	thetoughtexperimentwithdata.sql	/^    munkakor character varying(200),$/;"	E	table:tapasztalat
-munkatars	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.munkatars ($/;"	t
+munkakor	thente.sql	/^    munkakor character varying(200),$/;"	E	table:tapasztalat
+munkatars	thente.sql	/^CREATE TABLE admin.munkatars ($/;"	t
 munkatarsID	TheToughtExperimental.sql	/^  "munkatarsID" int,$/;"	E	table:KiserletLepesVegrehajtas
 munkatarsID	TheToughtExperimental.sql	/^  "munkatarsID" int,$/;"	E	table:KiserletVegrehajtas
 munkatarsID	TheToughtExperimental.sql	/^  "munkatarsID" int,$/;"	E	table:Oklevel
 munkatarsID	TheToughtExperimental.sql	/^  "munkatarsID" int,$/;"	E	table:Tapasztalat
 munkatarsIDseged	TheToughtExperimental.sql	/^  "munkatarsIDseged" int,$/;"	E	table:Etetes
 munkatarsIDvezeto	TheToughtExperimental.sql	/^  "munkatarsIDvezeto" int,$/;"	E	table:KLCsHozzarendelesVegrehajtas
-munkatarsid	thetoughtexperimentwithdata.sql	/^    munkatarsid integer NOT NULL,$/;"	E	table:oklevel
-munkatarsid	thetoughtexperimentwithdata.sql	/^    munkatarsid integer NOT NULL,$/;"	E	table:tapasztalat
-munkatarsid	thetoughtexperimentwithdata.sql	/^    munkatarsid integer$/;"	E	table:kiserletvegrehajtas
-munkatarsid	thetoughtexperimentwithdata.sql	/^    munkatarsid integer,$/;"	E	table:kiserletlepesvegrehajtas
-munkatarsidseged	thetoughtexperimentwithdata.sql	/^    munkatarsidseged integer$/;"	E	table:etetes
-munkatarsidvezeto	thetoughtexperimentwithdata.sql	/^    munkatarsidvezeto integer$/;"	E	table:klcshozzarendelesvegrehajtas
+munkatarsid	thente.sql	/^    munkatarsid integer NOT NULL,$/;"	E	table:oklevel
+munkatarsid	thente.sql	/^    munkatarsid integer NOT NULL,$/;"	E	table:tapasztalat
+munkatarsid	thente.sql	/^    munkatarsid integer$/;"	E	table:kiserletvegrehajtas
+munkatarsid	thente.sql	/^    munkatarsid integer,$/;"	E	table:kiserletlepesvegrehajtas
+munkatarsidseged	thente.sql	/^    munkatarsidseged integer$/;"	E	table:etetes
+munkatarsidvezeto	thente.sql	/^    munkatarsidvezeto integer$/;"	E	table:klcshozzarendelesvegrehajtas
 munkaviszonyKezdete	TheToughtExperimental.sql	/^  "munkaviszonyKezdete" date,$/;"	E	table:Tapasztalat
 munkaviszonyVege	TheToughtExperimental.sql	/^  "munkaviszonyVege" date,$/;"	E	table:Tapasztalat
-munkaviszonykezdete	thetoughtexperimentwithdata.sql	/^    munkaviszonykezdete date NOT NULL,$/;"	E	table:tapasztalat
-munkaviszonyvege	thetoughtexperimentwithdata.sql	/^    munkaviszonyvege date$/;"	E	table:tapasztalat
+munkaviszonykezdete	thente.sql	/^    munkaviszonykezdete date NOT NULL,$/;"	E	table:tapasztalat
+munkaviszonyvege	thente.sql	/^    munkaviszonyvege date$/;"	E	table:tapasztalat
 nem	TheToughtExperimental.sql	/^  "nem" bit,$/;"	E	table:Alany
-nem	thetoughtexperimentwithdata.sql	/^    nem bit(1),$/;"	E	table:alany
+nem	thente.sql	/^    nem bit(1),$/;"	E	table:alany
 nev	TheToughtExperimental.sql	/^  "nev" int UNIQUE$/;"	E	table:HozzaferesKategoria
 nev	TheToughtExperimental.sql	/^  "nev" varchar(100) NOT NULL,$/;"	E	table:Alany
 nev	TheToughtExperimental.sql	/^  "nev" varchar(100) NOT NULL,$/;"	E	table:Személy
@@ -806,105 +840,99 @@ nev	TheToughtExperimental.sql	/^  "nev" varchar(200) UNIQUE NOT NULL$/;"	E	table
 nev	TheToughtExperimental.sql	/^  "nev" varchar(30)$/;"	E	table:JogCsoport
 nev	TheToughtExperimental.sql	/^  "nev" varchar(30)$/;"	E	table:ReceptVariacioNev
 nev	TheToughtExperimental.sql	/^  "nev" varchar(30)$/;"	E	table:Sema
-nev	thetoughtexperimentwithdata.sql	/^    nev character varying(100) NOT NULL,$/;"	E	table:alany
-nev	thetoughtexperimentwithdata.sql	/^    nev character varying(100) NOT NULL,$/;"	E	table:anyag
-nev	thetoughtexperimentwithdata.sql	/^    nev character varying(100) NOT NULL,$/;"	E	table:szemely
-nev	thetoughtexperimentwithdata.sql	/^    nev character varying(200) NOT NULL$/;"	E	table:ceg
-nev	thetoughtexperimentwithdata.sql	/^    nev character varying(200) NOT NULL$/;"	E	table:oktatasiintezmeny
-nev	thetoughtexperimentwithdata.sql	/^    nev character varying(30)$/;"	E	table:jogcsoport
-nev	thetoughtexperimentwithdata.sql	/^    nev character varying(30)$/;"	E	table:receptvariacionev
-nev	thetoughtexperimentwithdata.sql	/^    nev integer$/;"	E	table:hozzafereskategoria
-oklevel	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.oklevel ($/;"	t
+nev	thente.sql	/^    nev character varying(100) NOT NULL,$/;"	E	table:alany
+nev	thente.sql	/^    nev character varying(100) NOT NULL,$/;"	E	table:anyag
+nev	thente.sql	/^    nev character varying(100) NOT NULL,$/;"	E	table:szemely
+nev	thente.sql	/^    nev character varying(200) NOT NULL$/;"	E	table:ceg
+nev	thente.sql	/^    nev character varying(200) NOT NULL$/;"	E	table:oktatasiintezmeny
+nev	thente.sql	/^    nev character varying(30)$/;"	E	table:jogcsoport
+nev	thente.sql	/^    nev character varying(30)$/;"	E	table:receptvariacionev
+nev	thente.sql	/^    nev integer$/;"	E	table:hozzafereskategoria
+oklevel	thente.sql	/^CREATE TABLE admin.oklevel ($/;"	t
 oktatasiIntezmenyID	TheToughtExperimental.sql	/^  "oktatasiIntezmenyID" int,$/;"	E	table:Oklevel
 oktatasiIntezmenyID	TheToughtExperimental.sql	/^  "oktatasiIntezmenyID" int,$/;"	E	table:Szak
-oktatasiintezmeny	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.oktatasiintezmeny ($/;"	t
-oktatasiintezmenyid	thetoughtexperimentwithdata.sql	/^    oktatasiintezmenyid integer NOT NULL,$/;"	E	table:oklevel
-oktatasiintezmenyid	thetoughtexperimentwithdata.sql	/^    oktatasiintezmenyid integer,$/;"	E	table:szak
+oktatasiintezmeny	thente.sql	/^CREATE TABLE admin.oktatasiintezmeny ($/;"	t
+oktatasiintezmenyid	thente.sql	/^    oktatasiintezmenyid integer NOT NULL,$/;"	E	table:oklevel
+oktatasiintezmenyid	thente.sql	/^    oktatasiintezmenyid integer,$/;"	E	table:szak
+personview	thente.sql	/^CREATE VIEW users.personview AS$/;"	V
 pool	models/PoolDBConnection.cpp	/^	std::queue<std::shared_ptr<pqxx::connection>> pool;$/;"	m	struct:PoolDBConnection	typeref:typename:std::queue<std::shared_ptr<pqxx::connection>>	file:
-poolDB	main.cpp	/^PoolDBConnection poolDB("dbname=testdb3 user=postgres password=test123 hostaddr=127.0.0.1 port=5/;"	v	typeref:typename:PoolDBConnection
 preinstall	build/Makefile	/^preinstall: all$/;"	t
 preinstall/fast	build/Makefile	/^preinstall\/fast:$/;"	t
 probalkozas	TheToughtExperimental.sql	/^  "probalkozas" INT GENERATED BY DEFAULT AS IDENTITY,$/;"	E	table:KiserletLepesVegrehajtas
-probalkozas	thetoughtexperimentwithdata.sql	/^    probalkozas integer NOT NULL,$/;"	E	table:kiserletlepesvegrehajtas
+probalkozas	thente.sql	/^    probalkozas integer NOT NULL,$/;"	E	table:kiserletlepesvegrehajtas
+profileview	thente.sql	/^CREATE VIEW users.profileview AS$/;"	V
 qnxnto	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v	typeref:typename:char const *
 qnxnto	build/CMakeFiles/3.22.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* qnxnto = "INFO" ":" "qnxnto[]";$/;"	v	typeref:typename:char const *
 rebuild_cache	build/Makefile	/^rebuild_cache:$/;"	t
 rebuild_cache/fast	build/Makefile	/^rebuild_cache\/fast: rebuild_cache$/;"	t
-recept	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.recept ($/;"	t
-receptvariacionev	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.receptvariacionev ($/;"	t
+recept	thente.sql	/^CREATE TABLE admin.recept ($/;"	t
+receptvariacionev	thente.sql	/^CREATE TABLE admin.receptvariacionev ($/;"	t
 rekurzivnakszant	TheToughtExperimental.sql	/^  "rekurzivnakszant" bit,$/;"	E	table:KiserletlepesFeltetelesUgras
-rekurzivnakszant	thetoughtexperimentwithdata.sql	/^    rekurzivnakszant bit(1)$/;"	E	table:kiserletlepesfeltetelesugras
+rekurzivnakszant	thente.sql	/^    rekurzivnakszant bit(1)$/;"	E	table:kiserletlepesfeltetelesugras
 rovidites	TheToughtExperimental.sql	/^  "rovidites" varchar(6) UNIQUE NOT NULL$/;"	E	table:Mertekegyseg
-rovidites	thetoughtexperimentwithdata.sql	/^    rovidites character varying(6) NOT NULL$/;"	E	table:mertekegyseg
+rovidites	thente.sql	/^    rovidites character varying(6) NOT NULL$/;"	E	table:mertekegyseg
 scale_threshold	models/PoolDBConnection.cpp	/^	const std::chrono::milliseconds scale_threshold{2000};$/;"	m	struct:PoolDBConnection	typeref:typename:const std::chrono::milliseconds	file:
 semaID	TheToughtExperimental.sql	/^  "semaID" int,$/;"	E	table:EngedelyezettSema
-semaid	thetoughtexperimentwithdata.sql	/^    semaid integer NOT NULL,$/;"	E	table:engedelyezettsema
+semaid	thente.sql	/^    semaid integer NOT NULL,$/;"	E	table:engedelyezettsema
 sepIndexes	models/StoreNames.cpp	/^	int* sepIndexes;$/;"	m	struct:StoreNames	typeref:typename:int *	file:
-signal_handler	main.cpp	/^void signal_handler(int signal) {$/;"	f	typeref:typename:void
+signal_handler	core.cpp	/^void signal_handler(int signal) {$/;"	f	typeref:typename:void
 sikeres	TheToughtExperimental.sql	/^  "sikeres" bit,$/;"	E	table:KiserletLepesVegrehajtas
-sikeres	thetoughtexperimentwithdata.sql	/^    sikeres bit(1),$/;"	E	table:kiserletlepesvegrehajtas
+sikeres	thente.sql	/^    sikeres bit(1),$/;"	E	table:kiserletlepesvegrehajtas
 spellNumber	models/StoreNames.cpp	/^	int spellNumber;$/;"	m	struct:StoreNames	typeref:typename:int	file:
 sulyossagMerteke	TheToughtExperimental.sql	/^  "sulyossagMerteke" int,$/;"	E	table:TunetAllapot
-sulyossagmerteke	thetoughtexperimentwithdata.sql	/^    sulyossagmerteke integer,$/;"	E	table:tunetallapot
-szak	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.szak ($/;"	t
+sulyossagmerteke	thente.sql	/^    sulyossagmerteke integer,$/;"	E	table:tunetallapot
+szak	thente.sql	/^CREATE TABLE admin.szak ($/;"	t
 szakID	TheToughtExperimental.sql	/^  "szakID" int,$/;"	E	table:Oklevel
 szakaszOszlopSzam	models/WordsCompare.cpp	/^	char* szakaszOszlopSzam;$/;"	m	struct:WordsCompare	typeref:typename:char *	file:
 szakaszSzam	models/WordsCompare.cpp	/^	int szakaszSzam;$/;"	m	struct:WordsCompare	typeref:typename:int	file:
-szakid	thetoughtexperimentwithdata.sql	/^    szakid integer NOT NULL,$/;"	E	table:oklevel
+szakid	thente.sql	/^    szakid integer NOT NULL,$/;"	E	table:oklevel
 szakmegnevezes	TheToughtExperimental.sql	/^  "szakmegnevezes" varchar(200) UNIQUE NOT NULL$/;"	E	table:Szak
-szakmegnevezes	thetoughtexperimentwithdata.sql	/^    szakmegnevezes character varying(200) NOT NULL$/;"	E	table:szak
+szakmegnevezes	thente.sql	/^    szakmegnevezes character varying(200) NOT NULL$/;"	E	table:szak
 szavakSzama	models/WordsCompare.cpp	/^	int szavakSzama;$/;"	m	struct:WordsCompare	typeref:typename:int	file:
-szemely	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.szemely ($/;"	t
+szemely	thente.sql	/^CREATE TABLE admin.szemely ($/;"	t
 szemelyiSzam	TheToughtExperimental.sql	/^  "szemelyiSzam" char(6) UNIQUE,$/;"	E	table:Személy
-szemelyiszam	thetoughtexperimentwithdata.sql	/^    szemelyiszam character(6),$/;"	E	table:szemely
-szerepkor	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.szerepkor ($/;"	t
+szemelyiszam	thente.sql	/^    szemelyiszam character(6),$/;"	E	table:szemely
+szerepkor	thente.sql	/^CREATE TABLE admin.szerepkor ($/;"	t
 szerepkorID	TheToughtExperimental.sql	/^  "szerepkorID" int NOT NULL$/;"	E	table:Munkatars
-szerepkorid	thetoughtexperimentwithdata.sql	/^    szerepkorid integer NOT NULL$/;"	E	table:munkatars
-szoRaktarSQLSyntaxt	main.cpp	/^char szoRaktarSQLSyntaxt[] =$/;"	v	typeref:typename:char[]
+szerepkorid	thente.sql	/^    szerepkorid integer NOT NULL$/;"	E	table:munkatars
 szuletes	TheToughtExperimental.sql	/^  "szuletes" date,$/;"	E	table:Alany
-szuletes	thetoughtexperimentwithdata.sql	/^    szuletes date,$/;"	E	table:alany
+szuletes	thente.sql	/^    szuletes date,$/;"	E	table:alany
 szuletesiIdo	TheToughtExperimental.sql	/^  "szuletesiIdo" date NOT NULL$/;"	E	table:Személy
-szuletesiido	thetoughtexperimentwithdata.sql	/^    szuletesiido date NOT NULL$/;"	E	table:szemely
-tapasztalat	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.tapasztalat ($/;"	t
-tartalmaz	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.tartalmaz ($/;"	t
-test.cpp.i	build/Makefile	/^test.cpp.i:$/;"	t
-test.cpp.o	build/Makefile	/^test.cpp.o:$/;"	t
-test.cpp.s	build/Makefile	/^test.cpp.s:$/;"	t
-test.i	build/Makefile	/^test.i: test.cpp.i$/;"	t
-test.o	build/Makefile	/^test.o: test.cpp.o$/;"	t
-test.s	build/Makefile	/^test.s: test.cpp.s$/;"	t
-token	thetoughtexperimentwithdata.sql	/^    token bigint NOT NULL,$/;"	E	table:bearertoken
-tulajdonsag	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.tulajdonsag ($/;"	t
+szuletesiido	thente.sql	/^    szuletesiido date NOT NULL$/;"	E	table:szemely
+tapasztalat	thente.sql	/^CREATE TABLE admin.tapasztalat ($/;"	t
+tartalmaz	thente.sql	/^CREATE TABLE admin.tartalmaz ($/;"	t
+token	thente.sql	/^    token bigint NOT NULL,$/;"	E	table:bearertoken
+tulajdonsag	thente.sql	/^CREATE TABLE admin.tulajdonsag ($/;"	t
 tulajdonsagID	TheToughtExperimental.sql	/^  "tulajdonsagID" int,$/;"	E	table:AlanyTulajdonsag
 tulajdonsagID	TheToughtExperimental.sql	/^  "tulajdonsagID" int,$/;"	E	table:AlkotoreszTulajdonsag
-tulajdonsagid	thetoughtexperimentwithdata.sql	/^    tulajdonsagid integer NOT NULL,$/;"	E	table:alanytulajdonsag
-tulajdonsagid	thetoughtexperimentwithdata.sql	/^    tulajdonsagid integer NOT NULL,$/;"	E	table:alkotoresztulajdonsag
-tunet	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.tunet ($/;"	t
+tulajdonsagid	thente.sql	/^    tulajdonsagid integer NOT NULL,$/;"	E	table:alanytulajdonsag
+tulajdonsagid	thente.sql	/^    tulajdonsagid integer NOT NULL,$/;"	E	table:alkotoresztulajdonsag
+tunet	thente.sql	/^CREATE TABLE admin.tunet ($/;"	t
 tunetID	TheToughtExperimental.sql	/^  "tunetID" int,$/;"	E	table:ErintettAlkotoresz
 tunetID	TheToughtExperimental.sql	/^  "tunetID" int,$/;"	E	table:TunetAllapot
-tunetallapot	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.tunetallapot ($/;"	t
-tunetid	thetoughtexperimentwithdata.sql	/^    tunetid integer NOT NULL$/;"	E	table:erintettalkotoresz
-tunetid	thetoughtexperimentwithdata.sql	/^    tunetid integer NOT NULL,$/;"	E	table:tunetallapot
-valasztasilehetoseg	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.valasztasilehetoseg ($/;"	t
-valaszthato	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.valaszthato ($/;"	t
+tunetallapot	thente.sql	/^CREATE TABLE admin.tunetallapot ($/;"	t
+tunetid	thente.sql	/^    tunetid integer NOT NULL$/;"	E	table:erintettalkotoresz
+tunetid	thente.sql	/^    tunetid integer NOT NULL,$/;"	E	table:tunetallapot
+valasztasilehetoseg	thente.sql	/^CREATE TABLE admin.valasztasilehetoseg ($/;"	t
+valaszthato	thente.sql	/^CREATE TABLE admin.valaszthato ($/;"	t
 valaszthatoAlanyTipusID	TheToughtExperimental.sql	/^  "valaszthatoAlanyTipusID" int,$/;"	E	table:ValaszthatoAlany
 valaszthatoID	TheToughtExperimental.sql	/^  "valaszthatoID" int,$/;"	E	table:KiserletLepesVegreHajtasValasztottLehetoseg
 valaszthatoID	TheToughtExperimental.sql	/^  "valaszthatoID" int,$/;"	E	table:ValasztasiLehetoseg
-valaszthatoalany	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.valaszthatoalany ($/;"	t
-valaszthatoalanytipus	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.valaszthatoalanytipus ($/;"	t
-valaszthatoalanytipusid	thetoughtexperimentwithdata.sql	/^    valaszthatoalanytipusid integer$/;"	E	table:valaszthatoalany
-valaszthatoanyag	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.valaszthatoanyag ($/;"	t
-valaszthatoid	thetoughtexperimentwithdata.sql	/^    valaszthatoid integer NOT NULL$/;"	E	table:kiserletlepesvegrehajtasvalasztottlehetoseg
-valaszthatoid	thetoughtexperimentwithdata.sql	/^    valaszthatoid integer NOT NULL,$/;"	E	table:valasztasilehetoseg
-validate_semaid	thetoughtexperimentwithdata.sql	/^CREATE FUNCTION sysadmin.validate_semaid() RETURNS trigger$/;"	f
+valaszthatoalany	thente.sql	/^CREATE TABLE admin.valaszthatoalany ($/;"	t
+valaszthatoalanytipus	thente.sql	/^CREATE TABLE admin.valaszthatoalanytipus ($/;"	t
+valaszthatoalanytipusid	thente.sql	/^    valaszthatoalanytipusid integer$/;"	E	table:valaszthatoalany
+valaszthatoanyag	thente.sql	/^CREATE TABLE admin.valaszthatoanyag ($/;"	t
+valaszthatoid	thente.sql	/^    valaszthatoid integer NOT NULL$/;"	E	table:kiserletlepesvegrehajtasvalasztottlehetoseg
+valaszthatoid	thente.sql	/^    valaszthatoid integer NOT NULL,$/;"	E	table:valasztasilehetoseg
+validate_semaid	thente.sql	/^CREATE FUNCTION sysadmin.validate_semaid() RETURNS trigger$/;"	f
 variacioNevID	TheToughtExperimental.sql	/^  "variacioNevID" int,$/;"	E	table:Recept
-variacionevid	thetoughtexperimentwithdata.sql	/^    variacionevid integer NOT NULL,$/;"	E	table:recept
+variacionevid	thente.sql	/^    variacionevid integer NOT NULL,$/;"	E	table:recept
 vege	TheToughtExperimental.sql	/^  "vege" date,$/;"	E	table:KLCsHozzarendelesVegrehajtas
-vege	thetoughtexperimentwithdata.sql	/^    vege date,$/;"	E	table:klcshozzarendelesvegrehajtas
+vege	thente.sql	/^    vege date,$/;"	E	table:klcshozzarendelesvegrehajtas
 vegsoErtek	models/WordsCompare.cpp	/^	int* vegsoErtek; \/\/3000$/;"	m	struct:WordsCompare	typeref:typename:int *	file:
 vegsoErtekOszlopSzam	models/WordsCompare.cpp	/^	char* vegsoErtekOszlopSzam; \/\/ Inicializálás a szavak számával$/;"	m	struct:WordsCompare	typeref:typename:char *	file:
 vegzesEve	TheToughtExperimental.sql	/^  "vegzesEve" int,$/;"	E	table:Oklevel
-vegzeseve	thetoughtexperimentwithdata.sql	/^    vegzeseve integer,$/;"	E	table:oklevel
+vegzeseve	thente.sql	/^    vegzeseve integer,$/;"	E	table:oklevel
 vizsgalatElojegyzesID	TheToughtExperimental.sql	/^  "vizsgalatElojegyzesID" int PRIMARY KEY,$/;"	E	table:AlanyVizsgalat
 vizsgalatElojegyzesID	TheToughtExperimental.sql	/^  "vizsgalatElojegyzesID" int,$/;"	E	table:KiserletLepesFeltetelesUgrasFeltetel
 vizsgalatElojegyzesID	TheToughtExperimental.sql	/^  "vizsgalatElojegyzesID" int,$/;"	E	table:LepeshezTartozoVizsgalat
@@ -915,18 +943,18 @@ vizsgalatID	TheToughtExperimental.sql	/^  "vizsgalatID" int,$/;"	E	table:Tartalm
 vizsgalatID	TheToughtExperimental.sql	/^  "vizsgalatID" int,$/;"	E	table:TunetAllapot
 vizsgalatIdopont	TheToughtExperimental.sql	/^  "vizsgalatIdopont" date,$/;"	E	table:AlanyVizsgalat
 vizsgalatTipusID	TheToughtExperimental.sql	/^  "vizsgalatTipusID" int,$/;"	E	table:VizsgalatElojegyzes
-vizsgalatelojegyzes	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.vizsgalatelojegyzes ($/;"	t
-vizsgalatelojegyzesid	thetoughtexperimentwithdata.sql	/^    vizsgalatelojegyzesid integer NOT NULL$/;"	E	table:kiserletlepesfeltetelesugrasfeltetel
-vizsgalatelojegyzesid	thetoughtexperimentwithdata.sql	/^    vizsgalatelojegyzesid integer NOT NULL$/;"	E	table:lepesheztartozovizsgalat
-vizsgalatelojegyzesid	thetoughtexperimentwithdata.sql	/^    vizsgalatelojegyzesid integer NOT NULL,$/;"	E	table:alanyvizsgalat
-vizsgalatelojegyzesid	thetoughtexperimentwithdata.sql	/^    vizsgalatelojegyzesid integer NOT NULL,$/;"	E	table:valaszthatoalanytipus
-vizsgalatid	thetoughtexperimentwithdata.sql	/^    vizsgalatid integer NOT NULL,$/;"	E	table:alanytulajdonsag
-vizsgalatid	thetoughtexperimentwithdata.sql	/^    vizsgalatid integer NOT NULL,$/;"	E	table:alkotoresztulajdonsag
-vizsgalatid	thetoughtexperimentwithdata.sql	/^    vizsgalatid integer NOT NULL,$/;"	E	table:tartalmaz
-vizsgalatid	thetoughtexperimentwithdata.sql	/^    vizsgalatid integer NOT NULL,$/;"	E	table:tunetallapot
-vizsgalatidopont	thetoughtexperimentwithdata.sql	/^    vizsgalatidopont date,$/;"	E	table:alanyvizsgalat
-vizsgalattipus	thetoughtexperimentwithdata.sql	/^CREATE TABLE admin.vizsgalattipus ($/;"	t
-vizsgalattipusid	thetoughtexperimentwithdata.sql	/^    vizsgalattipusid integer,$/;"	E	table:vizsgalatelojegyzes
+vizsgalatelojegyzes	thente.sql	/^CREATE TABLE admin.vizsgalatelojegyzes ($/;"	t
+vizsgalatelojegyzesid	thente.sql	/^    vizsgalatelojegyzesid integer NOT NULL$/;"	E	table:kiserletlepesfeltetelesugrasfeltetel
+vizsgalatelojegyzesid	thente.sql	/^    vizsgalatelojegyzesid integer NOT NULL$/;"	E	table:lepesheztartozovizsgalat
+vizsgalatelojegyzesid	thente.sql	/^    vizsgalatelojegyzesid integer NOT NULL,$/;"	E	table:alanyvizsgalat
+vizsgalatelojegyzesid	thente.sql	/^    vizsgalatelojegyzesid integer NOT NULL,$/;"	E	table:valaszthatoalanytipus
+vizsgalatid	thente.sql	/^    vizsgalatid integer NOT NULL,$/;"	E	table:alanytulajdonsag
+vizsgalatid	thente.sql	/^    vizsgalatid integer NOT NULL,$/;"	E	table:alkotoresztulajdonsag
+vizsgalatid	thente.sql	/^    vizsgalatid integer NOT NULL,$/;"	E	table:tartalmaz
+vizsgalatid	thente.sql	/^    vizsgalatid integer NOT NULL,$/;"	E	table:tunetallapot
+vizsgalatidopont	thente.sql	/^    vizsgalatidopont date,$/;"	E	table:alanyvizsgalat
+vizsgalattipus	thente.sql	/^CREATE TABLE admin.vizsgalattipus ($/;"	t
+vizsgalattipusid	thente.sql	/^    vizsgalattipusid integer,$/;"	E	table:vizsgalatelojegyzes
 volatile	build/CMakeFiles/3.22.1/CompilerIdC/CMakeCCompilerId.c	/^# define volatile$/;"	d	file:
 whatIsChar	models/WordsCompare.cpp	/^inline bool whatIsChar(char character){$/;"	f	typeref:typename:bool
 ~StoreNames	models/StoreNames.cpp	/^	~StoreNames(){$/;"	f	struct:StoreNames	file:
