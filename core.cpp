@@ -93,7 +93,7 @@ inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char*
 	return getSQLQuery(NC, querytext, "", ":::", true, true);
 }
 
-inline bool getHH(std::shared_ptr<pqxx::connection> NC, std::string gnndump, std::string keynames){
+inline bool isJogosult(std::shared_ptr<pqxx::connection> NC, std::string gnndump, std::string keynames){
 		std::string hh ="SELECT set_config('app.token', '"+ gnndump +"', false);" +
 		"" +
 		"" +
@@ -176,7 +176,7 @@ int entraceMethod(
 			
 			std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
 			std::string transedschema = getTextWithJustChars(schema);
-			if(!getHH(NC, gnn.dump(), transedschema)){
+			if(!isJogosult(NC, gnn.dump(), transedschema)){
 				return crow::response(400, "Invalid schema;");
 			}
 			std::string hjut = "select * from "+ transedschema + "." + getTextWithJustChars(tablename) + ";";
