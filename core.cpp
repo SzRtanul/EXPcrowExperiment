@@ -114,31 +114,24 @@ inline std::string getTextWithJustChars(std::string text){
 
 
 int entraceMethod(
-	int crowPort, 
+	int crowPort,
+	int minDBConn,
+	int maxDBConn,
 	std::string postgresDBlocation, 
 	std::string postgresDBusername, 
 	std::string postgresDBpassword, 
 	std::string postgresDBport, 
-	std::string userDBName, 
 	std::string serviceDBName
 
 ){
-	static PoolDBConnection poolDB("dbname=testdb3 user=postgres password=test123 hostaddr=127.0.0.1 port=5432", 15, 50);
-	static PoolDBConnection userDB(
-		"dbname=" + userDBName +
-		" user=" + postgresDBusername +
-		" password=" + postgresDBpassword +
-		" hostaddr=" + postgresDBlocation +
-		" port=" + postgresDBport,
-		15, 50
-	);
-	static PoolDBConnection serviceDB(
+//	static PoolDBConnection poolOldDB("dbname=testdb3 user=postgres password=test123 hostaddr=127.0.0.1 port=5432", 15, 50);
+	static PoolDBConnection poolDB(
 		"dbname=" + serviceDBName +
 		" user=" + postgresDBusername +
 		" password=" + postgresDBpassword +
 		" hostaddr=" + postgresDBlocation +
 		" port=" + postgresDBport,
-		15, 50
+		minDBConn, maxDBConn
 	);
 
 	std::shared_ptr<pqxx::connection> RC = poolDB.getDBConn();
