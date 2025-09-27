@@ -21,6 +21,7 @@ inline std::string getTextWithJSONValues(
 	char currentChar = '\0';
 	char lastChar = ';';
 	int wordValue = 0;
+	bool insertclean = false;
 
 	int usedStoreNames = -1;
 	auto JSONValues = JSONValuesString;//crow::json::load(JSONValuesString);
@@ -145,6 +146,7 @@ std::cout << "Wheres?:SepIndexes : " << wheres << ":" << storeNames.length << en
 							std::cout << "J?: " << j << endl;
 							if(usedStoreNames == 4) retn += "p9_";
 							else if(usedStoreNames > 0 && usedStoreNames != 5 && lastChar != '.') retn += '.';
+							else if(usedStoreNames == 5) retn += ' ';
 							for(; (unsigned)storeNames.characterChain[j] - 63 > 1 && (unsigned)storeNames.characterChain[j] > 1; j++){
 std::cout << storeNames.characterChain[j] << endl;
 								retn += storeNames.characterChain[j]; 
@@ -172,7 +174,14 @@ std::cout << "Field: " << field << std::endl;
 std::cout << JSONValues[field].s() << std::endl;
 						auto rstr = JSONValues[field].s();
 						std::string val(rstr.begin(), rstr.end());
-						retn += "'`" + val + "`'";
+						
+						std::string escaped;
+						escaped.reserve(val.size());
+						for (char c : val) {
+							escaped += c;
+							if(c== '\'') escaped += '\'';
+						}
+						retn += "'" + escaped + "'";
 					}
 					else if(syntaxtGood){
 std::cout << "OOOOOOOOOOOOOO" << endl;

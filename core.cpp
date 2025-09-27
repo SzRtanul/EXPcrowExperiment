@@ -47,28 +47,32 @@ inline std::string getSQLQuery(
 	pqxx::work W(*NC);
 	std::cout << "DBBBBB: " << std::endl;
 	std::string textout = "-";
+	std::string rownums = "";
     try
 	{
+		std::string item = "";
 		std::cout << "qText: " << querytext << std::endl;
 		pqxx::result R = W.exec(querytext);
 		std::cout << "DBBBBB: " << std::endl;
 		// Itt folytatódik a sikeres lekérdezés feldolgozása
-		textout = sign ? std::string("F") + static_cast<char>(R.columns()) : "";
+		rownums = sign ? std::string("F") + static_cast<char>(R.columns())+"2;" : "";
 		std::cout << "DBBBBB: " << std::endl;
 		if(columnnames){
-			textout = sign ? std::string("T") + static_cast<char>(R.columns()) : "";
+			rownums = sign ? std::string("T") + static_cast<char>(R.columns()) + "2;": "";
 			for (int i = 0; i < R.columns(); ++i) {
-				textout += R.column_name(i) + columnsep;
+				textout += R.column_name(i);// + columnsep;
+				rownums += (textout.length() - 1) + ";";
 			}
-			textout += recordsep;
+//			textout += recordsep;
 		}
 		std::cout << "DBBBBB: " << std::endl;
 	    for (const auto &row : R) {
 	        for(int i = 0; i < row.size(); i++){
-	          // textout += "valami";
-			  textout += !row[i].is_null() ? getWithoutSpace(row[i].as<std::string>()) + columnsep : "null" + columnsep;
+	          	// textout += "valami";
+			  	textout += !row[i].is_null() ? getWithoutSpace(row[i].as<std::string>()) + columnsep : "null" + columnsep;
+				rownums += (textout.length() - 1) + ";";
         	}
-        	textout = textout.length() > recordsep.length() ? textout + recordsep : "";
+        	//textout = textout.length() > recordsep.length() ? textout + recordsep : "";
 		}
 		std::cout << "DBBBBB: " << std::endl;
 //		textout += '\0';
@@ -86,7 +90,7 @@ inline std::string getSQLQuery(
 	//W.commit();
 	std::cout << "ADAT KIÍRÁS!" << std::endl;
 //std::cout << textout << std::endl;
- 	return textout;
+ 	return sign ? rownums + "|||" + textout : textout;
 }
 
 inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char* querytext){
