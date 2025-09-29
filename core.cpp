@@ -108,6 +108,17 @@ inline bool isJogosult(std::shared_ptr<pqxx::connection> NC, std::string gnndump
 		return qre.length() > 0 ? qre[0] == 't' : 0;
 }
 
+inline bool setSessionValues(std::shared_ptr<pqxx::connection> NC, std::string gnndump, std::string keynames){
+		std::string hh ="SELECT set_config('app.token', '"+ gnndump +"', false);" +
+		"" +
+		"" +
+		"" + 
+		"select sysadmin.getaccesfullschemasfromgroups(" + gnndump + std::string(", '\?',  '") + keynames + "')";
+
+		std::string qre = getSQLQuery(NC, hh.c_str(), "", "", false, false); // Get check 1.
+		return qre.length() > 0 ? qre[0] == 't' : 0;
+}
+
 inline std::string getTextWithJustChars(std::string text){
 	std::string out = "";
 	for (int i = 0; text[i] != '\0'; i++){
@@ -115,7 +126,6 @@ inline std::string getTextWithJustChars(std::string text){
 	}
 	return out;
 }
-
 
 int entraceMethod(
 	int crowPort,
@@ -138,160 +148,107 @@ int entraceMethod(
 		minDBConn, maxDBConn
 	);
 
-	std::shared_ptr<pqxx::connection> RC = poolDB.getDBConn();
-	std::string query = getSQLQuery(RC, "SELECT word FROM pg_get_keywords() ORDER BY LENGTH(word), word", ";", "", false, false);
-	poolDB.giveBackConnect(RC);
-	WordsCompare compareWords = doSyntaxtCheckPreparation(query.c_str());
-	
 	crow::App<crow::CORSHandler> app;
     if (C.is_open()) {
         cout << "Opened database successfully: " << C.dbname() << endl;
-        //std::signal(SIGINT, signal_handler);
-		CROW_ROUTE(app, "/login")([](const crow::request& req) {
-	        crow::response res;
-			std::string token = "YOUR_SECURE_TOKEN";
-		/*	res.set_header("Access-Control-Allow-Origin", "http://localhost");
-			res.set_header("Access-Control-Allow-Credentials", "true");
-			res.set_header("Access-Control-Allow-Headers", "Content-Type");
-			res.set_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-	      */ 	res.set_header("Set-Cookie", "auth_token=" + token + "; HttpOnly; SameSite=Lax"); // Secure;
-			res.code = 200;
-		   	res.body = "Bejelentkezve!";
-			//res.end();
-		    return res;
-		});
 		
-		CROW_ROUTE(app, "/gettable/<string>/<string>/<string>").methods("POST"_method)([](
+		CROW_ROUTE(app, "/gettable/<string>/<string>/<int>/<int>").methods("POST"_method)([](
 			const crow::request& req,
 			const std::string schema,
 			const std::string tablename,
-			const std::string datevalue
+			const int offset,
+			const int limit
 		){
+			// json[dbthings][set_configs]
 			auto json = crow::json::load(req.body);
-			if(!json) return crow::response(400, "Invalid JSON;");
-			crow::json::wvalue gnn = json["token"];
-			
-			std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
+			std::string out = "-";
 			std::string transedschema = getTextWithJustChars(schema);
-			if(!isJogosult(NC, gnn.dump(), transedschema)){
-				return crow::response(400, "Invalid schema;");
+			bool resnum = json ? isJogosult(NC, json["token"].dump(), transedschema) : false;
+			if(resnum){
+				std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
+				std::string hjut = "select * from "+ transedschema + "." + getTextWithJustChars(tablename) + ";";
+				const char* hja = hjut.c_str();
+				out = getSQLQuery(NC, hja);
+				poolDB.giveBackConnect(NC);
 			}
-			std::string hjut = "select * from "+ transedschema + "." + getTextWithJustChars(tablename) + ";";
-			const char* hja = hjut.c_str();
-			std::string out = getSQLQuery(NC, hja);
-			poolDB.giveBackConnect(NC);
-std::cout << "HOLAAA(((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((((: " << hjut<<std::endl;
-std::cout << out << std::endl;
-std::cout << "ADAT KIÍRÁS!" << std::endl;
-			crow::response rescr(200, out);
-			std::cout << "Letra: " << req.get_header_value("COOKIES") << std::endl;
-			rescr.write("OK");
-			return rescr;
+			return crow::response(resnum ? 200 : 400, out);
 		});
 
-		CROW_ROUTE(app, "/callquery").methods("POST"_method)([&compareWords](const crow::request& req){
-			std::string quer = "-";
-			std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn(); 
-			try{
-				auto json = crow::json::load(req.body);
-				std::cout << req.body;
-				std::cout << "Elmegy";
-				if (!json) {
-					poolDB.giveBackConnect(NC);
-					return crow::response(400, "Invalid JSON");
-				}
-				std::cout << "Elmegy";
-				std::string DBDataStr = json["db"].s();
-				crow::json::rvalue CAzon = json["CAzon"];
-				const char* DBDataChr = DBDataStr.c_str();				
-				StoreNames keywordNames(DBDataChr);
-				
-				crow::json::wvalue gnn = json["token"];
-				int qfa = keywordNames.glength > 1 ? (unsigned)keywordNames.sepIndexes[keywordNames.groupIndexes[1]] - 1 : keywordNames.spellNumber;
-				std::cout << "QFAi: " << keywordNames.characterChain << std::endl;
-				std::cout << "QFA: " << qfa << std::endl;
-				std::cout << "MyFast: " << keywordNames.characterChain[keywordNames.spellNumber-1] 
-						<< ":" << (int)keywordNames.characterChain[keywordNames.spellNumber-1] << std::endl;
-				char qfabsv = '\0'; 
-				if(keywordNames.characterChain[qfa]){
-					qfabsv = keywordNames.characterChain[qfa];
-					keywordNames.characterChain[qfa] = '\0';
-				}
-				std::cout << "QFA: " << qfa << std::endl;
-				qfabsv = keywordNames.characterChain[qfa];
-				keywordNames.characterChain[qfa] = '\0';
-				std::cout << "QFA: " << qfa << std::endl;
-				std::string hh = 
-						"SELECT set_config('app.token', '"+ gnn.dump() +"', false);" +
-						"" +
-						"" +
-						"" + 
-						"select sysadmin.getaccesfullschemasfromgroups(" + 
-						gnn.dump() + std::string(", '\?',  '") + std::string(keywordNames.characterChain) + "')";
-				std::cout << "QFA: " << qfa << std::endl;
-				keywordNames.characterChain[qfa] = qfabsv;
-				std::cout << "QFA: " << qfa << std::endl;
-				std::string qre = getSQLQuery(NC, hh.c_str(), "", "", false, false); // Get check 1.
-				std::cout << "QFA: " << qfa << std::endl;
-				bool syntaxtGood = qre.length() > 0 ? qre[0] == 't' : 0;
-				const char* jk = &DBDataChr[
-					DBDataChr[keywordNames.spellNumber] ? keywordNames.spellNumber + 1 : keywordNames.spellNumber
-				];
-/*				if(keywordNames.glength > 4){ 
-					std::string hh2 = "select sysadmin.isnotinschemalist('\?' "+ std::string(
-						&keywordNames.characterChain[keywordNames.sepIndexes[keywordNames.groupIndexes[4]]]
-					) +")";
-					std::string qrek = getSQLQuery(NC, hh.c_str(), "", "", false, false);
-					syntaxtGood = syntaxtGood && qrek.length() > 0 ? qrek[0] == 't' : 0;
-				}
-*/				std::cout << "BEFLA: " << syntaxtGood << std::endl;
-				quer = syntaxtGood ? getTextWithJSONValues(compareWords, keywordNames, CAzon, jk) : "-";
-				std::cout << "ENLY: " << (unsigned)keywordNames.characterChain[keywordNames.spellNumber] << ":" 
-						<< (unsigned)keywordNames.characterChain[keywordNames.spellNumber + 1] << std::endl;
+		CROW_ROUTE(app, "/insert/<string>/<string>").methods("POST"_method)([](
+			const crow::request& req,
+			const std::string schema,
+			const std::string tablename,
+		){
+			auto json = crow::json::load(req.body);
+			std::string out = "-";
+			std::string transedschema = getTextWithJustChars(schema);
+			bool resnum = json ? isJogosult(NC, json["token"].dump(), transedschema) : false;
+			// json[dbthings][columns]
+			// json[dbthings][values]
+			// json[dbthings][set_configs]
+			// 
+			if(resnum){
+				std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
+				std::string hjut = "insert into "+ transedschema + "." + getTextWithJustChars(tablename) +
+				"" + ";";
+				const char* hja = hjut.c_str();
+				out = getSQLQuery(NC, hja);
+				poolDB.giveBackConnect(NC);
 			}
-			catch(const std::exception &e){				
-				std::cerr << "Egyéb hiba: " << e.what() << std::endl;
+			return crow::response(resnum ? 200 : 400, out);
+		});
+
+		CROW_ROUTE(app, "/delete/<string>/<string>/<int>").methods("POST"_method)([](
+			const crow::request& req,
+			const std::string schema,
+			const std::string tablename,
+			const int row,
+		){
+			// json[dbthings][set_configs]
+			auto json = crow::json::load(req.body);
+			std::string out = "-";
+			std::string transedschema = getTextWithJustChars(schema);
+			std::string transedtable = getTextWithJustChars(tablename);
+			bool resnum = json ? isJogosult(NC, json["token"].dump(), transedschema) : false;
+			if(resnum){
+				std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
+				std::string hjut = "delete from "+ transedschema + "." + transedtablename +
+				"where " + transedschema + "." + transedtablename+".id = " + row + ";";
+				const char* hja = hjut.c_str();
+				out = getSQLQuery(NC, hja);
+				poolDB.giveBackConnect(NC);
 			}
-			std::cout << quer << endl;
-			std::string resdb = "erre:Hiba történt!";
-			if(quer.compare("-")) resdb = getSQLQuery(NC, quer.c_str());
-			crow::response rescr(200, resdb);
-			std::cout << "Letra: " << req.get_header_value("COOKIES") << std::endl;
-			rescr.add_header("SET-COOKIE", "token=" + getSQLQuery(NC, "SELECT current_setting('app.current_user_id')")+"; Path=/");
-			rescr.write("OK");
-			poolDB.giveBackConnect(NC);
-			return rescr;
-    	});
-	  
-		std::cout << "OOOO" << endl;
+			return crow::response(resnum ? 200 : 400, out);
+		});
+
+		CROW_ROUTE(app, "/update/<string>/<string>").methods("POST"_method)([](
+			const crow::request& req,
+			const std::string schema,
+			const std::string tablename,
+			// json[dbthings][col&values]
+			// json[dbthings][set_configs]
+			auto json = crow::json::load(req.body);
+			std::string out = "-";
+			std::string transedschema = getTextWithJustChars(schema);
+			std::string transedtable = getTextWithJustChars(tablename);
+			bool resnum = json ? isJogosult(NC, json["token"].dump(), transedschema) : false;
+			if(resnum){
+				std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
+				std::string hjut = "update "+ transedschema + "." + transedtablename +
+				"set column='ye' "
+				"where " + transedschema + "." + transedtablename+".id = " + row + ";";
+				const char* hja = hjut.c_str();
+				out = getSQLQuery(NC, hja);
+				poolDB.giveBackConnect(NC);
+			}
+			return crow::response(resnum ? 200 : 400, out);
+		});
   //      C.disconnect();
-		std::cout << compareWords.leghosszabbSzo << endl;
     } else {
         cout << "Can't open database" << endl;
         return 1;
     }	
-	std::cout << compareWords.leghosszabbSzo << endl;
-	std::cout << "OOOO" << endl;
 	
-	CROW_ROUTE(app, "/")([](){
-		return "Hello world";
-	});
-
-	CROW_ROUTE(app, "/pelda/<int>").methods("POST"_method)([](const crow::request& req, const int ye){
-		
-		std::cout << "Fejlec:" << ye << std::endl;
-		for (auto& header : req.headers)
-		{
-			std::cout << header.first << ": " << header.second << "\n";
-		}
-		std::cout << "\nBody:\n" << req.body << "\n";
-		auto parsed = crow::json::load(req.body);
-	//	std::cout << "\nBody:\n" << parsed["datum"].dump() << "\n";
-		crow::json::wvalue temp(parsed);
-		std::cout << "\nBody:\n" << temp.dump() << "\n";
-
-		return crow::response(200, "Megkaptam!");
-	});
-	app.port(18080).multithreaded().run();
+	app.port(crowPort).multithreaded().run();
   	return 0;
 }
