@@ -235,7 +235,7 @@ int entraceMethod(
 			if(resnum){
 				std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
 				std::string hjut = "update "+ transedschema + "." + transedtablename +
-				"set column='ye' "
+				"set column='ye' " +
 				"where " + transedschema + "." + transedtablename+".id = " + row + ";";
 				const char* hja = hjut.c_str();
 				out = getSQLQuery(NC, hja);
