@@ -108,7 +108,7 @@ inline bool isJogosult(std::shared_ptr<pqxx::connection> NC, std::string gnndump
 		return qre.length() > 0 ? qre[0] == 't' : 0;
 }
 
-inline bool setSessionValues(std::shared_ptr<pqxx::connection> NC, std::string gnndump, std::string keynames){
+inline bool isJogosult(std::shared_ptr<pqxx::connection> NC, std::string gnndump, std::string keynames){
 		std::string hh ="SELECT set_config('app.token', '"+ gnndump +"', false);" +
 		"" +
 		"" +
@@ -119,12 +119,48 @@ inline bool setSessionValues(std::shared_ptr<pqxx::connection> NC, std::string g
 		return qre.length() > 0 ? qre[0] == 't' : 0;
 }
 
+inline bool isCsChar(char CharC){
+	return ((unsigned)CharC - 65 < 58 && (unsigned)CharC - 91 > 5) || CharC == 95;
+}
+
 inline std::string getTextWithJustChars(std::string text){
 	std::string out = "";
 	for (int i = 0; text[i] != '\0'; i++){
-		if(((unsigned)text[i] - 65 < 58 && (unsigned)text[i] - 91 > 5) || text[i] == 95) out += text[i];
+		if(isCsChar(text[i])) out += text[i];
 	}
 	return out;
+}
+
+inline std::string getSetConfigs(std::string text){
+	bool change = true;
+	std::string out = text[0] != '\0' ?  "SELECT set_config('custom." : "";
+	for(int i = 0; i != '\0';i++){
+		if(change){
+			for(; text[i] != '='; i++){
+				if(isCsChar(text[i])) out += text[i];
+			}
+		}
+		else{
+			int limn = i + text[i];
+			for(i=i+1; i < limn && text[i] != '\0'; i++){
+				out += text[i];
+			}
+		}
+		out += change ? "', '" : "');\nSELECT set_config('custom."
+		change = !change;
+	}
+	return out;
+}
+
+inline bool setSessionValues(std::shared_ptr<pqxx::connection> NC, std::string gnndump, std::string keynames){
+		std::string hh ="SELECT set_config('app.token', '"+ gnndump +"', false);" +
+		"" +
+		"" +
+		"" + 
+		"select sysadmin.getaccesfullschemasfromgroups(" + gnndump + std::string(", '\?',  '") + keynames + "')";
+
+		std::string qre = getSQLQuery(NC, hh.c_str(), "", "", false, false); // Get check 1.
+		return qre.length() > 0 ? qre[0] == 't' : 0;
 }
 
 int entraceMethod(
