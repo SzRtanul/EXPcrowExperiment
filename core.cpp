@@ -131,7 +131,7 @@ inline std::string getTextWithJustChars(std::string text){
 	return out;
 }
 
-inline std::string getSetConfigs(std::string text){
+inline std::string getSetConfigs(int i, std::string text){
 	bool change = true;
 	std::string out = text[0] != '\0' ?  "SELECT set_config('custom." : "";
 	for(int i = 0; i != '\0';i++){
@@ -150,6 +150,18 @@ inline std::string getSetConfigs(std::string text){
 		change = !change;
 	}
 	return out;
+}
+
+inline std::string getUpdateSets(int i, std::string text){
+
+}
+
+inline std::string insertColumns(){
+
+}
+
+inline std::string insertValues(){
+
 }
 
 inline bool setSessionValues(std::shared_ptr<pqxx::connection> NC, std::string gnndump, std::string keynames){
