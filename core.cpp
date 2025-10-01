@@ -226,10 +226,11 @@ int entraceMethod(
 			std::string transedschema = getTextWithJustChars(schema);
 			bool resnum = json ? isJogosult(NC, json["token"].dump(), transedschema) : false;
 			if(resnum){
+				int outi = 0;
 				int i = 0;
 				std::string dbthings = json["dbthings"].s();
 				std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
-				setSessionValues(NC, &i, )
+				setSessionValues(NC, &i, dbthings);
 				std::string hjut = "select * from "+ transedschema + "." + getTextWithJustChars(tablename) + ";";
 				const char* hja = hjut.c_str();
 				out = getSQLQuery(NC, hja);
@@ -252,7 +253,10 @@ int entraceMethod(
 			// json[dbthings][set_configs]
 			// 
 			if(resnum){
+				int outi = 0;
 				std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
+				std::string dbthings = json["dbthings"].s();
+				setSessionValues(NC, &i, dbthings);
 				std::string hjut = "insert into "+ transedschema + "." + getTextWithJustChars(tablename) +
 				"" + ";";
 				const char* hja = hjut.c_str();
@@ -275,7 +279,10 @@ int entraceMethod(
 			std::string transedtable = getTextWithJustChars(tablename);
 			bool resnum = json ? isJogosult(NC, json["token"].dump(), transedschema) : false;
 			if(resnum){
+				int outi = 0;
 				std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
+				std::string dbthings = json["dbthings"].s();
+				setSessionValues(NC, &i, dbthings);
 				std::string hjut = "delete from "+ transedschema + "." + transedtablename +
 				"where " + transedschema + "." + transedtablename+".id = " + row + ";";
 				const char* hja = hjut.c_str();
@@ -297,10 +304,13 @@ int entraceMethod(
 			std::string transedtable = getTextWithJustChars(tablename);
 			bool resnum = json ? isJogosult(NC, json["token"].dump(), transedschema) : false;
 			if(resnum){
+				int outi = 0;
 				std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
+				std::string dbthings = json["dbthings"].s();
+				setSessionValues(NC, &i, dbthings);
 				std::string hjut = "update "+ transedschema + "." + transedtablename +
-				"set column='ye' " +
-				"where " + transedschema + "." + transedtablename+".id = " + row + ";";
+				getUpdateSets(outi, dbthings) +
+				"\nwhere " + transedschema + "." + transedtablename+".id = " + row + ";";
 				const char* hja = hjut.c_str();
 				out = getSQLQuery(NC, hja);
 				poolDB.giveBackConnect(NC);
