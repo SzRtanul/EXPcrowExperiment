@@ -144,6 +144,7 @@ inline std::string getSetConfigs(int i, std::string text){
 			int limn = i + text[i];
 			for(i=i+1; i < limn && text[i] != '\0'; i++){
 				out += text[i];
+				if(text[i] == '\'') out += '\'';
 			}
 		}
 		out += change ? "', '" : "');\nSELECT set_config('custom."
@@ -153,15 +154,41 @@ inline std::string getSetConfigs(int i, std::string text){
 }
 
 inline std::string getUpdateSets(int i, std::string text){
-
+	std::string out = "SET ";
+	bool change = true;
+	for(; text[i] != '\0'; i++){
+		if(change){
+			for(;text[i] != '='; i++){
+				if(isCsChar(text[i])) out += text[i];
+			}
+		}
+		else{
+			int limn = i + text[i]+text[i+1]*256; //For cicla
+			for(i=i+1; i < limn && text[i] != '\0'; i++){
+				out += text[i];
+				if(text[i] == '\'') out += '\'';
+			}
+		}
+		out+=change ? "='" : "'\n";
+	}
 }
 
 inline std::string insertColumns(){
-
+	std::string out = "";
+	for(; text[i] != '\0'; i++){
+		if(isCsChar(text[i]) || text[i] == ',') out += text[i];
+	}
 }
 
 inline std::string insertValues(){
-
+	std::string out = "'";
+	for(; text[i] != '\0'; i++){
+		int limn = i + text[i]+text[i+1]*256;
+		for(i=i+2; i < limn && text[i] != '\0'; i++){
+			out += text[i];
+			if(text[i] == '\'') out += '\'';
+		}
+	}
 }
 
 inline bool setSessionValues(std::shared_ptr<pqxx::connection> NC, std::string gnndump, std::string keynames){
