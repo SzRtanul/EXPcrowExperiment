@@ -108,16 +108,7 @@ inline bool isJogosult(std::shared_ptr<pqxx::connection> NC, std::string gnndump
 		return qre.length() > 0 ? qre[0] == 't' : 0;
 }
 
-inline bool isJogosult(std::shared_ptr<pqxx::connection> NC, std::string gnndump, std::string keynames){
-		std::string hh ="SELECT set_config('app.token', '"+ gnndump +"', false);" +
-		"" +
-		"" +
-		"" + 
-		"select sysadmin.getaccesfullschemasfromgroups(" + gnndump + std::string(", '\?',  '") + keynames + "')";
 
-		std::string qre = getSQLQuery(NC, hh.c_str(), "", "", false, false); // Get check 1.
-		return qre.length() > 0 ? qre[0] == 't' : 0;
-}
 
 inline bool isCsChar(char CharC){
 	return ((unsigned)CharC - 65 < 58 && (unsigned)CharC - 91 > 5) || CharC == 95;
@@ -191,13 +182,8 @@ inline std::string insertValues(){
 	}
 }
 
-inline bool setSessionValues(std::shared_ptr<pqxx::connection> NC, std::string gnndump, std::string keynames){
-		std::string hh ="SELECT set_config('app.token', '"+ gnndump +"', false);" +
-		"" +
-		"" +
-		"" + 
-		"select sysadmin.getaccesfullschemasfromgroups(" + gnndump + std::string(", '\?',  '") + keynames + "')";
-
+inline bool setSessionValues(std::shared_ptr<pqxx::connection> NC, int i, std::string text){
+		std::string hh =  getSetConfigs(i, text);
 		std::string qre = getSQLQuery(NC, hh.c_str(), "", "", false, false); // Get check 1.
 		return qre.length() > 0 ? qre[0] == 't' : 0;
 }
@@ -240,7 +226,10 @@ int entraceMethod(
 			std::string transedschema = getTextWithJustChars(schema);
 			bool resnum = json ? isJogosult(NC, json["token"].dump(), transedschema) : false;
 			if(resnum){
+				int i = 0;
+				std::string dbthings = json["dbthings"].s();
 				std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
+				setSessionValues(NC, &i, )
 				std::string hjut = "select * from "+ transedschema + "." + getTextWithJustChars(tablename) + ";";
 				const char* hja = hjut.c_str();
 				out = getSQLQuery(NC, hja);
