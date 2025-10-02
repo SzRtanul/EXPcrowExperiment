@@ -206,14 +206,18 @@ inline std::string[] metha(int index, int outi, std::string dbthings, std::strin
 	};
 }
 
-inline std::string execFormat(int caseindex std::string dbthings, std::string schemaname, std::string tablename, int offset, int limit, int row){
+inline std::string execFormat(int caseindex std::string dbthings, std::string schemaname, std::string tablename, int offset, int limit, int row)
+{
 	int outi = 0;
-	std::string out = "";
-	std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
-	setSessionValues(NC, &outi, dbthings);
-	std::string queryText = metha(caseindex, &outi, dbthings, schemaname, tablename, offset, limit, row);
-	out = getSQLQuery(NC, queryText.c_str());
-	poolDB.giveBackConnect(NC);
+	std::string out = "-";
+	bool resnum = json ? isJogosult(NC, json["token"].dump(), transedschema) : false;
+	if(resnum){
+		std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
+		setSessionValues(NC, &outi, dbthings);
+		td::string queryText = metha(caseindex, &outi, dbthings, schemaname, tablename, offset, limit, row);
+		out = getSQLQuery(NC, queryText.c_str());
+		poolDB.giveBackConnect(NC);
+	}
 	return out;
 }
 
@@ -251,12 +255,11 @@ int entraceMethod(
 		){
 			// json[dbthings][set_configs]
 			auto json = crow::json::load(req.body);
-			std::string out = "-";
+			std::string out = ;
 			std::string transedschema = getTextWithJustChars(schema);
-			bool resnum = json ? isJogosult(NC, json["token"].dump(), transedschema) : false;
-			if(resnum){
-					out = execFormat(0, json["dbthings"].s(), transedschema, getTextWithJustChars(tablename), offset, limit, 0);
-		}
+			{
+				out = execFormat(0, json["dbthings"].s(), transedschema, getTextWithJustChars(tablename), offset, limit, 0);
+			}
 			return crow::response(resnum ? 200 : 400, out);
 		});
 
@@ -266,16 +269,7 @@ int entraceMethod(
 			const std::string tablename,
 		){
 			auto json = crow::json::load(req.body);
-			std::string out = "-";
-			std::string transedschema = getTextWithJustChars(schema);
-			bool resnum = json ? isJogosult(NC, json["token"].dump(), transedschema) : false;
-			// json[dbthings][columns]
-			// json[dbthings][values]
-			// json[dbthings][set_configs]
-			// 
-			if(resnum){
-				out = execFormat(0, json["dbthings"].s(), transedschema, getTextWithJustChars(tablename), 0, 0, 0);
-			}
+			std::string out = execFormat(0, json["dbthings"].s(), getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, 0);
 			return crow::response(resnum ? 200 : 400, out);
 		});
 
