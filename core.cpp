@@ -55,7 +55,7 @@ inline std::string getSQLQuery(
 		pqxx::result R = W.exec(querytext);
 		std::cout << "DBBBBB: " << std::endl;
 		// Itt folytatódik a sikeres lekérdezés feldolgozása
-		rownums = sign ? std::string("F") + static_cast<char>(R.columns())+"2;" : "";
+		rownums = sign ? std::string("F") + static_cast<char>(R.columns()) + "2;" : "";
 		std::cout << "DBBBBB: " << std::endl;
 		if(columnnames){
 			rownums = sign ? std::string("T") + static_cast<char>(R.columns()) + "2;": "";
@@ -122,7 +122,7 @@ inline std::string getTextWithJustChars(std::string text){
 	return out;
 }
 
-inline std::string getSetConfigs(int i, std::string text){
+inline std::string getSetConfigs(int &i, std::string text){
 	bool change = true;
 	std::string out = text[0] != '\0' ?  "SELECT set_config('custom." : "";
 	for(int i = 0; i != '\0';i++){
@@ -144,7 +144,7 @@ inline std::string getSetConfigs(int i, std::string text){
 	return out;
 }
 
-inline std::string getUpdateSets(int i, std::string text){
+inline std::string getUpdateSets(int &i, std::string text){
 	std::string out = "SET ";
 	bool change = true;
 	for(; text[i] != '\0'; i++){
@@ -162,16 +162,18 @@ inline std::string getUpdateSets(int i, std::string text){
 		}
 		out+=change ? "='" : "'\n";
 	}
+	return out;
 }
 
-inline std::string insertColumns(){
+inline std::string insertColumns(int &i, std::string text){
 	std::string out = "";
 	for(; text[i] != '\0'; i++){
 		if(isCsChar(text[i]) || text[i] == ',') out += text[i];
 	}
+	return out;
 }
 
-inline std::string insertValues(){
+inline std::string insertValues(int &i, std::string text){
 	std::string out = "'";
 	for(; text[i] != '\0'; i++){
 		int limn = i + text[i]+text[i+1]*256;
@@ -180,12 +182,39 @@ inline std::string insertValues(){
 			if(text[i] == '\'') out += '\'';
 		}
 	}
+	return out;
 }
 
 inline bool setSessionValues(std::shared_ptr<pqxx::connection> NC, int i, std::string text){
 		std::string hh =  getSetConfigs(i, text);
 		std::string qre = getSQLQuery(NC, hh.c_str(), "", "", false, false); // Get check 1.
 		return qre.length() > 0 ? qre[0] == 't' : 0;
+}
+
+inline std::string[] metha(int index, int outi, std::string dbthings, std::string schemaname, std::string tablename, int offset, int limit, int row){
+	return std::string[]{
+		//select
+		"select * from "+ transedschema + "." + transedtablename + " OFFEST " + offset + " LIMIT " limit + ";",
+		//insert
+		"insert into " + transedschema + "." + transedtablename + "(" + insertColumns(&outi, dbthings) + ") values (" + insertValues(&outi, dbthings) + ");",
+		//delete
+		"delete from "+ transedschema + "." + transedtablename +
+			"where " + transedschema + "." + transedtablename+".id = " + row + ";",
+		//update
+		"update "+ transedschema + "." + transedtablename + getUpdateSets(&outi, dbthings) +
+			"\nwhere " + transedschema + "." + transedtablename+".id = " + row + ";"
+	};
+}
+
+inline std::string execFormat(int caseindex std::string dbthings, std::string schemaname, std::string tablename, int offset, int limit, int row){
+	int outi = 0;
+	std::string out = "";
+	std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
+	setSessionValues(NC, &outi, dbthings);
+	std::string queryText = metha(caseindex, &outi, dbthings, schemaname, tablename, offset, limit, row);
+	out = getSQLQuery(NC, queryText.c_str());
+	poolDB.giveBackConnect(NC);
+	return out;
 }
 
 int entraceMethod(
@@ -226,16 +255,8 @@ int entraceMethod(
 			std::string transedschema = getTextWithJustChars(schema);
 			bool resnum = json ? isJogosult(NC, json["token"].dump(), transedschema) : false;
 			if(resnum){
-				int outi = 0;
-				int i = 0;
-				std::string dbthings = json["dbthings"].s();
-				std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
-				setSessionValues(NC, &i, dbthings);
-				std::string hjut = "select * from "+ transedschema + "." + getTextWithJustChars(tablename) + ";";
-				const char* hja = hjut.c_str();
-				out = getSQLQuery(NC, hja);
-				poolDB.giveBackConnect(NC);
-			}
+					out = execFormat(0, json["dbthings"].s(), transedschema, getTextWithJustChars(tablename), offset, limit, 0);
+		}
 			return crow::response(resnum ? 200 : 400, out);
 		});
 
@@ -253,15 +274,7 @@ int entraceMethod(
 			// json[dbthings][set_configs]
 			// 
 			if(resnum){
-				int outi = 0;
-				std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
-				std::string dbthings = json["dbthings"].s();
-				setSessionValues(NC, &i, dbthings);
-				std::string hjut = "insert into "+ transedschema + "." + getTextWithJustChars(tablename) +
-				"" + ";";
-				const char* hja = hjut.c_str();
-				out = getSQLQuery(NC, hja);
-				poolDB.giveBackConnect(NC);
+				out = execFormat(0, json["dbthings"].s(), transedschema, getTextWithJustChars(tablename), 0, 0, 0);
 			}
 			return crow::response(resnum ? 200 : 400, out);
 		});
@@ -278,16 +291,8 @@ int entraceMethod(
 			std::string transedschema = getTextWithJustChars(schema);
 			std::string transedtable = getTextWithJustChars(tablename);
 			bool resnum = json ? isJogosult(NC, json["token"].dump(), transedschema) : false;
-			if(resnum){
-				int outi = 0;
-				std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
-				std::string dbthings = json["dbthings"].s();
-				setSessionValues(NC, &i, dbthings);
-				std::string hjut = "delete from "+ transedschema + "." + transedtablename +
-				"where " + transedschema + "." + transedtablename+".id = " + row + ";";
-				const char* hja = hjut.c_str();
-				out = getSQLQuery(NC, hja);
-				poolDB.giveBackConnect(NC);
+			if(resnum){	
+				out = execFormat(0, json["dbthings"].s(), transedschema, getTextWithJustChars(tablename), 0, 0, row);
 			}
 			return crow::response(resnum ? 200 : 400, out);
 		});
@@ -304,16 +309,7 @@ int entraceMethod(
 			std::string transedtable = getTextWithJustChars(tablename);
 			bool resnum = json ? isJogosult(NC, json["token"].dump(), transedschema) : false;
 			if(resnum){
-				int outi = 0;
-				std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
-				std::string dbthings = json["dbthings"].s();
-				setSessionValues(NC, &i, dbthings);
-				std::string hjut = "update "+ transedschema + "." + transedtablename +
-				getUpdateSets(outi, dbthings) +
-				"\nwhere " + transedschema + "." + transedtablename+".id = " + row + ";";
-				const char* hja = hjut.c_str();
-				out = getSQLQuery(NC, hja);
-				poolDB.giveBackConnect(NC);
+				out = execFormat(0, json["dbthings"].s(), transedschema, getTextWithJustChars(tablename), 0, 0, row);
 			}
 			return crow::response(resnum ? 200 : 400, out);
 		});
