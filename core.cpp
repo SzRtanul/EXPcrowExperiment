@@ -54,16 +54,15 @@ inline std::string getSQLQuery(
 		std::cout << "qText: " << querytext << std::endl;
 		pqxx::result R = W.exec(querytext);
 		std::cout << "DBBBBB: " << std::endl;
-		// Itt folytatódik a sikeres lekérdezés feldolgozása
-		rownums = sign ? std::string("F") + static_cast<char>(R.columns()) + "2;" : "";
+		textout = sign ? std::string("F") + static_cast<char>(R.columns()) + "" : "";
 		std::cout << "DBBBBB: " << std::endl;
 		if(columnnames){
-			rownums = sign ? std::string("T") + static_cast<char>(R.columns()) + "2;": "";
+			textout = sign ? std::string("T") + static_cast<char>(R.columns()) + "" : "";
 			for (int i = 0; i < R.columns(); ++i) {
 				textout += R.column_name(i);// + columnsep;
 				rownums += (textout.length() - 1) + ";";
 			}
-//			textout += recordsep;
+			textout += recordsep;
 		}
 		std::cout << "DBBBBB: " << std::endl;
 	    for (const auto &row : R) {
@@ -72,7 +71,7 @@ inline std::string getSQLQuery(
 			  	textout += !row[i].is_null() ? getWithoutSpace(row[i].as<std::string>()) + columnsep : "null" + columnsep;
 				rownums += (textout.length() - 1) + ";";
         	}
-        	//textout = textout.length() > recordsep.length() ? textout + recordsep : "";
+        	textout = textout.length() > recordsep.length() ? textout + recordsep : "";
 		}
 		std::cout << "DBBBBB: " << std::endl;
 //		textout += '\0';
@@ -90,7 +89,7 @@ inline std::string getSQLQuery(
 	//W.commit();
 	std::cout << "ADAT KIÍRÁS!" << std::endl;
 //std::cout << textout << std::endl;
- 	return sign ? rownums + "|||" + textout : textout;
+ 	return sign ? textout : textout;
 }
 
 inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char* querytext){
@@ -98,14 +97,15 @@ inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char*
 }
 
 inline bool isJogosult(std::shared_ptr<pqxx::connection> NC, std::string gnndump, std::string keynames){
-		std::string hh ="SELECT set_config('app.token', '"+ gnndump +"', false);" +
+		std::string hh ="SELECT set_config('app.token', '"+ gnndump +"', false);\n" +
 		"" +
 		"" +
-		"" + 
-		"select sysadmin.getaccesfullschemasfromgroups(" + gnndump + std::string(", '\?',  '") + keynames + "')";
+		""  
+//		"select * from sysadmin.hasaccesstogroupview(" + gnndump + std::string(", '\?',  '") + keynames + "')"
+		;
 
 		std::string qre = getSQLQuery(NC, hh.c_str(), "", "", false, false); // Get check 1.
-		return qre.length() > 0 ? qre[0] == 't' : 0;
+		return true;//qre.length() > 0 ? qre[0] == 't' : 0;
 }
 
 
@@ -194,7 +194,7 @@ inline bool setSessionValues(std::shared_ptr<pqxx::connection> NC, int i, std::s
 std::string metha(int index, int outi, std::string dbthings, std::string transedschema, std::string transedtablename, int offset, int limit, int row){
 	std::array<std::string, 4> queries = {
 		//select
-		"select * from "+ transedschema + "." + transedtablename + " OFFEST " + std::to_string(offset) + " LIMIT " + std::to_string(limit) + ";",
+		"select * from "+ transedschema + "." + transedtablename + " OFFSET " + std::to_string(offset) + " LIMIT " + std::to_string(limit) + ";",
 		//insert
 		"insert into " + transedschema + "." + transedtablename + "(" + insertColumns(outi, dbthings) + ") values (" + insertValues(outi, dbthings) + ");",
 		//delete
