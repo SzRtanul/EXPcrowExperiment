@@ -138,7 +138,7 @@ inline std::string getSetConfigs(int &i, std::string text){
 				if(text[i] == '\'') out += '\'';
 			}
 		}
-		out += change ? "', '" : "');\nSELECT set_config('custom."
+		out += change ? "', '" : "');\nSELECT set_config('custom.";
 		change = !change;
 	}
 	return out;
@@ -191,34 +191,36 @@ inline bool setSessionValues(std::shared_ptr<pqxx::connection> NC, int i, std::s
 		return qre.length() > 0 ? qre[0] == 't' : 0;
 }
 
-inline std::string[] metha(int index, int outi, std::string dbthings, std::string schemaname, std::string tablename, int offset, int limit, int row){
-	return std::string[]{
+std::string metha(int index, int outi, std::string dbthings, std::string transedschema, std::string transedtablename, int offset, int limit, int row){
+	std::array<std::string, 4> queries = {
 		//select
-		"select * from "+ transedschema + "." + transedtablename + " OFFEST " + offset + " LIMIT " limit + ";",
+		"select * from "+ transedschema + "." + transedtablename + " OFFEST " + std::to_string(offset) + " LIMIT " + std::to_string(limit) + ";",
 		//insert
-		"insert into " + transedschema + "." + transedtablename + "(" + insertColumns(&outi, dbthings) + ") values (" + insertValues(&outi, dbthings) + ");",
+		"insert into " + transedschema + "." + transedtablename + "(" + insertColumns(outi, dbthings) + ") values (" + insertValues(outi, dbthings) + ");",
 		//delete
 		"delete from "+ transedschema + "." + transedtablename +
-			"where " + transedschema + "." + transedtablename+".id = " + row + ";",
+			"where " + transedschema + "." + transedtablename+".id = " + std::to_string(row) + ";",
 		//update
-		"update "+ transedschema + "." + transedtablename + getUpdateSets(&outi, dbthings) +
-			"\nwhere " + transedschema + "." + transedtablename+".id = " + row + ";"
+		"update "+ transedschema + "." + transedtablename + getUpdateSets(outi, dbthings) +
+			"\nwhere " + transedschema + "." + transedtablename+".id = " + std::to_string(row) + ";"
 	};
+	return queries[index];
 }
 
-inline std::string execFormat(int caseindex std::string dbthings, std::string schemaname, std::string tablename, int offset, int limit, int row)
+inline crow::response execFormat(PoolDBConnection& poolDB, int caseindex, crow::json::rvalue json, std::string schemaname, std::string tablename, int offset, int limit, int row)
 {
+	std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
 	int outi = 0;
 	std::string out = "-";
-	bool resnum = json ? isJogosult(NC, json["token"].dump(), transedschema) : false;
+	bool resnum = json ? isJogosult(NC, json["token"].s(), schemaname) : false;
 	if(resnum){
-		std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
-		setSessionValues(NC, &outi, dbthings);
-		td::string queryText = metha(caseindex, &outi, dbthings, schemaname, tablename, offset, limit, row);
+		std::string dbthings = json["dbthings"].s();
+		setSessionValues(NC, outi, dbthings);
+		std::string queryText = metha(caseindex, outi, dbthings, schemaname, tablename, offset, limit, row);
 		out = getSQLQuery(NC, queryText.c_str());
 		poolDB.giveBackConnect(NC);
 	}
-	return out;
+	return crow::response(resnum ? 200 : 400, out);
 }
 
 int entraceMethod(
@@ -252,62 +254,43 @@ int entraceMethod(
 			const std::string tablename,
 			const int offset,
 			const int limit
-		){
+		) -> crow::response{
 			// json[dbthings][set_configs]
 			auto json = crow::json::load(req.body);
-			std::string out = ;
 			std::string transedschema = getTextWithJustChars(schema);
-			{
-				out = execFormat(0, json["dbthings"].s(), transedschema, getTextWithJustChars(tablename), offset, limit, 0);
-			}
-			return crow::response(resnum ? 200 : 400, out);
+			return execFormat(poolDB, 0, json, transedschema, getTextWithJustChars(tablename), offset, limit, 0);	
+			
 		});
 
 		CROW_ROUTE(app, "/insert/<string>/<string>").methods("POST"_method)([](
 			const crow::request& req,
 			const std::string schema,
-			const std::string tablename,
-		){
+			const std::string tablename
+		) -> crow::response{
 			auto json = crow::json::load(req.body);
-			std::string out = execFormat(0, json["dbthings"].s(), getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, 0);
-			return crow::response(resnum ? 200 : 400, out);
+			return execFormat(poolDB, 1, json, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, 0);
 		});
 
 		CROW_ROUTE(app, "/delete/<string>/<string>/<int>").methods("POST"_method)([](
 			const crow::request& req,
 			const std::string schema,
 			const std::string tablename,
-			const int row,
-		){
-			// json[dbthings][set_configs]
+			const int row
+		) -> crow::response{
 			auto json = crow::json::load(req.body);
-			std::string out = "-";
-			std::string transedschema = getTextWithJustChars(schema);
-			std::string transedtable = getTextWithJustChars(tablename);
-			bool resnum = json ? isJogosult(NC, json["token"].dump(), transedschema) : false;
-			if(resnum){	
-				out = execFormat(0, json["dbthings"].s(), transedschema, getTextWithJustChars(tablename), 0, 0, row);
-			}
-			return crow::response(resnum ? 200 : 400, out);
+			return execFormat(poolDB, 2, json, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, row);
 		});
 
-		CROW_ROUTE(app, "/update/<string>/<string>").methods("POST"_method)([](
+		CROW_ROUTE(app, "/update/<string>/<string>/<int>").methods("POST"_method)([](
 			const crow::request& req,
 			const std::string schema,
 			const std::string tablename,
-			// json[dbthings][col&values]
-			// json[dbthings][set_configs]
+			const int row
+		) -> crow::response{
 			auto json = crow::json::load(req.body);
-			std::string out = "-";
-			std::string transedschema = getTextWithJustChars(schema);
-			std::string transedtable = getTextWithJustChars(tablename);
-			bool resnum = json ? isJogosult(NC, json["token"].dump(), transedschema) : false;
-			if(resnum){
-				out = execFormat(0, json["dbthings"].s(), transedschema, getTextWithJustChars(tablename), 0, 0, row);
-			}
-			return crow::response(resnum ? 200 : 400, out);
+			return execFormat(poolDB, 3, json, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, row);
 		});
-  //      C.disconnect();
+//      C.disconnect();
     } else {
         cout << "Can't open database" << endl;
         return 1;
