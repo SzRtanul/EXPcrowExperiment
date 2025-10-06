@@ -59,8 +59,8 @@ inline std::string getSQLQuery(
 		if(columnnames){
 			textout = sign ? std::string("T") + static_cast<char>(R.columns()) + "" : "";
 			for (int i = 0; i < R.columns(); ++i) {
-				textout += R.column_name(i);// + columnsep;
-				rownums += (textout.length() - 1) + ";";
+				textout += R.column_name(i) + columnsep;
+//				rownums += (textout.length() - 1) + ";";
 			}
 			textout += recordsep;
 		}
@@ -69,7 +69,7 @@ inline std::string getSQLQuery(
 	        for(int i = 0; i < row.size(); i++){
 	          	// textout += "valami";
 			  	textout += !row[i].is_null() ? getWithoutSpace(row[i].as<std::string>()) + columnsep : "null" + columnsep;
-				rownums += (textout.length() - 1) + ";";
+				//rownums += (textout.length() - 1) + ";";
         	}
         	textout = textout.length() > recordsep.length() ? textout + recordsep : "";
 		}
@@ -133,7 +133,7 @@ inline std::string getSetConfigs(int &i, std::string text){
 		}
 		else{
 			int limn = i + text[i];
-			for(i=i+1; i < limn && text[i] != '\0'; i++){
+			for(i = i + 1; i < limn && text[i] != '\0'; i++){
 				out += text[i];
 				if(text[i] == '\'') out += '\'';
 			}
@@ -154,8 +154,8 @@ inline std::string getUpdateSets(int &i, std::string text){
 			}
 		}
 		else{
-			int limn = i + text[i]+text[i+1]*256; //For cicla
-			for(i=i+1; i < limn && text[i] != '\0'; i++){
+			int limn = i + 1 < text.length() ? i + text[i] + text[i + 1] * 256 : i; //For cicla
+			for(i = limn != i ? i + 2 : text.length(); i < limn && text[i] != '\0'; i++){
 				out += text[i];
 				if(text[i] == '\'') out += '\'';
 			}
@@ -176,8 +176,8 @@ inline std::string insertColumns(int &i, std::string text){
 inline std::string insertValues(int &i, std::string text){
 	std::string out = "'";
 	for(; text[i] != '\0'; i++){
-		int limn = i + text[i]+text[i+1]*256;
-		for(i=i+2; i < limn && text[i] != '\0'; i++){
+		int limn = i + 1 < text.length() ? i + text[i] + text[i + 1] * 256 : i;
+		for(i = i = limn != i ? i + 2 : text.length(); i < limn && text[i] != '\0'; i++){
 			out += text[i];
 			if(text[i] == '\'') out += '\'';
 		}
@@ -194,6 +194,7 @@ inline bool setSessionValues(std::shared_ptr<pqxx::connection> NC, int i, std::s
 std::string metha(int index, int outi, std::string dbthings, std::string transedschema, std::string transedtablename, int offset, int limit, int row){
 	std::array<std::string, 4> queries = {
 		//select
+		"select * from "+ transedschema + "." + transedtablename + ";",
 		"select * from "+ transedschema + "." + transedtablename + " OFFSET " + std::to_string(offset) + " LIMIT " + std::to_string(limit) + ";",
 		//insert
 		"insert into " + transedschema + "." + transedtablename + "(" + insertColumns(outi, dbthings) + ") values (" + insertValues(outi, dbthings) + ");",
@@ -248,6 +249,18 @@ int entraceMethod(
     if (C.is_open()) {
         cout << "Opened database successfully: " << C.dbname() << endl;
 		
+		CROW_ROUTE(app, "/gettable/<string>/<string>").methods("POST"_method)([](
+			const crow::request& req,
+			const std::string schema,
+			const std::string tablename,
+		) -> crow::response{
+			// json[dbthings][set_configs]
+			auto json = crow::json::load(req.body);
+			std::string transedschema = getTextWithJustChars(schema);
+			return execFormat(poolDB, 0, json, transedschema, getTextWithJustChars(tablename), 0, 0, 0);	
+			
+		});
+		
 		CROW_ROUTE(app, "/gettable/<string>/<string>/<int>/<int>").methods("POST"_method)([](
 			const crow::request& req,
 			const std::string schema,
@@ -258,7 +271,7 @@ int entraceMethod(
 			// json[dbthings][set_configs]
 			auto json = crow::json::load(req.body);
 			std::string transedschema = getTextWithJustChars(schema);
-			return execFormat(poolDB, 0, json, transedschema, getTextWithJustChars(tablename), offset, limit, 0);	
+			return execFormat(poolDB, 1, json, transedschema, getTextWithJustChars(tablename), offset, limit, 0);	
 			
 		});
 
@@ -268,7 +281,7 @@ int entraceMethod(
 			const std::string tablename
 		) -> crow::response{
 			auto json = crow::json::load(req.body);
-			return execFormat(poolDB, 1, json, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, 0);
+			return execFormat(poolDB, 2, json, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, 0);
 		});
 
 		CROW_ROUTE(app, "/delete/<string>/<string>/<int>").methods("POST"_method)([](
@@ -278,7 +291,7 @@ int entraceMethod(
 			const int row
 		) -> crow::response{
 			auto json = crow::json::load(req.body);
-			return execFormat(poolDB, 2, json, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, row);
+			return execFormat(poolDB, 3, json, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, row);
 		});
 
 		CROW_ROUTE(app, "/update/<string>/<string>/<int>").methods("POST"_method)([](
@@ -288,7 +301,7 @@ int entraceMethod(
 			const int row
 		) -> crow::response{
 			auto json = crow::json::load(req.body);
-			return execFormat(poolDB, 3, json, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, row);
+			return execFormat(poolDB, 4, json, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, row);
 		});
 //      C.disconnect();
     } else {
