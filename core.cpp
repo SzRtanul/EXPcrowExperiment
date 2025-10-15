@@ -111,7 +111,7 @@ inline bool isJogosult(std::shared_ptr<pqxx::connection> NC, std::string gnndump
 
 
 inline bool isCsChar(char CharC){
-	return ((unsigned)CharC - 65 < 58 && (unsigned)CharC - 91 > 5) || CharC == 95;
+	return ((((unsigned)CharC - 65)) < 58 && (((unsigned)CharC - 91) > 4)) || CharC == 95;
 }
 
 inline std::string getTextWithJustChars(std::string text){
@@ -122,7 +122,7 @@ inline std::string getTextWithJustChars(std::string text){
 	return out;
 }
 
-inline std::string getSetConfigs(int &i, std::string text){
+inline std::string getSetConfigs(int &i, std::string &text){
 	bool change = true;
 	std::string out = text[0] != '\0' ?  "SELECT set_config('custom." : "";
 	for(int i = 0; i != '\0';i++){
@@ -144,7 +144,41 @@ inline std::string getSetConfigs(int &i, std::string text){
 	return out;
 }
 
-inline std::string getUpdateSets(int &i, std::string text){
+
+inline std::string insertColumns(int &i, std::string &text){
+	std::cout << "PlatonC: " << i << std::endl;
+	std::cout << text << std::endl;
+	std::string out = "";
+	for(; text[i] != '\0'; i++){
+		if(isCsChar(text[i]) || text[i] == ',') out += text[i];
+	}
+	return out;
+}
+
+/*union strLength{
+	int len;
+	char lenc[4];
+}
+*/
+
+inline std::string getTxTParam(int &i, std::string &text){
+	int limn = 0;
+	std::string out = "'";
+	if(i + 4 < text.length()) memcpy(&limn, &text[i], 4);
+	i += 4;
+	limn += i;
+	std::cout << "TLL1: " << limn << ":" << text.length() << ":" << i << std::endl;
+	std::cout << "TLL2: " << limn << ":" << text.length() << ":" << i << std::endl;
+	for(i = limn <= text.length() ? i : limn; i < limn; i++){
+		std::cout << "K1: " << text[i] << std::endl;
+		out += text[i];
+		if(text[i] == '\'') out += '\'';
+	}
+	out += "'";
+	return out;
+}
+
+inline std::string getUpdateSets(int &i, std::string &text){
 	std::string out = "SET ";
 	bool change = true;
 	for(; text[i] != '\0'; i++){
@@ -154,56 +188,29 @@ inline std::string getUpdateSets(int &i, std::string text){
 			}
 		}
 		else{
-			int limn = i + 1 < text.length() ? i + text[i] + text[i + 1] * 256 : i; //For cicla
-			for(i = limn != i ? i + 2 : text.length(); i < limn && text[i] != '\0'; i++){
-				out += text[i];
-				if(text[i] == '\'') out += '\'';
-			}
+			out += getTxTParam(i, text); 
 		}
 		out+=change ? "='" : "'\n";
 	}
 	return out;
 }
 
-inline std::string insertColumns(int &i, std::string text){
-	std::cout << "PlatonC: " << i << std::endl;
-	std::cout << text << std::endl;
-	std::string out = "";
-	for(; text[i] != '\0'; i++){
-		/*if(isCsChar(text[i]) || text[i] == ',') */out += text[i];
-	}
-	return out;
-}
-
-/*union strLength{
-	int len;
-	char lenc[4];
-}*/
-
-inline std::string insertValues(int &i, std::string text){
+inline std::string insertValues(int &i, std::string &text){
 	i++;
 	std::cout << "PlatonV: " << i << std::endl;
-	std::string out = "'";
-	int limn = 0;
-	std::cout << "TLL0: " << limn << ":" << text.length() << ":" << i << std::endl;
-	if(i + 4 < text.length()) memcpy(&limn, &text[i], 4);
-	limn += i;
-	std::cout << "TLL1: " << limn << ":" << text.length() << ":" << i << std::endl;
-	std::cout << "TLL2: " << limn << ":" << text.length() << ":" << i << std::endl;
-	for(i = limn < text.length() ? i : limn; i < limn; i++){
-		std::cout << "K1" << std::endl;
-		out += text[i];
-		if(text[i] == '\'') out += '\'';
+	std::string out = "";
+	for(; i < text.length() && text[i] != '\0'; i++){
+		i++;
+		out += getTxTParam(i, text) + ",";
 	}
-	out += "'";
-	std::cout << "TLL3: " << limn << ":" << text.length() << ":" << i << std::endl;
+	out.resize(out.length() - 1);
 	return out;
 }
 
-inline bool setSessionValues(std::shared_ptr<pqxx::connection> NC, int i, std::string text){
-		std::string hh =  getSetConfigs(i, text);
-		std::string qre = getSQLQuery(NC, hh.c_str(), "", "", false, false); // Get check 1.
-		return qre.length() > 0 ? qre[0] == 't' : 0;
+inline bool setSessionValues(std::shared_ptr<pqxx::connection> NC, int i, std::string &text){
+	std::string hh =  getSetConfigs(i, text);
+	std::string qre = getSQLQuery(NC, hh.c_str(), "", "", false, false); // Get check 1.
+	return qre.length() > 0 ? qre[0] == 't' : 0;
 }
 
 std::string metha(int index, int outi, std::string dbthings, std::string transedschema, std::string transedtablename, int offset, int limit, int row){
