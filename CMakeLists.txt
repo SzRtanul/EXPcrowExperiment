@@ -17,6 +17,5 @@ foreach(CONF ${CONFIGS})
     target_compile_definitions(${NAME} PRIVATE CONFIG_FILE="${CONF}")
 endforeach()
 
-# add_executable(crowTestExample test.cpp)
-# target_include_directories(CrowTestExample PUBLIC ${INCLUDE_PATHS})
-# target_link_libraries(crowTestExample PRIVATE pqxx)
+add_executable(Test test.cpp)
+target_link_libraries(Test PRIVATE core)

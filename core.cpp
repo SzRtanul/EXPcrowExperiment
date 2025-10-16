@@ -1,4 +1,5 @@
 #include "core.h"
+#include "test.h"
 #include "crow.h"
 #include <cstring>
 #include "crow/middlewares/cors.h"
@@ -127,7 +128,7 @@ inline std::string getSetConfigs(int &i, std::string &text){
 	std::string out = text[0] != '\0' ?  "SELECT set_config('custom." : "";
 	for(int i = 0; i != '\0';i++){
 		if(change){
-			for(; text[i] != '='; i++){
+			for(; text[i] > 1; i++){
 				if(isCsChar(text[i])) out += text[i];
 			}
 		}
@@ -163,35 +164,50 @@ inline std::string insertColumns(int &i, std::string &text){
 
 inline std::string getTxTParam(int &i, std::string &text){
 	int limn = 0;
-	std::string out = "'";
+	std::string out = "\'";
 	if(i + 4 < text.length()) memcpy(&limn, &text[i], 4);
 	i += 4;
 	limn += i;
 	std::cout << "TLL1: " << limn << ":" << text.length() << ":" << i << std::endl;
+	if(limn > text.length()){
+		limn = text.length();
+//		text[limn-1] = '\0';
+	}
 	std::cout << "TLL2: " << limn << ":" << text.length() << ":" << i << std::endl;
-	for(i = limn <= text.length() ? i : limn; i < limn; i++){
+	for(; i < limn; i++){
 		std::cout << "K1: " << text[i] << std::endl;
 		out += text[i];
 		if(text[i] == '\'') out += '\'';
 	}
-	out += "'";
+	out += "\'";
 	return out;
 }
 
 inline std::string getUpdateSets(int &i, std::string &text){
+	std::cout << "YEE: " << text << std::endl;
 	std::string out = "SET ";
 	bool change = true;
 	for(; text[i] != '\0'; i++){
+		std::cout << "YEin" << std::endl;
 		if(change){
-			for(;text[i] != '='; i++){
+			std::cout << "YEcin: " << i << std::endl;
+			for(;text[i] > 1; i++){
+				std::cout << "YEcine: " << i << std::endl;
 				if(isCsChar(text[i])) out += text[i];
 			}
 		}
 		else{
+			std::cout << "YEout: " << i << std::endl;
+			i++;
 			out += getTxTParam(i, text); 
+			std::cout << i << std::endl;
 		}
-		out+=change ? "='" : "'\n";
+		std::cout << "YEt" << i << std::endl;
+		out += change ? "=" : ",\n";
+		change = !change;
 	}
+	std::cout << "YEr: " << i << ": " << out << std::endl;
+	out.resize(out.length() - 2);
 	return out;
 }
 
@@ -217,11 +233,13 @@ std::string metha(int index, int outi, std::string dbthings, std::string transed
 	std::string inscol = "";
 	std::string insval = "";
 	std::string upsets = "";
+	std::cout << "Zsindex: " << index << std::endl;
 	if(index == 2){
 		inscol = insertColumns(outi, dbthings);
 		insval = insertValues(outi, dbthings);
 	}
 	else if(index == 4){
+		outi++;
 		upsets = getUpdateSets(outi, dbthings);
 	}
 	std::array<std::string, 5> queries = {
@@ -229,12 +247,12 @@ std::string metha(int index, int outi, std::string dbthings, std::string transed
 		"select * from "+ transedschema + "." + transedtablename + ";",
 		"select * from "+ transedschema + "." + transedtablename + " OFFSET " + std::to_string(offset) + " LIMIT " + std::to_string(limit) + ";",
 		//insert
-		"insert into " + transedschema + "." + transedtablename + "(" + inscol + ") values (" + insval + ");",
+		"insert into " + transedschema + "." + transedtablename + " (" + inscol + ") values (" + insval + ");",
 		//delete
 		"delete from "+ transedschema + "." + transedtablename +
-			"where " + transedschema + "." + transedtablename+".id = " + std::to_string(row) + ";",
+			"\nwhere " + transedschema + "." + transedtablename+".id = " + std::to_string(row) + ";",
 		//update
-		"update "+ transedschema + "." + transedtablename + "\n" + upsets +
+		"update " + transedschema + "." + transedtablename + "\n" + upsets +
 			"\nwhere " + transedschema + "." + transedtablename+".id = " + std::to_string(row) + ";"
 	};
 	return queries[index];
