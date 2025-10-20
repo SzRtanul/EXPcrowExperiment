@@ -190,16 +190,17 @@ inline std::string getUpdateSets(int &i, std::string &text){
 	for(; text[i] != '\0'; i++){
 		std::cout << "YEin" << std::endl;
 		if(change){
-			std::cout << "YEcin: " << i << std::endl;
+			std::cout << "YEcin: " << i << " Ch: " << text[i] << " - " << (unsigned)text[i] << std::endl;
 			for(;text[i] > 1; i++){
-				std::cout << "YEcine: " << i << std::endl;
+				std::cout << "YEcine: " << i << " Ch: " << text[i] << " - " << (unsigned)text[i] << std::endl;
 				if(isCsChar(text[i])) out += text[i];
 			}
 		}
 		else{
 			std::cout << "YEout: " << i << std::endl;
 			i++;
-			out += getTxTParam(i, text); 
+			out += getTxTParam(i, text);
+			i--;
 			std::cout << i << std::endl;
 		}
 		std::cout << "YEt" << i << std::endl;
