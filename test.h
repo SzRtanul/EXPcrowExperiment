@@ -1,5 +1,5 @@
 #pragma once
 #include <iostream>
 
-std::string getUpdateSets(int &i, std::string &text);
-std::string insertValues(std::string &insval, int &i, std::string &text);
+bool getUpdateSets(std::string_view &out, int &i, std::string &text);
+bool insertValues(std::string_view &insval, int &i, std::string &text);

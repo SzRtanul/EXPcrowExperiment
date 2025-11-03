@@ -5,7 +5,7 @@ int main(){
 	int i = 0;
 	std::string text = "unult=f\x02\x00\x00\x00 0";
 	std::cout << "Origin: " << text << std::endl;
-	std::cout << getUpdateSets(i, text) << std::endl;
+//	std::cout << getUpdateSets(i, text) << std::endl;
 	std::cout << "Ez működik." << std::endl;
 	
 	i = 0;

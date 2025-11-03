@@ -183,39 +183,7 @@ inline std::string getTxTParam(int &i, std::string &text){
 	return out;
 }
 
-inline std::string getUpdateSets(int &i, std::string &text){
-	std::cout << "YEE: " << text << std::endl;
-	std::string out = "SET ";
-	bool change = true;
-	for(; text[i] != '\0'; i++){
-		std::cout << "YEin" << std::endl;
-		if(change){
-			std::cout << "YEcin: " << i << " Ch: " << text[i] << " - " << (unsigned)text[i] << std::endl;
-			for(;text[i] > 1; i++){
-				std::cout << "YEcine: " << i << " Ch: " << text[i] << " - " << (unsigned)text[i] << std::endl;
-				if(isCsChar(text[i])) out += text[i];
-			}
-		}
-		else{
-			std::cout << "YEout: " << i << std::endl;
-			i++;
-			out += getTxTParam(i, text);
-			i--;
-			std::cout << i << std::endl;
-		}
-		std::cout << "YEt" << i << std::endl;
-		out += change ? "=" : ",\n";
-		change = !change;
-	}
-	std::cout << "YEr: " << i << ": " << out << std::endl;
-	out.resize(out.length() - 2);
-	return out;
-}
-
-inline bool insertValues(std::string_view &insval, int &i, std::string &text){
-	int boole = 0;
-	std::cout << "PlatonV: " << i << std::endl;
-	int limn = 0;
+inline bool setLimn(std::string_view &out, int &boole, int &limn, int &i, std::string &text){
 	if(i + 4 < text.length()){
 		memcpy(&limn, &text[i], 4);
 		boole |= 1 << 2;
@@ -224,20 +192,72 @@ inline bool insertValues(std::string_view &insval, int &i, std::string &text){
 	std::cout << text << std::endl;
 	std::cout << "i: " << i << " Limn: " << limn << " Text.Length: " << text.length() << std::endl;
 	i += 4;	
-	int i2 = i;
-	limn += i;
+	//i2 = i;
 	std::bitset<32> z1(boole);
 	std::cout << z1 << std::endl;
 	
-	std::cout << "i2: " << i2 << " Limn: " << limn << " Text.Length: " << text.length() << std::endl;
-	if(limn > text.length()){
+	std::cout << "i: " << i << " Limn: " << limn << " Text.Length: " << text.length() << std::endl;
+	if(limn + i > text.length()){
 		boole &= 0xFFFFFFFB;
 		std::cout << "limn-problem" << std::endl;
+	}
+	else{
+		out = string_view(&text[i], limn);
+		limn += i;
 	}
 //	std::string out = "-";//"(";
 	std::cout << "Itt jársz" << std::endl;
 	std::bitset<32> z(boole);
 	std::cout << z << std::endl;
+	return true;
+}
+
+inline bool getUpdateSets(std::string_view &out, int &i, std::string &text){
+	std::cout << "YEE: " << text << std::endl;
+	//std::string out = "SET ";
+	bool change = true;
+	int boole = 0;
+	int limn = 0;
+	setLimn(out, boole, limn, i, text);
+	for(; text[i] < limn && ((boole >> 2) & 1); i++){
+		std::cout << "YEin" << std::endl;
+		if((boole >> 1) & 1){
+			std::cout << "YEcin: " << i << " Ch: " << text[i] << " - " << (unsigned)text[i] << std::endl;
+/*			for(;text[i] > 1; i++){
+				std::cout << "YEcine: " << i << " Ch: " << text[i] << " - " << (unsigned)text[i] << std::endl;
+*/			if(text[i] == '=') boole |= (1 << 1);
+			else if(!isCsChar(text[i])) boole &= 0xFFFFFFFB;
+//			}
+		}
+		else{
+			if(boole & 1){
+				for(; i < limn && (boole & 1); i++) if(text[i] == '\'') boole &= 0xFFFFFFFE; // inline for
+			}
+			else{
+				if(text[i] == '\'') boole |= 1;
+				else if (text[i] == ',') boole &= 0xFFFFFFFD;
+				else if (((unsigned)text[i] - 43) > 14 || text[i] != 'e' || text[i] != 'E') boole &= 0xFFFFFFFB;
+			}
+			std::cout << "YEout: " << i << std::endl;
+//			i++;
+//			out += getTxTParam(i, text);
+//			i--;
+			std::cout << i << std::endl;
+		}
+		std::cout << "YEt" << i << std::endl;
+//		out += change ? "=" : ",\n";
+//		change = !change;
+	}
+	std::cout << "YEr: " << i << ": " << out << std::endl;
+//	out.resize(out.length() - 2);
+	return ((boole >> 2) & 1);
+}
+
+inline bool insertValues(std::string_view &insval, int &i, std::string &text){
+	int boole = 0;
+	int limn = 0;
+	std::cout << "PlatonV: " << i << std::endl;
+	setLimn(insval, boole, limn, i, text);
 	for(; i < limn && (boole >> 2) & 1; i++){
 //		boole ^= (((((text[i] == ')') & 2)) ^ ((text[i] == '(') & 1)) << 2);
 		if(!((boole >> 1) & 1)){
@@ -256,7 +276,7 @@ inline bool insertValues(std::string_view &insval, int &i, std::string &text){
 			}
 		}
 		else{
-			if(text[i] == '\'')	boole &= 0xFFFFFFFD;
+			if(text[i] == '\'')	boole &= 0xFFFFFFFD; // inline for (?)
 		}
 		std::bitset<32> y(boole);
 		std::cout << y << std::endl;
@@ -264,7 +284,6 @@ inline bool insertValues(std::string_view &insval, int &i, std::string &text){
 	}
 	std::cout << "Itt jársz" << std::endl;
 //	out.resize(out.length() - 1);
-	insval = string_view(&text[i2], limn-i2);
 	return (boole >> 2) & 1;
 }
 
@@ -278,7 +297,7 @@ bool metha(std::string &out, int index, int outi, std::string dbthings, std::str
 	bool both = 1;
 	std::string inscol = "";
 	std::string_view insval = "";
-	std::string upsets = "";
+	std::string_view upsets = "";
 	std::cout << "Zsindex: " << index << std::endl;
 	if(index == 2){
 		int szamlal = 0;
@@ -290,9 +309,10 @@ bool metha(std::string &out, int index, int outi, std::string dbthings, std::str
 		both = szamlal == 1;
 	}
 	else if(index == 4){
-		outi++;
-		upsets = getUpdateSets(outi, dbthings);
-//		both = 1 1;
+		int szamlal = 0;
+		//outi++;
+		szamlal += getUpdateSets(upsets, outi, dbthings);
+		both = szamlal == 1;
 	}
 	if(both){
 		std::array<std::string, 5> queries = {
@@ -305,7 +325,7 @@ bool metha(std::string &out, int index, int outi, std::string dbthings, std::str
 			"delete from "+ transedschema + "." + transedtablename +
 				"\nwhere " + transedschema + "." + transedtablename+".id = " + std::to_string(row) + ";",
 			//update
-			"update " + transedschema + "." + transedtablename + "\n" + upsets +
+			"update " + transedschema + "." + transedtablename + "\nSET " + std::string(upsets) +
 				"\nwhere " + transedschema + "." + transedtablename+".id = " + std::to_string(row) + ";"
 		};
 		out = queries[index];
