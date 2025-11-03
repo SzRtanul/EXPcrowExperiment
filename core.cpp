@@ -212,16 +212,60 @@ inline std::string getUpdateSets(int &i, std::string &text){
 	return out;
 }
 
-inline std::string insertValues(int &i, std::string &text){
-	i++;
+inline bool insertValues(std::string_view &insval, int &i, std::string &text){
+	int boole = 0;
 	std::cout << "PlatonV: " << i << std::endl;
-	std::string out = "";
-	for(; i < text.length() && text[i] != '\0'; i++){
-		i++;
-		out += getTxTParam(i, text) + ",";
+	int limn = 0;
+	if(i + 4 < text.length()){
+		memcpy(&limn, &text[i], 4);
+		boole |= 1 << 2;
+		std::cout << "copy is succesful" << std::endl;
 	}
-	out.resize(out.length() - 1);
-	return out;
+	std::cout << text << std::endl;
+	std::cout << "i: " << i << " Limn: " << limn << " Text.Length: " << text.length() << std::endl;
+	i += 4;	
+	int i2 = i;
+	limn += i;
+	std::bitset<32> z1(boole);
+	std::cout << z1 << std::endl;
+	
+	std::cout << "i2: " << i2 << " Limn: " << limn << " Text.Length: " << text.length() << std::endl;
+	if(limn > text.length()){
+		boole &= 0xFFFFFFFB;
+		std::cout << "limn-problem" << std::endl;
+	}
+//	std::string out = "-";//"(";
+	std::cout << "Itt jársz" << std::endl;
+	std::bitset<32> z(boole);
+	std::cout << z << std::endl;
+	for(; i < limn && (boole >> 2) & 1; i++){
+//		boole ^= (((((text[i] == ')') & 2)) ^ ((text[i] == '(') & 1)) << 2);
+		if(!((boole >> 1) & 1)){
+			if(text[i] == '('){
+				boole |= 1;
+			}
+			else if(text[i] == ')'){
+				boole &= 0xFFFFFFFE;
+			}
+			else if(boole & 1){
+				if(text[i] == '\'') boole |= 1 << 1;
+				else if(text[i] == '(' || text[i] != ',') boole &= 0xFFFFFFFB;
+			}
+			else if(!(boole & 1)){
+				if(text[i] == ')' || text[i] != ',') boole &= 0xFFFFFFFB;
+			}
+		}
+		else{
+			if(text[i] == '\'')	boole &= 0xFFFFFFFD;
+		}
+		std::bitset<32> y(boole);
+		std::cout << y << std::endl;
+//		out += getTxTParam(i, text) + ",";
+	}
+	std::cout << "Itt jársz" << std::endl;
+//	out.resize(out.length() - 1);
+	insval = string_view(&text[i2], limn-i2);
+	return (boole >> 2) & 1;
 }
 
 inline bool setSessionValues(std::shared_ptr<pqxx::connection> NC, int i, std::string &text){
@@ -230,46 +274,66 @@ inline bool setSessionValues(std::shared_ptr<pqxx::connection> NC, int i, std::s
 	return qre.length() > 0 ? qre[0] == 't' : 0;
 }
 
-std::string metha(int index, int outi, std::string dbthings, std::string transedschema, std::string transedtablename, int offset, int limit, int row){
+bool metha(std::string &out, int index, int outi, std::string dbthings, std::string transedschema, std::string transedtablename, int offset, int limit, int row){
+	bool both = 1;
 	std::string inscol = "";
-	std::string insval = "";
+	std::string_view insval = "";
 	std::string upsets = "";
 	std::cout << "Zsindex: " << index << std::endl;
 	if(index == 2){
+		int szamlal = 0;
+		std::cout << "DBThings: " << dbthings << "a\0\0a" << std::endl;
 		inscol = insertColumns(outi, dbthings);
-		insval = insertValues(outi, dbthings);
+		outi += 1;
+		szamlal += insertValues(insval, outi, dbthings);
+		std::cout << szamlal << std::endl;
+		both = szamlal == 1;
 	}
 	else if(index == 4){
 		outi++;
 		upsets = getUpdateSets(outi, dbthings);
+//		both = 1 1;
 	}
-	std::array<std::string, 5> queries = {
-		//select
-		"select * from "+ transedschema + "." + transedtablename + ";",
-		"select * from "+ transedschema + "." + transedtablename + " OFFSET " + std::to_string(offset) + " LIMIT " + std::to_string(limit) + ";",
-		//insert
-		"insert into " + transedschema + "." + transedtablename + " (" + inscol + ") values (" + insval + ");",
-		//delete
-		"delete from "+ transedschema + "." + transedtablename +
-			"\nwhere " + transedschema + "." + transedtablename+".id = " + std::to_string(row) + ";",
-		//update
-		"update " + transedschema + "." + transedtablename + "\n" + upsets +
-			"\nwhere " + transedschema + "." + transedtablename+".id = " + std::to_string(row) + ";"
-	};
-	return queries[index];
+	if(both){
+		std::array<std::string, 5> queries = {
+			//select
+			"select * from "+ transedschema + "." + transedtablename + ";",
+			"select * from "+ transedschema + "." + transedtablename + " OFFSET " + std::to_string(offset) + " LIMIT " + std::to_string(limit) + ";",
+			//insert
+			"insert into " + transedschema + "." + transedtablename + " (" + inscol + ") values " + std::string(insval) + ";",
+			//delete
+			"delete from "+ transedschema + "." + transedtablename +
+				"\nwhere " + transedschema + "." + transedtablename+".id = " + std::to_string(row) + ";",
+			//update
+			"update " + transedschema + "." + transedtablename + "\n" + upsets +
+				"\nwhere " + transedschema + "." + transedtablename+".id = " + std::to_string(row) + ";"
+		};
+		out = queries[index];
+	}
+	return both;
 }
 
-inline crow::response execFormat(PoolDBConnection& poolDB, int caseindex, crow::json::rvalue json, std::string schemaname, std::string tablename, int offset, int limit, int row)
-{
+inline crow::response execFormat(
+	PoolDBConnection& poolDB, 
+	int caseindex, 
+	crow::json::rvalue json, 
+	std::string schemaname, 
+	std::string tablename, 
+	int offset, 
+	int limit, 
+	int row
+){
 	std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
 	int outi = 0;
 	std::string out = "-";
 	bool resnum = json ? isJogosult(NC, json["token"].s(), schemaname) : false;
 	if(resnum){
 		std::string dbthings = json["dbthings"].s();
+		std::cout << "DBThings: " << dbthings << std::endl;
 		setSessionValues(NC, outi, dbthings);
-		std::string queryText = metha(caseindex, outi, dbthings, schemaname, tablename, offset, limit, row);
-		out = getSQLQuery(NC, queryText.c_str());
+		std::string queryText = "";
+		out = metha(queryText, caseindex, outi, dbthings, schemaname, tablename, offset, limit, row) ? 
+		 	getSQLQuery(NC, queryText.c_str()) : "-";
 		poolDB.giveBackConnect(NC);
 	}
 	return crow::response(resnum ? 200 : 400, out);

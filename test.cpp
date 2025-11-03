@@ -11,6 +11,6 @@ int main(){
 	i = 0;
 	text = "f\x03\x00\x00\x00nev,\x05\x00\x00\x00 atle,\x05\x00\x00\x00 atla";
 	std::cout << "Origin: " << text << std::endl;
-	std::cout << insertValues(i, text) << std::endl;
+//	std::cout << insertValues(i, text) << std::endl;
 	return 0;
 }
