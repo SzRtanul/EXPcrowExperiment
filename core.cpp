@@ -98,18 +98,17 @@ inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char*
 }
 
 inline bool isJogosult(std::shared_ptr<pqxx::connection> NC, std::string gnndump, std::string keynames){
-		std::string hh ="SELECT set_config('app.token', '"+ gnndump +"', false);\n" +
-		"" +
-		"" +
-		""  
-//		"select * from sysadmin.hasaccesstogroupview(" + gnndump + std::string(", '\?',  '") + keynames + "')"
+		std::string hh =
+			"SELECT set_config('app.token', '"+ gnndump +"', false);\n" +
+//			"SELECT set_config('app.service, '" + "" + "', false);\n')" +
+			"" +
+			""  
+//			"select * from sysadmin.hasaccesstogroupview(" + gnndump + std::string(", '\?',  '") + keynames + "')"
 		;
 
 		std::string qre = getSQLQuery(NC, hh.c_str(), "", "", false, false); // Get check 1.
 		return true;//qre.length() > 0 ? qre[0] == 't' : 0;
 }
-
-
 
 inline bool isCsChar(char CharC){
 	return ((((unsigned)CharC - 65)) < 58 && (((unsigned)CharC - 91) > 4)) || CharC == 95;
@@ -122,29 +121,6 @@ inline std::string getTextWithJustChars(std::string text){
 	}
 	return out;
 }
-
-inline std::string getSetConfigs(int &i, std::string &text){
-	bool change = true;
-	std::string out = text[0] != '\0' ?  "SELECT set_config('custom." : "";
-	for(int i = 0; i != '\0';i++){
-		if(change){
-			for(; text[i] > 1; i++){
-				if(isCsChar(text[i])) out += text[i];
-			}
-		}
-		else{
-			int limn = i + text[i];
-			for(i = i + 1; i < limn && text[i] != '\0'; i++){
-				out += text[i];
-				if(text[i] == '\'') out += '\'';
-			}
-		}
-		out += change ? "', '" : "');\nSELECT set_config('custom.";
-		change = !change;
-	}
-	return out;
-}
-
 
 inline std::string insertColumns(int &i, std::string &text){
 	std::cout << "PlatonC: " << i << std::endl;
@@ -161,27 +137,6 @@ inline std::string insertColumns(int &i, std::string &text){
 	char lenc[4];
 }
 */
-
-inline std::string getTxTParam(int &i, std::string &text){
-	int limn = 0;
-	std::string out = "\'";
-	if(i + 4 < text.length()) memcpy(&limn, &text[i], 4);
-	i += 4;
-	limn += i;
-	std::cout << "TLL1: " << limn << ":" << text.length() << ":" << i << std::endl;
-	if(limn > text.length()){
-		limn = text.length();
-//		text[limn-1] = '\0';
-	}
-	std::cout << "TLL2: " << limn << ":" << text.length() << ":" << i << std::endl;
-	for(; i < limn; i++){
-		std::cout << "K1: " << text[i] << std::endl;
-		out += text[i];
-		if(text[i] == '\'') out += '\'';
-	}
-	out += "\'";
-	return out;
-}
 
 inline bool setLimn(std::string_view &out, int &boole, int &limn, int &i, std::string &text){
 	if(i + 4 < text.length()){
@@ -212,6 +167,10 @@ inline bool setLimn(std::string_view &out, int &boole, int &limn, int &i, std::s
 	return true;
 }
 
+inline bool isInNumber(char &ch){
+	return ((unsigned)ch - 42) < 16 || ch == 'e' || ch == 'E';
+}
+
 inline bool getUpdateSets(std::string_view &out, int &i, std::string &text){
 	std::cout << "YEE: " << text << std::endl;
 	//std::string out = "SET ";
@@ -236,20 +195,14 @@ inline bool getUpdateSets(std::string_view &out, int &i, std::string &text){
 			else{
 				if(text[i] == '\'') boole |= 1;
 				else if (text[i] == ',') boole &= 0xFFFFFFFD;
-				else if (((unsigned)text[i] - 43) > 14 || text[i] != 'e' || text[i] != 'E') boole &= 0xFFFFFFFB;
+				else if (!isInNumber(text[i])) boole &= 0xFFFFFFFB;
 			}
 			std::cout << "YEout: " << i << std::endl;
-//			i++;
-//			out += getTxTParam(i, text);
-//			i--;
 			std::cout << i << std::endl;
 		}
 		std::cout << "YEt" << i << std::endl;
-//		out += change ? "=" : ",\n";
-//		change = !change;
 	}
 	std::cout << "YEr: " << i << ": " << out << std::endl;
-//	out.resize(out.length() - 2);
 	return ((boole >> 2) & 1);
 }
 
@@ -280,17 +233,27 @@ inline bool insertValues(std::string_view &insval, int &i, std::string &text){
 		}
 		std::bitset<32> y(boole);
 		std::cout << y << std::endl;
-//		out += getTxTParam(i, text) + ",";
 	}
 	std::cout << "Itt jársz" << std::endl;
-//	out.resize(out.length() - 1);
 	return (boole >> 2) & 1;
 }
 
-inline bool setSessionValues(std::shared_ptr<pqxx::connection> NC, int i, std::string &text){
-	std::string hh =  getSetConfigs(i, text);
-	std::string qre = getSQLQuery(NC, hh.c_str(), "", "", false, false); // Get check 1.
-	return qre.length() > 0 ? qre[0] == 't' : 0;
+inline bool methValues(std::string_view &insval, int &i, std::string &text){
+	int boole=0;
+	int limn = 0;
+	setLimn(insval, boole, limn, i, text);
+	for(; i < limn && (boole >> 2) & 1; i++){
+		if(boole & 1){
+			for(; i < limn && (boole & 1); i++) if(text[i] == '\'') boole &= 0xFFFFFFFE; // inline for
+		}
+		else{
+			if(text[i] == '\'') boole |= 1;
+			else if (!isInNumber(text[i])) boole &= 0xFFFFFFFB;
+		}
+		std::cout << "YEout: " << i << std::endl;
+		std::cout << i << std::endl;
+	}
+	return (boole >> 2) & 1;
 }
 
 bool metha(std::string &out, int index, int outi, std::string dbthings, std::string transedschema, std::string transedtablename, int offset, int limit, int row){
@@ -299,7 +262,13 @@ bool metha(std::string &out, int index, int outi, std::string dbthings, std::str
 	std::string_view insval = "";
 	std::string_view upsets = "";
 	std::cout << "Zsindex: " << index << std::endl;
-	if(index == 2){
+	if((unsigned)index - 5 < 2){
+		int szamlal = 0;
+		 szamlal += methValues(insval, outi, dbthings);
+		 std::cout << szamlal << std::endl;
+		 both = szamlal == 1;
+	}
+	else if(index == 2){
 		int szamlal = 0;
 		std::cout << "DBThings: " << dbthings << "a\0\0a" << std::endl;
 		inscol = insertColumns(outi, dbthings);
@@ -315,7 +284,7 @@ bool metha(std::string &out, int index, int outi, std::string dbthings, std::str
 		both = szamlal == 1;
 	}
 	if(both){
-		std::array<std::string, 5> queries = {
+		std::array<std::string, 7> queries = {
 			//select
 			"select * from "+ transedschema + "." + transedtablename + ";",
 			"select * from "+ transedschema + "." + transedtablename + " OFFSET " + std::to_string(offset) + " LIMIT " + std::to_string(limit) + ";",
@@ -326,7 +295,9 @@ bool metha(std::string &out, int index, int outi, std::string dbthings, std::str
 				"\nwhere " + transedschema + "." + transedtablename+".id = " + std::to_string(row) + ";",
 			//update
 			"update " + transedschema + "." + transedtablename + "\nSET " + std::string(upsets) +
-				"\nwhere " + transedschema + "." + transedtablename+".id = " + std::to_string(row) + ";"
+				"\nwhere " + transedschema + "." + transedtablename+".id = " + std::to_string(row) + ";",
+			"select " + transedschema + "." + transedtablename + " (" + std::string(insval) + ");", // Method call 1
+			"select * from " + transedschema + "." + transedtablename + " (" + std::string(insval) + ");", // Method call 2
 		};
 		out = queries[index];
 	}
@@ -350,7 +321,7 @@ inline crow::response execFormat(
 	if(resnum){
 		std::string dbthings = json["dbthings"].s();
 		std::cout << "DBThings: " << dbthings << std::endl;
-		setSessionValues(NC, outi, dbthings);
+//		setSessionValues(NC, outi, dbthings);
 		std::string queryText = "";
 		out = metha(queryText, caseindex, outi, dbthings, schemaname, tablename, offset, limit, row) ? 
 		 	getSQLQuery(NC, queryText.c_str()) : "-";
@@ -368,7 +339,6 @@ int entraceMethod(
 	std::string postgresDBpassword, 
 	std::string postgresDBport, 
 	std::string serviceDBName
-
 ){
 //	static PoolDBConnection poolOldDB("dbname=testdb3 user=postgres password=test123 hostaddr=127.0.0.1 port=5432", 15, 50);
 	static PoolDBConnection poolDB(
@@ -436,6 +406,24 @@ int entraceMethod(
 		) -> crow::response{
 			auto json = crow::json::load(req.body);
 			return execFormat(poolDB, 4, json, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, row);
+		});
+		
+		CROW_ROUTE(app, "/methscal/<string>/<string>").methods("POST"_method)([](
+			const crow::request& req,
+			const std::string schema,
+			const std::string tablename
+		) -> crow::response{
+			auto json = crow::json::load(req.body);
+			return execFormat(poolDB, 5, json, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, 0);
+		});
+		
+		CROW_ROUTE(app, "/meth/<string>/<string>").methods("POST"_method)([](
+			const crow::request& req,
+			const std::string schema,
+			const std::string tablename
+		) -> crow::response{
+			auto json = crow::json::load(req.body);
+			return execFormat(poolDB, 6, json, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, 0);
 		});
 //      C.disconnect();
     } else {

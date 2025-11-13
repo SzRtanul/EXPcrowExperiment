@@ -8,7 +8,7 @@ target_link_directories(core PUBLIC /usr/lib)
 target_link_libraries(core PUBLIC pqxx)
 message("EEEEEEEEEEEEEEEEE")
 
-file(GLOB CONFIGS "../ConfigsForCrowBackend/*.json")
+file(GLOB CONFIGS "../ConfigsForCrowBackend/settingsjson/*.json")
 foreach(CONF ${CONFIGS})
 	message("Messüge: ----")
 	get_filename_component(NAME ${CONF} NAME_WE)
