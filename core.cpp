@@ -273,7 +273,7 @@ bool metha(std::string &out, int index, int outi, std::string dbthings, std::str
 		std::cout << "DBThings: " << dbthings << "a\0\0a" << std::endl;
 		inscol = insertColumns(outi, dbthings);
 		outi += 1;
-		szamlal += insertValues(insval, outi, dbthings);
+		szamlal += methValues(insval, outi, dbthings);
 		std::cout << szamlal << std::endl;
 		both = szamlal == 1;
 	}
@@ -289,7 +289,7 @@ bool metha(std::string &out, int index, int outi, std::string dbthings, std::str
 			"select * from "+ transedschema + "." + transedtablename + ";",
 			"select * from "+ transedschema + "." + transedtablename + " OFFSET " + std::to_string(offset) + " LIMIT " + std::to_string(limit) + ";",
 			//insert
-			"insert into " + transedschema + "." + transedtablename + " (" + inscol + ") values " + std::string(insval) + ";",
+			"insert into " + transedschema + "." + transedtablename + " (" + inscol + ") values (" + std::string(insval) + ");",
 			//delete
 			"delete from "+ transedschema + "." + transedtablename +
 				"\nwhere " + transedschema + "." + transedtablename+".id = " + std::to_string(row) + ";",
