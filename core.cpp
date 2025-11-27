@@ -241,6 +241,7 @@ inline bool insertValues(std::string_view &insval, int &i, std::string &text){
 inline bool methValues(std::string_view &insval, int &i, std::string &text){
 	int boole=0;
 	int limn = 0;
+	const char* nll = "null";
 	setLimn(insval, boole, limn, i, text);
 	for(; i < limn && (boole >> 2) & 1; i++){
 		if(boole & 1){
@@ -248,6 +249,14 @@ inline bool methValues(std::string_view &insval, int &i, std::string &text){
 		}
 		else{
 			if(text[i] == '\'') boole |= 1;
+			else if(text[i] == 'n'){
+				i++;
+				int j = 1;
+				for(; j < 4 && i < limn && !((boole >> 3) & 1); j++, i++){
+					if(text[i] != nll[j]) boole |= (1<<3);
+				}
+				if(j < 4) boole &= 0xFFFFFFFB;
+			} 
 			else if (!isInNumber(text[i])) boole &= 0xFFFFFFFB;
 		}
 		std::cout << "YEout: " << i << std::endl;
