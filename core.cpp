@@ -148,6 +148,8 @@ inline bool setLimn(std::string_view &out, int &boole, int &limn, int &i, std::s
 	std::cout << "i: " << i << " Limn: " << limn << " Text.Length: " << text.length() << std::endl;
 	i += 4;	
 	//i2 = i;
+	std::bitset<32> z0(limn);
+	std::cout << z0 << std::endl;
 	std::bitset<32> z1(boole);
 	std::cout << z1 << std::endl;
 	
@@ -180,8 +182,9 @@ inline bool getUpdateSets(std::string_view &out, int &i, std::string &text){
 	setLimn(out, boole, limn, i, text);
 	for(; text[i] < limn && ((boole >> 2) & 1); i++){
 		std::cout << "YEin" << std::endl;
-		if((boole >> 1) & 1){
+		if(!((boole >> 1) & 1)){
 			std::cout << "YEcin: " << i << " Ch: " << text[i] << " - " << (unsigned)text[i] << std::endl;
+			std::cout << "YEout-: " << i << std::endl;
 /*			for(;text[i] > 1; i++){
 				std::cout << "YEcine: " << i << " Ch: " << text[i] << " - " << (unsigned)text[i] << std::endl;
 */			if(text[i] == '=') boole |= (1 << 1);
@@ -190,17 +193,19 @@ inline bool getUpdateSets(std::string_view &out, int &i, std::string &text){
 		}
 		else{
 			if(boole & 1){
+				std::cout << "YEoutr: " << i << std::endl;
 				for(; i < limn && (boole & 1); i++) if(text[i] == '\'') boole &= 0xFFFFFFFE; // inline for
 			}
 			else{
+				std::cout << "YEoutj: " << i << std::endl;
 				if(text[i] == '\'') boole |= 1;
 				else if (text[i] == ',') boole &= 0xFFFFFFFD;
 				else if (!isInNumber(text[i])) boole &= 0xFFFFFFFB;
 			}
-			std::cout << "YEout: " << i << std::endl;
-			std::cout << i << std::endl;
+			//std::cout << "YEout: " << i << std::endl;
+			//std::cout << i << std::endl;
 		}
-		std::cout << "YEt" << i << std::endl;
+		std::cout << "YEt: " << i << std::endl;
 	}
 	std::cout << "YEr: " << i << ": " << out << std::endl;
 	return ((boole >> 2) & 1);
@@ -288,7 +293,7 @@ bool metha(std::string &out, int index, int outi, std::string dbthings, std::str
 	}
 	else if(index == 4){
 		int szamlal = 0;
-		//outi++;
+		outi++;
 		szamlal += getUpdateSets(upsets, outi, dbthings);
 		both = szamlal == 1;
 	}
@@ -316,7 +321,7 @@ bool metha(std::string &out, int index, int outi, std::string dbthings, std::str
 inline crow::response execFormat(
 	PoolDBConnection& poolDB, 
 	int caseindex, 
-	crow::json::rvalue json, 
+	std::string reqb, 
 	std::string schemaname, 
 	std::string tablename, 
 	int offset, 
@@ -326,9 +331,9 @@ inline crow::response execFormat(
 	std::shared_ptr<pqxx::connection> NC = poolDB.getDBConn();
 	int outi = 0;
 	std::string out = "-";
-	bool resnum = json ? isJogosult(NC, json["token"].s(), schemaname) : false;
+	bool resnum = isJogosult(NC, "5", schemaname);
 	if(resnum){
-		std::string dbthings = json["dbthings"].s();
+		std::string dbthings = reqb;
 		std::cout << "DBThings: " << dbthings << std::endl;
 //		setSessionValues(NC, outi, dbthings);
 		std::string queryText = "";
@@ -367,10 +372,7 @@ int entraceMethod(
 			const std::string schema,
 			const std::string tablename
 		) -> crow::response{
-			// json[dbthings][set_configs]
-			auto json = crow::json::load(req.body);
-			std::string transedschema = getTextWithJustChars(schema);
-			return execFormat(poolDB, 0, json, transedschema, getTextWithJustChars(tablename), 0, 0, 0);	
+			return execFormat(poolDB, 0, req.body, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, 0);	
 			
 		});
 		
@@ -381,11 +383,7 @@ int entraceMethod(
 			const int offset,
 			const int limit
 		) -> crow::response{
-			// json[dbthings][set_configs]
-			auto json = crow::json::load(req.body);
-			std::string transedschema = getTextWithJustChars(schema);
-			return execFormat(poolDB, 1, json, transedschema, getTextWithJustChars(tablename), offset, limit, 0);	
-			
+			return execFormat(poolDB, 1, req.body, getTextWithJustChars(schema), getTextWithJustChars(tablename), offset, limit, 0);	
 		});
 
 		CROW_ROUTE(app, "/insert/<string>/<string>").methods("POST"_method)([](
@@ -393,8 +391,8 @@ int entraceMethod(
 			const std::string schema,
 			const std::string tablename
 		) -> crow::response{
-			auto json = crow::json::load(req.body);
-			return execFormat(poolDB, 2, json, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, 0);
+			std::cout << req.body << std::endl;
+			return execFormat(poolDB, 2, req.body, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, 0);
 		});
 
 		CROW_ROUTE(app, "/delete/<string>/<string>/<int>").methods("POST"_method)([](
@@ -403,8 +401,7 @@ int entraceMethod(
 			const std::string tablename,
 			const int row
 		) -> crow::response{
-			auto json = crow::json::load(req.body);
-			return execFormat(poolDB, 3, json, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, row);
+			return execFormat(poolDB, 3, req.body, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, row);
 		});
 
 		CROW_ROUTE(app, "/update/<string>/<string>/<int>").methods("POST"_method)([](
@@ -413,8 +410,7 @@ int entraceMethod(
 			const std::string tablename,
 			const int row
 		) -> crow::response{
-			auto json = crow::json::load(req.body);
-			return execFormat(poolDB, 4, json, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, row);
+			return execFormat(poolDB, 4, req.body, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, row);
 		});
 		
 		CROW_ROUTE(app, "/methscal/<string>/<string>").methods("POST"_method)([](
@@ -422,8 +418,7 @@ int entraceMethod(
 			const std::string schema,
 			const std::string tablename
 		) -> crow::response{
-			auto json = crow::json::load(req.body);
-			return execFormat(poolDB, 5, json, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, 0);
+			return execFormat(poolDB, 5, req.body, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, 0);
 		});
 		
 		CROW_ROUTE(app, "/meth/<string>/<string>").methods("POST"_method)([](
@@ -431,8 +426,7 @@ int entraceMethod(
 			const std::string schema,
 			const std::string tablename
 		) -> crow::response{
-			auto json = crow::json::load(req.body);
-			return execFormat(poolDB, 6, json, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, 0);
+			return execFormat(poolDB, 6, req.body, getTextWithJustChars(schema), getTextWithJustChars(tablename), 0, 0, 0);
 		});
 //      C.disconnect();
     } else {
