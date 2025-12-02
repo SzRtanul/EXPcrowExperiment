@@ -173,6 +173,19 @@ inline bool isInNumber(char &ch){
 	return ((unsigned)ch - 42) < 16 || ch == 'e' || ch == 'E';
 }
 
+inline bool checkEqTxT(const char* nll, int &i, int &limn, std::string &text){
+	bool both = true;
+	int j = 1;
+	if(text[i] == 'n'){
+		i++;
+		for(; j < 4 && i < limn && both; j++, i++){
+			if(text[i] != nll[j]) both = false;
+		}
+		i--;
+	} 
+	return j > 3;
+}
+
 inline bool getUpdateSets(std::string_view &out, int &i, std::string &text){
 	std::cout << "YEE: " << text << std::endl;
 	//std::string out = "SET ";
@@ -180,7 +193,7 @@ inline bool getUpdateSets(std::string_view &out, int &i, std::string &text){
 	int boole = 0;
 	int limn = 0;
 	setLimn(out, boole, limn, i, text);
-	for(; text[i] < limn && ((boole >> 2) & 1); i++){
+	for(; i < limn && ((boole >> 2) & 1); i++){
 		std::cout << "YEin" << std::endl;
 		if(!((boole >> 1) & 1)){
 			std::cout << "YEcin: " << i << " Ch: " << text[i] << " - " << (unsigned)text[i] << std::endl;
@@ -194,13 +207,18 @@ inline bool getUpdateSets(std::string_view &out, int &i, std::string &text){
 		else{
 			if(boole & 1){
 				std::cout << "YEoutr: " << i << std::endl;
-				for(; i < limn && (boole & 1); i++) if(text[i] == '\'') boole &= 0xFFFFFFFE; // inline for
+				for(; i < limn && (boole & 1); i++) 
+					if(text[i] == '\''){ 
+						boole &= 0xFFFFFFFE; // inline for
+				//		i--;
+					}
 			}
-			else{
+			std::cout << "YEgin: " << i << " Ch: " << text[i] << " - " << (unsigned)text[i] << std::endl;
+			if (!(boole & 1) && i < limn){
 				std::cout << "YEoutj: " << i << std::endl;
 				if(text[i] == '\'') boole |= 1;
 				else if (text[i] == ',') boole &= 0xFFFFFFFD;
-				else if (!isInNumber(text[i])) boole &= 0xFFFFFFFB;
+				else if (!isInNumber(text[i]) && !checkEqTxT("null", i, limn, text)) boole &= 0xFFFFFFFB;
 			}
 			//std::cout << "YEout: " << i << std::endl;
 			//std::cout << i << std::endl;
@@ -211,58 +229,20 @@ inline bool getUpdateSets(std::string_view &out, int &i, std::string &text){
 	return ((boole >> 2) & 1);
 }
 
-inline bool insertValues(std::string_view &insval, int &i, std::string &text){
-	int boole = 0;
-	int limn = 0;
-	std::cout << "PlatonV: " << i << std::endl;
-	setLimn(insval, boole, limn, i, text);
-	for(; i < limn && (boole >> 2) & 1; i++){
-//		boole ^= (((((text[i] == ')') & 2)) ^ ((text[i] == '(') & 1)) << 2);
-		if(!((boole >> 1) & 1)){
-			if(text[i] == '('){
-				boole |= 1;
-			}
-			else if(text[i] == ')'){
-				boole &= 0xFFFFFFFE;
-			}
-			else if(boole & 1){
-				if(text[i] == '\'') boole |= 1 << 1;
-				else if(text[i] == '(' || text[i] != ',') boole &= 0xFFFFFFFB;
-			}
-			else if(!(boole & 1)){
-				if(text[i] == ')' || text[i] != ',') boole &= 0xFFFFFFFB;
-			}
-		}
-		else{
-			if(text[i] == '\'')	boole &= 0xFFFFFFFD; // inline for (?)
-		}
-		std::bitset<32> y(boole);
-		std::cout << y << std::endl;
-	}
-	std::cout << "Itt jársz" << std::endl;
-	return (boole >> 2) & 1;
-}
-
 inline bool methValues(std::string_view &insval, int &i, std::string &text){
 	int boole=0;
 	int limn = 0;
-	const char* nll = "null";
 	setLimn(insval, boole, limn, i, text);
 	for(; i < limn && (boole >> 2) & 1; i++){
 		if(boole & 1){
-			for(; i < limn && (boole & 1); i++) if(text[i] == '\'') boole &= 0xFFFFFFFE; // inline for
-		}
-		else{
-			if(text[i] == '\'') boole |= 1;
-			else if(text[i] == 'n'){
-				i++;
-				int j = 1;
-				for(; j < 4 && i < limn && !((boole >> 3) & 1); j++, i++){
-					if(text[i] != nll[j]) boole |= (1<<3);
+			for(; i < limn && (boole & 1); i++) 
+				if(text[i] == '\''){ 
+					boole &= 0xFFFFFFFE; // inline for
 				}
-				if(j < 4) boole &= 0xFFFFFFFB;
-			} 
-			else if (!isInNumber(text[i])) boole &= 0xFFFFFFFB;
+		}
+		if(!(boole & 1) && i < limn){
+			if(text[i] == '\'') boole |= 1;
+			else if (!isInNumber(text[i]) && !checkEqTxT("null", i, limn, text)) boole &= 0xFFFFFFFB;
 		}
 		std::cout << "YEout: " << i << std::endl;
 		std::cout << i << std::endl;
