@@ -69,7 +69,7 @@ inline std::string getSQLQuery(
 	    for (const auto &row : R) {
 	        for(int i = 0; i < row.size(); i++){
 	          	// textout += "valami";
-			  	textout += !row[i].is_null() ? getWithoutSpace(row[i].as<std::string>()) + columnsep : "null" + columnsep;
+			  	textout += !row[i].is_null() ? getWithoutSpace(row[i].as<std::string>()) + columnsep : columnsep;
 				//rownums += (textout.length() - 1) + ";";
         	}
         	textout = textout.length() > recordsep.length() ? textout + recordsep : "";
