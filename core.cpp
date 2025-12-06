@@ -273,7 +273,7 @@ bool metha(std::string &out, int index, int outi, std::string dbthings, std::str
 	}
 	else if(index == 4){
 		int szamlal = 0;
-		outi++;
+//		outi++;
 		szamlal += getUpdateSets(upsets, outi, dbthings);
 		both = szamlal == 1;
 	}
