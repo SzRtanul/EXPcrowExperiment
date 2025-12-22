@@ -94,7 +94,7 @@ inline std::string getSQLQuery(
 }
 
 inline std::string getSQLQuery(std::shared_ptr<pqxx::connection> NC, const char* querytext){
-	return getSQLQuery(NC, querytext, "", ":::", true, true);
+	return getSQLQuery(NC, querytext, "", std::string(1, '\0'), true, true);
 }
 
 inline bool isJogosult(std::shared_ptr<pqxx::connection> NC, std::string gnndump, std::string keynames){
@@ -319,6 +319,13 @@ inline crow::response execFormat(
 		std::string queryText = "";
 		out = metha(queryText, caseindex, outi, dbthings, schemaname, tablename, offset, limit, row) ? 
 		 	getSQLQuery(NC, queryText.c_str()) : "-";
+/*		std::string ntext = "";
+		for(int i = 0; i < out.size(); i++){
+			ntext += std::to_string((unsigned)out[i]);
+			ntext += ";";
+		}
+		std::cout << ntext << std::endl;
+*/
 		poolDB.giveBackConnect(NC);
 	}
 	return crow::response(resnum ? 200 : 400, out);
