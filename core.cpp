@@ -138,15 +138,25 @@ inline std::string insertColumns(int &i, std::string &text){
 }
 */
 
-inline bool setLimn(std::string_view &out, int &boole, int &limn, int &i, std::string &text){
-	if(i + 4 < text.length()){
-		memcpy(&limn, &text[i], 4);
+inline bool setLimn(std::string_view &out, int &boole, uint32_t &limn, int &i, std::string &text){
+	int lkn = i + 4;
+	//i-=4;
+	std::cout << text << std::endl;
+	std::cout << "i: " << i << " Limn: " << limn << " Text.Length: " << text.length() << std::endl;
+	if(lkn < text.length()){
+		int novel = 0;
+		// memcpy(&limn, &text[i], 4);
+		for(; i < lkn; i++){
+			unsigned char b = text[i];
+			std::cout << +b << "|";
+			limn |= uint32_t(b) << novel;
+			novel += 8;
+		}
+		std::cout << std::endl;
 		boole |= 1 << 2;
 		std::cout << "copy is succesful" << std::endl;
 	}
-	std::cout << text << std::endl;
-	std::cout << "i: " << i << " Limn: " << limn << " Text.Length: " << text.length() << std::endl;
-	i += 4;	
+//	i += 4;	
 	//i2 = i;
 	std::bitset<32> z0(limn);
 	std::cout << z0 << std::endl;
@@ -173,7 +183,7 @@ inline bool isInNumber(char &ch){
 	return ((unsigned)ch - 42) < 16 || ch == 'e' || ch == 'E';
 }
 
-inline bool checkEqTxT(const char* nll, int &i, int &limn, std::string &text){
+inline bool checkEqTxT(const char* nll, int &i, uint32_t &limn, std::string &text){
 	bool both = true;
 	int j = 1;
 	if(text[i] == 'n'){
@@ -191,7 +201,7 @@ inline bool getUpdateSets(std::string_view &out, int &i, std::string &text){
 	//std::string out = "SET ";
 	bool change = true;
 	int boole = 0;
-	int limn = 0;
+	uint32_t limn = 0;
 	setLimn(out, boole, limn, i, text);
 	for(; i < limn && ((boole >> 2) & 1); i++){
 		std::cout << "YEin" << std::endl;
@@ -231,7 +241,7 @@ inline bool getUpdateSets(std::string_view &out, int &i, std::string &text){
 
 inline bool methValues(std::string_view &insval, int &i, std::string &text){
 	int boole=0;
-	int limn = 0;
+	uint32_t limn = 0;
 	setLimn(insval, boole, limn, i, text);
 	for(; i < limn && (boole >> 2) & 1; i++){
 		if(boole & 1){
