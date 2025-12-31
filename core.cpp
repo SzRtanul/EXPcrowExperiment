@@ -328,7 +328,7 @@ inline crow::response execFormat(
 */
 		poolDB.giveBackConnect(NC);
 	}
-	return crow::response(resnum ? 200 : 400, out);
+	return crow::response(out != "-" ? 200 : 500, out);
 }
 
 int entraceMethod(
