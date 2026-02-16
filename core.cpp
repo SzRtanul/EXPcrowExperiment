@@ -1,14 +1,12 @@
 #include "core.h"
-#include "crow.h"
+#include <crow_all.h>
 #include <cstring>
-#include "crow/middlewares/cors.h"
 #include <csignal>
 #include <pqxx/pqxx>
 #include <string>
 #include <thread>
 #include <chrono>
 #include <regex>
-#include <crow/json.h>
 #include "models/PoolDBConnection.cpp"
 #include "models/WordsCompare.cpp"
 #include "models/StoreNames.cpp"
@@ -18,16 +16,15 @@ using namespace std;
 using namespace pqxx;
 //using json = nlohmann::json;
 
-pqxx::connection C = pqxx::connection(R"(dbname=testdb3 user=postgres password=test123 hostaddr=127.0.0.1 port=5432)");
 int exat=0;
 
 void signal_handler(int signal) {
-    if (C.is_open()) {
+/*    if (C.is_open()) {
         std::cout << "Zárjuk az adatbázis kapcsolatot..." << std::endl;
         C.disconnect();
     }
     std::cout << "A program leállt." << std::endl;
-    exit(0);  // Kilépés
+    exit(0);  // Kilépés*/
 }
 
 inline std::string getWithoutSpace(string text){
@@ -140,12 +137,11 @@ int entraceMethod(
 
 	std::shared_ptr<pqxx::connection> RC = poolDB.getDBConn();
 	std::string query = getSQLQuery(RC, "SELECT word FROM pg_get_keywords() ORDER BY LENGTH(word), word", ";", "", false, false);
-	poolDB.giveBackConnect(RC);
 	WordsCompare compareWords = doSyntaxtCheckPreparation(query.c_str());
 	
 	crow::App<crow::CORSHandler> app;
-    if (C.is_open()) {
-        cout << "Opened database successfully: " << C.dbname() << endl;
+    if (RC->is_open()) {
+        cout << "Opened database successfully: " << RC->dbname() << endl;
         //std::signal(SIGINT, signal_handler);
 		CROW_ROUTE(app, "/login")([](const crow::request& req) {
 	        crow::response res;
@@ -269,7 +265,9 @@ std::cout << "ADAT KIÍRÁS!" << std::endl;
     } else {
         cout << "Can't open database" << endl;
         return 1;
-    }	
+    }
+    
+	poolDB.giveBackConnect(RC);
 	std::cout << compareWords.leghosszabbSzo << endl;
 	std::cout << "OOOO" << endl;
 	
@@ -292,6 +290,6 @@ std::cout << "ADAT KIÍRÁS!" << std::endl;
 
 		return crow::response(200, "Megkaptam!");
 	});
-	app.port(18080).multithreaded().run();
+	app.port(crowPort).multithreaded().run();
   	return 0;
 }
