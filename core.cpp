@@ -1,15 +1,13 @@
 #include "core.h"
 #include "test.h"
-#include "crow.h"
+#include "include/crow_all.h"
 #include <cstring>
-#include "crow/middlewares/cors.h"
 #include <csignal>
 #include <pqxx/pqxx>
 #include <string>
 #include <thread>
 #include <chrono>
 #include <regex>
-#include <crow/json.h>
 #include "models/PoolDBConnection.cpp"
 #include "models/WordsCompare.cpp"
 #include "models/StoreNames.cpp"
@@ -19,16 +17,15 @@ using namespace std;
 using namespace pqxx;
 //using json = nlohmann::json;
 
-pqxx::connection C = pqxx::connection(R"(dbname=testdb3 user=postgres password=test123 hostaddr=127.0.0.1 port=5432)");
 int exat=0;
 
 void signal_handler(int signal) {
-    if (C.is_open()) {
+/*    if (C.is_open()) {
         std::cout << "Zárjuk az adatbázis kapcsolatot..." << std::endl;
         C.disconnect();
     }
     std::cout << "A program leállt." << std::endl;
-    exit(0);  // Kilépés
+    exit(0);  // Kilépés*/
 }
 
 inline std::string getWithoutSpace(string text){
@@ -361,8 +358,9 @@ int entraceMethod(
 		minDBConn, maxDBConn
 	);
 	crow::SimpleApp app;
-    if (C.is_open()) {
-        cout << "Opened database successfully: " << C.dbname() << endl;
+	std::cout << "BOBER KURWA!" << std::endl;
+    if (poolDB.active_connections > 0) {
+        cout << "Opened database successfully: " << serviceDBName << endl;
 		
 		CROW_ROUTE(app, "/gettable/<string>/<string>").methods("POST"_method)([](
 			const crow::request& req,

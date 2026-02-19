@@ -17,19 +17,15 @@ struct PoolDBConnection{
 	const std::chrono::milliseconds scale_threshold{2000};
 
 	PoolDBConnection(std::string conninfo, int min_size, int max_size){
-		active_connections = 0;
+		this->active_connections = 0;
 		this->conninfo = conninfo;
 		this->min_size = min_size;
 		this->max_size = max_size;
-		if(create_connection()){
-			for(int i = 0; i < min_size; i++){
-				pool.push(std::make_shared<pqxx::connection>(conninfo));
-			}
-		}
+		this->create_connection();
 	}
 
 	inline bool create_connection(){
-		auto conn = std::make_shared<pqxx::connection>(conninfo);
+		auto conn = getDBConn();
 		if (conn->is_open()){
 			pool.push(conn);
 		}
@@ -42,27 +38,29 @@ struct PoolDBConnection{
 	std::shared_ptr<pqxx::connection> getDBConn(){
 		std::lock_guard<std::mutex> lock(mtx);
 		std::shared_ptr<pqxx::connection> conn = nullptr;
-		if((pool.empty() || !pool.front()->is_open())){
+		if((!pool.empty() && !pool.front()->is_open())){
 			std::cout << "ENEN" << endl;
 			while(!pool.empty()){
 				pool.pop();
+				this->active_connections--;
 			}
-			if(create_connection()){
-				std::cout << "ENEC" << endl;
-				for(int i = 0; i < min_size; i++){
-					pool.push(std::make_shared<pqxx::connection>(conninfo));
-				}
-				conn = pool.front();
-				pool.pop();
+		}
+		if(pool.empty()){
+			std::cout << "ENEC" << endl;
+			for(int i = 0; i < min_size; i++){
+				pool.push(std::make_shared<pqxx::connection>(conninfo));
 				active_connections++;
-				std::cout << "ENEC" << endl;
 			}
+			conn = pool.front();
+			pool.pop();
+			active_connections--;
+			std::cout << "ENEC" << endl;
 		}
 		else{
 			std::cout << "ENE" << endl;
 			conn = pool.front(); 
 			pool.pop();
-			active_connections++;
+			active_connections--;
 			std::cout << "ENE" << endl;
 		}
 		return conn;	
@@ -71,10 +69,10 @@ struct PoolDBConnection{
 	void giveBackConnect(std::shared_ptr<pqxx::connection> conn){
 		if(active_connections > 0 && conn && conn->is_open()){
 			pool.push(conn);
-			active_connections--;
+			active_connections++;
 		}
 		else if(active_connections > 0){
-			active_connections--;
+			active_connections++;
 		}
 	}
 };
