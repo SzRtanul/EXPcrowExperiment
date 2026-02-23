@@ -358,7 +358,6 @@ int entraceMethod(
 		minDBConn, maxDBConn
 	);
 	crow::SimpleApp app;
-	std::cout << "BOBER KURWA!" << std::endl;
     if (poolDB.active_connections > 0) {
         cout << "Opened database successfully: " << serviceDBName << endl;
 		
