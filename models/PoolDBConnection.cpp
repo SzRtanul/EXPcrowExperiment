@@ -28,6 +28,7 @@ struct PoolDBConnection{
 		auto conn = getDBConn();
 		if (conn->is_open()){
 			pool.push(conn);
+			active_connections++;
 		}
 		else{
 			std::cout << "Connection to database is failed;" << endl;
@@ -67,6 +68,7 @@ struct PoolDBConnection{
 	}
 
 	void giveBackConnect(std::shared_ptr<pqxx::connection> conn){
+		std::lock_guard<std::mutex> lock(mtx);
 		if(active_connections > 0 && conn && conn->is_open()){
 			pool.push(conn);
 			active_connections++;

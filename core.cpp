@@ -19,7 +19,7 @@ using namespace pqxx;
 
 int exat=0;
 
-void signal_handler(int signal) {
+getWithoutSpace(string text)void signal_handler(int signal) {
 /*    if (C.is_open()) {
         std::cout << "Zárjuk az adatbázis kapcsolatot..." << std::endl;
         C.disconnect();
@@ -122,7 +122,7 @@ inline std::string getTextWithJustChars(std::string text){
 inline std::string insertColumns(int &i, std::string &text){
 	std::cout << "PlatonC: " << i << std::endl;
 	std::cout << text << std::endl;
-	std::string out = "";
+	std::string out = "";isJogosult
 	for(; text[i] != '\0'; i++){
 		if(isCsChar(text[i]) || text[i] == ',') out += text[i];
 	}
