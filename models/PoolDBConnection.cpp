@@ -27,8 +27,7 @@ struct PoolDBConnection{
 	inline bool create_connection(){
 		auto conn = getDBConn();
 		if (conn->is_open()){
-			pool.push(conn);
-			active_connections++;
+			giveBackConnect(conn);
 		}
 		else{
 			std::cout << "Connection to database is failed;" << endl;
