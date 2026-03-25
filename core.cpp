@@ -19,7 +19,7 @@ using namespace pqxx;
 
 int exat=0;
 
-getWithoutSpace(string text)void signal_handler(int signal) {
+void signal_handler(int signal) {
 /*    if (C.is_open()) {
         std::cout << "Zárjuk az adatbázis kapcsolatot..." << std::endl;
         C.disconnect();
@@ -122,7 +122,7 @@ inline std::string getTextWithJustChars(std::string text){
 inline std::string insertColumns(int &i, std::string &text){
 	std::cout << "PlatonC: " << i << std::endl;
 	std::cout << text << std::endl;
-	std::string out = "";isJogosult
+	std::string out = ""; //isJogosult
 	for(; text[i] != '\0'; i++){
 		if(isCsChar(text[i]) || text[i] == ',') out += text[i];
 	}
@@ -290,13 +290,13 @@ bool metha(std::string &out, int index, int outi, std::string dbthings, std::str
 			"select * from "+ transedschema + "." + transedtablename + ";",
 			"select * from "+ transedschema + "." + transedtablename + " OFFSET " + std::to_string(offset) + " LIMIT " + std::to_string(limit) + ";",
 			//insert
-			"insert into " + transedschema + "." + transedtablename + " (" + inscol + ") values (" + std::string(insval) + ");",
+			"insert into " + transedschema + "." + transedtablename + " (" + inscol + ") values (" + std::string(insval) + ") returning *;",
 			//delete
 			"delete from "+ transedschema + "." + transedtablename +
 				"\nwhere " + transedschema + "." + transedtablename+".id = " + std::to_string(row) + ";",
 			//update
 			"update " + transedschema + "." + transedtablename + "\nSET " + std::string(upsets) +
-				"\nwhere " + transedschema + "." + transedtablename+".id = " + std::to_string(row) + ";",
+				"\nwhere " + transedschema + "." + transedtablename+".id = " + std::to_string(row) + " returning *;",
 			"select " + transedschema + "." + transedtablename + " (" + std::string(insval) + ");", // Method call 1
 			"select * from " + transedschema + "." + transedtablename + " (" + std::string(insval) + ");", // Method call 2
 		};
@@ -333,6 +333,7 @@ inline crow::response execFormat(
 		}
 		std::cout << ntext << std::endl;
 */
+		std::cout << "Out:\n" << out << std::endl;
 		poolDB.giveBackConnect(NC);
 	}
 	return crow::response(out != "-" ? 200 : 500, out);
