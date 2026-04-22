@@ -180,20 +180,18 @@ inline bool isInNumber(char &ch){
 	return ((unsigned)ch - 42) < 16 || ch == 'e' || ch == 'E';
 }
 
-inline bool checkEqTxT(const char* nll, int &i, uint32_t &limn, std::string &text){
+inline bool checkEqTxT(const char* nll, const int lim, int &i, uint32_t &limn, std::string &text){
 	bool both = true;
-	int j = 1;
-	if(text[i] == 'n'){
-		i++;
-		for(; j < 4 && i < limn && both; j++, i++){
-			if(text[i] != nll[j]) both = false;
-		}
-		i--;
-	} 
-	return j > 3;
+	int j = 0;
+	for(; j < lim && i < limn && both; j++, i++){
+		std::cout << text[i] << ":" << nll[j] << std::endl;
+		if(text[i] != nll[j]) both = false;
+	}
+	i--;
+	return both;
 }
 
-inline bool getUpdateSets(std::string_view &out, int &i, std::string &text){
+inline bool getUpdateSets(std::string_view &out, int &i, std::string &text, const char* elv, const int elvlim){
 	std::cout << "YEE: " << text << std::endl;
 	//std::string out = "SET ";
 	bool change = true;
@@ -222,10 +220,11 @@ inline bool getUpdateSets(std::string_view &out, int &i, std::string &text){
 			}
 			std::cout << "YEgin: " << i << " Ch: " << text[i] << " - " << (unsigned)text[i] << std::endl;
 			if (!(boole & 1) && i < limn){
-				std::cout << "YEoutj: " << i << std::endl;
+				std::cout << "YEoutj: " << i << ":" << text[i] << std::endl;
 				if(text[i] == '\'') boole |= 1;
-				else if (text[i] == ',') boole &= 0xFFFFFFFD;
-				else if (!isInNumber(text[i]) && !checkEqTxT("null", i, limn, text)) boole &= 0xFFFFFFFB;
+//				else if (text[i] == ',') boole &= 0xFFFFFFFD;
+				else if (text[i] == ','||checkEqTxT(elv, elvlim, i, limn, text)) boole &= 0xFFFFFFFD;
+				else if (!isInNumber(text[i]) && !checkEqTxT("null", 4, i, limn, text)) boole &= 0xFFFFFFFB;
 			}
 			//std::cout << "YEout: " << i << std::endl;
 			//std::cout << i << std::endl;
@@ -249,7 +248,7 @@ inline bool methValues(std::string_view &insval, int &i, std::string &text){
 		}
 		if(!(boole & 1) && i < limn){
 			if(text[i] == '\'') boole |= 1;
-			else if (!isInNumber(text[i]) && !checkEqTxT("null", i, limn, text)) boole &= 0xFFFFFFFB;
+			else if (!isInNumber(text[i]) && !checkEqTxT("null", 4, i, limn, text)) boole &= 0xFFFFFFFB;
 		}
 		std::cout << "YEout: " << i << std::endl;
 		std::cout << i << std::endl;
@@ -263,12 +262,22 @@ bool metha(std::string &out, int index, int outi, std::string dbthings, std::str
 	std::string_view insval = "";
 	std::string_view upsets = "";
 	std::cout << "Zsindex: " << index << std::endl;
+	std::string wherez = "";
+	
+	if((unsigned)index < 2){
+		int szamlal = 0;
+		std::string_view whereze = "";
+		szamlal += getUpdateSets(whereze, outi, dbthings, " and ", 5);
+		if(szamlal == 1) wherez = " WHERE " + std::string(whereze);
+	}
+		
 	if((unsigned)index - 5 < 2){
 		int szamlal = 0;
 		 szamlal += methValues(insval, outi, dbthings);
 		 std::cout << szamlal << std::endl;
 		 both = szamlal == 1;
 	}
+
 	else if(index == 2){
 		int szamlal = 0;
 		std::cout << "DBThings: " << dbthings << "a\0\0a" << std::endl;
@@ -278,17 +287,19 @@ bool metha(std::string &out, int index, int outi, std::string dbthings, std::str
 		std::cout << szamlal << std::endl;
 		both = szamlal == 1;
 	}
+
 	else if(index == 4){
 		int szamlal = 0;
 //		outi++;
-		szamlal += getUpdateSets(upsets, outi, dbthings);
+		szamlal += getUpdateSets(upsets, outi, dbthings, ",", 1);
 		both = szamlal == 1;
 	}
+
 	if(both){
 		std::array<std::string, 7> queries = {
 			//select
-			"select * from "+ transedschema + "." + transedtablename + ";",
-			"select * from "+ transedschema + "." + transedtablename + " OFFSET " + std::to_string(offset) + " LIMIT " + std::to_string(limit) + ";",
+			"select * from "+ transedschema + "." + transedtablename + wherez + ";",
+			"select * from "+ transedschema + "." + transedtablename + wherez + " OFFSET " + std::to_string(offset) + " LIMIT " + std::to_string(limit) + ";",
 			//insert
 			"insert into " + transedschema + "." + transedtablename + " (" + inscol + ") values (" + std::string(insval) + ") returning *;",
 			//delete
