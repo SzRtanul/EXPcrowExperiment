@@ -223,7 +223,7 @@ inline bool getUpdateSets(std::string_view &out, int &i, std::string &text, cons
 				std::cout << "YEoutj: " << i << ":" << text[i] << std::endl;
 				if(text[i] == '\'') boole |= 1;
 //				else if (text[i] == ',') boole &= 0xFFFFFFFD;
-				else if (text[i] == ','||checkEqTxT(elv, elvlim, i, limn, text)) boole &= 0xFFFFFFFD;
+				else if (checkEqTxT(elv, elvlim, i, limn, text)) boole &= 0xFFFFFFFD;
 				else if (!isInNumber(text[i]) && !checkEqTxT("null", 4, i, limn, text)) boole &= 0xFFFFFFFB;
 			}
 			//std::cout << "YEout: " << i << std::endl;
