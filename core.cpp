@@ -256,13 +256,43 @@ inline bool methValues(std::string_view &insval, int &i, std::string &text){
 	return (boole >> 2) & 1;
 }
 
+bool isSCHT(std::string_view &scht, int &i, std::string &text){
+	int boole = 0;
+	int dotnum = 0;
+	uint32_t limn = 0;
+	setLimn(scht, boole, limn, i, text);
+	for(; i < limn && ((boole >> 2) & 1); i++){
+		if(text[i] == '.') dotnum++;
+		if(!isCsChar(text[i])) boole &= 0xFFFFFFFB;
+	}
+	return ((boole >> 2) & 1) && dotnum == 1;
+}
+
+bool isCol(std::string_view &col, int &i, std::string &text){
+	int boole = 0;
+	uint32_t limn = 0;
+	setLimn(col, boole, limn, i, text);
+	for(; i < limn && ((boole >> 2) & 1); i++){
+		if(!isCsChar(text[i]) || text[i] != ',' || text[i] != '*') boole &= 0xFFFFFFFB;
+	}
+	return (boole >> 2) & 1;
+}
+
+std::string getNW(bool nW, std::string inla, std::string scht, std::string col){
+	return !nW ? inla + " " + col :
+		"WITH inserted AS (" + inla + " id) SELECT v.* FROM " + scht + " v JOIN inserted i ON i.id=v." + col;
+}
+
 bool metha(std::string &out, int index, int outi, std::string dbthings, std::string transedschema, std::string transedtablename, int offset, int limit, int row){
 	bool both = 1;
+	bool needWith = false;
 	std::string inscol = "";
 	std::string_view insval = "";
 	std::string_view upsets = "";
 	std::cout << "Zsindex: " << index << std::endl;
 	std::string wherez = "";
+	std::string_view scth = "";
+	std::string_view col = "*";
 	
 	if((unsigned)index < 2){
 		int szamlal = 0;
@@ -273,11 +303,10 @@ bool metha(std::string &out, int index, int outi, std::string dbthings, std::str
 		
 	if((unsigned)index - 5 < 2){
 		int szamlal = 0;
-		 szamlal += methValues(insval, outi, dbthings);
-		 std::cout << szamlal << std::endl;
-		 both = szamlal == 1;
+		szamlal += methValues(insval, outi, dbthings);
+		std::cout << szamlal << std::endl;
+		both = szamlal == 1;
 	}
-
 	else if(index == 2){
 		int szamlal = 0;
 		std::cout << "DBThings: " << dbthings << "a\0\0a" << std::endl;
@@ -287,7 +316,6 @@ bool metha(std::string &out, int index, int outi, std::string dbthings, std::str
 		std::cout << szamlal << std::endl;
 		both = szamlal == 1;
 	}
-
 	else if(index == 4){
 		int szamlal = 0;
 //		outi++;
@@ -295,23 +323,37 @@ bool metha(std::string &out, int index, int outi, std::string dbthings, std::str
 		both = szamlal == 1;
 	}
 
+	if(index == 2 || index == 4){
+		needWith = isCol(col, outi, dbthings) && isSCHT(scth, outi, dbthings);
+	}
+
 	if(both){
 		std::array<std::string, 7> queries = {
 			//select
-			"select * from "+ transedschema + "." + transedtablename + wherez + ";",
-			"select * from "+ transedschema + "." + transedtablename + wherez + " OFFSET " + std::to_string(offset) + " LIMIT " + std::to_string(limit) + ";",
+			"select * from "+ transedschema + "." + transedtablename + wherez,
+			"select * from "+ transedschema + "." + transedtablename + wherez + " OFFSET " + std::to_string(offset) + " LIMIT " + std::to_string(limit),
 			//insert
-			"insert into " + transedschema + "." + transedtablename + " (" + inscol + ") values (" + std::string(insval) + ") returning *;",
+			getNW(
+				needWith,
+				"insert into " + transedschema + "." + transedtablename + " (" + inscol + ") values (" + std::string(insval) + ") returning",
+				std::string(scth),
+				std::string(col)
+			),
 			//delete
 			"delete from "+ transedschema + "." + transedtablename +
-				"\nwhere " + transedschema + "." + transedtablename+".id = " + std::to_string(row) + ";",
+				"\nwhere " + transedschema + "." + transedtablename+".id = " + std::to_string(row),
 			//update
-			"update " + transedschema + "." + transedtablename + "\nSET " + std::string(upsets) +
-				"\nwhere " + transedschema + "." + transedtablename+".id = " + std::to_string(row) + " returning *;",
-			"select " + transedschema + "." + transedtablename + " (" + std::string(insval) + ");", // Method call 1
-			"select * from " + transedschema + "." + transedtablename + " (" + std::string(insval) + ");", // Method call 2
+			getNW(
+				needWith,
+				"update " + transedschema + "." + transedtablename + "\nSET " + std::string(upsets) +
+					"\nwhere " + transedschema + "." + transedtablename+".id = " + std::to_string(row) + " returning",
+				std::string(scth),
+				std::string(col)
+			),
+			"select " + transedschema + "." + transedtablename + " (" + std::string(insval) + ")", // Method call 1
+			"select * from " + transedschema + "." + transedtablename + " (" + std::string(insval) + ")", // Method call 2
 		};
-		out = queries[index];
+		out = queries[index] + ";";
 	}
 	return both;
 }
